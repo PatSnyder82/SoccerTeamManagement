@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SoccerTeamManagement.Models
+namespace SoccerTeamManagement.Data.Models
 {
     public class ApplicationUser : IdentityUser
     {

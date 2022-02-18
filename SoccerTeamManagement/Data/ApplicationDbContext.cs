@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using SoccerTeamManagement.Models;
+using SoccerTeamManagement.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

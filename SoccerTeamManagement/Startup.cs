@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SoccerTeamManagement.Data;
-using SoccerTeamManagement.Models;
+using SoccerTeamManagement.Data.Models;
 
 namespace SoccerTeamManagement
 {
