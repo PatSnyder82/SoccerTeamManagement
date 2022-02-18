@@ -14,12 +14,6 @@ namespace SoccerTeamManagement.Data.Models
         ///TODO: Create LOGO Entity
         ///
 
-        ///TODO: Create Positions
-        ///
-
-        ///TODO: Create Club
-        ///
-
         ///TODO: Create Transfers
         ///
 
@@ -27,7 +21,11 @@ namespace SoccerTeamManagement.Data.Models
 
         #region Relationships
 
-        public ICollection<Team> Teams { get; set; }
+        public int? LeagueId { get; set; }
+
+        public League League { get; set; }
+
+        public ICollection<Player> Players { get; set; }
 
         #endregion Relationships
     }

@@ -15,6 +15,18 @@ namespace SoccerTeamManagement.Data.Models
 
         public string NickName { get; set; }
 
+        public int? Height { get; set; }
+
+        public int? Weight { get; set; }
+
+        public Enums.Foot Foot { get; set; }
+
+        /// TODO:   modelBuilder.Entity<Player>().Property(s => s.Foot).HasConversion<string>();
+
+        public int? WeakFootRating { get; set; }
+
+        public int? FlareRating { get; set; }
+
         #endregion Properties
 
         #region Relationships
