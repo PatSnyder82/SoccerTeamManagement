@@ -7,6 +7,8 @@ namespace SoccerTeamManagement.Data.Models
 {
     public class PlayerAttributes : EntityBase
     {
+        #region Properties
+
         #region Pace Properties
 
         public int? Acceleration { get; set; }
@@ -102,5 +104,15 @@ namespace SoccerTeamManagement.Data.Models
         public int? GoaliePositioning { get; set; }
 
         #endregion Goalie
+
+        #endregion Properties
+
+        #region Relationships
+
+        public int? PlayerId { get; set; }
+
+        public Player Player { get; set; }
+
+        #endregion Relationships
     }
 }

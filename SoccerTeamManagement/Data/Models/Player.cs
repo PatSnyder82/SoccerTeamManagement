@@ -1,19 +1,11 @@
-﻿using System;
+﻿using SoccerTeamManagement.Data.Models.Joins;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SoccerTeamManagement.Data.Models
 {
-    public class Player : EntityBase
+    public class Player : Person
     {
         #region Properties
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
-        public string NickName { get; set; }
 
         public int? Height { get; set; }
 
@@ -33,19 +25,21 @@ namespace SoccerTeamManagement.Data.Models
 
         public int? NationId { get; set; }
 
-        public Nation Nation { get; set; }
+        public NationLookup Nation { get; set; }
 
-        public int? PlayerAttributesId { get; set; }
+        public int? AttributesId { get; set; }
 
         public PlayerAttributes Attributes { get; set; }
 
-        public int? PlayerPositionId { get; set; }
+        public ICollection<PlayerPosition> PlayerPositions { get; set; }
 
-        public PlayerPosition PrimaryPosition { get; set; }
+        public ICollection<PlayerTeam> PlayerTeams { get; set; }
 
-        public ICollection<PlayerPosition> SecondaryPositions { get; set; }
+        #region Parents
 
-        public ICollection<Team> Teams { get; set; }
+        public ICollection<PlayerParent> Parents { get; set; }
+
+        #endregion Parents
 
         #endregion Relationships
     }

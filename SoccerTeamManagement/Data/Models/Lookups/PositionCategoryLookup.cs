@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SoccerTeamManagement.Data.Models
 {
-    public class Nation : LookupBase
+    public class PositionCategoryLookup : LookupBase
     {
     }
 }
