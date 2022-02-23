@@ -5,10 +5,6 @@ using Microsoft.Extensions.Options;
 using SoccerTeamManagement.Data.Configuration;
 using SoccerTeamManagement.Data.Models;
 using SoccerTeamManagement.Data.Models.Joins;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SoccerTeamManagement.Data
 {
@@ -25,7 +21,6 @@ namespace SoccerTeamManagement.Data
             base.OnModelCreating(builder);
 
             //add the EntityType Configuration Classes
-            // builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
             new AddressConfig().Configure(builder.Entity<Address>());
             new LeagueConfig().Configure(builder.Entity<League>());
             new PhoneConfig().Configure(builder.Entity<Phone>());
@@ -36,6 +31,7 @@ namespace SoccerTeamManagement.Data
             new TeamConfig().Configure(builder.Entity<Team>());
             new ParentConfig().Configure(builder.Entity<Parent>());
             new PlayerParentConfig().Configure(builder.Entity<PlayerParent>());
+            new ImageConfig().Configure(builder.Entity<Image>());
         }
     }
 }

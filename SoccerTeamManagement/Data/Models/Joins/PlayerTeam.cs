@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SoccerTeamManagement.Data.Models.Joins
 {
@@ -16,6 +13,10 @@ namespace SoccerTeamManagement.Data.Models.Joins
         public int TeamId { get; set; }
 
         public Team Team { get; set; }
+
+        public DateTimeOffset? JoinedTeam { get; set; }
+
+        public DateTimeOffset? DepartedTeam { get; set; }
 
         #endregion Relationships
     }

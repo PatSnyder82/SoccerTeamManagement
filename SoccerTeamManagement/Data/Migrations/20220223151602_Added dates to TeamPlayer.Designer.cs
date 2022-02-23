@@ -10,8 +10,8 @@ using SoccerTeamManagement.Data;
 namespace SoccerTeamManagement.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220222185856_Initial")]
-    partial class Initial
+    [Migration("20220223151602_Added dates to TeamPlayer")]
+    partial class AddeddatestoTeamPlayer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -354,6 +354,36 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AlternativeText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Caption")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Height")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Style")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Width")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Image");
+                });
+
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.PlayerParent", b =>
                 {
                     b.Property<int>("PlayerId")
@@ -391,6 +421,12 @@ namespace SoccerTeamManagement.Data.Migrations
 
                     b.Property<int>("TeamId")
                         .HasColumnType("int");
+
+                    b.Property<DateTimeOffset?>("DepartedTeam")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset?>("JoinedTeam")
+                        .HasColumnType("datetimeoffset");
 
                     b.HasKey("PlayerId", "TeamId");
 
@@ -813,6 +849,35 @@ namespace SoccerTeamManagement.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Image", b =>
+                {
+                    b.OwnsOne("SoccerTeamManagement.Data.Models.Link", "Source", b1 =>
+                        {
+                            b1.Property<int>("ImageId")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<bool>("OpenNewWindow")
+                                .HasColumnType("bit");
+
+                            b1.Property<string>("Text")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("Url")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("ImageId");
+
+                            b1.ToTable("Image");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ImageId");
+                        });
+
+                    b.Navigation("Source");
                 });
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.PlayerParent", b =>

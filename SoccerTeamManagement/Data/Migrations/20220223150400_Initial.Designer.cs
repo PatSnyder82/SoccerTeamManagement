@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SoccerTeamManagement.Data;
 
 namespace SoccerTeamManagement.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220223150400_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -419,12 +421,6 @@ namespace SoccerTeamManagement.Data.Migrations
 
                     b.Property<int>("TeamId")
                         .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("DepartedTeam")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTimeOffset?>("JoinedTeam")
-                        .HasColumnType("datetimeoffset");
 
                     b.HasKey("PlayerId", "TeamId");
 

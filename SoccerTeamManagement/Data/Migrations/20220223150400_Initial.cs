@@ -84,6 +84,27 @@ namespace SoccerTeamManagement.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Image",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AlternativeText = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Source_OpenNewWindow = table.Column<bool>(type: "bit", nullable: true),
+                    Source_Text = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Source_Url = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Width = table.Column<int>(type: "int", nullable: true),
+                    Height = table.Column<int>(type: "int", nullable: true),
+                    Style = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Caption = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Image", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "League",
                 columns: table => new
                 {
@@ -665,6 +686,9 @@ namespace SoccerTeamManagement.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "DeviceCodes");
+
+            migrationBuilder.DropTable(
+                name: "Image");
 
             migrationBuilder.DropTable(
                 name: "PersistedGrants");
