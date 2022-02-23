@@ -10,13 +10,13 @@ namespace SoccerTeamManagement.Data.Models
 
         public string Abbreviation { get; set; }
 
-        public bool IsPrimary { get; set; }
-
         #endregion Properties
 
         #region Relationships
 
         public ICollection<PlayerPosition> PlayerPositions { get; set; }
+
+        public int? PositionCategoryId { get; set; }
 
         public PositionCategoryLookup PositionCategory { get; set; }
 

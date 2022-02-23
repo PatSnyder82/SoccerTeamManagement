@@ -9,13 +9,13 @@ namespace SoccerTeamManagement.Data.Interfaces
     {
         #region Properties
 
-        bool? IsDisabled { get; set; }
-
-        int? SortOrder { get; set; }
-
         string Text { get; set; }
 
         string Value { get; set; }
+
+        int? SortOrder { get; set; }
+
+        bool? IsDisabled { get; set; }
 
         #endregion Properties
     }

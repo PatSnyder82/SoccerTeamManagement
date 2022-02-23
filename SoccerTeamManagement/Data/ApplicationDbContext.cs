@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SoccerTeamManagement.Data.Configuration;
+using SoccerTeamManagement.Data.Configuration.Lookups;
 using SoccerTeamManagement.Data.Models;
 using SoccerTeamManagement.Data.Models.Joins;
 
@@ -21,6 +22,15 @@ namespace SoccerTeamManagement.Data
             base.OnModelCreating(builder);
 
             //add the EntityType Configuration Classes
+
+            #region Lookups
+
+            new PositionCategoryLookupConfig().Configure(builder.Entity<PositionCategoryLookup>());
+            new PositionLookupConfig().Configure(builder.Entity<PositionLookup>());
+            new NationLookupConfig().Configure(builder.Entity<NationLookup>());
+
+            #endregion Lookups
+
             new AddressConfig().Configure(builder.Entity<Address>());
             new LeagueConfig().Configure(builder.Entity<League>());
             new PhoneConfig().Configure(builder.Entity<Phone>());

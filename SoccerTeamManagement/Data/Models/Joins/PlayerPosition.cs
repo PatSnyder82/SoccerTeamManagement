@@ -17,6 +17,8 @@ namespace SoccerTeamManagement.Data.Models.Joins
 
         public PositionLookup Position { get; set; }
 
+        public bool IsPrimary { get; set; }
+
         #endregion Relationships
     }
 }
