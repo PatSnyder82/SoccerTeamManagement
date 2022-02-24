@@ -1,9 +1,8 @@
-﻿using SoccerTeamManagement.Data.Models.Joins;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace SoccerTeamManagement.Data.Models
 {
-    public class League : EntityBase
+    public class Club : EntityBase
     {
         public string Name { get; set; }
 
@@ -12,7 +11,7 @@ namespace SoccerTeamManagement.Data.Models
 
         #region Relationships
 
-        public ICollection<LeagueTeam> LeagueTeams { get; set; }
+        public ICollection<Team> Teams { get; set; }
 
         #endregion Relationships
     }

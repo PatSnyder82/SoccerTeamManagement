@@ -13,11 +13,9 @@ namespace SoccerTeamManagement.Data.Models
 
         public Enums.Foot Foot { get; set; }
 
-        /// TODO:   modelBuilder.Entity<Player>().Property(s => s.Foot).HasConversion<string>();
+        public Enums.StarRating WeakFootRating { get; set; }
 
-        public int? WeakFootRating { get; set; }
-
-        public int? FlareRating { get; set; }
+        public Enums.StarRating FlareRating { get; set; }
 
         #endregion Properties
 
@@ -33,13 +31,9 @@ namespace SoccerTeamManagement.Data.Models
 
         public ICollection<PlayerPosition> PlayerPositions { get; set; }
 
-        public ICollection<PlayerTeam> PlayerTeams { get; set; }
+        public ICollection<TeamPlayer> TeamPlayers { get; set; }
 
-        #region Parents
-
-        public ICollection<PlayerParent> Parents { get; set; }
-
-        #endregion Parents
+        public ICollection<PlayerParent> PlayerParents { get; set; }
 
         #endregion Relationships
     }

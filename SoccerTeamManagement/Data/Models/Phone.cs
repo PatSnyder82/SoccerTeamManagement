@@ -4,22 +4,16 @@
     {
         #region Properties
 
-        public int AreaCode { get; set; }
+        public string CountryCode { get; set; }
 
-        public int? Extension { get; set; }
+        public string AreaCode { get; set; }
 
-        public int Number { get; set; }
+        public string Extension { get; set; }
+
+        public string Number { get; set; }
 
         public Enums.PhoneType PhoneType { get; set; }
 
         #endregion Properties
-
-        //#region Relationship
-
-        //public int? PersonId { get; set; }
-
-        //public Player Player { get; set; }
-
-        //#endregion Relationship
     }
 }

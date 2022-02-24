@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SoccerTeamManagement.Data.Interfaces;
 using SoccerTeamManagement.Data.Models;
 
 namespace SoccerTeamManagement.Data.Configuration.Lookups
 {
-    public class PositionLookupConfig : IEntityTypeConfiguration<PositionLookup>
+    public class PositionLookupConfig : IEntityTypeConfiguration<PositionLookup>, ISeed<PositionLookup>
     {
         public void Configure(EntityTypeBuilder<PositionLookup> builder)
         {
@@ -12,10 +13,15 @@ namespace SoccerTeamManagement.Data.Configuration.Lookups
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).IsRequired();
 
+            #region Seed
+
             Seed(builder);
+            SeedDebug(builder);
+
+            #endregion Seed
         }
 
-        private void Seed(EntityTypeBuilder<PositionLookup> builder)
+        public void Seed(EntityTypeBuilder<PositionLookup> builder)
         {
             builder.HasData(new PositionLookup { Id = 1, Text = "Goalie", Abbreviation = "G", Value = "G", SortOrder = 1, IsDisabled = false, PositionCategoryId = 1 });
             builder.HasData(new PositionLookup { Id = 2, Text = "Right FullBack", Abbreviation = "RB", Value = "RB", SortOrder = 2, IsDisabled = false, PositionCategoryId = 1 });
@@ -36,6 +42,13 @@ namespace SoccerTeamManagement.Data.Configuration.Lookups
             builder.HasData(new PositionLookup { Id = 17, Text = "Right Forward", Abbreviation = "RF", Value = "RF", SortOrder = 7, IsDisabled = false, PositionCategoryId = 3 });
             builder.HasData(new PositionLookup { Id = 18, Text = "Striker", Abbreviation = "ST", Value = "ST", SortOrder = 8, IsDisabled = false, PositionCategoryId = 3 });
             builder.HasData(new PositionLookup { Id = 19, Text = "Center Forward", Abbreviation = "CF", Value = "CF", SortOrder = 8, IsDisabled = false, PositionCategoryId = 3 });
+        }
+
+        public void SeedDebug(EntityTypeBuilder<PositionLookup> builder)
+        {
+#if DEBUG
+
+#endif
         }
     }
 }

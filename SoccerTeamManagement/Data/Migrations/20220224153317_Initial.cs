@@ -65,6 +65,19 @@ namespace SoccerTeamManagement.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Club",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Club", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "DeviceCodes",
                 columns: table => new
                 {
@@ -161,9 +174,10 @@ namespace SoccerTeamManagement.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AreaCode = table.Column<int>(type: "int", nullable: false),
-                    Extension = table.Column<int>(type: "int", nullable: true),
-                    Number = table.Column<int>(type: "int", nullable: false),
+                    CountryCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AreaCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Extension = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Number = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneType = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -347,15 +361,15 @@ namespace SoccerTeamManagement.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LeagueId = table.Column<int>(type: "int", nullable: true)
+                    ClubId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Team", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Team_League_LeagueId",
-                        column: x => x.LeagueId,
-                        principalTable: "League",
+                        name: "FK_Team_Club_ClubId",
+                        column: x => x.ClubId,
+                        principalTable: "Club",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -398,9 +412,9 @@ namespace SoccerTeamManagement.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Height = table.Column<int>(type: "int", nullable: true),
                     Weight = table.Column<int>(type: "int", nullable: true),
-                    Foot = table.Column<int>(type: "int", nullable: false),
-                    WeakFootRating = table.Column<int>(type: "int", nullable: true),
-                    FlareRating = table.Column<int>(type: "int", nullable: true),
+                    Foot = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    WeakFootRating = table.Column<int>(type: "int", nullable: false),
+                    FlareRating = table.Column<int>(type: "int", nullable: false),
                     NationId = table.Column<int>(type: "int", nullable: true),
                     AttributesId = table.Column<int>(type: "int", nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -464,6 +478,31 @@ namespace SoccerTeamManagement.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "LeagueTeam",
+                columns: table => new
+                {
+                    LeagueId = table.Column<int>(type: "int", nullable: false),
+                    TeamId = table.Column<int>(type: "int", nullable: false),
+                    IsPrimary = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LeagueTeam", x => new { x.LeagueId, x.TeamId });
+                    table.ForeignKey(
+                        name: "FK_LeagueTeam_League_LeagueId",
+                        column: x => x.LeagueId,
+                        principalTable: "League",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_LeagueTeam_Team_TeamId",
+                        column: x => x.TeamId,
+                        principalTable: "Team",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PlayerParent",
                 columns: table => new
                 {
@@ -488,7 +527,7 @@ namespace SoccerTeamManagement.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PlayerTeam",
+                name: "TeamPlayer",
                 columns: table => new
                 {
                     PlayerId = table.Column<int>(type: "int", nullable: false),
@@ -498,15 +537,15 @@ namespace SoccerTeamManagement.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PlayerTeam", x => new { x.PlayerId, x.TeamId });
+                    table.PrimaryKey("PK_TeamPlayer", x => new { x.PlayerId, x.TeamId });
                     table.ForeignKey(
-                        name: "FK_PlayerTeam_Player_PlayerId",
+                        name: "FK_TeamPlayer_Player_PlayerId",
                         column: x => x.PlayerId,
                         principalTable: "Player",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PlayerTeam_Team_TeamId",
+                        name: "FK_TeamPlayer_Team_TeamId",
                         column: x => x.TeamId,
                         principalTable: "Team",
                         principalColumn: "Id",
@@ -539,28 +578,135 @@ namespace SoccerTeamManagement.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Address",
+                columns: new[] { "Id", "AddressLine1", "AddressLine2", "City", "Country", "State", "ZipCode" },
+                values: new object[,]
+                {
+                    { 901, "1600 Pennsylvania Avenue NW", null, "Washington", "United States", "DC", "20500" },
+                    { 912, "416 Sid Snyder Avenue SW", null, "Olympia", "United States", "Washington", "98504" },
+                    { 910, "501 N. 3rd Street", null, "Harrisburg", "United States", "Pennsylvania", "17120" },
+                    { 909, "350 State Street", null, "Salt Lake City", "United States", "Utah", "84103" },
+                    { 908, "2300 N Lincoln Blvd", null, "Oklahoma City", "United States", "Oklahoma", "73105" },
+                    { 907, "1100 Congress Avenue", null, "Austin", "United States", "Texas", "78701" },
+                    { 911, "200 E. Colfax Ave", null, "Denver", "United States", "Colorado", "80203" },
+                    { 905, "4059 Mt. Lee Drive", null, "Hollywood", "United States", "California", "90068" },
+                    { 904, "221 B Baker Street", null, "London", "England", "", "" },
+                    { 903, "350 Fifth Avenue", null, "New York", "United States", "New York", "10118" },
+                    { 902, "11 Wall Street", null, "New York", "United States", "New York", "10118" },
+                    { 906, "400 S. Monroe Street", null, "Tallahassee", "United States", "Florida", "32399" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Club",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 902, "Test Club 2" },
+                    { 23, "Portland Timbers" },
+                    { 24, "Real Salt Lake" },
+                    { 25, "San Jose Earthquakes" },
+                    { 26, "Seattle Sounders" },
+                    { 27, "Toronto FC" },
+                    { 28, "Vancouver Whitecaps" },
+                    { 901, "Test Club 1" },
+                    { 903, "Test Club 3" },
+                    { 909, "Test Club 9" },
+                    { 905, "Test Club 5" },
+                    { 906, "Test Club 6" },
+                    { 907, "Test Club 7" },
+                    { 908, "Test Club 8" },
+                    { 22, "Philadelphia Union" },
+                    { 910, "Test Club 10" },
+                    { 911, "Test Club 11" },
+                    { 912, "Test Club 12" },
+                    { 904, "Test Club 4" },
+                    { 21, "Orlando City" },
+                    { 19, "New York Red Bulls" },
+                    { 5, "FC Cincinnati" },
+                    { 1, "Atlanta United" },
+                    { 2, "Austin FC" },
+                    { 3, "Charlotte FC" },
+                    { 4, "Chicago Fire FC" },
+                    { 20, "New York City FC" },
+                    { 6, "Colorado Rapids" },
+                    { 7, "Columbus Crew" },
+                    { 9, "FC Dallas" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Club",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 8, "D.C. United" },
+                    { 11, "Sporting Kansas City" },
+                    { 12, "LA Galaxy" },
+                    { 13, "Los Angeles Football Club" },
+                    { 14, "Inter Miami CF" },
+                    { 15, "Minnesota United" },
+                    { 16, "CF Montreal" },
+                    { 17, "Nashville SC" },
+                    { 18, "New England Revolution" },
+                    { 10, "Houston Dynamo FC" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "League",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 907, "Test League 7" },
+                    { 904, "Test League 4" },
+                    { 905, "Test League 5" },
+                    { 908, "Test League 8" },
+                    { 903, "Test League 3" },
+                    { 910, "Test League 10" },
+                    { 911, "Test League 11" },
+                    { 912, "Test League 12" },
+                    { 909, "Test League 9" },
+                    { 902, "Test League 2" },
+                    { 906, "Test League 6" },
+                    { 9, "Local League" },
+                    { 8, "Serie A" },
+                    { 7, "Eredivisie" },
+                    { 6, "Ligue 1" },
+                    { 5, "Bundesliga" },
+                    { 4, "Serie A" },
+                    { 3, "La Liga" },
+                    { 2, "Premier League" },
+                    { 1, "Major League Soccer" },
+                    { 901, "Test League 1" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "NationLookup",
                 columns: new[] { "Id", "Alpha2Code", "Alpha3Code", "IsDisabled", "SortOrder", "Text", "Value" },
                 values: new object[,]
                 {
-                    { 1, "AF", "AFG", false, 4, "Afghanistan", "4" },
-                    { 160, "NI", "NIC", false, 558, "Nicaragua", "558" },
-                    { 161, "NE", "NER", false, 562, "Niger", "562" },
-                    { 162, "NG", "NGA", false, 566, "Nigeria", "566" },
-                    { 163, "NU", "NIU", false, 570, "Niue", "570" },
-                    { 164, "NF", "NFK", false, 574, "Norfolk Island", "574" },
-                    { 165, "MK", "MKD", false, 807, "North Macedonia", "807" },
-                    { 166, "MP", "MNP", false, 580, "Northern Mariana Islands", "580" },
-                    { 167, "NO", "NOR", false, 578, "Norway", "578" },
-                    { 168, "OM", "OMN", false, 512, "Oman", "512" },
-                    { 169, "PK", "PAK", false, 586, "Pakistan", "586" },
                     { 170, "PW", "PLW", false, 585, "Palau", "585" },
+                    { 169, "PK", "PAK", false, 586, "Pakistan", "586" },
+                    { 168, "OM", "OMN", false, 512, "Oman", "512" },
+                    { 167, "NO", "NOR", false, 578, "Norway", "578" },
+                    { 166, "MP", "MNP", false, 580, "Northern Mariana Islands", "580" },
+                    { 161, "NE", "NER", false, 562, "Niger", "562" },
+                    { 164, "NF", "NFK", false, 574, "Norfolk Island", "574" },
+                    { 163, "NU", "NIU", false, 570, "Niue", "570" },
+                    { 162, "NG", "NGA", false, 566, "Nigeria", "566" },
                     { 171, "PS", "PSE", false, 275, "Palestine, State of", "275" },
+                    { 160, "NI", "NIC", false, 558, "Nicaragua", "558" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "NationLookup",
+                columns: new[] { "Id", "Alpha2Code", "Alpha3Code", "IsDisabled", "SortOrder", "Text", "Value" },
+                values: new object[,]
+                {
+                    { 165, "MK", "MKD", false, 807, "North Macedonia", "807" },
                     { 172, "PA", "PAN", false, 591, "Panama", "591" },
-                    { 173, "PG", "PNG", false, 598, "Papua New Guinea", "598" },
+                    { 176, "PH", "PHL", false, 608, "Philippines", "608" },
                     { 174, "PY", "PRY", false, 600, "Paraguay", "600" },
                     { 175, "PE", "PER", false, 0, "Peru", "" },
-                    { 176, "PH", "PHL", false, 608, "Philippines", "608" },
+                    { 159, "NZ", "NZL", false, 554, "New Zealand", "554" },
                     { 177, "PN", "PCN", false, 612, "Pitcairn", "612" },
                     { 178, "PL", "POL", false, 616, "Poland", "616" },
                     { 179, "PT", "PRT", false, 620, "Portugal", "620" },
@@ -571,10 +717,12 @@ namespace SoccerTeamManagement.Data.Migrations
                     { 184, "RW", "RWA", false, 646, "Rwanda", "646" },
                     { 185, "RE", "REU", false, 638, "Réunion", "638" },
                     { 186, "BL", "BLM", false, 652, "Saint Barthélemy", "652" },
-                    { 159, "NZ", "NZL", false, 554, "New Zealand", "554" },
-                    { 187, "SH", "SHN", false, 654, "Saint Helena, Ascension and Tristan da Cunha", "654" },
+                    { 173, "PG", "PNG", false, 598, "Papua New Guinea", "598" },
                     { 158, "NC", "NCL", false, 540, "New Caledonia", "540" },
+                    { 153, "MM", "MMR", false, 104, "Myanmar", "104" },
                     { 156, "NP", "NPL", false, 524, "Nepal", "524" },
+                    { 187, "SH", "SHN", false, 654, "Saint Helena, Ascension and Tristan da Cunha", "654" },
+                    { 128, "LY", "LBY", false, 434, "Libya", "434" },
                     { 129, "LI", "LIE", false, 438, "Liechtenstein", "438" },
                     { 130, "LT", "LTU", false, 440, "Lithuania", "440" },
                     { 131, "LU", "LUX", false, 442, "Luxembourg", "442" },
@@ -584,7 +732,17 @@ namespace SoccerTeamManagement.Data.Migrations
                     { 135, "MY", "MYS", false, 458, "Malaysia", "458" },
                     { 136, "MV", "MDV", false, 462, "Maldives", "462" },
                     { 137, "ML", "MLI", false, 466, "Mali", "466" },
-                    { 138, "MT", "MLT", false, 470, "Malta", "470" }
+                    { 138, "MT", "MLT", false, 470, "Malta", "470" },
+                    { 139, "MH", "MHL", false, 584, "Marshall Islands", "584" },
+                    { 157, "NL", "NLD", false, 528, "Netherlands", "528" },
+                    { 140, "MQ", "MTQ", false, 474, "Martinique", "474" },
+                    { 142, "MU", "MUS", false, 480, "Mauritius", "480" },
+                    { 143, "YT", "MYT", false, 175, "Mayotte", "175" },
+                    { 144, "MX", "MEX", false, 484, "Mexico", "484" },
+                    { 145, "FM", "FSM", false, 583, "Micronesia (Federated States of)", "583" },
+                    { 146, "MD", "MDA", false, 498, "Moldova (the Republic of)", "498" },
+                    { 147, "MC", "MCO", false, 492, "Monaco", "492" },
+                    { 148, "MN", "MNG", false, 496, "Mongolia", "496" }
                 });
 
             migrationBuilder.InsertData(
@@ -592,29 +750,18 @@ namespace SoccerTeamManagement.Data.Migrations
                 columns: new[] { "Id", "Alpha2Code", "Alpha3Code", "IsDisabled", "SortOrder", "Text", "Value" },
                 values: new object[,]
                 {
-                    { 139, "MH", "MHL", false, 584, "Marshall Islands", "584" },
-                    { 140, "MQ", "MTQ", false, 474, "Martinique", "474" },
-                    { 141, "MR", "MRT", false, 478, "Mauritania", "478" },
-                    { 142, "MU", "MUS", false, 480, "Mauritius", "480" },
-                    { 143, "YT", "MYT", false, 175, "Mayotte", "175" },
-                    { 144, "MX", "MEX", false, 484, "Mexico", "484" },
-                    { 145, "FM", "FSM", false, 583, "Micronesia (Federated States of)", "583" },
-                    { 146, "MD", "MDA", false, 498, "Moldova (the Republic of)", "498" },
-                    { 147, "MC", "MCO", false, 492, "Monaco", "492" },
-                    { 148, "MN", "MNG", false, 496, "Mongolia", "496" },
                     { 149, "ME", "MNE", false, 499, "Montenegro", "499" },
                     { 150, "MS", "MSR", false, 0, "Montserrat", "" },
                     { 151, "MA", "MAR", false, 504, "Morocco", "504" },
                     { 152, "MZ", "MOZ", false, 508, "Mozambique", "508" },
-                    { 153, "MM", "MMR", false, 104, "Myanmar", "104" },
                     { 154, "NA", "NAM", false, 516, "Namibia", "516" },
                     { 155, "NR", "NRU", false, 520, "Nauru", "520" },
-                    { 157, "NL", "NLD", false, 528, "Netherlands", "528" },
+                    { 141, "MR", "MRT", false, 478, "Mauritania", "478" },
                     { 188, "KN", "KNA", false, 659, "Saint Kitts and Nevis", "659" },
-                    { 189, "LC", "LCA", false, 662, "Saint Lucia", "662" },
+                    { 224, "TK", "TKL", false, 772, "Tokelau", "772" },
                     { 190, "MF", "MAF", false, 663, "Saint Martin (French part)", "663" },
                     { 223, "TG", "TGO", false, 768, "Togo", "768" },
-                    { 224, "TK", "TKL", false, 772, "Tokelau", "772" },
+                    { 127, "LR", "LBR", false, 430, "Liberia", "430" },
                     { 225, "TO", "TON", false, 0, "Tonga", "" },
                     { 226, "TT", "TTO", false, 780, "Trinidad and Tobago", "780" },
                     { 227, "TN", "TUN", false, 788, "Tunisia", "788" },
@@ -627,20 +774,13 @@ namespace SoccerTeamManagement.Data.Migrations
                     { 234, "AE", "ARE", false, 784, "United Arab Emirates", "784" },
                     { 235, "GB", "GBR", false, 826, "United Kingdom of Great Britain and Northern Ireland", "826" },
                     { 236, "UM", "UMI", false, 581, "United States Minor Outlying Islands", "581" },
-                    { 237, "US", "USA", false, 840, "United States of America", "840" },
+                    { 237, "US", "USA", false, 1, "United States of America", "840" },
                     { 238, "UY", "URY", false, 858, "Uruguay", "858" },
                     { 239, "UZ", "UZB", false, 860, "Uzbekistan", "860" },
                     { 240, "VU", "VUT", false, 548, "Vanuatu", "548" },
                     { 241, "VE", "VEN", false, 862, "Venezuela (Bolivarian Republic of)", "862" },
                     { 242, "VN", "VNM", false, 704, "Viet Nam", "704" },
-                    { 243, "VG", "VGB", false, 92, "Virgin Islands (British)", "92" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "NationLookup",
-                columns: new[] { "Id", "Alpha2Code", "Alpha3Code", "IsDisabled", "SortOrder", "Text", "Value" },
-                values: new object[,]
-                {
+                    { 243, "VG", "VGB", false, 92, "Virgin Islands (British)", "92" },
                     { 244, "VI", "VIR", false, 850, "Virgin Islands (U.S.)", "850" },
                     { 245, "WF", "WLF", false, 876, "Wallis and Futuna", "876" },
                     { 246, "EH", "ESH", false, 732, "Western Sahara", "732" },
@@ -651,7 +791,14 @@ namespace SoccerTeamManagement.Data.Migrations
                     { 221, "TH", "THA", false, 764, "Thailand", "764" },
                     { 220, "TZ", "TZA", false, 834, "Tanzania, the United Republic of", "834" },
                     { 219, "TJ", "TJK", false, 762, "Tajikistan", "762" },
-                    { 191, "PM", "SPM", false, 666, "Saint Pierre and Miquelon", "666" },
+                    { 191, "PM", "SPM", false, 666, "Saint Pierre and Miquelon", "666" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "NationLookup",
+                columns: new[] { "Id", "Alpha2Code", "Alpha3Code", "IsDisabled", "SortOrder", "Text", "Value" },
+                values: new object[,]
+                {
                     { 192, "VC", "VCT", false, 670, "Saint Vincent and the Grenadines", "670" },
                     { 193, "WS", "WSM", false, 882, "Samoa", "882" },
                     { 194, "SM", "SMR", false, 674, "San Marino", "674" },
@@ -664,7 +811,7 @@ namespace SoccerTeamManagement.Data.Migrations
                     { 201, "SG", "SGP", false, 702, "Singapore", "702" },
                     { 202, "SX", "SXM", false, 534, "Sint Maarten (Dutch part)", "534" },
                     { 203, "SK", "SVK", false, 703, "Slovakia", "703" },
-                    { 128, "LY", "LBY", false, 434, "Libya", "434" },
+                    { 189, "LC", "LCA", false, 662, "Saint Lucia", "662" },
                     { 204, "SI", "SVN", false, 705, "Slovenia", "705" },
                     { 206, "SO", "SOM", false, 706, "Somalia", "706" },
                     { 207, "ZA", "ZAF", false, 710, "South Africa", "710" },
@@ -680,16 +827,11 @@ namespace SoccerTeamManagement.Data.Migrations
                     { 217, "SY", "SYR", false, 760, "Syrian Arab Republic", "760" },
                     { 218, "TW", "TWN", false, 158, "Taiwan (Province of China)", "158" },
                     { 205, "SB", "SLB", false, 90, "Solomon Islands", "90" },
-                    { 127, "LR", "LBR", false, 430, "Liberia", "430" },
                     { 126, "LS", "LSO", false, 426, "Lesotho", "426" },
-                    { 62, "DJ", "DJI", false, 262, "Djibouti", "262" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "NationLookup",
-                columns: new[] { "Id", "Alpha2Code", "Alpha3Code", "IsDisabled", "SortOrder", "Text", "Value" },
-                values: new object[,]
-                {
+                    { 102, "HU", "HUN", false, 348, "Hungary", "348" },
+                    { 124, "LV", "LVA", false, 428, "Latvia", "428" },
+                    { 33, "IO", "IOT", false, 86, "British Indian Ocean Territory", "86" },
+                    { 34, "BN", "BRN", false, 96, "Brunei Darussalam", "96" },
                     { 35, "BG", "BGR", false, 100, "Bulgaria", "100" },
                     { 36, "BF", "BFA", false, 854, "Burkina Faso", "854" },
                     { 37, "BI", "BDI", false, 108, "Burundi", "108" },
@@ -698,13 +840,20 @@ namespace SoccerTeamManagement.Data.Migrations
                     { 40, "CM", "CMR", false, 120, "Cameroon", "120" },
                     { 41, "CA", "CAN", false, 124, "Canada", "124" },
                     { 42, "KY", "CYM", false, 136, "Cayman Islands", "136" },
-                    { 43, "CF", "CAF", false, 140, "Central African Republic", "140" },
+                    { 43, "CF", "CAF", false, 140, "Central African Republic", "140" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "NationLookup",
+                columns: new[] { "Id", "Alpha2Code", "Alpha3Code", "IsDisabled", "SortOrder", "Text", "Value" },
+                values: new object[,]
+                {
                     { 44, "TD", "TCD", false, 148, "Chad", "148" },
                     { 45, "CL", "CHL", false, 152, "Chile", "152" },
                     { 46, "CN", "CHN", false, 156, "China", "156" },
                     { 47, "CX", "CXR", false, 162, "Christmas Island", "162" },
                     { 48, "CC", "CCK", false, 166, "Cocos (Keeling) Islands", "166" },
-                    { 49, "CO", "COL", false, 170, "Colombia", "170" },
+                    { 125, "LB", "LBN", false, 0, "Lebanon", "" },
                     { 50, "KM", "COM", false, 0, "Comoros", "" },
                     { 51, "CD", "COD", false, 180, "Congo (the Democratic Republic of the)", "180" },
                     { 52, "CG", "COG", false, 178, "Congo", "178" },
@@ -715,12 +864,13 @@ namespace SoccerTeamManagement.Data.Migrations
                     { 57, "CW", "CUW", false, 531, "Curaçao", "531" },
                     { 58, "CY", "CYP", false, 196, "Cyprus", "196" },
                     { 59, "CZ", "CZE", false, 203, "Czechia", "203" },
-                    { 60, "CI", "CIV", false, 384, "Côte d'Ivoire", "384" },
-                    { 61, "DK", "DNK", false, 208, "Denmark", "208" },
-                    { 34, "BN", "BRN", false, 96, "Brunei Darussalam", "96" },
-                    { 125, "LB", "LBN", false, 0, "Lebanon", "" },
-                    { 33, "IO", "IOT", false, 86, "British Indian Ocean Territory", "86" },
+                    { 32, "BR", "BRA", false, 76, "Brazil", "76" },
                     { 31, "BV", "BVT", false, 74, "Bouvet Island", "74" },
+                    { 30, "BW", "BWA", false, 72, "Botswana", "72" },
+                    { 29, "BA", "BIH", false, 70, "Bosnia and Herzegovina", "70" },
+                    { 1, "AF", "AFG", false, 4, "Afghanistan", "4" },
+                    { 2, "AL", "ALB", false, 8, "Albania", "8" },
+                    { 3, "DZ", "DZA", false, 12, "Algeria", "12" },
                     { 4, "AS", "ASM", false, 16, "American Samoa", "16" },
                     { 5, "AD", "AND", false, 20, "Andorra", "20" },
                     { 6, "AO", "AGO", false, 24, "Angola", "24" },
@@ -731,7 +881,15 @@ namespace SoccerTeamManagement.Data.Migrations
                     { 11, "AM", "ARM", false, 51, "Armenia", "51" },
                     { 12, "AW", "ABW", false, 533, "Aruba", "533" },
                     { 13, "AU", "AUS", false, 36, "Australia", "36" },
-                    { 14, "AT", "AUT", false, 40, "Austria", "40" }
+                    { 60, "CI", "CIV", false, 384, "Côte d'Ivoire", "384" },
+                    { 14, "AT", "AUT", false, 40, "Austria", "40" },
+                    { 16, "BS", "BHS", false, 44, "Bahamas", "44" },
+                    { 17, "BH", "BHR", false, 48, "Bahrain", "48" },
+                    { 18, "BD", "BGD", false, 50, "Bangladesh", "50" },
+                    { 19, "BB", "BRB", false, 52, "Barbados", "52" },
+                    { 20, "BY", "BLR", false, 112, "Belarus", "112" },
+                    { 21, "BE", "BEL", false, 56, "Belgium", "56" },
+                    { 22, "BZ", "BLZ", false, 84, "Belize", "84" }
                 });
 
             migrationBuilder.InsertData(
@@ -739,36 +897,27 @@ namespace SoccerTeamManagement.Data.Migrations
                 columns: new[] { "Id", "Alpha2Code", "Alpha3Code", "IsDisabled", "SortOrder", "Text", "Value" },
                 values: new object[,]
                 {
-                    { 15, "AZ", "AZE", false, 31, "Azerbaijan", "31" },
-                    { 16, "BS", "BHS", false, 44, "Bahamas", "44" },
-                    { 17, "BH", "BHR", false, 48, "Bahrain", "48" },
-                    { 18, "BD", "BGD", false, 50, "Bangladesh", "50" },
-                    { 19, "BB", "BRB", false, 52, "Barbados", "52" },
-                    { 20, "BY", "BLR", false, 112, "Belarus", "112" },
-                    { 21, "BE", "BEL", false, 56, "Belgium", "56" },
-                    { 22, "BZ", "BLZ", false, 84, "Belize", "84" },
                     { 23, "BJ", "BEN", false, 204, "Benin", "204" },
                     { 24, "BM", "BMU", false, 60, "Bermuda", "60" },
                     { 25, "AX", "ALA", false, 248, "Åland Islands", "248" },
                     { 26, "BT", "BTN", false, 64, "Bhutan", "64" },
                     { 27, "BO", "BOL", false, 68, "Bolivia (Plurinational State of)", "68" },
                     { 28, "BQ", "BES", false, 535, "Bonaire, Sint Eustatius and Saba", "535" },
-                    { 29, "BA", "BIH", false, 70, "Bosnia and Herzegovina", "70" },
-                    { 30, "BW", "BWA", false, 72, "Botswana", "72" },
-                    { 32, "BR", "BRA", false, 76, "Brazil", "76" },
+                    { 15, "AZ", "AZE", false, 31, "Azerbaijan", "31" },
+                    { 61, "DK", "DNK", false, 208, "Denmark", "208" },
+                    { 49, "CO", "COL", false, 170, "Colombia", "170" },
                     { 63, "DM", "DMA", false, 212, "Dominica", "212" },
-                    { 64, "DO", "DOM", false, 214, "Dominican Republic", "214" },
-                    { 65, "EC", "ECU", false, 218, "Ecuador", "218" },
+                    { 96, "GY", "GUY", false, 328, "Guyana", "328" },
+                    { 97, "HT", "HTI", false, 332, "Haiti", "332" },
                     { 98, "HM", "HMD", false, 334, "Heard Island and McDonald Islands", "334" },
                     { 99, "VA", "VAT", false, 336, "Holy See", "336" },
                     { 100, "HN", "HND", false, 0, "Honduras", "" },
                     { 101, "HK", "HKG", false, 344, "Hong Kong", "344" },
-                    { 102, "HU", "HUN", false, 348, "Hungary", "348" },
                     { 103, "IS", "ISL", false, 352, "Iceland", "352" },
                     { 104, "IN", "IND", false, 356, "India", "356" },
                     { 105, "ID", "IDN", false, 360, "Indonesia", "360" },
                     { 106, "IR", "IRN", false, 364, "Iran (Islamic Republic of)", "364" },
-                    { 107, "IQ", "IRQ", false, 368, "Iraq", "368" },
+                    { 62, "DJ", "DJI", false, 262, "Djibouti", "262" },
                     { 108, "IE", "IRL", false, 372, "Ireland", "372" },
                     { 109, "IM", "IMN", false, 833, "Isle of Man", "833" },
                     { 110, "IL", "ISR", false, 376, "Israel", "376" },
@@ -780,7 +929,16 @@ namespace SoccerTeamManagement.Data.Migrations
                     { 116, "KZ", "KAZ", false, 398, "Kazakhstan", "398" },
                     { 117, "KE", "KEN", false, 404, "Kenya", "404" },
                     { 118, "KI", "KIR", false, 296, "Kiribati", "296" },
-                    { 119, "KP", "PRK", false, 408, "Korea (the Democratic People's Republic of)", "408" }
+                    { 119, "KP", "PRK", false, 408, "Korea (the Democratic People's Republic of)", "408" },
+                    { 120, "KR", "KOR", false, 410, "Korea (the Republic of)", "410" },
+                    { 121, "KW", "KWT", false, 414, "Kuwait", "414" },
+                    { 122, "KG", "KGZ", false, 417, "Kyrgyzstan", "417" },
+                    { 123, "LA", "LAO", false, 418, "Lao People's Democratic Republic", "418" },
+                    { 95, "GW", "GNB", false, 624, "Guinea-Bissau", "624" },
+                    { 94, "GN", "GIN", false, 324, "Guinea", "324" },
+                    { 107, "IQ", "IRQ", false, 368, "Iraq", "368" },
+                    { 92, "GT", "GTM", false, 320, "Guatemala", "320" },
+                    { 64, "DO", "DOM", false, 214, "Dominican Republic", "214" }
                 });
 
             migrationBuilder.InsertData(
@@ -788,15 +946,7 @@ namespace SoccerTeamManagement.Data.Migrations
                 columns: new[] { "Id", "Alpha2Code", "Alpha3Code", "IsDisabled", "SortOrder", "Text", "Value" },
                 values: new object[,]
                 {
-                    { 120, "KR", "KOR", false, 410, "Korea (the Republic of)", "410" },
-                    { 121, "KW", "KWT", false, 414, "Kuwait", "414" },
-                    { 122, "KG", "KGZ", false, 417, "Kyrgyzstan", "417" },
-                    { 123, "LA", "LAO", false, 418, "Lao People's Democratic Republic", "418" },
-                    { 124, "LV", "LVA", false, 428, "Latvia", "428" },
-                    { 97, "HT", "HTI", false, 332, "Haiti", "332" },
-                    { 96, "GY", "GUY", false, 328, "Guyana", "328" },
-                    { 95, "GW", "GNB", false, 624, "Guinea-Bissau", "624" },
-                    { 94, "GN", "GIN", false, 324, "Guinea", "324" },
+                    { 93, "GG", "GGY", false, 831, "Guernsey", "831" },
                     { 66, "EG", "EGY", false, 818, "Egypt", "818" },
                     { 67, "SV", "SLV", false, 222, "El Salvador", "222" },
                     { 68, "GQ", "GNQ", false, 226, "Equatorial Guinea", "226" },
@@ -809,24 +959,64 @@ namespace SoccerTeamManagement.Data.Migrations
                     { 75, "FJ", "FJI", false, 0, "Fiji", "" },
                     { 76, "FI", "FIN", false, 246, "Finland", "246" },
                     { 77, "FR", "FRA", false, 250, "France", "250" },
-                    { 78, "GF", "GUF", false, 254, "French Guiana", "254" },
-                    { 3, "DZ", "DZA", false, 12, "Algeria", "12" },
+                    { 65, "EC", "ECU", false, 218, "Ecuador", "218" },
                     { 79, "PF", "PYF", false, 258, "French Polynesia", "258" },
-                    { 81, "GA", "GAB", false, 266, "Gabon", "266" },
-                    { 82, "GM", "GMB", false, 270, "Gambia", "270" },
-                    { 83, "GE", "GEO", false, 268, "Georgia", "268" },
-                    { 84, "DE", "DEU", false, 276, "Germany", "276" },
-                    { 85, "GH", "GHA", false, 288, "Ghana", "288" },
-                    { 86, "GI", "GIB", false, 292, "Gibraltar", "292" },
-                    { 87, "GR", "GRC", false, 300, "Greece", "300" },
-                    { 88, "GL", "GRL", false, 304, "Greenland", "304" },
-                    { 89, "GD", "GRD", false, 308, "Grenada", "308" },
-                    { 90, "GP", "GLP", false, 312, "Guadeloupe", "312" },
                     { 91, "GU", "GUM", false, 316, "Guam", "316" },
-                    { 92, "GT", "GTM", false, 320, "Guatemala", "320" },
-                    { 93, "GG", "GGY", false, 831, "Guernsey", "831" },
+                    { 90, "GP", "GLP", false, 312, "Guadeloupe", "312" },
+                    { 89, "GD", "GRD", false, 308, "Grenada", "308" },
+                    { 88, "GL", "GRL", false, 304, "Greenland", "304" },
+                    { 86, "GI", "GIB", false, 292, "Gibraltar", "292" },
+                    { 85, "GH", "GHA", false, 288, "Ghana", "288" },
+                    { 87, "GR", "GRC", false, 300, "Greece", "300" },
+                    { 84, "DE", "DEU", false, 276, "Germany", "276" },
+                    { 83, "GE", "GEO", false, 268, "Georgia", "268" },
+                    { 82, "GM", "GMB", false, 270, "Gambia", "270" },
+                    { 81, "GA", "GAB", false, 266, "Gabon", "266" },
                     { 80, "TF", "ATF", false, 260, "French Southern Territories", "260" },
-                    { 2, "AL", "ALB", false, 8, "Albania", "8" }
+                    { 78, "GF", "GUF", false, 254, "French Guiana", "254" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Phone",
+                columns: new[] { "Id", "AreaCode", "CountryCode", "Extension", "Number", "PhoneType" },
+                values: new object[,]
+                {
+                    { 908, "123", "1", null, "9028880", "Cell" },
+                    { 912, "234", "1", null, "9028880", "Cell" },
+                    { 911, "", "49", null, "9028880", "Cell" },
+                    { 910, "789", "1", null, "9028880", "Home" },
+                    { 909, "456", "1", null, "9028880", "Cell" },
+                    { 913, "837", "1", null, "9028880", "Cell" },
+                    { 907, "719", "1", null, "9028880", "Work" },
+                    { 905, "850", "1", null, "9028880", "Cell" },
+                    { 904, "940", "1", null, "9028880", "Home" },
+                    { 903, "405", "1", null, "9028880", "Cell" },
+                    { 902, "405", "1", null, "9028880", "Cell" },
+                    { 901, "360", "1", null, "9028880", "Cell" },
+                    { 906, "717", "1", null, "9028880", "Cell" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "PlayerAttributes",
+                columns: new[] { "Id", "Acceleration", "Aggression", "Agility", "Balance", "BallControl", "Composure", "Crossing", "Curve", "DefensiveAwareness", "Diving", "Dribbling", "Finishing", "FreeKickAccuracy", "GoaliePositioning", "Handling", "HeadingAccuracy", "Interceptions", "Jumping", "Kicking", "LongPassing", "LongShots", "OffensivePositioning", "Penalties", "PlayerId", "Reactions", "Reflexes", "ShortPassing", "ShotPower", "SlidingTackle", "SprintSpeed", "Stamina", "StandingTackle", "Strength", "Vision", "Volleys" },
+                values: new object[] { 912, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 0, 96, 96, 96, 96, 96, 96, 96, 96, 96, 912, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96 });
+
+            migrationBuilder.InsertData(
+                table: "PlayerAttributes",
+                columns: new[] { "Id", "Acceleration", "Aggression", "Agility", "Balance", "BallControl", "Composure", "Crossing", "Curve", "DefensiveAwareness", "Diving", "Dribbling", "Finishing", "FreeKickAccuracy", "GoaliePositioning", "Handling", "HeadingAccuracy", "Interceptions", "Jumping", "Kicking", "LongPassing", "LongShots", "OffensivePositioning", "Penalties", "PlayerId", "Reactions", "Reflexes", "ShortPassing", "ShotPower", "SlidingTackle", "SprintSpeed", "Stamina", "StandingTackle", "Strength", "Vision", "Volleys" },
+                values: new object[,]
+                {
+                    { 911, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 0, 94, 94, 94, 94, 94, 94, 94, 94, 94, 911, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94 },
+                    { 910, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 0, 92, 92, 92, 92, 92, 92, 92, 92, 92, 910, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92 },
+                    { 909, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 0, 90, 90, 90, 90, 90, 90, 90, 90, 90, 909, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90 },
+                    { 908, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 0, 52, 52, 52, 52, 52, 52, 52, 52, 52, 908, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52 },
+                    { 907, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 0, 50, 50, 50, 50, 50, 50, 50, 50, 50, 907, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50 },
+                    { 905, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 0, 60, 60, 60, 60, 60, 60, 60, 60, 60, 902, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60 },
+                    { 904, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 0, 72, 72, 72, 72, 72, 72, 72, 72, 72, 902, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72 },
+                    { 903, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 0, 70, 70, 70, 70, 70, 70, 70, 70, 70, 902, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70 },
+                    { 902, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 0, 82, 82, 82, 82, 82, 82, 82, 82, 82, 902, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82 },
+                    { 901, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 0, 80, 80, 80, 80, 80, 80, 80, 80, 80, 901, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80 },
+                    { 906, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 0, 62, 62, 62, 62, 62, 62, 62, 62, 62, 906, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62 }
                 });
 
             migrationBuilder.InsertData(
@@ -840,10 +1030,49 @@ namespace SoccerTeamManagement.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Parent",
+                columns: new[] { "Id", "AddressId", "FirstName", "IsAdult", "LastName", "NickName", "PhoneId" },
+                values: new object[,]
+                {
+                    { 911, 911, "TestParentFirst11", true, "TestParentLast11", "TestParent 11", 911 },
+                    { 912, 912, "TestParentFirst12", true, "TestParentLast12", "TestParent 12", 912 },
+                    { 910, 910, "TestParentFirst10", true, "TestParentLast10", "TestParent 10", 910 },
+                    { 909, 909, "TestParentFirst9", true, "TestParentLast9", "TestParent 9", 909 },
+                    { 907, 907, "TestParentFirst7", true, "TestParentLast7", "TestParent 7", 907 },
+                    { 906, 906, "TestParentFirst6", true, "TestParentLast6", "TestParent 6", 906 },
+                    { 908, 908, "TestParentFirst8", true, "TestParentLast8", "TestParent 8", 908 },
+                    { 904, 904, "TestParentFirst4", true, "TestParentLast4", "TestParent 4", 904 },
+                    { 903, 903, "TestParentFirst3", true, "TestParentLast3", "TestParent 3", 903 },
+                    { 902, 902, "TestParentFirst2", true, "TestParentLast2", "TestParent 2", 902 },
+                    { 901, 901, "TestParentFirst1", true, "TestParentLast1", "TestParent 1", 901 },
+                    { 905, 905, "TestParentFirst5", true, "TestParentLast5", "TestParent 5", 905 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Player",
+                columns: new[] { "Id", "AddressId", "AttributesId", "FirstName", "FlareRating", "Foot", "Height", "IsAdult", "LastName", "NationId", "NickName", "PhoneId", "WeakFootRating", "Weight" },
+                values: new object[,]
+                {
+                    { 912, 912, 912, "Bob", 2, "Left", 59, false, "Smith", 210, "BoSmith", 912, 2, 180 },
+                    { 909, 909, 909, "Tony", 3, "Left", 72, true, "Stark", 84, "Iron Man", 909, 1, 200 },
+                    { 910, 910, 910, "Thor", 5, "Right", 73, false, "Odinson", 10, "Thor", 910, 2, 160 },
+                    { 911, 911, 911, "Steve", 3, "Right", 74, false, "Rodgers", 235, "Captain America", 911, 1, 170 },
+                    { 905, 905, 905, "Diana", 3, "Right", 68, true, "Prince", 237, "Wonder Woman", 905, 1, 155 },
+                    { 907, 907, 907, "Natasha", 4, "Right", 70, false, "Romanoff", 237, "Black Widow", 907, 1, 210 },
+                    { 903, 903, 903, "Bruce", 3, "Left", 66, false, "Wayne", 41, "Batman", 903, 1, 175 },
+                    { 902, 902, 902, "Peter", 3, "Right", 65, false, "Parker", 32, "Spiderman", 902, 4, 185 },
+                    { 901, 901, 901, "Clark", 2, "Right", 64, false, "Kent", 10, "Superman", 901, 1, 210 },
+                    { 908, 908, 908, "Bruce", 3, "Right", 71, false, "Banner", 77, "Hulk", 908, 4, 190 },
+                    { 904, 904, 904, "Jack", 1, "Right", 67, false, "Reacher", 49, "Reacher", 904, 5, 165 },
+                    { 906, 906, 906, "Oliver", 3, "Left", 69, true, "Queen", 237, "Green Arrow", 906, 3, 195 }
+                });
+
+            migrationBuilder.InsertData(
                 table: "PositionLookup",
                 columns: new[] { "Id", "Abbreviation", "IsDisabled", "PositionCategoryId", "SortOrder", "Text", "Value" },
                 values: new object[,]
                 {
+                    { 19, "CF", false, 3, 8, "Center Forward", "CF" },
                     { 1, "G", false, 1, 1, "Goalie", "G" },
                     { 17, "RF", false, 3, 7, "Right Forward", "RF" },
                     { 16, "RW", false, 3, 7, "Right Wing", "RW" },
@@ -851,9 +1080,8 @@ namespace SoccerTeamManagement.Data.Migrations
                     { 14, "RW", false, 3, 7, "Right Wing", "RW" },
                     { 12, "LF", false, 3, 6, "Left Forward", "LF" },
                     { 11, "LW", false, 3, 6, "Left Wing", "LW" },
-                    { 13, "RM", false, 2, 7, "Right Midfielder", "RM" },
-                    { 18, "ST", false, 3, 8, "Striker", "ST" },
                     { 10, "LM", false, 2, 6, "Left Midfielder", "LM" },
+                    { 13, "RM", false, 2, 7, "Right Midfielder", "RM" },
                     { 8, "CDM", false, 2, 5, "Center Defensive Midfielder", "CDM" },
                     { 7, "CM", false, 2, 5, "Center Midfielder", "CM" },
                     { 6, "CB", false, 1, 4, "Center Back", "CB" },
@@ -861,8 +1089,214 @@ namespace SoccerTeamManagement.Data.Migrations
                     { 4, "LB", false, 1, 3, "Left FullBack", "LB" },
                     { 3, "RWB", false, 1, 2, "Right Wing Back", "RWB" },
                     { 2, "RB", false, 1, 2, "Right FullBack", "RB" },
-                    { 9, "CAM", false, 2, 5, "Center Attacking Midfielder", "CAM" },
-                    { 19, "CF", false, 3, 8, "Center Forward", "CF" }
+                    { 9, "CAM", false, 2, 5, "Center Attacking Midfielder", "CAM" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "PositionLookup",
+                columns: new[] { "Id", "Abbreviation", "IsDisabled", "PositionCategoryId", "SortOrder", "Text", "Value" },
+                values: new object[] { 18, "ST", false, 3, 8, "Striker", "ST" });
+
+            migrationBuilder.InsertData(
+                table: "Team",
+                columns: new[] { "Id", "ClubId", "Name" },
+                values: new object[,]
+                {
+                    { 910, 910, "Test Team 10" },
+                    { 912, 912, "Test Team 12" },
+                    { 911, 911, "Test Team 11" },
+                    { 924, 910, "Test Team 24" },
+                    { 923, 909, "Test Team 23" },
+                    { 922, 908, "Test Team 22" },
+                    { 21, 21, "Orlando City" },
+                    { 20, 20, "New York City FC" },
+                    { 19, 19, "New York Red Bulls" },
+                    { 18, 18, "New England Revolution" },
+                    { 17, 17, "Nashville SC" },
+                    { 16, 16, "CF Montreal" },
+                    { 15, 15, "Minnesota United" },
+                    { 14, 14, "Inter Miami CF" },
+                    { 13, 13, "Los Angeles Football Team" },
+                    { 22, 22, "Philadelphia Union" },
+                    { 12, 12, "LA Galaxy" },
+                    { 10, 10, "Houston Dynamo FC" },
+                    { 9, 9, "FC Dallas" },
+                    { 8, 8, "D.C. United" },
+                    { 7, 7, "Columbus Crew" },
+                    { 6, 6, "Colorado Rapids" },
+                    { 5, 5, "FC Cincinnati" },
+                    { 4, 4, "Chicago Fire FC" },
+                    { 3, 3, "Charlotte FC" },
+                    { 2, 2, "Austin FC" },
+                    { 11, 11, "Sporting Kansas City" },
+                    { 909, 909, "Test Team 9" },
+                    { 23, 23, "Portland Timbers" },
+                    { 25, 25, "San Jose Earthquakes" },
+                    { 908, 908, "Test Team 8" },
+                    { 921, 907, "Test Team 21" },
+                    { 907, 907, "Test Team 7" },
+                    { 920, 906, "Test Team 20" },
+                    { 906, 906, "Test Team 6" },
+                    { 919, 905, "Test Team 19" },
+                    { 905, 905, "Test Team 5" },
+                    { 918, 904, "Test Team 18" },
+                    { 904, 904, "Test Team 4" },
+                    { 24, 24, "Real Salt Lake" },
+                    { 917, 903, "Test Team 17" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Team",
+                columns: new[] { "Id", "ClubId", "Name" },
+                values: new object[,]
+                {
+                    { 916, 902, "Test Team 16" },
+                    { 902, 902, "Test Team 2" },
+                    { 915, 901, "Test Team 15" },
+                    { 914, 901, "Test Team 14" },
+                    { 913, 901, "Test Team 13" },
+                    { 901, 901, "Test Team 1" },
+                    { 28, 28, "Vancouver Whitecaps" },
+                    { 27, 27, "Toronto FC" },
+                    { 26, 26, "Seattle Sounders" },
+                    { 903, 903, "Test Team 3" },
+                    { 1, 1, "Atlanta United" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "LeagueTeam",
+                columns: new[] { "LeagueId", "TeamId", "IsPrimary" },
+                values: new object[,]
+                {
+                    { 1, 1, true },
+                    { 901, 901, true },
+                    { 904, 901, false },
+                    { 901, 902, true },
+                    { 904, 902, false },
+                    { 901, 903, true },
+                    { 905, 903, false },
+                    { 901, 904, true },
+                    { 905, 904, false },
+                    { 902, 905, true },
+                    { 906, 905, false },
+                    { 1, 28, true },
+                    { 902, 906, true },
+                    { 902, 907, true },
+                    { 907, 907, false },
+                    { 902, 908, true },
+                    { 907, 908, false },
+                    { 903, 909, true },
+                    { 908, 909, false },
+                    { 908, 910, false },
+                    { 903, 911, true },
+                    { 909, 911, false },
+                    { 909, 912, false },
+                    { 906, 906, false },
+                    { 1, 27, true },
+                    { 903, 910, true },
+                    { 1, 25, true },
+                    { 1, 2, true },
+                    { 1, 3, true },
+                    { 1, 4, true },
+                    { 1, 5, true },
+                    { 1, 6, true },
+                    { 1, 7, true },
+                    { 1, 8, true },
+                    { 1, 10, true },
+                    { 1, 11, true },
+                    { 1, 12, true },
+                    { 1, 13, true },
+                    { 1, 9, true },
+                    { 1, 15, true },
+                    { 1, 24, true },
+                    { 1, 23, true }
+                });
+
+            migrationBuilder.InsertData(
+                table: "LeagueTeam",
+                columns: new[] { "LeagueId", "TeamId", "IsPrimary" },
+                values: new object[,]
+                {
+                    { 1, 14, true },
+                    { 1, 21, true },
+                    { 1, 20, true },
+                    { 1, 22, true },
+                    { 1, 18, true },
+                    { 1, 17, true },
+                    { 1, 16, true },
+                    { 1, 19, true },
+                    { 1, 26, true }
+                });
+
+            migrationBuilder.InsertData(
+                table: "PlayerParent",
+                columns: new[] { "ParentId", "PlayerId" },
+                values: new object[,]
+                {
+                    { 911, 912 },
+                    { 903, 905 },
+                    { 910, 911 },
+                    { 908, 910 },
+                    { 907, 909 },
+                    { 904, 908 },
+                    { 904, 907 },
+                    { 903, 906 },
+                    { 902, 904 },
+                    { 902, 903 },
+                    { 901, 902 },
+                    { 901, 901 },
+                    { 912, 901 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "PlayerPosition",
+                columns: new[] { "PlayerId", "PositionId", "IsPrimary" },
+                values: new object[,]
+                {
+                    { 909, 19, false },
+                    { 901, 2, false },
+                    { 901, 1, true },
+                    { 903, 5, true },
+                    { 905, 19, false },
+                    { 904, 6, true },
+                    { 908, 13, true },
+                    { 911, 13, true },
+                    { 906, 11, true },
+                    { 909, 11, true },
+                    { 907, 12, true },
+                    { 910, 12, true },
+                    { 912, 14, true },
+                    { 912, 15, false },
+                    { 905, 18, true },
+                    { 901, 3, false },
+                    { 902, 4, true }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TeamPlayer",
+                columns: new[] { "PlayerId", "TeamId", "DepartedTeam", "JoinedTeam" },
+                values: new object[,]
+                {
+                    { 912, 904, new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4186), new TimeSpan(0, -5, 0, 0, 0)), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) },
+                    { 911, 903, new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4182), new TimeSpan(0, -5, 0, 0, 0)), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) },
+                    { 910, 903, new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4177), new TimeSpan(0, -5, 0, 0, 0)), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TeamPlayer",
+                columns: new[] { "PlayerId", "TeamId", "DepartedTeam", "JoinedTeam" },
+                values: new object[,]
+                {
+                    { 909, 903, new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4172), new TimeSpan(0, -5, 0, 0, 0)), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) },
+                    { 901, 901, new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 962, DateTimeKind.Unspecified).AddTicks(4665), new TimeSpan(0, -5, 0, 0, 0)), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) },
+                    { 908, 903, new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4168), new TimeSpan(0, -5, 0, 0, 0)), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) },
+                    { 901, 905, new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4190), new TimeSpan(0, -5, 0, 0, 0)), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) },
+                    { 907, 902, new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4165), new TimeSpan(0, -5, 0, 0, 0)), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) },
+                    { 906, 902, new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4160), new TimeSpan(0, -5, 0, 0, 0)), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) },
+                    { 902, 901, new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4044), new TimeSpan(0, -5, 0, 0, 0)), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) },
+                    { 905, 902, new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4152), new TimeSpan(0, -5, 0, 0, 0)), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) },
+                    { 903, 901, new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4134), new TimeSpan(0, -5, 0, 0, 0)), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) },
+                    { 904, 901, new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4148), new TimeSpan(0, -5, 0, 0, 0)), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) }
                 });
 
             migrationBuilder.CreateIndex(
@@ -916,6 +1350,11 @@ namespace SoccerTeamManagement.Data.Migrations
                 column: "Expiration");
 
             migrationBuilder.CreateIndex(
+                name: "IX_LeagueTeam_TeamId",
+                table: "LeagueTeam",
+                column: "TeamId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Parent_AddressId",
                 table: "Parent",
                 column: "AddressId",
@@ -961,9 +1400,7 @@ namespace SoccerTeamManagement.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Player_NationId",
                 table: "Player",
-                column: "NationId",
-                unique: true,
-                filter: "[NationId] IS NOT NULL");
+                column: "NationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Player_PhoneId",
@@ -983,19 +1420,19 @@ namespace SoccerTeamManagement.Data.Migrations
                 column: "PositionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PlayerTeam_TeamId",
-                table: "PlayerTeam",
-                column: "TeamId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_PositionLookup_PositionCategoryId",
                 table: "PositionLookup",
                 column: "PositionCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Team_LeagueId",
+                name: "IX_Team_ClubId",
                 table: "Team",
-                column: "LeagueId");
+                column: "ClubId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TeamPlayer_TeamId",
+                table: "TeamPlayer",
+                column: "TeamId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -1022,6 +1459,9 @@ namespace SoccerTeamManagement.Data.Migrations
                 name: "Image");
 
             migrationBuilder.DropTable(
+                name: "LeagueTeam");
+
+            migrationBuilder.DropTable(
                 name: "PersistedGrants");
 
             migrationBuilder.DropTable(
@@ -1031,13 +1471,16 @@ namespace SoccerTeamManagement.Data.Migrations
                 name: "PlayerPosition");
 
             migrationBuilder.DropTable(
-                name: "PlayerTeam");
+                name: "TeamPlayer");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "League");
 
             migrationBuilder.DropTable(
                 name: "Parent");
@@ -1067,7 +1510,7 @@ namespace SoccerTeamManagement.Data.Migrations
                 name: "PlayerAttributes");
 
             migrationBuilder.DropTable(
-                name: "League");
+                name: "Club");
         }
     }
 }

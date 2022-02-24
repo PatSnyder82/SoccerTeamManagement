@@ -7,7 +7,7 @@ namespace SoccerTeamManagement.Data.Models
     {
         #region Relationships
 
-        public ICollection<PlayerParent> Children { get; set; }
+        public ICollection<PlayerParent> PlayerParents { get; set; }
 
         #endregion Relationships
     }

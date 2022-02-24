@@ -285,6 +285,116 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Address");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 901,
+                            AddressLine1 = "1600 Pennsylvania Avenue NW",
+                            City = "Washington",
+                            Country = "United States",
+                            State = "DC",
+                            ZipCode = "20500"
+                        },
+                        new
+                        {
+                            Id = 902,
+                            AddressLine1 = "11 Wall Street",
+                            City = "New York",
+                            Country = "United States",
+                            State = "New York",
+                            ZipCode = "10118"
+                        },
+                        new
+                        {
+                            Id = 903,
+                            AddressLine1 = "350 Fifth Avenue",
+                            City = "New York",
+                            Country = "United States",
+                            State = "New York",
+                            ZipCode = "10118"
+                        },
+                        new
+                        {
+                            Id = 904,
+                            AddressLine1 = "221 B Baker Street",
+                            City = "London",
+                            Country = "England",
+                            State = "",
+                            ZipCode = ""
+                        },
+                        new
+                        {
+                            Id = 905,
+                            AddressLine1 = "4059 Mt. Lee Drive",
+                            City = "Hollywood",
+                            Country = "United States",
+                            State = "California",
+                            ZipCode = "90068"
+                        },
+                        new
+                        {
+                            Id = 906,
+                            AddressLine1 = "400 S. Monroe Street",
+                            City = "Tallahassee",
+                            Country = "United States",
+                            State = "Florida",
+                            ZipCode = "32399"
+                        },
+                        new
+                        {
+                            Id = 907,
+                            AddressLine1 = "1100 Congress Avenue",
+                            City = "Austin",
+                            Country = "United States",
+                            State = "Texas",
+                            ZipCode = "78701"
+                        },
+                        new
+                        {
+                            Id = 908,
+                            AddressLine1 = "2300 N Lincoln Blvd",
+                            City = "Oklahoma City",
+                            Country = "United States",
+                            State = "Oklahoma",
+                            ZipCode = "73105"
+                        },
+                        new
+                        {
+                            Id = 909,
+                            AddressLine1 = "350 State Street",
+                            City = "Salt Lake City",
+                            Country = "United States",
+                            State = "Utah",
+                            ZipCode = "84103"
+                        },
+                        new
+                        {
+                            Id = 910,
+                            AddressLine1 = "501 N. 3rd Street",
+                            City = "Harrisburg",
+                            Country = "United States",
+                            State = "Pennsylvania",
+                            ZipCode = "17120"
+                        },
+                        new
+                        {
+                            Id = 911,
+                            AddressLine1 = "200 E. Colfax Ave",
+                            City = "Denver",
+                            Country = "United States",
+                            State = "Colorado",
+                            ZipCode = "80203"
+                        },
+                        new
+                        {
+                            Id = 912,
+                            AddressLine1 = "416 Sid Snyder Avenue SW",
+                            City = "Olympia",
+                            Country = "United States",
+                            State = "Washington",
+                            ZipCode = "98504"
+                        });
                 });
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.ApplicationUser", b =>
@@ -352,6 +462,223 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Club", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Club");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Atlanta United"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Austin FC"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Charlotte FC"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Chicago Fire FC"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "FC Cincinnati"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Colorado Rapids"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Columbus Crew"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "D.C. United"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "FC Dallas"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Houston Dynamo FC"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Sporting Kansas City"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "LA Galaxy"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Los Angeles Football Club"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "Inter Miami CF"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "Minnesota United"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "CF Montreal"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "Nashville SC"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "New England Revolution"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "New York Red Bulls"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Name = "New York City FC"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Name = "Orlando City"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Name = "Philadelphia Union"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Name = "Portland Timbers"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Name = "Real Salt Lake"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Name = "San Jose Earthquakes"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Name = "Seattle Sounders"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Name = "Toronto FC"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Name = "Vancouver Whitecaps"
+                        },
+                        new
+                        {
+                            Id = 901,
+                            Name = "Test Club 1"
+                        },
+                        new
+                        {
+                            Id = 902,
+                            Name = "Test Club 2"
+                        },
+                        new
+                        {
+                            Id = 903,
+                            Name = "Test Club 3"
+                        },
+                        new
+                        {
+                            Id = 904,
+                            Name = "Test Club 4"
+                        },
+                        new
+                        {
+                            Id = 905,
+                            Name = "Test Club 5"
+                        },
+                        new
+                        {
+                            Id = 906,
+                            Name = "Test Club 6"
+                        },
+                        new
+                        {
+                            Id = 907,
+                            Name = "Test Club 7"
+                        },
+                        new
+                        {
+                            Id = 908,
+                            Name = "Test Club 8"
+                        },
+                        new
+                        {
+                            Id = 909,
+                            Name = "Test Club 9"
+                        },
+                        new
+                        {
+                            Id = 910,
+                            Name = "Test Club 10"
+                        },
+                        new
+                        {
+                            Id = 911,
+                            Name = "Test Club 11"
+                        },
+                        new
+                        {
+                            Id = 912,
+                            Name = "Test Club 12"
+                        });
+                });
+
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Image", b =>
                 {
                     b.Property<int>("Id")
@@ -382,6 +709,332 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.ToTable("Image");
                 });
 
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.LeagueTeam", b =>
+                {
+                    b.Property<int>("LeagueId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TeamId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsPrimary")
+                        .HasColumnType("bit");
+
+                    b.HasKey("LeagueId", "TeamId");
+
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("LeagueTeam");
+
+                    b.HasData(
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 1,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 2,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 3,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 4,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 5,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 6,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 7,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 8,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 9,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 10,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 11,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 12,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 13,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 14,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 15,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 16,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 17,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 18,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 19,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 20,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 21,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 22,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 23,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 24,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 25,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 26,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 27,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 28,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 901,
+                            TeamId = 901,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 901,
+                            TeamId = 902,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 901,
+                            TeamId = 903,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 901,
+                            TeamId = 904,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 902,
+                            TeamId = 905,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 902,
+                            TeamId = 906,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 902,
+                            TeamId = 907,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 902,
+                            TeamId = 908,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 903,
+                            TeamId = 909,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 903,
+                            TeamId = 910,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 903,
+                            TeamId = 911,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 904,
+                            TeamId = 901,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 904,
+                            TeamId = 902,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 905,
+                            TeamId = 903,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 905,
+                            TeamId = 904,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 906,
+                            TeamId = 905,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 906,
+                            TeamId = 906,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 907,
+                            TeamId = 907,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 907,
+                            TeamId = 908,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 908,
+                            TeamId = 909,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 908,
+                            TeamId = 910,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 909,
+                            TeamId = 911,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 909,
+                            TeamId = 912,
+                            IsPrimary = false
+                        });
+                });
+
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.PlayerParent", b =>
                 {
                     b.Property<int>("PlayerId")
@@ -395,6 +1048,73 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.HasIndex("ParentId");
 
                     b.ToTable("PlayerParent");
+
+                    b.HasData(
+                        new
+                        {
+                            PlayerId = 901,
+                            ParentId = 901
+                        },
+                        new
+                        {
+                            PlayerId = 902,
+                            ParentId = 901
+                        },
+                        new
+                        {
+                            PlayerId = 903,
+                            ParentId = 902
+                        },
+                        new
+                        {
+                            PlayerId = 904,
+                            ParentId = 902
+                        },
+                        new
+                        {
+                            PlayerId = 905,
+                            ParentId = 903
+                        },
+                        new
+                        {
+                            PlayerId = 906,
+                            ParentId = 903
+                        },
+                        new
+                        {
+                            PlayerId = 907,
+                            ParentId = 904
+                        },
+                        new
+                        {
+                            PlayerId = 908,
+                            ParentId = 904
+                        },
+                        new
+                        {
+                            PlayerId = 909,
+                            ParentId = 907
+                        },
+                        new
+                        {
+                            PlayerId = 910,
+                            ParentId = 908
+                        },
+                        new
+                        {
+                            PlayerId = 911,
+                            ParentId = 910
+                        },
+                        new
+                        {
+                            PlayerId = 912,
+                            ParentId = 911
+                        },
+                        new
+                        {
+                            PlayerId = 901,
+                            ParentId = 912
+                        });
                 });
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.PlayerPosition", b =>
@@ -413,9 +1133,113 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.HasIndex("PositionId");
 
                     b.ToTable("PlayerPosition");
+
+                    b.HasData(
+                        new
+                        {
+                            PlayerId = 901,
+                            PositionId = 1,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 901,
+                            PositionId = 2,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            PlayerId = 901,
+                            PositionId = 3,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            PlayerId = 902,
+                            PositionId = 4,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 903,
+                            PositionId = 5,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 904,
+                            PositionId = 6,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 905,
+                            PositionId = 18,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 905,
+                            PositionId = 19,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            PlayerId = 906,
+                            PositionId = 11,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 907,
+                            PositionId = 12,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 908,
+                            PositionId = 13,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 909,
+                            PositionId = 19,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            PlayerId = 909,
+                            PositionId = 11,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 910,
+                            PositionId = 12,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 911,
+                            PositionId = 13,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 912,
+                            PositionId = 14,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 912,
+                            PositionId = 15,
+                            IsPrimary = false
+                        });
                 });
 
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.PlayerTeam", b =>
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.TeamPlayer", b =>
                 {
                     b.Property<int>("PlayerId")
                         .HasColumnType("int");
@@ -433,7 +1257,100 @@ namespace SoccerTeamManagement.Data.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("PlayerTeam");
+                    b.ToTable("TeamPlayer");
+
+                    b.HasData(
+                        new
+                        {
+                            PlayerId = 901,
+                            TeamId = 901,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 962, DateTimeKind.Unspecified).AddTicks(4665), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 902,
+                            TeamId = 901,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4044), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 903,
+                            TeamId = 901,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4134), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 904,
+                            TeamId = 901,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4148), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 905,
+                            TeamId = 902,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4152), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 906,
+                            TeamId = 902,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4160), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 907,
+                            TeamId = 902,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4165), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 908,
+                            TeamId = 903,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4168), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 909,
+                            TeamId = 903,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4172), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 910,
+                            TeamId = 903,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4177), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 911,
+                            TeamId = 903,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4182), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 912,
+                            TeamId = 904,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4186), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 901,
+                            TeamId = 905,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4190), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        });
                 });
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.League", b =>
@@ -449,6 +1366,113 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("League");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Major League Soccer"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Premier League"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "La Liga"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Serie A"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Bundesliga"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Ligue 1"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Eredivisie"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Serie A"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Local League"
+                        },
+                        new
+                        {
+                            Id = 901,
+                            Name = "Test League 1"
+                        },
+                        new
+                        {
+                            Id = 902,
+                            Name = "Test League 2"
+                        },
+                        new
+                        {
+                            Id = 903,
+                            Name = "Test League 3"
+                        },
+                        new
+                        {
+                            Id = 904,
+                            Name = "Test League 4"
+                        },
+                        new
+                        {
+                            Id = 905,
+                            Name = "Test League 5"
+                        },
+                        new
+                        {
+                            Id = 906,
+                            Name = "Test League 6"
+                        },
+                        new
+                        {
+                            Id = 907,
+                            Name = "Test League 7"
+                        },
+                        new
+                        {
+                            Id = 908,
+                            Name = "Test League 8"
+                        },
+                        new
+                        {
+                            Id = 909,
+                            Name = "Test League 9"
+                        },
+                        new
+                        {
+                            Id = 910,
+                            Name = "Test League 10"
+                        },
+                        new
+                        {
+                            Id = 911,
+                            Name = "Test League 11"
+                        },
+                        new
+                        {
+                            Id = 912,
+                            Name = "Test League 12"
+                        });
                 });
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.NationLookup", b =>
@@ -2847,7 +3871,7 @@ namespace SoccerTeamManagement.Data.Migrations
                             Alpha2Code = "US",
                             Alpha3Code = "USA",
                             IsDisabled = false,
-                            SortOrder = 840,
+                            SortOrder = 1,
                             Text = "United States of America",
                             Value = "840"
                         },
@@ -3009,6 +4033,128 @@ namespace SoccerTeamManagement.Data.Migrations
                         .HasFilter("[PhoneId] IS NOT NULL");
 
                     b.ToTable("Parent");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 901,
+                            AddressId = 901,
+                            FirstName = "TestParentFirst1",
+                            IsAdult = true,
+                            LastName = "TestParentLast1",
+                            NickName = "TestParent 1",
+                            PhoneId = 901
+                        },
+                        new
+                        {
+                            Id = 902,
+                            AddressId = 902,
+                            FirstName = "TestParentFirst2",
+                            IsAdult = true,
+                            LastName = "TestParentLast2",
+                            NickName = "TestParent 2",
+                            PhoneId = 902
+                        },
+                        new
+                        {
+                            Id = 903,
+                            AddressId = 903,
+                            FirstName = "TestParentFirst3",
+                            IsAdult = true,
+                            LastName = "TestParentLast3",
+                            NickName = "TestParent 3",
+                            PhoneId = 903
+                        },
+                        new
+                        {
+                            Id = 904,
+                            AddressId = 904,
+                            FirstName = "TestParentFirst4",
+                            IsAdult = true,
+                            LastName = "TestParentLast4",
+                            NickName = "TestParent 4",
+                            PhoneId = 904
+                        },
+                        new
+                        {
+                            Id = 905,
+                            AddressId = 905,
+                            FirstName = "TestParentFirst5",
+                            IsAdult = true,
+                            LastName = "TestParentLast5",
+                            NickName = "TestParent 5",
+                            PhoneId = 905
+                        },
+                        new
+                        {
+                            Id = 906,
+                            AddressId = 906,
+                            FirstName = "TestParentFirst6",
+                            IsAdult = true,
+                            LastName = "TestParentLast6",
+                            NickName = "TestParent 6",
+                            PhoneId = 906
+                        },
+                        new
+                        {
+                            Id = 907,
+                            AddressId = 907,
+                            FirstName = "TestParentFirst7",
+                            IsAdult = true,
+                            LastName = "TestParentLast7",
+                            NickName = "TestParent 7",
+                            PhoneId = 907
+                        },
+                        new
+                        {
+                            Id = 908,
+                            AddressId = 908,
+                            FirstName = "TestParentFirst8",
+                            IsAdult = true,
+                            LastName = "TestParentLast8",
+                            NickName = "TestParent 8",
+                            PhoneId = 908
+                        },
+                        new
+                        {
+                            Id = 909,
+                            AddressId = 909,
+                            FirstName = "TestParentFirst9",
+                            IsAdult = true,
+                            LastName = "TestParentLast9",
+                            NickName = "TestParent 9",
+                            PhoneId = 909
+                        },
+                        new
+                        {
+                            Id = 910,
+                            AddressId = 910,
+                            FirstName = "TestParentFirst10",
+                            IsAdult = true,
+                            LastName = "TestParentLast10",
+                            NickName = "TestParent 10",
+                            PhoneId = 910
+                        },
+                        new
+                        {
+                            Id = 911,
+                            AddressId = 911,
+                            FirstName = "TestParentFirst11",
+                            IsAdult = true,
+                            LastName = "TestParentLast11",
+                            NickName = "TestParent 11",
+                            PhoneId = 911
+                        },
+                        new
+                        {
+                            Id = 912,
+                            AddressId = 912,
+                            FirstName = "TestParentFirst12",
+                            IsAdult = true,
+                            LastName = "TestParentLast12",
+                            NickName = "TestParent 12",
+                            PhoneId = 912
+                        });
                 });
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Phone", b =>
@@ -3018,14 +4164,17 @@ namespace SoccerTeamManagement.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AreaCode")
-                        .HasColumnType("int");
+                    b.Property<string>("AreaCode")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Extension")
-                        .HasColumnType("int");
+                    b.Property<string>("CountryCode")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Number")
-                        .HasColumnType("int");
+                    b.Property<string>("Extension")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneType")
                         .IsRequired()
@@ -3034,6 +4183,112 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Phone");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 901,
+                            AreaCode = "360",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 902,
+                            AreaCode = "405",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 903,
+                            AreaCode = "405",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 904,
+                            AreaCode = "940",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Home"
+                        },
+                        new
+                        {
+                            Id = 905,
+                            AreaCode = "850",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 906,
+                            AreaCode = "717",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 907,
+                            AreaCode = "719",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Work"
+                        },
+                        new
+                        {
+                            Id = 908,
+                            AreaCode = "123",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 909,
+                            AreaCode = "456",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 910,
+                            AreaCode = "789",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Home"
+                        },
+                        new
+                        {
+                            Id = 911,
+                            AreaCode = "",
+                            CountryCode = "49",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 912,
+                            AreaCode = "234",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 913,
+                            AreaCode = "837",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        });
                 });
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Player", b =>
@@ -3052,11 +4307,12 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("FlareRating")
+                    b.Property<int>("FlareRating")
                         .HasColumnType("int");
 
-                    b.Property<int>("Foot")
-                        .HasColumnType("int");
+                    b.Property<string>("Foot")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Height")
                         .HasColumnType("int");
@@ -3076,7 +4332,7 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.Property<int?>("PhoneId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("WeakFootRating")
+                    b.Property<int>("WeakFootRating")
                         .HasColumnType("int");
 
                     b.Property<int?>("Weight")
@@ -3092,15 +4348,219 @@ namespace SoccerTeamManagement.Data.Migrations
                         .IsUnique()
                         .HasFilter("[AttributesId] IS NOT NULL");
 
-                    b.HasIndex("NationId")
-                        .IsUnique()
-                        .HasFilter("[NationId] IS NOT NULL");
+                    b.HasIndex("NationId");
 
                     b.HasIndex("PhoneId")
                         .IsUnique()
                         .HasFilter("[PhoneId] IS NOT NULL");
 
                     b.ToTable("Player");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 901,
+                            AddressId = 901,
+                            AttributesId = 901,
+                            FirstName = "Clark",
+                            FlareRating = 2,
+                            Foot = "Right",
+                            Height = 64,
+                            IsAdult = false,
+                            LastName = "Kent",
+                            NationId = 10,
+                            NickName = "Superman",
+                            PhoneId = 901,
+                            WeakFootRating = 1,
+                            Weight = 210
+                        },
+                        new
+                        {
+                            Id = 902,
+                            AddressId = 902,
+                            AttributesId = 902,
+                            FirstName = "Peter",
+                            FlareRating = 3,
+                            Foot = "Right",
+                            Height = 65,
+                            IsAdult = false,
+                            LastName = "Parker",
+                            NationId = 32,
+                            NickName = "Spiderman",
+                            PhoneId = 902,
+                            WeakFootRating = 4,
+                            Weight = 185
+                        },
+                        new
+                        {
+                            Id = 903,
+                            AddressId = 903,
+                            AttributesId = 903,
+                            FirstName = "Bruce",
+                            FlareRating = 3,
+                            Foot = "Left",
+                            Height = 66,
+                            IsAdult = false,
+                            LastName = "Wayne",
+                            NationId = 41,
+                            NickName = "Batman",
+                            PhoneId = 903,
+                            WeakFootRating = 1,
+                            Weight = 175
+                        },
+                        new
+                        {
+                            Id = 904,
+                            AddressId = 904,
+                            AttributesId = 904,
+                            FirstName = "Jack",
+                            FlareRating = 1,
+                            Foot = "Right",
+                            Height = 67,
+                            IsAdult = false,
+                            LastName = "Reacher",
+                            NationId = 49,
+                            NickName = "Reacher",
+                            PhoneId = 904,
+                            WeakFootRating = 5,
+                            Weight = 165
+                        },
+                        new
+                        {
+                            Id = 905,
+                            AddressId = 905,
+                            AttributesId = 905,
+                            FirstName = "Diana",
+                            FlareRating = 3,
+                            Foot = "Right",
+                            Height = 68,
+                            IsAdult = true,
+                            LastName = "Prince",
+                            NationId = 237,
+                            NickName = "Wonder Woman",
+                            PhoneId = 905,
+                            WeakFootRating = 1,
+                            Weight = 155
+                        },
+                        new
+                        {
+                            Id = 906,
+                            AddressId = 906,
+                            AttributesId = 906,
+                            FirstName = "Oliver",
+                            FlareRating = 3,
+                            Foot = "Left",
+                            Height = 69,
+                            IsAdult = true,
+                            LastName = "Queen",
+                            NationId = 237,
+                            NickName = "Green Arrow",
+                            PhoneId = 906,
+                            WeakFootRating = 3,
+                            Weight = 195
+                        },
+                        new
+                        {
+                            Id = 907,
+                            AddressId = 907,
+                            AttributesId = 907,
+                            FirstName = "Natasha",
+                            FlareRating = 4,
+                            Foot = "Right",
+                            Height = 70,
+                            IsAdult = false,
+                            LastName = "Romanoff",
+                            NationId = 237,
+                            NickName = "Black Widow",
+                            PhoneId = 907,
+                            WeakFootRating = 1,
+                            Weight = 210
+                        },
+                        new
+                        {
+                            Id = 908,
+                            AddressId = 908,
+                            AttributesId = 908,
+                            FirstName = "Bruce",
+                            FlareRating = 3,
+                            Foot = "Right",
+                            Height = 71,
+                            IsAdult = false,
+                            LastName = "Banner",
+                            NationId = 77,
+                            NickName = "Hulk",
+                            PhoneId = 908,
+                            WeakFootRating = 4,
+                            Weight = 190
+                        },
+                        new
+                        {
+                            Id = 909,
+                            AddressId = 909,
+                            AttributesId = 909,
+                            FirstName = "Tony",
+                            FlareRating = 3,
+                            Foot = "Left",
+                            Height = 72,
+                            IsAdult = true,
+                            LastName = "Stark",
+                            NationId = 84,
+                            NickName = "Iron Man",
+                            PhoneId = 909,
+                            WeakFootRating = 1,
+                            Weight = 200
+                        },
+                        new
+                        {
+                            Id = 910,
+                            AddressId = 910,
+                            AttributesId = 910,
+                            FirstName = "Thor",
+                            FlareRating = 5,
+                            Foot = "Right",
+                            Height = 73,
+                            IsAdult = false,
+                            LastName = "Odinson",
+                            NationId = 10,
+                            NickName = "Thor",
+                            PhoneId = 910,
+                            WeakFootRating = 2,
+                            Weight = 160
+                        },
+                        new
+                        {
+                            Id = 911,
+                            AddressId = 911,
+                            AttributesId = 911,
+                            FirstName = "Steve",
+                            FlareRating = 3,
+                            Foot = "Right",
+                            Height = 74,
+                            IsAdult = false,
+                            LastName = "Rodgers",
+                            NationId = 235,
+                            NickName = "Captain America",
+                            PhoneId = 911,
+                            WeakFootRating = 1,
+                            Weight = 170
+                        },
+                        new
+                        {
+                            Id = 912,
+                            AddressId = 912,
+                            AttributesId = 912,
+                            FirstName = "Bob",
+                            FlareRating = 2,
+                            Foot = "Left",
+                            Height = 59,
+                            IsAdult = false,
+                            LastName = "Smith",
+                            NationId = 210,
+                            NickName = "BoSmith",
+                            PhoneId = 912,
+                            WeakFootRating = 2,
+                            Weight = 180
+                        });
                 });
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.PlayerAttributes", b =>
@@ -3218,6 +4678,476 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PlayerAttributes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 901,
+                            Acceleration = 80,
+                            Aggression = 80,
+                            Agility = 80,
+                            Balance = 80,
+                            BallControl = 80,
+                            Composure = 80,
+                            Crossing = 80,
+                            Curve = 80,
+                            DefensiveAwareness = 80,
+                            Diving = 80,
+                            Dribbling = 80,
+                            Finishing = 80,
+                            FreeKickAccuracy = 80,
+                            GoaliePositioning = 0,
+                            Handling = 80,
+                            HeadingAccuracy = 80,
+                            Interceptions = 80,
+                            Jumping = 80,
+                            Kicking = 80,
+                            LongPassing = 80,
+                            LongShots = 80,
+                            OffensivePositioning = 80,
+                            Penalties = 80,
+                            PlayerId = 901,
+                            Reactions = 80,
+                            Reflexes = 80,
+                            ShortPassing = 80,
+                            ShotPower = 80,
+                            SlidingTackle = 80,
+                            SprintSpeed = 80,
+                            Stamina = 80,
+                            StandingTackle = 80,
+                            Strength = 80,
+                            Vision = 80,
+                            Volleys = 80
+                        },
+                        new
+                        {
+                            Id = 902,
+                            Acceleration = 82,
+                            Aggression = 82,
+                            Agility = 82,
+                            Balance = 82,
+                            BallControl = 82,
+                            Composure = 82,
+                            Crossing = 82,
+                            Curve = 82,
+                            DefensiveAwareness = 82,
+                            Diving = 82,
+                            Dribbling = 82,
+                            Finishing = 82,
+                            FreeKickAccuracy = 82,
+                            GoaliePositioning = 0,
+                            Handling = 82,
+                            HeadingAccuracy = 82,
+                            Interceptions = 82,
+                            Jumping = 82,
+                            Kicking = 82,
+                            LongPassing = 82,
+                            LongShots = 82,
+                            OffensivePositioning = 82,
+                            Penalties = 82,
+                            PlayerId = 902,
+                            Reactions = 82,
+                            Reflexes = 82,
+                            ShortPassing = 82,
+                            ShotPower = 82,
+                            SlidingTackle = 82,
+                            SprintSpeed = 82,
+                            Stamina = 82,
+                            StandingTackle = 82,
+                            Strength = 82,
+                            Vision = 82,
+                            Volleys = 82
+                        },
+                        new
+                        {
+                            Id = 903,
+                            Acceleration = 70,
+                            Aggression = 70,
+                            Agility = 70,
+                            Balance = 70,
+                            BallControl = 70,
+                            Composure = 70,
+                            Crossing = 70,
+                            Curve = 70,
+                            DefensiveAwareness = 70,
+                            Diving = 70,
+                            Dribbling = 70,
+                            Finishing = 70,
+                            FreeKickAccuracy = 70,
+                            GoaliePositioning = 0,
+                            Handling = 70,
+                            HeadingAccuracy = 70,
+                            Interceptions = 70,
+                            Jumping = 70,
+                            Kicking = 70,
+                            LongPassing = 70,
+                            LongShots = 70,
+                            OffensivePositioning = 70,
+                            Penalties = 70,
+                            PlayerId = 902,
+                            Reactions = 70,
+                            Reflexes = 70,
+                            ShortPassing = 70,
+                            ShotPower = 70,
+                            SlidingTackle = 70,
+                            SprintSpeed = 70,
+                            Stamina = 70,
+                            StandingTackle = 70,
+                            Strength = 70,
+                            Vision = 70,
+                            Volleys = 70
+                        },
+                        new
+                        {
+                            Id = 904,
+                            Acceleration = 72,
+                            Aggression = 72,
+                            Agility = 72,
+                            Balance = 72,
+                            BallControl = 72,
+                            Composure = 72,
+                            Crossing = 72,
+                            Curve = 72,
+                            DefensiveAwareness = 72,
+                            Diving = 72,
+                            Dribbling = 72,
+                            Finishing = 72,
+                            FreeKickAccuracy = 72,
+                            GoaliePositioning = 0,
+                            Handling = 72,
+                            HeadingAccuracy = 72,
+                            Interceptions = 72,
+                            Jumping = 72,
+                            Kicking = 72,
+                            LongPassing = 72,
+                            LongShots = 72,
+                            OffensivePositioning = 72,
+                            Penalties = 72,
+                            PlayerId = 902,
+                            Reactions = 72,
+                            Reflexes = 72,
+                            ShortPassing = 72,
+                            ShotPower = 72,
+                            SlidingTackle = 72,
+                            SprintSpeed = 72,
+                            Stamina = 72,
+                            StandingTackle = 72,
+                            Strength = 72,
+                            Vision = 72,
+                            Volleys = 72
+                        },
+                        new
+                        {
+                            Id = 905,
+                            Acceleration = 60,
+                            Aggression = 60,
+                            Agility = 60,
+                            Balance = 60,
+                            BallControl = 60,
+                            Composure = 60,
+                            Crossing = 60,
+                            Curve = 60,
+                            DefensiveAwareness = 60,
+                            Diving = 60,
+                            Dribbling = 60,
+                            Finishing = 60,
+                            FreeKickAccuracy = 60,
+                            GoaliePositioning = 0,
+                            Handling = 60,
+                            HeadingAccuracy = 60,
+                            Interceptions = 60,
+                            Jumping = 60,
+                            Kicking = 60,
+                            LongPassing = 60,
+                            LongShots = 60,
+                            OffensivePositioning = 60,
+                            Penalties = 60,
+                            PlayerId = 902,
+                            Reactions = 60,
+                            Reflexes = 60,
+                            ShortPassing = 60,
+                            ShotPower = 60,
+                            SlidingTackle = 60,
+                            SprintSpeed = 60,
+                            Stamina = 60,
+                            StandingTackle = 60,
+                            Strength = 60,
+                            Vision = 60,
+                            Volleys = 60
+                        },
+                        new
+                        {
+                            Id = 906,
+                            Acceleration = 62,
+                            Aggression = 62,
+                            Agility = 62,
+                            Balance = 62,
+                            BallControl = 62,
+                            Composure = 62,
+                            Crossing = 62,
+                            Curve = 62,
+                            DefensiveAwareness = 62,
+                            Diving = 62,
+                            Dribbling = 62,
+                            Finishing = 62,
+                            FreeKickAccuracy = 62,
+                            GoaliePositioning = 0,
+                            Handling = 62,
+                            HeadingAccuracy = 62,
+                            Interceptions = 62,
+                            Jumping = 62,
+                            Kicking = 62,
+                            LongPassing = 62,
+                            LongShots = 62,
+                            OffensivePositioning = 62,
+                            Penalties = 62,
+                            PlayerId = 906,
+                            Reactions = 62,
+                            Reflexes = 62,
+                            ShortPassing = 62,
+                            ShotPower = 62,
+                            SlidingTackle = 62,
+                            SprintSpeed = 62,
+                            Stamina = 62,
+                            StandingTackle = 62,
+                            Strength = 62,
+                            Vision = 62,
+                            Volleys = 62
+                        },
+                        new
+                        {
+                            Id = 907,
+                            Acceleration = 50,
+                            Aggression = 50,
+                            Agility = 50,
+                            Balance = 50,
+                            BallControl = 50,
+                            Composure = 50,
+                            Crossing = 50,
+                            Curve = 50,
+                            DefensiveAwareness = 50,
+                            Diving = 50,
+                            Dribbling = 50,
+                            Finishing = 50,
+                            FreeKickAccuracy = 50,
+                            GoaliePositioning = 0,
+                            Handling = 50,
+                            HeadingAccuracy = 50,
+                            Interceptions = 50,
+                            Jumping = 50,
+                            Kicking = 50,
+                            LongPassing = 50,
+                            LongShots = 50,
+                            OffensivePositioning = 50,
+                            Penalties = 50,
+                            PlayerId = 907,
+                            Reactions = 50,
+                            Reflexes = 50,
+                            ShortPassing = 50,
+                            ShotPower = 50,
+                            SlidingTackle = 50,
+                            SprintSpeed = 50,
+                            Stamina = 50,
+                            StandingTackle = 50,
+                            Strength = 50,
+                            Vision = 50,
+                            Volleys = 50
+                        },
+                        new
+                        {
+                            Id = 908,
+                            Acceleration = 52,
+                            Aggression = 52,
+                            Agility = 52,
+                            Balance = 52,
+                            BallControl = 52,
+                            Composure = 52,
+                            Crossing = 52,
+                            Curve = 52,
+                            DefensiveAwareness = 52,
+                            Diving = 52,
+                            Dribbling = 52,
+                            Finishing = 52,
+                            FreeKickAccuracy = 52,
+                            GoaliePositioning = 0,
+                            Handling = 52,
+                            HeadingAccuracy = 52,
+                            Interceptions = 52,
+                            Jumping = 52,
+                            Kicking = 52,
+                            LongPassing = 52,
+                            LongShots = 52,
+                            OffensivePositioning = 52,
+                            Penalties = 52,
+                            PlayerId = 908,
+                            Reactions = 52,
+                            Reflexes = 52,
+                            ShortPassing = 52,
+                            ShotPower = 52,
+                            SlidingTackle = 52,
+                            SprintSpeed = 52,
+                            Stamina = 52,
+                            StandingTackle = 52,
+                            Strength = 52,
+                            Vision = 52,
+                            Volleys = 52
+                        },
+                        new
+                        {
+                            Id = 909,
+                            Acceleration = 90,
+                            Aggression = 90,
+                            Agility = 90,
+                            Balance = 90,
+                            BallControl = 90,
+                            Composure = 90,
+                            Crossing = 90,
+                            Curve = 90,
+                            DefensiveAwareness = 90,
+                            Diving = 90,
+                            Dribbling = 90,
+                            Finishing = 90,
+                            FreeKickAccuracy = 90,
+                            GoaliePositioning = 0,
+                            Handling = 90,
+                            HeadingAccuracy = 90,
+                            Interceptions = 90,
+                            Jumping = 90,
+                            Kicking = 90,
+                            LongPassing = 90,
+                            LongShots = 90,
+                            OffensivePositioning = 90,
+                            Penalties = 90,
+                            PlayerId = 909,
+                            Reactions = 90,
+                            Reflexes = 90,
+                            ShortPassing = 90,
+                            ShotPower = 90,
+                            SlidingTackle = 90,
+                            SprintSpeed = 90,
+                            Stamina = 90,
+                            StandingTackle = 90,
+                            Strength = 90,
+                            Vision = 90,
+                            Volleys = 90
+                        },
+                        new
+                        {
+                            Id = 910,
+                            Acceleration = 92,
+                            Aggression = 92,
+                            Agility = 92,
+                            Balance = 92,
+                            BallControl = 92,
+                            Composure = 92,
+                            Crossing = 92,
+                            Curve = 92,
+                            DefensiveAwareness = 92,
+                            Diving = 92,
+                            Dribbling = 92,
+                            Finishing = 92,
+                            FreeKickAccuracy = 92,
+                            GoaliePositioning = 0,
+                            Handling = 92,
+                            HeadingAccuracy = 92,
+                            Interceptions = 92,
+                            Jumping = 92,
+                            Kicking = 92,
+                            LongPassing = 92,
+                            LongShots = 92,
+                            OffensivePositioning = 92,
+                            Penalties = 92,
+                            PlayerId = 910,
+                            Reactions = 92,
+                            Reflexes = 92,
+                            ShortPassing = 92,
+                            ShotPower = 92,
+                            SlidingTackle = 92,
+                            SprintSpeed = 92,
+                            Stamina = 92,
+                            StandingTackle = 92,
+                            Strength = 92,
+                            Vision = 92,
+                            Volleys = 92
+                        },
+                        new
+                        {
+                            Id = 911,
+                            Acceleration = 94,
+                            Aggression = 94,
+                            Agility = 94,
+                            Balance = 94,
+                            BallControl = 94,
+                            Composure = 94,
+                            Crossing = 94,
+                            Curve = 94,
+                            DefensiveAwareness = 94,
+                            Diving = 94,
+                            Dribbling = 94,
+                            Finishing = 94,
+                            FreeKickAccuracy = 94,
+                            GoaliePositioning = 0,
+                            Handling = 94,
+                            HeadingAccuracy = 94,
+                            Interceptions = 94,
+                            Jumping = 94,
+                            Kicking = 94,
+                            LongPassing = 94,
+                            LongShots = 94,
+                            OffensivePositioning = 94,
+                            Penalties = 94,
+                            PlayerId = 911,
+                            Reactions = 94,
+                            Reflexes = 94,
+                            ShortPassing = 94,
+                            ShotPower = 94,
+                            SlidingTackle = 94,
+                            SprintSpeed = 94,
+                            Stamina = 94,
+                            StandingTackle = 94,
+                            Strength = 94,
+                            Vision = 94,
+                            Volleys = 94
+                        },
+                        new
+                        {
+                            Id = 912,
+                            Acceleration = 96,
+                            Aggression = 96,
+                            Agility = 96,
+                            Balance = 96,
+                            BallControl = 96,
+                            Composure = 96,
+                            Crossing = 96,
+                            Curve = 96,
+                            DefensiveAwareness = 96,
+                            Diving = 96,
+                            Dribbling = 96,
+                            Finishing = 96,
+                            FreeKickAccuracy = 96,
+                            GoaliePositioning = 0,
+                            Handling = 96,
+                            HeadingAccuracy = 96,
+                            Interceptions = 96,
+                            Jumping = 96,
+                            Kicking = 96,
+                            LongPassing = 96,
+                            LongShots = 96,
+                            OffensivePositioning = 96,
+                            Penalties = 96,
+                            PlayerId = 912,
+                            Reactions = 96,
+                            Reflexes = 96,
+                            ShortPassing = 96,
+                            ShotPower = 96,
+                            SlidingTackle = 96,
+                            SprintSpeed = 96,
+                            Stamina = 96,
+                            StandingTackle = 96,
+                            Strength = 96,
+                            Vision = 96,
+                            Volleys = 96
+                        });
                 });
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.PositionCategoryLookup", b =>
@@ -3501,7 +5431,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("LeagueId")
+                    b.Property<int?>("ClubId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -3509,9 +5439,323 @@ namespace SoccerTeamManagement.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LeagueId");
+                    b.HasIndex("ClubId");
 
                     b.ToTable("Team");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ClubId = 1,
+                            Name = "Atlanta United"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ClubId = 2,
+                            Name = "Austin FC"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ClubId = 3,
+                            Name = "Charlotte FC"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ClubId = 4,
+                            Name = "Chicago Fire FC"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ClubId = 5,
+                            Name = "FC Cincinnati"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ClubId = 6,
+                            Name = "Colorado Rapids"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ClubId = 7,
+                            Name = "Columbus Crew"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ClubId = 8,
+                            Name = "D.C. United"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ClubId = 9,
+                            Name = "FC Dallas"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ClubId = 10,
+                            Name = "Houston Dynamo FC"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ClubId = 11,
+                            Name = "Sporting Kansas City"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ClubId = 12,
+                            Name = "LA Galaxy"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            ClubId = 13,
+                            Name = "Los Angeles Football Team"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            ClubId = 14,
+                            Name = "Inter Miami CF"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            ClubId = 15,
+                            Name = "Minnesota United"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            ClubId = 16,
+                            Name = "CF Montreal"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            ClubId = 17,
+                            Name = "Nashville SC"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            ClubId = 18,
+                            Name = "New England Revolution"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            ClubId = 19,
+                            Name = "New York Red Bulls"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            ClubId = 20,
+                            Name = "New York City FC"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            ClubId = 21,
+                            Name = "Orlando City"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            ClubId = 22,
+                            Name = "Philadelphia Union"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            ClubId = 23,
+                            Name = "Portland Timbers"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            ClubId = 24,
+                            Name = "Real Salt Lake"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            ClubId = 25,
+                            Name = "San Jose Earthquakes"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            ClubId = 26,
+                            Name = "Seattle Sounders"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            ClubId = 27,
+                            Name = "Toronto FC"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            ClubId = 28,
+                            Name = "Vancouver Whitecaps"
+                        },
+                        new
+                        {
+                            Id = 901,
+                            ClubId = 901,
+                            Name = "Test Team 1"
+                        },
+                        new
+                        {
+                            Id = 902,
+                            ClubId = 902,
+                            Name = "Test Team 2"
+                        },
+                        new
+                        {
+                            Id = 903,
+                            ClubId = 903,
+                            Name = "Test Team 3"
+                        },
+                        new
+                        {
+                            Id = 904,
+                            ClubId = 904,
+                            Name = "Test Team 4"
+                        },
+                        new
+                        {
+                            Id = 905,
+                            ClubId = 905,
+                            Name = "Test Team 5"
+                        },
+                        new
+                        {
+                            Id = 906,
+                            ClubId = 906,
+                            Name = "Test Team 6"
+                        },
+                        new
+                        {
+                            Id = 907,
+                            ClubId = 907,
+                            Name = "Test Team 7"
+                        },
+                        new
+                        {
+                            Id = 908,
+                            ClubId = 908,
+                            Name = "Test Team 8"
+                        },
+                        new
+                        {
+                            Id = 909,
+                            ClubId = 909,
+                            Name = "Test Team 9"
+                        },
+                        new
+                        {
+                            Id = 910,
+                            ClubId = 910,
+                            Name = "Test Team 10"
+                        },
+                        new
+                        {
+                            Id = 911,
+                            ClubId = 911,
+                            Name = "Test Team 11"
+                        },
+                        new
+                        {
+                            Id = 912,
+                            ClubId = 912,
+                            Name = "Test Team 12"
+                        },
+                        new
+                        {
+                            Id = 913,
+                            ClubId = 901,
+                            Name = "Test Team 13"
+                        },
+                        new
+                        {
+                            Id = 914,
+                            ClubId = 901,
+                            Name = "Test Team 14"
+                        },
+                        new
+                        {
+                            Id = 915,
+                            ClubId = 901,
+                            Name = "Test Team 15"
+                        },
+                        new
+                        {
+                            Id = 916,
+                            ClubId = 902,
+                            Name = "Test Team 16"
+                        },
+                        new
+                        {
+                            Id = 917,
+                            ClubId = 903,
+                            Name = "Test Team 17"
+                        },
+                        new
+                        {
+                            Id = 918,
+                            ClubId = 904,
+                            Name = "Test Team 18"
+                        },
+                        new
+                        {
+                            Id = 919,
+                            ClubId = 905,
+                            Name = "Test Team 19"
+                        },
+                        new
+                        {
+                            Id = 920,
+                            ClubId = 906,
+                            Name = "Test Team 20"
+                        },
+                        new
+                        {
+                            Id = 921,
+                            ClubId = 907,
+                            Name = "Test Team 21"
+                        },
+                        new
+                        {
+                            Id = 922,
+                            ClubId = 908,
+                            Name = "Test Team 22"
+                        },
+                        new
+                        {
+                            Id = 923,
+                            ClubId = 909,
+                            Name = "Test Team 23"
+                        },
+                        new
+                        {
+                            Id = 924,
+                            ClubId = 910,
+                            Name = "Test Team 24"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -3594,16 +5838,35 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.Navigation("Source");
                 });
 
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.LeagueTeam", b =>
+                {
+                    b.HasOne("SoccerTeamManagement.Data.Models.League", "League")
+                        .WithMany("LeagueTeams")
+                        .HasForeignKey("LeagueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SoccerTeamManagement.Data.Models.Team", "Team")
+                        .WithMany("LeagueTeams")
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("League");
+
+                    b.Navigation("Team");
+                });
+
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.PlayerParent", b =>
                 {
                     b.HasOne("SoccerTeamManagement.Data.Models.Parent", "Parent")
-                        .WithMany("Children")
+                        .WithMany("PlayerParents")
                         .HasForeignKey("ParentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SoccerTeamManagement.Data.Models.Player", "Player")
-                        .WithMany("Parents")
+                        .WithMany("PlayerParents")
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -3632,16 +5895,16 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.Navigation("Position");
                 });
 
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.PlayerTeam", b =>
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.TeamPlayer", b =>
                 {
                     b.HasOne("SoccerTeamManagement.Data.Models.Player", "Player")
-                        .WithMany("PlayerTeams")
+                        .WithMany("TeamPlayers")
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SoccerTeamManagement.Data.Models.Team", "Team")
-                        .WithMany("PlayerTeams")
+                        .WithMany("TeamPlayers")
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -3677,8 +5940,8 @@ namespace SoccerTeamManagement.Data.Migrations
                         .HasForeignKey("SoccerTeamManagement.Data.Models.Player", "AttributesId");
 
                     b.HasOne("SoccerTeamManagement.Data.Models.NationLookup", "Nation")
-                        .WithOne()
-                        .HasForeignKey("SoccerTeamManagement.Data.Models.Player", "NationId");
+                        .WithMany()
+                        .HasForeignKey("NationId");
 
                     b.HasOne("SoccerTeamManagement.Data.Models.Phone", "Phone")
                         .WithOne()
@@ -3704,30 +5967,35 @@ namespace SoccerTeamManagement.Data.Migrations
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Team", b =>
                 {
-                    b.HasOne("SoccerTeamManagement.Data.Models.League", "League")
+                    b.HasOne("SoccerTeamManagement.Data.Models.Club", "Club")
                         .WithMany("Teams")
-                        .HasForeignKey("LeagueId");
+                        .HasForeignKey("ClubId");
 
-                    b.Navigation("League");
+                    b.Navigation("Club");
                 });
 
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.League", b =>
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Club", b =>
                 {
                     b.Navigation("Teams");
                 });
 
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.League", b =>
+                {
+                    b.Navigation("LeagueTeams");
+                });
+
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Parent", b =>
                 {
-                    b.Navigation("Children");
+                    b.Navigation("PlayerParents");
                 });
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Player", b =>
                 {
-                    b.Navigation("Parents");
+                    b.Navigation("PlayerParents");
 
                     b.Navigation("PlayerPositions");
 
-                    b.Navigation("PlayerTeams");
+                    b.Navigation("TeamPlayers");
                 });
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.PlayerAttributes", b =>
@@ -3742,7 +6010,9 @@ namespace SoccerTeamManagement.Data.Migrations
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Team", b =>
                 {
-                    b.Navigation("PlayerTeams");
+                    b.Navigation("LeagueTeams");
+
+                    b.Navigation("TeamPlayers");
                 });
 #pragma warning restore 612, 618
         }

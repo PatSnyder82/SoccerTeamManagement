@@ -2,7 +2,7 @@
 
 namespace SoccerTeamManagement.Data.Models.Joins
 {
-    public class PlayerTeam
+    public class TeamPlayer
     {
         #region Relationships
 

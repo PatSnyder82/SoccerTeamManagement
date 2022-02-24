@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SoccerTeamManagement.Data.Interfaces;
 using SoccerTeamManagement.Data.Models;
 
 namespace SoccerTeamManagement.Data.Configuration.Lookups
 {
-    public class NationLookupConfig : IEntityTypeConfiguration<NationLookup>
+    public class NationLookupConfig : IEntityTypeConfiguration<NationLookup>, ISeed<NationLookup>
     {
         public void Configure(EntityTypeBuilder<NationLookup> builder)
         {
@@ -12,10 +13,15 @@ namespace SoccerTeamManagement.Data.Configuration.Lookups
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).IsRequired();
 
+            #region Seed
+
             Seed(builder);
+            SeedDebug(builder);
+
+            #endregion Seed
         }
 
-        private void Seed(EntityTypeBuilder<NationLookup> builder)
+        public void Seed(EntityTypeBuilder<NationLookup> builder)
         {
             //ISO 3166 values as of Feb 2022
             builder.HasData(new NationLookup { Id = 1, Text = "Afghanistan", Alpha2Code = "AF", Alpha3Code = "AFG", Value = "4", SortOrder = 4, IsDisabled = false });
@@ -254,7 +260,7 @@ namespace SoccerTeamManagement.Data.Configuration.Lookups
             builder.HasData(new NationLookup { Id = 234, Text = "United Arab Emirates", Alpha2Code = "AE", Alpha3Code = "ARE", Value = "784", SortOrder = 784, IsDisabled = false });
             builder.HasData(new NationLookup { Id = 235, Text = "United Kingdom of Great Britain and Northern Ireland", Alpha2Code = "GB", Alpha3Code = "GBR", Value = "826", SortOrder = 826, IsDisabled = false });
             builder.HasData(new NationLookup { Id = 236, Text = "United States Minor Outlying Islands", Alpha2Code = "UM", Alpha3Code = "UMI", Value = "581", SortOrder = 581, IsDisabled = false });
-            builder.HasData(new NationLookup { Id = 237, Text = "United States of America", Alpha2Code = "US", Alpha3Code = "USA", Value = "840", SortOrder = 840, IsDisabled = false });
+            builder.HasData(new NationLookup { Id = 237, Text = "United States of America", Alpha2Code = "US", Alpha3Code = "USA", Value = "840", SortOrder = 1, IsDisabled = false });
             builder.HasData(new NationLookup { Id = 238, Text = "Uruguay", Alpha2Code = "UY", Alpha3Code = "URY", Value = "858", SortOrder = 858, IsDisabled = false });
             builder.HasData(new NationLookup { Id = 239, Text = "Uzbekistan", Alpha2Code = "UZ", Alpha3Code = "UZB", Value = "860", SortOrder = 860, IsDisabled = false });
             builder.HasData(new NationLookup { Id = 240, Text = "Vanuatu", Alpha2Code = "VU", Alpha3Code = "VUT", Value = "548", SortOrder = 548, IsDisabled = false });
@@ -267,6 +273,13 @@ namespace SoccerTeamManagement.Data.Configuration.Lookups
             builder.HasData(new NationLookup { Id = 247, Text = "Yemen", Alpha2Code = "YE", Alpha3Code = "YEM", Value = "887", SortOrder = 887, IsDisabled = false });
             builder.HasData(new NationLookup { Id = 248, Text = "Zambia", Alpha2Code = "ZM", Alpha3Code = "ZMB", Value = "894", SortOrder = 894, IsDisabled = false });
             builder.HasData(new NationLookup { Id = 249, Text = "Zimbabwe", Alpha2Code = "ZW", Alpha3Code = "ZWE", Value = "716", SortOrder = 716, IsDisabled = false });
+        }
+
+        public void SeedDebug(EntityTypeBuilder<NationLookup> builder)
+        {
+#if DEBUG
+
+#endif
         }
     }
 }

@@ -22,11 +22,13 @@ namespace SoccerTeamManagement.Data.Models
 
         #region Relationships
 
-        public int? LeagueId { get; set; }
+        public int? ClubId { get; set; }
 
-        public League League { get; set; }
+        public Club Club { get; set; }
 
-        public ICollection<PlayerTeam> PlayerTeams { get; set; }
+        public ICollection<LeagueTeam> LeagueTeams { get; set; }
+
+        public ICollection<TeamPlayer> TeamPlayers { get; set; }
 
         #endregion Relationships
     }

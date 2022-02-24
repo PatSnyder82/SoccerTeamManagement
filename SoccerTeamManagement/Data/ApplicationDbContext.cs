@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SoccerTeamManagement.Data.Configuration;
+using SoccerTeamManagement.Data.Configuration.Joins;
 using SoccerTeamManagement.Data.Configuration.Lookups;
 using SoccerTeamManagement.Data.Models;
 using SoccerTeamManagement.Data.Models.Joins;
@@ -32,16 +33,23 @@ namespace SoccerTeamManagement.Data
             #endregion Lookups
 
             new AddressConfig().Configure(builder.Entity<Address>());
-            new LeagueConfig().Configure(builder.Entity<League>());
+            new ImageConfig().Configure(builder.Entity<Image>());
             new PhoneConfig().Configure(builder.Entity<Phone>());
+            new ClubConfig().Configure(builder.Entity<Club>());
+            new LeagueConfig().Configure(builder.Entity<League>());
+            new TeamConfig().Configure(builder.Entity<Team>());
             new PlayerAttributesConfig().Configure(builder.Entity<PlayerAttributes>());
             new PlayerConfig().Configure(builder.Entity<Player>());
-            new PlayerPositionConfig().Configure(builder.Entity<PlayerPosition>());
-            new PlayerTeamConfig().Configure(builder.Entity<PlayerTeam>());
-            new TeamConfig().Configure(builder.Entity<Team>());
             new ParentConfig().Configure(builder.Entity<Parent>());
+
+            #region Joins
+
+            new LeagueTeamConfig().Configure(builder.Entity<LeagueTeam>());
+            new PlayerPositionConfig().Configure(builder.Entity<PlayerPosition>());
+            new TeamPlayerConfig().Configure(builder.Entity<TeamPlayer>());
             new PlayerParentConfig().Configure(builder.Entity<PlayerParent>());
-            new ImageConfig().Configure(builder.Entity<Image>());
+
+            #endregion Joins
         }
     }
 }
