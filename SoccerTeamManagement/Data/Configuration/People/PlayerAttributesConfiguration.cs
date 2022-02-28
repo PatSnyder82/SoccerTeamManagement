@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SoccerTeamManagement.Data.Interfaces;
-using SoccerTeamManagement.Data.Models;
+using SoccerTeamManagement.Data.Models.People;
+using SoccerTeamManagement.Data.People;
 
-namespace SoccerTeamManagement.Data.Configuration
+namespace SoccerTeamManagement.Data.Configuration.People
 {
-    public class PlayerAttributesConfig : IEntityTypeConfiguration<PlayerAttributes>, ISeed<PlayerAttributes>
+    public class PlayerAttributesConfiguration : IEntityTypeConfiguration<PlayerAttributes>, ISeed<PlayerAttributes>
     {
         public void Configure(EntityTypeBuilder<PlayerAttributes> builder)
         {

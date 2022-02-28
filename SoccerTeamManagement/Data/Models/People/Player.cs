@@ -1,7 +1,8 @@
 ﻿using SoccerTeamManagement.Data.Models.Joins;
+using SoccerTeamManagement.Data.People;
 using System.Collections.Generic;
 
-namespace SoccerTeamManagement.Data.Models
+namespace SoccerTeamManagement.Data.Models.People
 {
     public class Player : Person
     {
@@ -20,10 +21,6 @@ namespace SoccerTeamManagement.Data.Models
         #endregion Properties
 
         #region Relationships
-
-        public int? NationId { get; set; }
-
-        public NationLookup Nation { get; set; }
 
         public int? AttributesId { get; set; }
 

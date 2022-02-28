@@ -5,7 +5,7 @@ using SoccerTeamManagement.Data.Models;
 
 namespace SoccerTeamManagement.Data.Configuration
 {
-    public class AddressConfig : IEntityTypeConfiguration<Address>, ISeed<Address>
+    public class AddressConfiguration : IEntityTypeConfiguration<Address>, ISeed<Address>
     {
         public void Configure(EntityTypeBuilder<Address> builder)
         {

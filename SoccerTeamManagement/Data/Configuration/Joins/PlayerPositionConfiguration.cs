@@ -6,7 +6,7 @@ using SoccerTeamManagement.Data.Models.Joins;
 namespace SoccerTeamManagement.Data.Configuration.Joins
 
 {
-    public class PlayerPositionConfig : IEntityTypeConfiguration<PlayerPosition>, ISeed<PlayerPosition>
+    public class PlayerPositionConfiguration : IEntityTypeConfiguration<PlayerPosition>, ISeed<PlayerPosition>
     {
         public void Configure(EntityTypeBuilder<PlayerPosition> builder)
         {

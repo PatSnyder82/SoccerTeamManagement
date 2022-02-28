@@ -5,7 +5,7 @@ using SoccerTeamManagement.Data.Models;
 
 namespace SoccerTeamManagement.Data.Configuration
 {
-    public class ImageConfig : IEntityTypeConfiguration<Image>, ISeed<Image>
+    public class ImageConfiguration : IEntityTypeConfiguration<Image>, ISeed<Image>
     {
         public void Configure(EntityTypeBuilder<Image> builder)
         {

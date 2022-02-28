@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SoccerTeamManagement.Data.Models
+namespace SoccerTeamManagement.Data.Models.People
 {
     public abstract class Person : EntityBase
     {
@@ -25,6 +25,14 @@ namespace SoccerTeamManagement.Data.Models
         public int? AddressId { get; set; }
 
         public Address Address { get; set; }
+
+        public int? ImageId { get; set; }
+
+        public Image Image { get; set; }
+
+        public int? NationId { get; set; }
+
+        public NationLookup Nation { get; set; }
 
         #endregion Relationships
     }

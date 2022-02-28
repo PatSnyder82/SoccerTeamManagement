@@ -5,7 +5,7 @@ using SoccerTeamManagement.Data.Models;
 
 namespace SoccerTeamManagement.Data.Configuration
 {
-    public class PhoneConfig : IEntityTypeConfiguration<Phone>, ISeed<Phone>
+    public class PhoneConfiguration : IEntityTypeConfiguration<Phone>, ISeed<Phone>
     {
         public void Configure(EntityTypeBuilder<Phone> builder)
         {

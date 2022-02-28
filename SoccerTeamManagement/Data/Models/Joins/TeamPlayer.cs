@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SoccerTeamManagement.Data.Models.People;
+using System;
 
 namespace SoccerTeamManagement.Data.Models.Joins
 {

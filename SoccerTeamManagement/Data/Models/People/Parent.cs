@@ -1,7 +1,7 @@
 ﻿using SoccerTeamManagement.Data.Models.Joins;
 using System.Collections.Generic;
 
-namespace SoccerTeamManagement.Data.Models
+namespace SoccerTeamManagement.Data.Models.People
 {
     public class Parent : Person
     {

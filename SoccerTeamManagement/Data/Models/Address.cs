@@ -17,13 +17,5 @@
         public string ZipCode { get; set; }
 
         #endregion Properties
-
-        //#region Relationships
-
-        //public int? PersonId { get; set; }
-
-        //public Person Person { get; set; }
-
-        //#endregion Relationships
     }
 }

@@ -5,7 +5,7 @@ using SoccerTeamManagement.Data.Models.Joins;
 
 namespace SoccerTeamManagement.Data.Configuration.Joins
 {
-    public class LeagueTeamConfig : IEntityTypeConfiguration<LeagueTeam>, ISeed<LeagueTeam>
+    public class LeagueTeamConfiguration : IEntityTypeConfiguration<LeagueTeam>, ISeed<LeagueTeam>
     {
         public void Configure(EntityTypeBuilder<LeagueTeam> builder)
         {

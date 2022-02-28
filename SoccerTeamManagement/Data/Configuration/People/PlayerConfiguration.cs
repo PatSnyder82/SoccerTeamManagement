@@ -1,34 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SoccerTeamManagement.Data.Interfaces;
-using SoccerTeamManagement.Data.Models;
+using SoccerTeamManagement.Data.Models.People;
 
-namespace SoccerTeamManagement.Data.Configuration
+namespace SoccerTeamManagement.Data.Configuration.People
 {
-    public class PlayerConfig : IEntityTypeConfiguration<Player>, ISeed<Player>
+    public class PlayerConfiguration : PersonConfiguration<Player>, IEntityTypeConfiguration<Player>, ISeed<Player>
     {
-        public void Configure(EntityTypeBuilder<Player> builder)
+        public override void Configure(EntityTypeBuilder<Player> builder)
         {
+            base.Configure(builder);
+
             builder.ToTable("Player");
+            builder.HasBaseType<Person>();
 
             builder.Property(s => s.Foot).HasConversion<string>();
 
             #region Relationships
-
-            //One Person to One Phone
-            builder.HasOne(x => x.Phone)
-                   .WithOne()
-                   .HasForeignKey<Player>(x => x.PhoneId);
-
-            //One Person to One Address
-            builder.HasOne(x => x.Address)
-                   .WithOne()
-                   .HasForeignKey<Player>(x => x.AddressId);
-
-            ///A Player has One Nation
-            builder.HasOne(x => x.Nation)
-                   .WithMany()
-                   .HasForeignKey(x => x.NationId);
 
             //One Player has One Attributes Record
             builder.HasOne(x => x.Attributes)

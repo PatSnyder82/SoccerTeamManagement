@@ -5,7 +5,7 @@ using SoccerTeamManagement.Data.Models;
 
 namespace SoccerTeamManagement.Data.Configuration.Lookups
 {
-    public class NationLookupConfig : IEntityTypeConfiguration<NationLookup>, ISeed<NationLookup>
+    public class NationLookupConfiguration : IEntityTypeConfiguration<NationLookup>, ISeed<NationLookup>
     {
         public void Configure(EntityTypeBuilder<NationLookup> builder)
         {

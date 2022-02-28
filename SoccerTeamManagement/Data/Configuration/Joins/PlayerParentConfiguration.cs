@@ -5,7 +5,7 @@ using SoccerTeamManagement.Data.Models.Joins;
 
 namespace SoccerTeamManagement.Data.Configuration.Joins
 {
-    public class PlayerParentConfig : IEntityTypeConfiguration<PlayerParent>, ISeed<PlayerParent>
+    public class PlayerParentConfiguration : IEntityTypeConfiguration<PlayerParent>, ISeed<PlayerParent>
     {
         public void Configure(EntityTypeBuilder<PlayerParent> builder)
         {

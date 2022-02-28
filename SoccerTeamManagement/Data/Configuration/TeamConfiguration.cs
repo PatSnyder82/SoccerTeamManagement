@@ -5,7 +5,7 @@ using SoccerTeamManagement.Data.Models;
 
 namespace SoccerTeamManagement.Data.Configuration
 {
-    public class TeamConfig : IEntityTypeConfiguration<Team>, ISeed<Team>
+    public class TeamConfiguration : IEntityTypeConfiguration<Team>, ISeed<Team>
     {
         public void Configure(EntityTypeBuilder<Team> builder)
         {

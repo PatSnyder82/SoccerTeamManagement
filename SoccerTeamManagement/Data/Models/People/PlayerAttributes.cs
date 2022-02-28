@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using SoccerTeamManagement.Data.Models;
+using SoccerTeamManagement.Data.Models.People;
 
-namespace SoccerTeamManagement.Data.Models
+namespace SoccerTeamManagement.Data.People
 {
     public class PlayerAttributes : EntityBase
     {

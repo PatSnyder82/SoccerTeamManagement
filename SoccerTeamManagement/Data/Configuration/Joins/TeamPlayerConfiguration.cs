@@ -6,7 +6,7 @@ using System;
 
 namespace SoccerTeamManagement.Data.Configuration.Joins
 {
-    public class TeamPlayerConfig : IEntityTypeConfiguration<TeamPlayer>, ISeed<TeamPlayer>
+    public class TeamPlayerConfiguration : IEntityTypeConfiguration<TeamPlayer>, ISeed<TeamPlayer>
     {
         public void Configure(EntityTypeBuilder<TeamPlayer> builder)
         {

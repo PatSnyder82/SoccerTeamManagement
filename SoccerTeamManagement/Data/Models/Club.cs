@@ -6,10 +6,13 @@ namespace SoccerTeamManagement.Data.Models
     {
         public string Name { get; set; }
 
-        /// TODO: Logo
         /// TODO: Relationship Managers/Coaches
 
         #region Relationships
+
+        public int? ImageId { get; set; }
+
+        public Image Image { get; set; }
 
         public ICollection<Team> Teams { get; set; }
 

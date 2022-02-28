@@ -1,29 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SoccerTeamManagement.Data.Interfaces;
-using SoccerTeamManagement.Data.Models;
+using SoccerTeamManagement.Data.Models.People;
 
-namespace SoccerTeamManagement.Data.Configuration
+namespace SoccerTeamManagement.Data.Configuration.People
 {
-    public class ParentConfig : IEntityTypeConfiguration<Parent>, ISeed<Parent>
+    public class ParentConfiguration : PersonConfiguration<Parent>, IEntityTypeConfiguration<Parent>, ISeed<Parent>
     {
-        public void Configure(EntityTypeBuilder<Parent> builder)
+        public override void Configure(EntityTypeBuilder<Parent> builder)
         {
+            base.Configure(builder);
+
             builder.ToTable("Parent");
-
-            #region Relationships
-
-            //One Person to One Phone
-            builder.HasOne(x => x.Phone)
-                   .WithOne()
-                   .HasForeignKey<Parent>(x => x.PhoneId);
-
-            //One Person to One Address
-            builder.HasOne(x => x.Address)
-                   .WithOne()
-                   .HasForeignKey<Parent>(x => x.AddressId);
-
-            #endregion Relationships
+            builder.HasBaseType<Person>();
 
             #region Seed
 

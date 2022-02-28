@@ -5,7 +5,7 @@ using SoccerTeamManagement.Data.Models;
 
 namespace SoccerTeamManagement.Data.Configuration.Lookups
 {
-    public class PositionLookupConfig : IEntityTypeConfiguration<PositionLookup>, ISeed<PositionLookup>
+    public class PositionLookupConfiguration : IEntityTypeConfiguration<PositionLookup>, ISeed<PositionLookup>
     {
         public void Configure(EntityTypeBuilder<PositionLookup> builder)
         {
