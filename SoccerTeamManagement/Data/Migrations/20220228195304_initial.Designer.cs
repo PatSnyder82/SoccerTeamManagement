@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SoccerTeamManagement.Data;
 
-namespace SoccerTeamManagement.Data.Migrations
+namespace SoccerTeamManagement.data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220224153317_Initial")]
-    partial class Initial
+    [Migration("20220228195304_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -471,10 +471,15 @@ namespace SoccerTeamManagement.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("ImageId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ImageId");
 
                     b.ToTable("Club");
 
@@ -1266,91 +1271,91 @@ namespace SoccerTeamManagement.Data.Migrations
                         {
                             PlayerId = 901,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 962, DateTimeKind.Unspecified).AddTicks(4665), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 942, DateTimeKind.Unspecified).AddTicks(8273), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 902,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4044), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(437), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 903,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4134), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(477), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 904,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4148), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(484), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 905,
                             TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4152), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(489), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 906,
                             TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4160), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(497), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 907,
                             TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4165), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(502), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 908,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4168), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(506), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 909,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4172), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(510), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 910,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4177), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(516), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 911,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4182), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(520), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 912,
                             TeamId = 904,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4186), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(524), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 901,
                             TeamId = 905,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 24, 10, 33, 16, 965, DateTimeKind.Unspecified).AddTicks(4190), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(528), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         });
                 });
@@ -1362,10 +1367,15 @@ namespace SoccerTeamManagement.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("LogoId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LogoId");
 
                     b.ToTable("League");
 
@@ -3999,7 +4009,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Parent", b =>
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.People.Person", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -4012,11 +4022,17 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ImageId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsAdult")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("NationId")
+                        .HasColumnType("int");
 
                     b.Property<string>("NickName")
                         .HasColumnType("nvarchar(max)");
@@ -4030,270 +4046,18 @@ namespace SoccerTeamManagement.Data.Migrations
                         .IsUnique()
                         .HasFilter("[AddressId] IS NOT NULL");
 
+                    b.HasIndex("ImageId");
+
+                    b.HasIndex("NationId");
+
                     b.HasIndex("PhoneId")
                         .IsUnique()
                         .HasFilter("[PhoneId] IS NOT NULL");
 
-                    b.ToTable("Parent");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 901,
-                            AddressId = 901,
-                            FirstName = "TestParentFirst1",
-                            IsAdult = true,
-                            LastName = "TestParentLast1",
-                            NickName = "TestParent 1",
-                            PhoneId = 901
-                        },
-                        new
-                        {
-                            Id = 902,
-                            AddressId = 902,
-                            FirstName = "TestParentFirst2",
-                            IsAdult = true,
-                            LastName = "TestParentLast2",
-                            NickName = "TestParent 2",
-                            PhoneId = 902
-                        },
-                        new
-                        {
-                            Id = 903,
-                            AddressId = 903,
-                            FirstName = "TestParentFirst3",
-                            IsAdult = true,
-                            LastName = "TestParentLast3",
-                            NickName = "TestParent 3",
-                            PhoneId = 903
-                        },
-                        new
-                        {
-                            Id = 904,
-                            AddressId = 904,
-                            FirstName = "TestParentFirst4",
-                            IsAdult = true,
-                            LastName = "TestParentLast4",
-                            NickName = "TestParent 4",
-                            PhoneId = 904
-                        },
-                        new
-                        {
-                            Id = 905,
-                            AddressId = 905,
-                            FirstName = "TestParentFirst5",
-                            IsAdult = true,
-                            LastName = "TestParentLast5",
-                            NickName = "TestParent 5",
-                            PhoneId = 905
-                        },
-                        new
-                        {
-                            Id = 906,
-                            AddressId = 906,
-                            FirstName = "TestParentFirst6",
-                            IsAdult = true,
-                            LastName = "TestParentLast6",
-                            NickName = "TestParent 6",
-                            PhoneId = 906
-                        },
-                        new
-                        {
-                            Id = 907,
-                            AddressId = 907,
-                            FirstName = "TestParentFirst7",
-                            IsAdult = true,
-                            LastName = "TestParentLast7",
-                            NickName = "TestParent 7",
-                            PhoneId = 907
-                        },
-                        new
-                        {
-                            Id = 908,
-                            AddressId = 908,
-                            FirstName = "TestParentFirst8",
-                            IsAdult = true,
-                            LastName = "TestParentLast8",
-                            NickName = "TestParent 8",
-                            PhoneId = 908
-                        },
-                        new
-                        {
-                            Id = 909,
-                            AddressId = 909,
-                            FirstName = "TestParentFirst9",
-                            IsAdult = true,
-                            LastName = "TestParentLast9",
-                            NickName = "TestParent 9",
-                            PhoneId = 909
-                        },
-                        new
-                        {
-                            Id = 910,
-                            AddressId = 910,
-                            FirstName = "TestParentFirst10",
-                            IsAdult = true,
-                            LastName = "TestParentLast10",
-                            NickName = "TestParent 10",
-                            PhoneId = 910
-                        },
-                        new
-                        {
-                            Id = 911,
-                            AddressId = 911,
-                            FirstName = "TestParentFirst11",
-                            IsAdult = true,
-                            LastName = "TestParentLast11",
-                            NickName = "TestParent 11",
-                            PhoneId = 911
-                        },
-                        new
-                        {
-                            Id = 912,
-                            AddressId = 912,
-                            FirstName = "TestParentFirst12",
-                            IsAdult = true,
-                            LastName = "TestParentLast12",
-                            NickName = "TestParent 12",
-                            PhoneId = 912
-                        });
+                    b.ToTable("Person");
                 });
 
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Phone", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AreaCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CountryCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Extension")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Number")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Phone");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 901,
-                            AreaCode = "360",
-                            CountryCode = "1",
-                            Number = "9028880",
-                            PhoneType = "Cell"
-                        },
-                        new
-                        {
-                            Id = 902,
-                            AreaCode = "405",
-                            CountryCode = "1",
-                            Number = "9028880",
-                            PhoneType = "Cell"
-                        },
-                        new
-                        {
-                            Id = 903,
-                            AreaCode = "405",
-                            CountryCode = "1",
-                            Number = "9028880",
-                            PhoneType = "Cell"
-                        },
-                        new
-                        {
-                            Id = 904,
-                            AreaCode = "940",
-                            CountryCode = "1",
-                            Number = "9028880",
-                            PhoneType = "Home"
-                        },
-                        new
-                        {
-                            Id = 905,
-                            AreaCode = "850",
-                            CountryCode = "1",
-                            Number = "9028880",
-                            PhoneType = "Cell"
-                        },
-                        new
-                        {
-                            Id = 906,
-                            AreaCode = "717",
-                            CountryCode = "1",
-                            Number = "9028880",
-                            PhoneType = "Cell"
-                        },
-                        new
-                        {
-                            Id = 907,
-                            AreaCode = "719",
-                            CountryCode = "1",
-                            Number = "9028880",
-                            PhoneType = "Work"
-                        },
-                        new
-                        {
-                            Id = 908,
-                            AreaCode = "123",
-                            CountryCode = "1",
-                            Number = "9028880",
-                            PhoneType = "Cell"
-                        },
-                        new
-                        {
-                            Id = 909,
-                            AreaCode = "456",
-                            CountryCode = "1",
-                            Number = "9028880",
-                            PhoneType = "Cell"
-                        },
-                        new
-                        {
-                            Id = 910,
-                            AreaCode = "789",
-                            CountryCode = "1",
-                            Number = "9028880",
-                            PhoneType = "Home"
-                        },
-                        new
-                        {
-                            Id = 911,
-                            AreaCode = "",
-                            CountryCode = "49",
-                            Number = "9028880",
-                            PhoneType = "Cell"
-                        },
-                        new
-                        {
-                            Id = 912,
-                            AreaCode = "234",
-                            CountryCode = "1",
-                            Number = "9028880",
-                            PhoneType = "Cell"
-                        },
-                        new
-                        {
-                            Id = 913,
-                            AreaCode = "837",
-                            CountryCode = "1",
-                            Number = "9028880",
-                            PhoneType = "Cell"
-                        });
-                });
-
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Player", b =>
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.People.Player", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -4317,6 +4081,9 @@ namespace SoccerTeamManagement.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Height")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ImageId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsAdult")
@@ -4349,6 +4116,8 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.HasIndex("AttributesId")
                         .IsUnique()
                         .HasFilter("[AttributesId] IS NOT NULL");
+
+                    b.HasIndex("ImageId");
 
                     b.HasIndex("NationId");
 
@@ -4565,7 +4334,754 @@ namespace SoccerTeamManagement.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.PlayerAttributes", b =>
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Phone", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AreaCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CountryCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Extension")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Phone");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 901,
+                            AreaCode = "360",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 902,
+                            AreaCode = "405",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 903,
+                            AreaCode = "405",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 904,
+                            AreaCode = "940",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Home"
+                        },
+                        new
+                        {
+                            Id = 905,
+                            AreaCode = "850",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 906,
+                            AreaCode = "717",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 907,
+                            AreaCode = "719",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Work"
+                        },
+                        new
+                        {
+                            Id = 908,
+                            AreaCode = "123",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 909,
+                            AreaCode = "456",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 910,
+                            AreaCode = "789",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Home"
+                        },
+                        new
+                        {
+                            Id = 911,
+                            AreaCode = "",
+                            CountryCode = "49",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 912,
+                            AreaCode = "234",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        },
+                        new
+                        {
+                            Id = 913,
+                            AreaCode = "837",
+                            CountryCode = "1",
+                            Number = "9028880",
+                            PhoneType = "Cell"
+                        });
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.PositionCategoryLookup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool?>("IsDisabled")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("SortOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PositionCategoryLookup");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsDisabled = false,
+                            SortOrder = 1,
+                            Text = "Offense",
+                            Value = "1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsDisabled = false,
+                            SortOrder = 2,
+                            Text = "Midfield",
+                            Value = "2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsDisabled = false,
+                            SortOrder = 3,
+                            Text = "Defense",
+                            Value = "3"
+                        });
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.PositionLookup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Abbreviation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsDisabled")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("PositionCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SortOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PositionCategoryId");
+
+                    b.ToTable("PositionLookup");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Abbreviation = "G",
+                            IsDisabled = false,
+                            PositionCategoryId = 1,
+                            SortOrder = 1,
+                            Text = "Goalie",
+                            Value = "G"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Abbreviation = "RB",
+                            IsDisabled = false,
+                            PositionCategoryId = 1,
+                            SortOrder = 2,
+                            Text = "Right FullBack",
+                            Value = "RB"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Abbreviation = "RWB",
+                            IsDisabled = false,
+                            PositionCategoryId = 1,
+                            SortOrder = 2,
+                            Text = "Right Wing Back",
+                            Value = "RWB"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Abbreviation = "LB",
+                            IsDisabled = false,
+                            PositionCategoryId = 1,
+                            SortOrder = 3,
+                            Text = "Left FullBack",
+                            Value = "LB"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Abbreviation = "LWB",
+                            IsDisabled = false,
+                            PositionCategoryId = 1,
+                            SortOrder = 3,
+                            Text = "Left Wing Back",
+                            Value = "LWB"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Abbreviation = "CB",
+                            IsDisabled = false,
+                            PositionCategoryId = 1,
+                            SortOrder = 4,
+                            Text = "Center Back",
+                            Value = "CB"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Abbreviation = "CM",
+                            IsDisabled = false,
+                            PositionCategoryId = 2,
+                            SortOrder = 5,
+                            Text = "Center Midfielder",
+                            Value = "CM"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Abbreviation = "CDM",
+                            IsDisabled = false,
+                            PositionCategoryId = 2,
+                            SortOrder = 5,
+                            Text = "Center Defensive Midfielder",
+                            Value = "CDM"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Abbreviation = "CAM",
+                            IsDisabled = false,
+                            PositionCategoryId = 2,
+                            SortOrder = 5,
+                            Text = "Center Attacking Midfielder",
+                            Value = "CAM"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Abbreviation = "LM",
+                            IsDisabled = false,
+                            PositionCategoryId = 2,
+                            SortOrder = 6,
+                            Text = "Left Midfielder",
+                            Value = "LM"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Abbreviation = "LW",
+                            IsDisabled = false,
+                            PositionCategoryId = 3,
+                            SortOrder = 6,
+                            Text = "Left Wing",
+                            Value = "LW"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Abbreviation = "LF",
+                            IsDisabled = false,
+                            PositionCategoryId = 3,
+                            SortOrder = 6,
+                            Text = "Left Forward",
+                            Value = "LF"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Abbreviation = "RM",
+                            IsDisabled = false,
+                            PositionCategoryId = 2,
+                            SortOrder = 7,
+                            Text = "Right Midfielder",
+                            Value = "RM"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Abbreviation = "RW",
+                            IsDisabled = false,
+                            PositionCategoryId = 3,
+                            SortOrder = 7,
+                            Text = "Right Wing",
+                            Value = "RW"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Abbreviation = "RF",
+                            IsDisabled = false,
+                            PositionCategoryId = 3,
+                            SortOrder = 7,
+                            Text = "Right Forward",
+                            Value = "RF"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Abbreviation = "RW",
+                            IsDisabled = false,
+                            PositionCategoryId = 3,
+                            SortOrder = 7,
+                            Text = "Right Wing",
+                            Value = "RW"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Abbreviation = "RF",
+                            IsDisabled = false,
+                            PositionCategoryId = 3,
+                            SortOrder = 7,
+                            Text = "Right Forward",
+                            Value = "RF"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Abbreviation = "ST",
+                            IsDisabled = false,
+                            PositionCategoryId = 3,
+                            SortOrder = 8,
+                            Text = "Striker",
+                            Value = "ST"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Abbreviation = "CF",
+                            IsDisabled = false,
+                            PositionCategoryId = 3,
+                            SortOrder = 8,
+                            Text = "Center Forward",
+                            Value = "CF"
+                        });
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Team", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ClubId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("LogoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClubId");
+
+                    b.HasIndex("LogoId");
+
+                    b.ToTable("Team");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ClubId = 1,
+                            Name = "Atlanta United"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ClubId = 2,
+                            Name = "Austin FC"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ClubId = 3,
+                            Name = "Charlotte FC"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ClubId = 4,
+                            Name = "Chicago Fire FC"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ClubId = 5,
+                            Name = "FC Cincinnati"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ClubId = 6,
+                            Name = "Colorado Rapids"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ClubId = 7,
+                            Name = "Columbus Crew"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ClubId = 8,
+                            Name = "D.C. United"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ClubId = 9,
+                            Name = "FC Dallas"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ClubId = 10,
+                            Name = "Houston Dynamo FC"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ClubId = 11,
+                            Name = "Sporting Kansas City"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ClubId = 12,
+                            Name = "LA Galaxy"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            ClubId = 13,
+                            Name = "Los Angeles Football Team"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            ClubId = 14,
+                            Name = "Inter Miami CF"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            ClubId = 15,
+                            Name = "Minnesota United"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            ClubId = 16,
+                            Name = "CF Montreal"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            ClubId = 17,
+                            Name = "Nashville SC"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            ClubId = 18,
+                            Name = "New England Revolution"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            ClubId = 19,
+                            Name = "New York Red Bulls"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            ClubId = 20,
+                            Name = "New York City FC"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            ClubId = 21,
+                            Name = "Orlando City"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            ClubId = 22,
+                            Name = "Philadelphia Union"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            ClubId = 23,
+                            Name = "Portland Timbers"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            ClubId = 24,
+                            Name = "Real Salt Lake"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            ClubId = 25,
+                            Name = "San Jose Earthquakes"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            ClubId = 26,
+                            Name = "Seattle Sounders"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            ClubId = 27,
+                            Name = "Toronto FC"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            ClubId = 28,
+                            Name = "Vancouver Whitecaps"
+                        },
+                        new
+                        {
+                            Id = 901,
+                            ClubId = 901,
+                            Name = "Test Team 1"
+                        },
+                        new
+                        {
+                            Id = 902,
+                            ClubId = 902,
+                            Name = "Test Team 2"
+                        },
+                        new
+                        {
+                            Id = 903,
+                            ClubId = 903,
+                            Name = "Test Team 3"
+                        },
+                        new
+                        {
+                            Id = 904,
+                            ClubId = 904,
+                            Name = "Test Team 4"
+                        },
+                        new
+                        {
+                            Id = 905,
+                            ClubId = 905,
+                            Name = "Test Team 5"
+                        },
+                        new
+                        {
+                            Id = 906,
+                            ClubId = 906,
+                            Name = "Test Team 6"
+                        },
+                        new
+                        {
+                            Id = 907,
+                            ClubId = 907,
+                            Name = "Test Team 7"
+                        },
+                        new
+                        {
+                            Id = 908,
+                            ClubId = 908,
+                            Name = "Test Team 8"
+                        },
+                        new
+                        {
+                            Id = 909,
+                            ClubId = 909,
+                            Name = "Test Team 9"
+                        },
+                        new
+                        {
+                            Id = 910,
+                            ClubId = 910,
+                            Name = "Test Team 10"
+                        },
+                        new
+                        {
+                            Id = 911,
+                            ClubId = 911,
+                            Name = "Test Team 11"
+                        },
+                        new
+                        {
+                            Id = 912,
+                            ClubId = 912,
+                            Name = "Test Team 12"
+                        },
+                        new
+                        {
+                            Id = 913,
+                            ClubId = 901,
+                            Name = "Test Team 13"
+                        },
+                        new
+                        {
+                            Id = 914,
+                            ClubId = 901,
+                            Name = "Test Team 14"
+                        },
+                        new
+                        {
+                            Id = 915,
+                            ClubId = 901,
+                            Name = "Test Team 15"
+                        },
+                        new
+                        {
+                            Id = 916,
+                            ClubId = 902,
+                            Name = "Test Team 16"
+                        },
+                        new
+                        {
+                            Id = 917,
+                            ClubId = 903,
+                            Name = "Test Team 17"
+                        },
+                        new
+                        {
+                            Id = 918,
+                            ClubId = 904,
+                            Name = "Test Team 18"
+                        },
+                        new
+                        {
+                            Id = 919,
+                            ClubId = 905,
+                            Name = "Test Team 19"
+                        },
+                        new
+                        {
+                            Id = 920,
+                            ClubId = 906,
+                            Name = "Test Team 20"
+                        },
+                        new
+                        {
+                            Id = 921,
+                            ClubId = 907,
+                            Name = "Test Team 21"
+                        },
+                        new
+                        {
+                            Id = 922,
+                            ClubId = 908,
+                            Name = "Test Team 22"
+                        },
+                        new
+                        {
+                            Id = 923,
+                            ClubId = 909,
+                            Name = "Test Team 23"
+                        },
+                        new
+                        {
+                            Id = 924,
+                            ClubId = 910,
+                            Name = "Test Team 24"
+                        });
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.People.PlayerAttributes", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -5152,611 +5668,132 @@ namespace SoccerTeamManagement.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.PositionCategoryLookup", b =>
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.People.Parent", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.HasBaseType("SoccerTeamManagement.Data.Models.People.Person");
 
-                    b.Property<bool?>("IsDisabled")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("SortOrder")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PositionCategoryLookup");
+                    b.ToTable("Parent");
 
                     b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            IsDisabled = false,
-                            SortOrder = 1,
-                            Text = "Offense",
-                            Value = "1"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            IsDisabled = false,
-                            SortOrder = 2,
-                            Text = "Midfield",
-                            Value = "2"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            IsDisabled = false,
-                            SortOrder = 3,
-                            Text = "Defense",
-                            Value = "3"
-                        });
-                });
-
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.PositionLookup", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Abbreviation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("IsDisabled")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("PositionCategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SortOrder")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PositionCategoryId");
-
-                    b.ToTable("PositionLookup");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Abbreviation = "G",
-                            IsDisabled = false,
-                            PositionCategoryId = 1,
-                            SortOrder = 1,
-                            Text = "Goalie",
-                            Value = "G"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Abbreviation = "RB",
-                            IsDisabled = false,
-                            PositionCategoryId = 1,
-                            SortOrder = 2,
-                            Text = "Right FullBack",
-                            Value = "RB"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Abbreviation = "RWB",
-                            IsDisabled = false,
-                            PositionCategoryId = 1,
-                            SortOrder = 2,
-                            Text = "Right Wing Back",
-                            Value = "RWB"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Abbreviation = "LB",
-                            IsDisabled = false,
-                            PositionCategoryId = 1,
-                            SortOrder = 3,
-                            Text = "Left FullBack",
-                            Value = "LB"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Abbreviation = "LWB",
-                            IsDisabled = false,
-                            PositionCategoryId = 1,
-                            SortOrder = 3,
-                            Text = "Left Wing Back",
-                            Value = "LWB"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Abbreviation = "CB",
-                            IsDisabled = false,
-                            PositionCategoryId = 1,
-                            SortOrder = 4,
-                            Text = "Center Back",
-                            Value = "CB"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Abbreviation = "CM",
-                            IsDisabled = false,
-                            PositionCategoryId = 2,
-                            SortOrder = 5,
-                            Text = "Center Midfielder",
-                            Value = "CM"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Abbreviation = "CDM",
-                            IsDisabled = false,
-                            PositionCategoryId = 2,
-                            SortOrder = 5,
-                            Text = "Center Defensive Midfielder",
-                            Value = "CDM"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Abbreviation = "CAM",
-                            IsDisabled = false,
-                            PositionCategoryId = 2,
-                            SortOrder = 5,
-                            Text = "Center Attacking Midfielder",
-                            Value = "CAM"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Abbreviation = "LM",
-                            IsDisabled = false,
-                            PositionCategoryId = 2,
-                            SortOrder = 6,
-                            Text = "Left Midfielder",
-                            Value = "LM"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Abbreviation = "LW",
-                            IsDisabled = false,
-                            PositionCategoryId = 3,
-                            SortOrder = 6,
-                            Text = "Left Wing",
-                            Value = "LW"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Abbreviation = "LF",
-                            IsDisabled = false,
-                            PositionCategoryId = 3,
-                            SortOrder = 6,
-                            Text = "Left Forward",
-                            Value = "LF"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Abbreviation = "RM",
-                            IsDisabled = false,
-                            PositionCategoryId = 2,
-                            SortOrder = 7,
-                            Text = "Right Midfielder",
-                            Value = "RM"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Abbreviation = "RW",
-                            IsDisabled = false,
-                            PositionCategoryId = 3,
-                            SortOrder = 7,
-                            Text = "Right Wing",
-                            Value = "RW"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Abbreviation = "RF",
-                            IsDisabled = false,
-                            PositionCategoryId = 3,
-                            SortOrder = 7,
-                            Text = "Right Forward",
-                            Value = "RF"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Abbreviation = "RW",
-                            IsDisabled = false,
-                            PositionCategoryId = 3,
-                            SortOrder = 7,
-                            Text = "Right Wing",
-                            Value = "RW"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Abbreviation = "RF",
-                            IsDisabled = false,
-                            PositionCategoryId = 3,
-                            SortOrder = 7,
-                            Text = "Right Forward",
-                            Value = "RF"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Abbreviation = "ST",
-                            IsDisabled = false,
-                            PositionCategoryId = 3,
-                            SortOrder = 8,
-                            Text = "Striker",
-                            Value = "ST"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            Abbreviation = "CF",
-                            IsDisabled = false,
-                            PositionCategoryId = 3,
-                            SortOrder = 8,
-                            Text = "Center Forward",
-                            Value = "CF"
-                        });
-                });
-
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Team", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ClubId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClubId");
-
-                    b.ToTable("Team");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ClubId = 1,
-                            Name = "Atlanta United"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ClubId = 2,
-                            Name = "Austin FC"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ClubId = 3,
-                            Name = "Charlotte FC"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ClubId = 4,
-                            Name = "Chicago Fire FC"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ClubId = 5,
-                            Name = "FC Cincinnati"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ClubId = 6,
-                            Name = "Colorado Rapids"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ClubId = 7,
-                            Name = "Columbus Crew"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            ClubId = 8,
-                            Name = "D.C. United"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            ClubId = 9,
-                            Name = "FC Dallas"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            ClubId = 10,
-                            Name = "Houston Dynamo FC"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            ClubId = 11,
-                            Name = "Sporting Kansas City"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            ClubId = 12,
-                            Name = "LA Galaxy"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            ClubId = 13,
-                            Name = "Los Angeles Football Team"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            ClubId = 14,
-                            Name = "Inter Miami CF"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            ClubId = 15,
-                            Name = "Minnesota United"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            ClubId = 16,
-                            Name = "CF Montreal"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            ClubId = 17,
-                            Name = "Nashville SC"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            ClubId = 18,
-                            Name = "New England Revolution"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            ClubId = 19,
-                            Name = "New York Red Bulls"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            ClubId = 20,
-                            Name = "New York City FC"
-                        },
-                        new
-                        {
-                            Id = 21,
-                            ClubId = 21,
-                            Name = "Orlando City"
-                        },
-                        new
-                        {
-                            Id = 22,
-                            ClubId = 22,
-                            Name = "Philadelphia Union"
-                        },
-                        new
-                        {
-                            Id = 23,
-                            ClubId = 23,
-                            Name = "Portland Timbers"
-                        },
-                        new
-                        {
-                            Id = 24,
-                            ClubId = 24,
-                            Name = "Real Salt Lake"
-                        },
-                        new
-                        {
-                            Id = 25,
-                            ClubId = 25,
-                            Name = "San Jose Earthquakes"
-                        },
-                        new
-                        {
-                            Id = 26,
-                            ClubId = 26,
-                            Name = "Seattle Sounders"
-                        },
-                        new
-                        {
-                            Id = 27,
-                            ClubId = 27,
-                            Name = "Toronto FC"
-                        },
-                        new
-                        {
-                            Id = 28,
-                            ClubId = 28,
-                            Name = "Vancouver Whitecaps"
-                        },
                         new
                         {
                             Id = 901,
-                            ClubId = 901,
-                            Name = "Test Team 1"
+                            AddressId = 901,
+                            FirstName = "TestParentFirst1",
+                            IsAdult = true,
+                            LastName = "TestParentLast1",
+                            NickName = "TestParent 1",
+                            PhoneId = 901
                         },
                         new
                         {
                             Id = 902,
-                            ClubId = 902,
-                            Name = "Test Team 2"
+                            AddressId = 902,
+                            FirstName = "TestParentFirst2",
+                            IsAdult = true,
+                            LastName = "TestParentLast2",
+                            NickName = "TestParent 2",
+                            PhoneId = 902
                         },
                         new
                         {
                             Id = 903,
-                            ClubId = 903,
-                            Name = "Test Team 3"
+                            AddressId = 903,
+                            FirstName = "TestParentFirst3",
+                            IsAdult = true,
+                            LastName = "TestParentLast3",
+                            NickName = "TestParent 3",
+                            PhoneId = 903
                         },
                         new
                         {
                             Id = 904,
-                            ClubId = 904,
-                            Name = "Test Team 4"
+                            AddressId = 904,
+                            FirstName = "TestParentFirst4",
+                            IsAdult = true,
+                            LastName = "TestParentLast4",
+                            NickName = "TestParent 4",
+                            PhoneId = 904
                         },
                         new
                         {
                             Id = 905,
-                            ClubId = 905,
-                            Name = "Test Team 5"
+                            AddressId = 905,
+                            FirstName = "TestParentFirst5",
+                            IsAdult = true,
+                            LastName = "TestParentLast5",
+                            NickName = "TestParent 5",
+                            PhoneId = 905
                         },
                         new
                         {
                             Id = 906,
-                            ClubId = 906,
-                            Name = "Test Team 6"
+                            AddressId = 906,
+                            FirstName = "TestParentFirst6",
+                            IsAdult = true,
+                            LastName = "TestParentLast6",
+                            NickName = "TestParent 6",
+                            PhoneId = 906
                         },
                         new
                         {
                             Id = 907,
-                            ClubId = 907,
-                            Name = "Test Team 7"
+                            AddressId = 907,
+                            FirstName = "TestParentFirst7",
+                            IsAdult = true,
+                            LastName = "TestParentLast7",
+                            NickName = "TestParent 7",
+                            PhoneId = 907
                         },
                         new
                         {
                             Id = 908,
-                            ClubId = 908,
-                            Name = "Test Team 8"
+                            AddressId = 908,
+                            FirstName = "TestParentFirst8",
+                            IsAdult = true,
+                            LastName = "TestParentLast8",
+                            NickName = "TestParent 8",
+                            PhoneId = 908
                         },
                         new
                         {
                             Id = 909,
-                            ClubId = 909,
-                            Name = "Test Team 9"
+                            AddressId = 909,
+                            FirstName = "TestParentFirst9",
+                            IsAdult = true,
+                            LastName = "TestParentLast9",
+                            NickName = "TestParent 9",
+                            PhoneId = 909
                         },
                         new
                         {
                             Id = 910,
-                            ClubId = 910,
-                            Name = "Test Team 10"
+                            AddressId = 910,
+                            FirstName = "TestParentFirst10",
+                            IsAdult = true,
+                            LastName = "TestParentLast10",
+                            NickName = "TestParent 10",
+                            PhoneId = 910
                         },
                         new
                         {
                             Id = 911,
-                            ClubId = 911,
-                            Name = "Test Team 11"
+                            AddressId = 911,
+                            FirstName = "TestParentFirst11",
+                            IsAdult = true,
+                            LastName = "TestParentLast11",
+                            NickName = "TestParent 11",
+                            PhoneId = 911
                         },
                         new
                         {
                             Id = 912,
-                            ClubId = 912,
-                            Name = "Test Team 12"
-                        },
-                        new
-                        {
-                            Id = 913,
-                            ClubId = 901,
-                            Name = "Test Team 13"
-                        },
-                        new
-                        {
-                            Id = 914,
-                            ClubId = 901,
-                            Name = "Test Team 14"
-                        },
-                        new
-                        {
-                            Id = 915,
-                            ClubId = 901,
-                            Name = "Test Team 15"
-                        },
-                        new
-                        {
-                            Id = 916,
-                            ClubId = 902,
-                            Name = "Test Team 16"
-                        },
-                        new
-                        {
-                            Id = 917,
-                            ClubId = 903,
-                            Name = "Test Team 17"
-                        },
-                        new
-                        {
-                            Id = 918,
-                            ClubId = 904,
-                            Name = "Test Team 18"
-                        },
-                        new
-                        {
-                            Id = 919,
-                            ClubId = 905,
-                            Name = "Test Team 19"
-                        },
-                        new
-                        {
-                            Id = 920,
-                            ClubId = 906,
-                            Name = "Test Team 20"
-                        },
-                        new
-                        {
-                            Id = 921,
-                            ClubId = 907,
-                            Name = "Test Team 21"
-                        },
-                        new
-                        {
-                            Id = 922,
-                            ClubId = 908,
-                            Name = "Test Team 22"
-                        },
-                        new
-                        {
-                            Id = 923,
-                            ClubId = 909,
-                            Name = "Test Team 23"
-                        },
-                        new
-                        {
-                            Id = 924,
-                            ClubId = 910,
-                            Name = "Test Team 24"
+                            AddressId = 912,
+                            FirstName = "TestParentFirst12",
+                            IsAdult = true,
+                            LastName = "TestParentLast12",
+                            NickName = "TestParent 12",
+                            PhoneId = 912
                         });
                 });
 
@@ -5811,6 +5848,15 @@ namespace SoccerTeamManagement.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Club", b =>
+                {
+                    b.HasOne("SoccerTeamManagement.Data.Models.Image", "Logo")
+                        .WithMany()
+                        .HasForeignKey("ImageId");
+
+                    b.Navigation("Logo");
+                });
+
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Image", b =>
                 {
                     b.OwnsOne("SoccerTeamManagement.Data.Models.Link", "Source", b1 =>
@@ -5861,13 +5907,13 @@ namespace SoccerTeamManagement.Data.Migrations
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.PlayerParent", b =>
                 {
-                    b.HasOne("SoccerTeamManagement.Data.Models.Parent", "Parent")
+                    b.HasOne("SoccerTeamManagement.Data.Models.People.Parent", "Parent")
                         .WithMany("PlayerParents")
                         .HasForeignKey("ParentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SoccerTeamManagement.Data.Models.Player", "Player")
+                    b.HasOne("SoccerTeamManagement.Data.Models.People.Player", "Player")
                         .WithMany("PlayerParents")
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -5880,7 +5926,7 @@ namespace SoccerTeamManagement.Data.Migrations
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.PlayerPosition", b =>
                 {
-                    b.HasOne("SoccerTeamManagement.Data.Models.Player", "Player")
+                    b.HasOne("SoccerTeamManagement.Data.Models.People.Player", "Player")
                         .WithMany("PlayerPositions")
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -5899,7 +5945,7 @@ namespace SoccerTeamManagement.Data.Migrations
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.TeamPlayer", b =>
                 {
-                    b.HasOne("SoccerTeamManagement.Data.Models.Player", "Player")
+                    b.HasOne("SoccerTeamManagement.Data.Models.People.Player", "Player")
                         .WithMany("TeamPlayers")
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -5916,30 +5962,24 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.Navigation("Team");
                 });
 
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Parent", b =>
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.League", b =>
                 {
-                    b.HasOne("SoccerTeamManagement.Data.Models.Address", "Address")
-                        .WithOne()
-                        .HasForeignKey("SoccerTeamManagement.Data.Models.Parent", "AddressId");
+                    b.HasOne("SoccerTeamManagement.Data.Models.Image", "Logo")
+                        .WithMany()
+                        .HasForeignKey("LogoId");
 
-                    b.HasOne("SoccerTeamManagement.Data.Models.Phone", "Phone")
-                        .WithOne()
-                        .HasForeignKey("SoccerTeamManagement.Data.Models.Parent", "PhoneId");
-
-                    b.Navigation("Address");
-
-                    b.Navigation("Phone");
+                    b.Navigation("Logo");
                 });
 
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Player", b =>
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.People.Person", b =>
                 {
                     b.HasOne("SoccerTeamManagement.Data.Models.Address", "Address")
                         .WithOne()
-                        .HasForeignKey("SoccerTeamManagement.Data.Models.Player", "AddressId");
+                        .HasForeignKey("SoccerTeamManagement.Data.Models.People.Person", "AddressId");
 
-                    b.HasOne("SoccerTeamManagement.Data.Models.PlayerAttributes", "Attributes")
-                        .WithOne("Player")
-                        .HasForeignKey("SoccerTeamManagement.Data.Models.Player", "AttributesId");
+                    b.HasOne("SoccerTeamManagement.Data.Models.Image", "Image")
+                        .WithMany()
+                        .HasForeignKey("ImageId");
 
                     b.HasOne("SoccerTeamManagement.Data.Models.NationLookup", "Nation")
                         .WithMany()
@@ -5947,11 +5987,44 @@ namespace SoccerTeamManagement.Data.Migrations
 
                     b.HasOne("SoccerTeamManagement.Data.Models.Phone", "Phone")
                         .WithOne()
-                        .HasForeignKey("SoccerTeamManagement.Data.Models.Player", "PhoneId");
+                        .HasForeignKey("SoccerTeamManagement.Data.Models.People.Person", "PhoneId");
+
+                    b.Navigation("Address");
+
+                    b.Navigation("Image");
+
+                    b.Navigation("Nation");
+
+                    b.Navigation("Phone");
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.People.Player", b =>
+                {
+                    b.HasOne("SoccerTeamManagement.Data.Models.Address", "Address")
+                        .WithOne()
+                        .HasForeignKey("SoccerTeamManagement.Data.Models.People.Player", "AddressId");
+
+                    b.HasOne("SoccerTeamManagement.Data.People.PlayerAttributes", "Attributes")
+                        .WithOne("Player")
+                        .HasForeignKey("SoccerTeamManagement.Data.Models.People.Player", "AttributesId");
+
+                    b.HasOne("SoccerTeamManagement.Data.Models.Image", "Image")
+                        .WithMany()
+                        .HasForeignKey("ImageId");
+
+                    b.HasOne("SoccerTeamManagement.Data.Models.NationLookup", "Nation")
+                        .WithMany()
+                        .HasForeignKey("NationId");
+
+                    b.HasOne("SoccerTeamManagement.Data.Models.Phone", "Phone")
+                        .WithOne()
+                        .HasForeignKey("SoccerTeamManagement.Data.Models.People.Player", "PhoneId");
 
                     b.Navigation("Address");
 
                     b.Navigation("Attributes");
+
+                    b.Navigation("Image");
 
                     b.Navigation("Nation");
 
@@ -5973,7 +6046,22 @@ namespace SoccerTeamManagement.Data.Migrations
                         .WithMany("Teams")
                         .HasForeignKey("ClubId");
 
+                    b.HasOne("SoccerTeamManagement.Data.Models.Image", "Logo")
+                        .WithMany()
+                        .HasForeignKey("LogoId");
+
                     b.Navigation("Club");
+
+                    b.Navigation("Logo");
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.People.Parent", b =>
+                {
+                    b.HasOne("SoccerTeamManagement.Data.Models.People.Person", null)
+                        .WithOne()
+                        .HasForeignKey("SoccerTeamManagement.Data.Models.People.Parent", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Club", b =>
@@ -5986,23 +6074,13 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.Navigation("LeagueTeams");
                 });
 
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Parent", b =>
-                {
-                    b.Navigation("PlayerParents");
-                });
-
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Player", b =>
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.People.Player", b =>
                 {
                     b.Navigation("PlayerParents");
 
                     b.Navigation("PlayerPositions");
 
                     b.Navigation("TeamPlayers");
-                });
-
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.PlayerAttributes", b =>
-                {
-                    b.Navigation("Player");
                 });
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.PositionLookup", b =>
@@ -6015,6 +6093,16 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.Navigation("LeagueTeams");
 
                     b.Navigation("TeamPlayers");
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.People.PlayerAttributes", b =>
+                {
+                    b.Navigation("Player");
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.People.Parent", b =>
+                {
+                    b.Navigation("PlayerParents");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,59 @@
+<h1>Players</h1>
+
+<p>List of Players</p>
+
+<p *ngIf="!players"><em>Loading...</em></p>
+
+<div class="commands text-right" *ngIf="players">
+  <button type="submit"
+          [routerLink]="['/player']"
+          class="btn btn-success">
+    Add a new Player
+  </button>
+</div>
+
+<mat-form-field [hidden]="!players">
+  <input matInput (keyup)="onFilterTextChanged($event.target.value)"
+         placeholder="Filter by name (or part of it)...">
+</mat-form-field>
+
+<table mat-table [dataSource]="players" class="table-striped mat-elevation-z8" [hidden]="!players"
+       matSort (matSortChange)="loadData()"
+       matSortActive="{{defaultSortColumn}}" matSortDirection="{{defaultSortOrder}}">
+
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+    <td mat-cell *matCellDef="let player"> {{player.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+    <td mat-cell *matCellDef="let player">
+      <a [routerLink]="['/player', player.id]">{{player.firstName}}</a>
+    </td>
+  </ng-container>
+
+  <!-- Lat Column -->
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+    <td mat-cell *matCellDef="let player"> {{player.lastName}} </td>
+  </ng-container>
+
+  <!-- Lon Column -->
+  <ng-container matColumnDef="nation">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Nation</th>
+    <td mat-cell *matCellDef="let player"> {{player.nation.text}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+﻿
+<!-- Pagination directive -->
+<mat-paginator [hidden]="!players"
+               (page)="getData($event)"
+               [pageSize]="10"
+               [pageSizeOptions]="[10, 20, 50]"
+               showFirstLastButtons></mat-paginator>

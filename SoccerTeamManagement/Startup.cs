@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using SoccerTeamManagement.Data;
 using SoccerTeamManagement.Data.Models;
 
@@ -23,9 +24,17 @@ namespace SoccerTeamManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddLogging(loggingBuilder =>
+            //{
+            //    loggingBuilder.AddConsole().AddFilter(DbLoggerCategory.Database.Command.Name, LogLevel.Information);
+            //    loggingBuilder.AddDebug();
+            //});
+
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                //options.EnableSensitiveDataLogging(true);
+            });
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 

@@ -54,5 +54,7 @@ namespace SoccerTeamManagement.Data
 
             #endregion Joins
         }
+
+        public DbSet<SoccerTeamManagement.Data.Models.People.Player> Players { get; set; }
     }
 }

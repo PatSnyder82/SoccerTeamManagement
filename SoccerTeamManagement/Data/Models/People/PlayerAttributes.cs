@@ -47,6 +47,8 @@ namespace SoccerTeamManagement.Data.People
 
         #endregion Shooting
 
+
+
         #region Defending
 
         public int? Interceptions { get; set; }

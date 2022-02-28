@@ -9,18 +9,20 @@ namespace SoccerTeamManagement.Data.Configuration.People
         public virtual void Configure(EntityTypeBuilder<T> builder)
         {
             builder.ToTable("Person");
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).IsRequired();
 
             #region Relationships
 
             //One Person to One Phone
             builder.HasOne(x => x.Phone)
                    .WithOne()
-                   .HasForeignKey<Person>(x => x.PhoneId);
+                   .HasForeignKey<T>(x => x.PhoneId);
 
             //One Person to One Address
             builder.HasOne(x => x.Address)
                    .WithOne()
-                   .HasForeignKey<Person>(x => x.AddressId);
+                   .HasForeignKey<T>(x => x.AddressId);
 
             ///A Person has One Nation
             builder.HasOne(x => x.Nation)

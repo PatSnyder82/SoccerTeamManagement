@@ -11,9 +11,9 @@ namespace SoccerTeamManagement.Data.Models
 
         #region Relationships
 
-        public int? ImageId { get; set; }
+        public int? LogoId { get; set; }
 
-        public Image Image { get; set; }
+        public Image Logo { get; set; }
 
         public ICollection<LeagueTeam> LeagueTeams { get; set; }
 

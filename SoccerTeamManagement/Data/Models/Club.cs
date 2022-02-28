@@ -12,7 +12,7 @@ namespace SoccerTeamManagement.Data.Models
 
         public int? ImageId { get; set; }
 
-        public Image Image { get; set; }
+        public Image Logo { get; set; }
 
         public ICollection<Team> Teams { get; set; }
 
