@@ -34,7 +34,7 @@ namespace SoccerTeamManagement.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Player>> GetPlayer(int id)
         {
-            var player = await _context.Players.FindAsync(id);
+            var player = await _context.Players.Include(x => x.Nation).FirstOrDefaultAsync(x => x.Id == id);
 
             if (player == null)
             {

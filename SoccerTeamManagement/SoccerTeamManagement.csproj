@@ -42,7 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\player\" />
+    <Folder Include="ClientApp\src\app\player\create\" />
     <Folder Include="ClientApp\src\assets\images\" />
     <Folder Include="Extensions\" />
   </ItemGroup>

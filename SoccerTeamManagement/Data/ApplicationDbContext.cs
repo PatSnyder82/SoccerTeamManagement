@@ -31,7 +31,7 @@ namespace SoccerTeamManagement.Data
 
             new PositionCategoryLookupConfiguration().Configure(builder.Entity<PositionCategoryLookup>());
             new PositionLookupConfiguration().Configure(builder.Entity<PositionLookup>());
-            new NationLookupConfiguration().Configure(builder.Entity<NationLookup>());
+            new CountryLookupConfiguration().Configure(builder.Entity<CountryLookup>());
 
             #endregion Lookups
 
@@ -56,5 +56,7 @@ namespace SoccerTeamManagement.Data
         }
 
         public DbSet<SoccerTeamManagement.Data.Models.People.Player> Players { get; set; }
+
+        public DbSet<SoccerTeamManagement.Data.Models.CountryLookup> CountryLookup { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace SoccerTeamManagement.Data.Models
 {
-    public class NationLookup : LookupBase
+    public class CountryLookup : LookupBase
     {
         // ISO 3166 values
 

@@ -14,7 +14,8 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
-import { PlayersComponent } from './players/players.component';
+import { PlayerListComponent } from './player/list/player-list.component';
+import { PlayerDetailsComponent } from './player/details/player-details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PlayersComponent } from './players/players.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    PlayersComponent
+    PlayerListComponent,
+    PlayerDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

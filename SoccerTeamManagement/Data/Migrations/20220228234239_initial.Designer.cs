@@ -10,7 +10,7 @@ using SoccerTeamManagement.Data;
 namespace SoccerTeamManagement.data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220228195304_initial")]
+    [Migration("20220228234239_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -686,808 +686,7 @@ namespace SoccerTeamManagement.data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Image", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AlternativeText")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Caption")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Height")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Style")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Width")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Image");
-                });
-
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.LeagueTeam", b =>
-                {
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TeamId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsPrimary")
-                        .HasColumnType("bit");
-
-                    b.HasKey("LeagueId", "TeamId");
-
-                    b.HasIndex("TeamId");
-
-                    b.ToTable("LeagueTeam");
-
-                    b.HasData(
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 1,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 2,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 3,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 4,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 5,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 6,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 7,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 8,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 9,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 10,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 11,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 12,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 13,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 14,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 15,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 16,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 17,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 18,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 19,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 20,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 21,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 22,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 23,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 24,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 25,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 26,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 27,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 1,
-                            TeamId = 28,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 901,
-                            TeamId = 901,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 901,
-                            TeamId = 902,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 901,
-                            TeamId = 903,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 901,
-                            TeamId = 904,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 902,
-                            TeamId = 905,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 902,
-                            TeamId = 906,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 902,
-                            TeamId = 907,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 902,
-                            TeamId = 908,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 903,
-                            TeamId = 909,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 903,
-                            TeamId = 910,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 903,
-                            TeamId = 911,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            LeagueId = 904,
-                            TeamId = 901,
-                            IsPrimary = false
-                        },
-                        new
-                        {
-                            LeagueId = 904,
-                            TeamId = 902,
-                            IsPrimary = false
-                        },
-                        new
-                        {
-                            LeagueId = 905,
-                            TeamId = 903,
-                            IsPrimary = false
-                        },
-                        new
-                        {
-                            LeagueId = 905,
-                            TeamId = 904,
-                            IsPrimary = false
-                        },
-                        new
-                        {
-                            LeagueId = 906,
-                            TeamId = 905,
-                            IsPrimary = false
-                        },
-                        new
-                        {
-                            LeagueId = 906,
-                            TeamId = 906,
-                            IsPrimary = false
-                        },
-                        new
-                        {
-                            LeagueId = 907,
-                            TeamId = 907,
-                            IsPrimary = false
-                        },
-                        new
-                        {
-                            LeagueId = 907,
-                            TeamId = 908,
-                            IsPrimary = false
-                        },
-                        new
-                        {
-                            LeagueId = 908,
-                            TeamId = 909,
-                            IsPrimary = false
-                        },
-                        new
-                        {
-                            LeagueId = 908,
-                            TeamId = 910,
-                            IsPrimary = false
-                        },
-                        new
-                        {
-                            LeagueId = 909,
-                            TeamId = 911,
-                            IsPrimary = false
-                        },
-                        new
-                        {
-                            LeagueId = 909,
-                            TeamId = 912,
-                            IsPrimary = false
-                        });
-                });
-
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.PlayerParent", b =>
-                {
-                    b.Property<int>("PlayerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ParentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("PlayerId", "ParentId");
-
-                    b.HasIndex("ParentId");
-
-                    b.ToTable("PlayerParent");
-
-                    b.HasData(
-                        new
-                        {
-                            PlayerId = 901,
-                            ParentId = 901
-                        },
-                        new
-                        {
-                            PlayerId = 902,
-                            ParentId = 901
-                        },
-                        new
-                        {
-                            PlayerId = 903,
-                            ParentId = 902
-                        },
-                        new
-                        {
-                            PlayerId = 904,
-                            ParentId = 902
-                        },
-                        new
-                        {
-                            PlayerId = 905,
-                            ParentId = 903
-                        },
-                        new
-                        {
-                            PlayerId = 906,
-                            ParentId = 903
-                        },
-                        new
-                        {
-                            PlayerId = 907,
-                            ParentId = 904
-                        },
-                        new
-                        {
-                            PlayerId = 908,
-                            ParentId = 904
-                        },
-                        new
-                        {
-                            PlayerId = 909,
-                            ParentId = 907
-                        },
-                        new
-                        {
-                            PlayerId = 910,
-                            ParentId = 908
-                        },
-                        new
-                        {
-                            PlayerId = 911,
-                            ParentId = 910
-                        },
-                        new
-                        {
-                            PlayerId = 912,
-                            ParentId = 911
-                        },
-                        new
-                        {
-                            PlayerId = 901,
-                            ParentId = 912
-                        });
-                });
-
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.PlayerPosition", b =>
-                {
-                    b.Property<int>("PlayerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PositionId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsPrimary")
-                        .HasColumnType("bit");
-
-                    b.HasKey("PlayerId", "PositionId");
-
-                    b.HasIndex("PositionId");
-
-                    b.ToTable("PlayerPosition");
-
-                    b.HasData(
-                        new
-                        {
-                            PlayerId = 901,
-                            PositionId = 1,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            PlayerId = 901,
-                            PositionId = 2,
-                            IsPrimary = false
-                        },
-                        new
-                        {
-                            PlayerId = 901,
-                            PositionId = 3,
-                            IsPrimary = false
-                        },
-                        new
-                        {
-                            PlayerId = 902,
-                            PositionId = 4,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            PlayerId = 903,
-                            PositionId = 5,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            PlayerId = 904,
-                            PositionId = 6,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            PlayerId = 905,
-                            PositionId = 18,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            PlayerId = 905,
-                            PositionId = 19,
-                            IsPrimary = false
-                        },
-                        new
-                        {
-                            PlayerId = 906,
-                            PositionId = 11,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            PlayerId = 907,
-                            PositionId = 12,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            PlayerId = 908,
-                            PositionId = 13,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            PlayerId = 909,
-                            PositionId = 19,
-                            IsPrimary = false
-                        },
-                        new
-                        {
-                            PlayerId = 909,
-                            PositionId = 11,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            PlayerId = 910,
-                            PositionId = 12,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            PlayerId = 911,
-                            PositionId = 13,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            PlayerId = 912,
-                            PositionId = 14,
-                            IsPrimary = true
-                        },
-                        new
-                        {
-                            PlayerId = 912,
-                            PositionId = 15,
-                            IsPrimary = false
-                        });
-                });
-
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.TeamPlayer", b =>
-                {
-                    b.Property<int>("PlayerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TeamId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("DepartedTeam")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTimeOffset?>("JoinedTeam")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("PlayerId", "TeamId");
-
-                    b.HasIndex("TeamId");
-
-                    b.ToTable("TeamPlayer");
-
-                    b.HasData(
-                        new
-                        {
-                            PlayerId = 901,
-                            TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 942, DateTimeKind.Unspecified).AddTicks(8273), new TimeSpan(0, -5, 0, 0, 0)),
-                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
-                        },
-                        new
-                        {
-                            PlayerId = 902,
-                            TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(437), new TimeSpan(0, -5, 0, 0, 0)),
-                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
-                        },
-                        new
-                        {
-                            PlayerId = 903,
-                            TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(477), new TimeSpan(0, -5, 0, 0, 0)),
-                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
-                        },
-                        new
-                        {
-                            PlayerId = 904,
-                            TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(484), new TimeSpan(0, -5, 0, 0, 0)),
-                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
-                        },
-                        new
-                        {
-                            PlayerId = 905,
-                            TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(489), new TimeSpan(0, -5, 0, 0, 0)),
-                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
-                        },
-                        new
-                        {
-                            PlayerId = 906,
-                            TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(497), new TimeSpan(0, -5, 0, 0, 0)),
-                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
-                        },
-                        new
-                        {
-                            PlayerId = 907,
-                            TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(502), new TimeSpan(0, -5, 0, 0, 0)),
-                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
-                        },
-                        new
-                        {
-                            PlayerId = 908,
-                            TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(506), new TimeSpan(0, -5, 0, 0, 0)),
-                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
-                        },
-                        new
-                        {
-                            PlayerId = 909,
-                            TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(510), new TimeSpan(0, -5, 0, 0, 0)),
-                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
-                        },
-                        new
-                        {
-                            PlayerId = 910,
-                            TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(516), new TimeSpan(0, -5, 0, 0, 0)),
-                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
-                        },
-                        new
-                        {
-                            PlayerId = 911,
-                            TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(520), new TimeSpan(0, -5, 0, 0, 0)),
-                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
-                        },
-                        new
-                        {
-                            PlayerId = 912,
-                            TeamId = 904,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(524), new TimeSpan(0, -5, 0, 0, 0)),
-                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
-                        },
-                        new
-                        {
-                            PlayerId = 901,
-                            TeamId = 905,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 14, 53, 3, 946, DateTimeKind.Unspecified).AddTicks(528), new TimeSpan(0, -5, 0, 0, 0)),
-                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
-                        });
-                });
-
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.League", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("LogoId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LogoId");
-
-                    b.ToTable("League");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Major League Soccer"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Premier League"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "La Liga"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Serie A"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Bundesliga"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Ligue 1"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Eredivisie"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Serie A"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Local League"
-                        },
-                        new
-                        {
-                            Id = 901,
-                            Name = "Test League 1"
-                        },
-                        new
-                        {
-                            Id = 902,
-                            Name = "Test League 2"
-                        },
-                        new
-                        {
-                            Id = 903,
-                            Name = "Test League 3"
-                        },
-                        new
-                        {
-                            Id = 904,
-                            Name = "Test League 4"
-                        },
-                        new
-                        {
-                            Id = 905,
-                            Name = "Test League 5"
-                        },
-                        new
-                        {
-                            Id = 906,
-                            Name = "Test League 6"
-                        },
-                        new
-                        {
-                            Id = 907,
-                            Name = "Test League 7"
-                        },
-                        new
-                        {
-                            Id = 908,
-                            Name = "Test League 8"
-                        },
-                        new
-                        {
-                            Id = 909,
-                            Name = "Test League 9"
-                        },
-                        new
-                        {
-                            Id = 910,
-                            Name = "Test League 10"
-                        },
-                        new
-                        {
-                            Id = 911,
-                            Name = "Test League 11"
-                        },
-                        new
-                        {
-                            Id = 912,
-                            Name = "Test League 12"
-                        });
-                });
-
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.NationLookup", b =>
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.CountryLookup", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1514,7 +713,7 @@ namespace SoccerTeamManagement.data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("NationLookup");
+                    b.ToTable("CountryLookup");
 
                     b.HasData(
                         new
@@ -4009,6 +3208,807 @@ namespace SoccerTeamManagement.data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AlternativeText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Caption")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Height")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Style")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Width")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Image");
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.LeagueTeam", b =>
+                {
+                    b.Property<int>("LeagueId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TeamId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsPrimary")
+                        .HasColumnType("bit");
+
+                    b.HasKey("LeagueId", "TeamId");
+
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("LeagueTeam");
+
+                    b.HasData(
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 1,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 2,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 3,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 4,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 5,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 6,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 7,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 8,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 9,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 10,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 11,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 12,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 13,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 14,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 15,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 16,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 17,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 18,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 19,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 20,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 21,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 22,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 23,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 24,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 25,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 26,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 27,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 1,
+                            TeamId = 28,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 901,
+                            TeamId = 901,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 901,
+                            TeamId = 902,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 901,
+                            TeamId = 903,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 901,
+                            TeamId = 904,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 902,
+                            TeamId = 905,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 902,
+                            TeamId = 906,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 902,
+                            TeamId = 907,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 902,
+                            TeamId = 908,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 903,
+                            TeamId = 909,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 903,
+                            TeamId = 910,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 903,
+                            TeamId = 911,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            LeagueId = 904,
+                            TeamId = 901,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 904,
+                            TeamId = 902,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 905,
+                            TeamId = 903,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 905,
+                            TeamId = 904,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 906,
+                            TeamId = 905,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 906,
+                            TeamId = 906,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 907,
+                            TeamId = 907,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 907,
+                            TeamId = 908,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 908,
+                            TeamId = 909,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 908,
+                            TeamId = 910,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 909,
+                            TeamId = 911,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            LeagueId = 909,
+                            TeamId = 912,
+                            IsPrimary = false
+                        });
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.PlayerParent", b =>
+                {
+                    b.Property<int>("PlayerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ParentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PlayerId", "ParentId");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("PlayerParent");
+
+                    b.HasData(
+                        new
+                        {
+                            PlayerId = 901,
+                            ParentId = 901
+                        },
+                        new
+                        {
+                            PlayerId = 902,
+                            ParentId = 901
+                        },
+                        new
+                        {
+                            PlayerId = 903,
+                            ParentId = 902
+                        },
+                        new
+                        {
+                            PlayerId = 904,
+                            ParentId = 902
+                        },
+                        new
+                        {
+                            PlayerId = 905,
+                            ParentId = 903
+                        },
+                        new
+                        {
+                            PlayerId = 906,
+                            ParentId = 903
+                        },
+                        new
+                        {
+                            PlayerId = 907,
+                            ParentId = 904
+                        },
+                        new
+                        {
+                            PlayerId = 908,
+                            ParentId = 904
+                        },
+                        new
+                        {
+                            PlayerId = 909,
+                            ParentId = 907
+                        },
+                        new
+                        {
+                            PlayerId = 910,
+                            ParentId = 908
+                        },
+                        new
+                        {
+                            PlayerId = 911,
+                            ParentId = 910
+                        },
+                        new
+                        {
+                            PlayerId = 912,
+                            ParentId = 911
+                        },
+                        new
+                        {
+                            PlayerId = 901,
+                            ParentId = 912
+                        });
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.PlayerPosition", b =>
+                {
+                    b.Property<int>("PlayerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PositionId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsPrimary")
+                        .HasColumnType("bit");
+
+                    b.HasKey("PlayerId", "PositionId");
+
+                    b.HasIndex("PositionId");
+
+                    b.ToTable("PlayerPosition");
+
+                    b.HasData(
+                        new
+                        {
+                            PlayerId = 901,
+                            PositionId = 1,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 901,
+                            PositionId = 2,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            PlayerId = 901,
+                            PositionId = 3,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            PlayerId = 902,
+                            PositionId = 4,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 903,
+                            PositionId = 5,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 904,
+                            PositionId = 6,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 905,
+                            PositionId = 18,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 905,
+                            PositionId = 19,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            PlayerId = 906,
+                            PositionId = 11,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 907,
+                            PositionId = 12,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 908,
+                            PositionId = 13,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 909,
+                            PositionId = 19,
+                            IsPrimary = false
+                        },
+                        new
+                        {
+                            PlayerId = 909,
+                            PositionId = 11,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 910,
+                            PositionId = 12,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 911,
+                            PositionId = 13,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 912,
+                            PositionId = 14,
+                            IsPrimary = true
+                        },
+                        new
+                        {
+                            PlayerId = 912,
+                            PositionId = 15,
+                            IsPrimary = false
+                        });
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Joins.TeamPlayer", b =>
+                {
+                    b.Property<int>("PlayerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TeamId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset?>("DepartedTeam")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset?>("JoinedTeam")
+                        .HasColumnType("datetimeoffset");
+
+                    b.HasKey("PlayerId", "TeamId");
+
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("TeamPlayer");
+
+                    b.HasData(
+                        new
+                        {
+                            PlayerId = 901,
+                            TeamId = 901,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 445, DateTimeKind.Unspecified).AddTicks(5831), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 902,
+                            TeamId = 901,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8755), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 903,
+                            TeamId = 901,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8793), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 904,
+                            TeamId = 901,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8801), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 905,
+                            TeamId = 902,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8806), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 906,
+                            TeamId = 902,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8813), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 907,
+                            TeamId = 902,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8818), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 908,
+                            TeamId = 903,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8823), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 909,
+                            TeamId = 903,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8828), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 910,
+                            TeamId = 903,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8836), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 911,
+                            TeamId = 903,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8841), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 912,
+                            TeamId = 904,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8845), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            PlayerId = 901,
+                            TeamId = 905,
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8850), new TimeSpan(0, -5, 0, 0, 0)),
+                            JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        });
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.League", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("LogoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LogoId");
+
+                    b.ToTable("League");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Major League Soccer"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Premier League"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "La Liga"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Serie A"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Bundesliga"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Ligue 1"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Eredivisie"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Serie A"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Local League"
+                        },
+                        new
+                        {
+                            Id = 901,
+                            Name = "Test League 1"
+                        },
+                        new
+                        {
+                            Id = 902,
+                            Name = "Test League 2"
+                        },
+                        new
+                        {
+                            Id = 903,
+                            Name = "Test League 3"
+                        },
+                        new
+                        {
+                            Id = 904,
+                            Name = "Test League 4"
+                        },
+                        new
+                        {
+                            Id = 905,
+                            Name = "Test League 5"
+                        },
+                        new
+                        {
+                            Id = 906,
+                            Name = "Test League 6"
+                        },
+                        new
+                        {
+                            Id = 907,
+                            Name = "Test League 7"
+                        },
+                        new
+                        {
+                            Id = 908,
+                            Name = "Test League 8"
+                        },
+                        new
+                        {
+                            Id = 909,
+                            Name = "Test League 9"
+                        },
+                        new
+                        {
+                            Id = 910,
+                            Name = "Test League 10"
+                        },
+                        new
+                        {
+                            Id = 911,
+                            Name = "Test League 11"
+                        },
+                        new
+                        {
+                            Id = 912,
+                            Name = "Test League 12"
+                        });
+                });
+
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.People.Person", b =>
                 {
                     b.Property<int>("Id")
@@ -5981,7 +5981,7 @@ namespace SoccerTeamManagement.data.Migrations
                         .WithMany()
                         .HasForeignKey("ImageId");
 
-                    b.HasOne("SoccerTeamManagement.Data.Models.NationLookup", "Nation")
+                    b.HasOne("SoccerTeamManagement.Data.Models.CountryLookup", "Nation")
                         .WithMany()
                         .HasForeignKey("NationId");
 
@@ -6012,7 +6012,7 @@ namespace SoccerTeamManagement.data.Migrations
                         .WithMany()
                         .HasForeignKey("ImageId");
 
-                    b.HasOne("SoccerTeamManagement.Data.Models.NationLookup", "Nation")
+                    b.HasOne("SoccerTeamManagement.Data.Models.CountryLookup", "Nation")
                         .WithMany()
                         .HasForeignKey("NationId");
 
