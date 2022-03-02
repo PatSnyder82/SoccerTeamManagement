@@ -11,7 +11,7 @@ import { LoginActions, QueryParameterNames, ApplicationPaths, ReturnUrlType } fr
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   public message = new BehaviorSubject<string>(null);
@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit {
         throw new Error(`Invalid action '${action}'`);
     }
   }
-
 
   private async login(returnUrl: string): Promise<void> {
     const state: INavigationState = { returnUrl };

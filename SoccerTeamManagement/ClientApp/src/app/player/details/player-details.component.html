@@ -3,149 +3,77 @@
 
   <p *ngIf="this.id && !player"><em>Loading...</em></p>
 
-  <div class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <section class="from-group">
+      <mat-slide-toggle formControlName="readonly" (change)="readonlySlideChange($event)">Readonly</mat-slide-toggle>
+    </section>
 
-    <div class="form-group">
-      <label for="firstName">First Name:</label>
-      <br />
-      <input type="text" id="firstName"
-             formControlName="firstName" required
-             placeholder="First name..."
-             class="form-control" />
+    <section class="form-group">
+      <mat-label>First Name:</mat-label>
+      <input matInput formControlName="firstName" [errorStateMatcher]="errorStateMatcher" class="form-control" />
+      <mat-error *ngIf="form.controls['firstName'].hasError('required')"><strong>Input required</strong></mat-error>
+    </section>
 
-      <div *ngIf="form.get('firstName').invalid &&
-                 (form.get('firstName').dirty || form.get('firstName').touched)"
-           class="invalid-feedback">
-        <div *ngIf="form.get('firstName').errors?.required">
-          First name is required.
-        </div>
-      </div>
-    </div>
+    <section class="form-group">
+      <mat-label>Last Name:</mat-label>
+      <input matInput formControlName="lastName" [errorStateMatcher]="errorStateMatcher" class="form-control" />
+      <mat-error *ngIf="form.controls['lastName'].hasError('required')"><strong>Input required</strong></mat-error>
+    </section>
 
-    <div class="form-group">
-      <label for="lastName">Last Name:</label>
-      <br />
-      <input type="text" id="lastName"
-             formControlName="lastName" required
-             placeholder="Last name..."
-             class="form-control" />
+    <section class="form-group">
+      <mat-label>Nickname:</mat-label>
+      <input matInput formControlName="nickName" [errorStateMatcher]="errorStateMatcher" class="form-control" />
+      <mat-error *ngIf="form.controls['nickName'].hasError('required')"><strong>Input required</strong></mat-error>
+    </section>
 
-      <div *ngIf="form.get('lastName').invalid &&
-                 (form.get('lastName').dirty || form.get('lastName').touched)"
-           class="invalid-feedback">
-        <div *ngIf="form.get('lastName').errors?.required">
-          Last name is required.
-        </div>
-      </div>
-    </div>
+    <section class="form-group">
+      <mat-label>Is Player a Adult?</mat-label><br />
+      <mat-checkbox formControlName="isAdult"></mat-checkbox>
+    </section>
 
-    <div class="form-group">
-      <label for="nickName">Nick Name:</label>
-      <br />
-      <input type="text" id="nickName"
-             formControlName="nickName" required
-             placeholder="Nick name..."
-             class="form-control" />
+    <section class="form-group">
+      <mat-label>Height:</mat-label>
+      <input matInput formControlName="height" [errorStateMatcher]="errorStateMatcher" class="form-control" />
+      <mat-error *ngIf="form.controls['height'].hasError('required')"><strong>Input required  </strong></mat-error>
+      <mat-error *ngIf="form.controls['height'].hasError('min')"><strong>Value must be between 0 - 999  </strong></mat-error>
+      <mat-error *ngIf="form.controls['height'].hasError('max')"><strong>Value must be between 0 - 999  </strong></mat-error>
+      <mat-error *ngIf="form.controls['height'].hasError('pattern') && (form.controls['height'].dirty || form.controls['height'].touched)">
+        <strong>Input must be a positive whole number  </strong>
+      </mat-error>
+    </section>
 
-      <div *ngIf="form.get('nickName').invalid &&
-                 (form.get('nickName').dirty || form.get('nickName').touched)"
-           class="invalid-feedback">
-        <div *ngIf="form.get('nickName').errors?.required">
-          Nick name is required.
-        </div>
-      </div>
-    </div>
+    <section class="form-group">
+      <mat-label>Weight:</mat-label>
+      <input matInput formControlName="weight" [errorStateMatcher]="errorStateMatcher" class="form-control" />
+      <mat-error *ngIf="form.controls['weight'].hasError('required')"><strong>Input required  </strong></mat-error>
+      <mat-error *ngIf="form.controls['weight'].hasError('min')"><strong>Value must be between 0 - 9999  </strong></mat-error>
+      <mat-error *ngIf="form.controls['weight'].hasError('max')"><strong>Value must be between 0 - 9999  </strong></mat-error>
+      <mat-error *ngIf="form.controls['weight'].hasError('pattern') && (form.controls['weight'].dirty || form.controls['weight'].touched)">
+        <strong>Input must be a positive whole number  </strong>
+      </mat-error>
+    </section>
 
-    <div class="form-group">
-      <label for="isAdult">Adult?:</label>
-      <br />
-      <input type="checkbox" id="isAdult"
-             formControlName="isAdult"
-             class="form-control" />
-    </div>
-
-    <div class="form-group">
-      <label for="height">Height:</label>
-      <br />
-      <input type="text" id="height"
-             formControlName="height" required
-             placeholder="Height..."
-             class="form-control" />
-
-      <div *ngIf="form.get('height').invalid &&
-                 (form.get('height').dirty || form.get('height').touched)"
-           class="invalid-feedback">
-        <div *ngIf="form.get('height').errors?.required">
-          Height is required.
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="weight">Weight:</label>
-      <br />
-      <input type="text" id="weight"
-             formControlName="weight" required
-             placeholder="Weight..."
-             class="form-control" />
-
-      <div *ngIf="form.get('weight').invalid &&
-                 (form.get('weight').dirty || form.get('weight').touched)"
-           class="invalid-feedback">
-        <div *ngIf="form.get('weight').errors?.required">
-          Weight is required.
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="foot">Foot:</label>
-      <br />
-      <mat-button-toggle-group id="foot" formControlName="foot" [(ngModel)]="player.foot">
+    <section class="form-group">
+      <mat-label>Strong Foot:</mat-label>
+      <mat-button-toggle-group formControlName="foot">
         <mat-button-toggle [value]="1">Left</mat-button-toggle>
         <mat-button-toggle [value]="0">Right</mat-button-toggle>
       </mat-button-toggle-group>
-    </div>
+    </section>
 
-    <div class="form-group">
-      <label for="nation">Country:</label>
-      <br />
-      <mat-form-field *ngIf="countries">
-        <mat-label>Select a Country...</mat-label>
-        <mat-select id="nation" formControlName="nation" [(ngModel)]="player.nation.id">
-          <mat-option *ngFor="let country of countries" [value]="country.id">
-            {{country.text}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <section class="form-group">
+      <mat-label>Nationality:</mat-label>
+      <mat-select formControlName="nationId" [errorStateMatcher]="errorStateMatcher" class="form-control">
+        <mat-option *ngFor="let country of countries" [value]="country.id">
+          {{country.text}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['nationId'].hasError('required')"><strong>Input required</strong></mat-error>
+    </section>
 
-      <div *ngIf="form.get('nation').invalid &&
-                 (form.get('nation').dirty || form.get('nation').touched)"
-           class="invalid-feedback">
-        <div *ngIf="form.get('nation').errors?.required">
-          Please select a Country.
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group commands">
-      <button *ngIf="id" type="submit"
-              (click)="onSubmit()"
-              [disabled]="form.invalid"
-              class="btn btn-success">
-        Save
-      </button>
-      <button *ngIf="!id" type="submit"
-              (click)="onSubmit()"
-              [disabled]="form.invalid"
-              class="btn btn-success">
-        Create
-      </button>
-      <button type="button"
-              [routerLink]="['/player']"
-              class="btn">
-        Cancel
-      </button>
-    </div>
-  </div>
+    <section class="form-group commands">
+      <button mat-raised-button *ngIf="id" type="submit" [disabled]="form.invalid || form.controls['weight'].disabled" color="warn">Update</button>
+      <button mat-raised-button type="button" [routerLink]="['/players']">Cancel</button>
+    </section>
+  </form>
 </div>

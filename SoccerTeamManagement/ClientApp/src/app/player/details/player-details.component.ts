@@ -1,99 +1,46 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl, Validators, AbstractControl, AsyncValidatorFn } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Player } from '../../interfaces/player';
 import { CountryLookup } from '../../interfaces/countryLookup';
-import { MatButtonModule } from '@angular/material/button';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-player-details',
   templateUrl: './player-details.component.html',
-  styleUrls: ['./player-details.component.css']
+  styleUrls: ['./player-details.component.scss']
 })
 export class PlayerDetailsComponent implements OnInit {
   //#region Properties
+  id: number;
+  player: Player;
+  countries: CountryLookup[];
 
   title: string;
   form: FormGroup;
-
-  player: Player;
-  countries: CountryLookup[];
-  id: number;
+  errorStateMatcher = new ErrorStateMatcher;
 
   //#endregion
 
   //#region Constructor
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
-  }
+    const unsignedInt999Pattern = new RegExp('^[1-9]\\d{0,2}$');
 
-  //#endregion
-
-  //#region Events
-
-  ngOnInit() {
-    this.initialize();
-  }
-
-  onSubmit() {
-    /*var player = (this.id) ? this.player : <Player>{};
-
-    player.name = this.form.get("name").value;
-    player.lat = +this.form.get("lat").value;
-    player.lon = +this.form.get("lon").value;
-    player.countryId = +this.form.get("countryId").value;
-
-    if (this.id) {
-      // EDIT mode
-
-      var url = this.baseUrl + "api/Cities/" + this.city.id;
-      this.http
-        .put<City>(url, city)
-        .subscribe(result => {
-          console.log("City " + city.id + " has been updated.");
-
-          // go back to cities view
-          this.router.navigate(['/cities']);
-        }, error => console.error(error));
-    }
-    else {
-      // ADD NEW mode
-      var url = this.baseUrl + "api/Cities";
-      this.http
-        .post<City>(url, city)
-        .subscribe(result => {
-          console.log("City " + result.id + " has been created.");
-
-          // go back to cities view
-          this.router.navigate(['/cities']);
-        }, error => console.error(error));
-    }*/
-  }
-
-  //#endregion
-
-  //#region Methods
-  private initialize() {
-    this.intializeFormGroup();
-    this.loadData();
-    this.loadCountries();
-  }
-
-  private intializeFormGroup() {
     this.form = new FormGroup({
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
       nickName: new FormControl('', Validators.required),
       isAdult: new FormControl('', Validators.required),
-      height: new FormControl('', Validators.required),
-      weight: new FormControl('', Validators.required),
+      height: new FormControl('', [Validators.required, Validators.min(0), Validators.max(999), Validators.pattern(unsignedInt999Pattern)]),
+      weight: new FormControl('', [Validators.required, Validators.min(0), Validators.max(9999), Validators.pattern(unsignedInt999Pattern)]),
       foot: new FormControl('', Validators.required),
-      flareRating: new FormControl('', Validators.required),
-      nation: new FormControl('', Validators.required)
+      flareRating: new FormControl('', [Validators.required, Validators.min(1), Validators.max(5)]),
+      nationId: new FormControl('', Validators.required),
+      readonly: new FormControl('true')
       /*//Phone
       countryCode: new FormControl('', Validators.required),
       areaCode: new FormControl('', Validators.required),
@@ -117,7 +64,44 @@ export class PlayerDetailsComponent implements OnInit {
       positions: new FormControl('', Validators.required),
       parents: new FormControl('', Validators.required),*/
     });
+
+    this.form.disable();
+    this.form.controls['readonly'].enable();
   }
+
+  //#endregion
+
+  //#region Events
+
+  ngOnInit() {
+    this.loadCountries();
+    this.loadData();
+  }
+
+  onSubmit() {
+    var player = (this.id) ? this.player : <Player>{};
+
+    player.firstName = this.form.get("firstName").value;
+    player.lastName = this.form.get("lastName").value;
+    player.nickName = this.form.get("nickName").value;
+    player.isAdult = this.form.get("isAdult").value;
+    player.height = +this.form.get("height").value;
+    player.weight = +this.form.get("weight").value;
+    player.foot = this.form.get("foot").value;
+    player.flareRating = +this.form.get("flareRating").value;
+    player.nationId = +this.form.get("nationId").value;
+
+    const url = this.baseUrl + "api/players/" + this.player.id;
+
+    this.http.put<Player>(url, player)
+      .subscribe(() => {
+        this.router.navigate(['/players']);
+      }, error => console.error(error));
+  }
+
+  //#endregion
+
+  //#region Methods
 
   loadCountries() {
     // fetch all the countries from the server
@@ -143,9 +127,19 @@ export class PlayerDetailsComponent implements OnInit {
     this.http.get<Player>(url).subscribe(result => {
       this.player = result;
       this.title = "Edit - " + this.player.firstName + " " + this.player.lastName;
-
+      console.log(this.player);
       this.form.patchValue(this.player);
     }, error => console.error(error));
+  }
+
+  readonlySlideChange($event: MatSlideToggleChange) {
+    if ($event.checked) {
+      this.form.disable();
+      this.form.controls['readonly'].enable();
+    }
+    else {
+      this.form.enable();
+    }
   }
 
   //#endregion

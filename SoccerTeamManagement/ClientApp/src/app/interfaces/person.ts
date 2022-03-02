@@ -13,5 +13,6 @@ export interface Person {
   phone: Phone;
   address: Address;
   photo: Image;
+  nationId: number;
   nation: CountryLookup;
 }
