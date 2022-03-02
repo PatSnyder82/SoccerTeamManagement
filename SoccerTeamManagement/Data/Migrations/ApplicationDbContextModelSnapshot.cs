@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SoccerTeamManagement.Data;
 
-namespace SoccerTeamManagement.data.Migrations
+namespace SoccerTeamManagement.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -1210,9 +1210,9 @@ namespace SoccerTeamManagement.data.Migrations
                             Alpha2Code = "KM",
                             Alpha3Code = "COM",
                             IsDisabled = false,
-                            SortOrder = 0,
+                            SortOrder = 174,
                             Text = "Comoros",
-                            Value = ""
+                            Value = "174"
                         },
                         new
                         {
@@ -1460,9 +1460,9 @@ namespace SoccerTeamManagement.data.Migrations
                             Alpha2Code = "FJ",
                             Alpha3Code = "FJI",
                             IsDisabled = false,
-                            SortOrder = 0,
+                            SortOrder = 242,
                             Text = "Fiji",
-                            Value = ""
+                            Value = "242"
                         },
                         new
                         {
@@ -1710,9 +1710,9 @@ namespace SoccerTeamManagement.data.Migrations
                             Alpha2Code = "HN",
                             Alpha3Code = "HND",
                             IsDisabled = false,
-                            SortOrder = 0,
+                            SortOrder = 340,
                             Text = "Honduras",
-                            Value = ""
+                            Value = "340"
                         },
                         new
                         {
@@ -1960,9 +1960,9 @@ namespace SoccerTeamManagement.data.Migrations
                             Alpha2Code = "LB",
                             Alpha3Code = "LBN",
                             IsDisabled = false,
-                            SortOrder = 0,
+                            SortOrder = 422,
                             Text = "Lebanon",
-                            Value = ""
+                            Value = "422"
                         },
                         new
                         {
@@ -2210,9 +2210,9 @@ namespace SoccerTeamManagement.data.Migrations
                             Alpha2Code = "MS",
                             Alpha3Code = "MSR",
                             IsDisabled = false,
-                            SortOrder = 0,
+                            SortOrder = 500,
                             Text = "Montserrat",
-                            Value = ""
+                            Value = "500"
                         },
                         new
                         {
@@ -2460,9 +2460,9 @@ namespace SoccerTeamManagement.data.Migrations
                             Alpha2Code = "PE",
                             Alpha3Code = "PER",
                             IsDisabled = false,
-                            SortOrder = 0,
+                            SortOrder = 604,
                             Text = "Peru",
-                            Value = ""
+                            Value = "604"
                         },
                         new
                         {
@@ -2710,9 +2710,9 @@ namespace SoccerTeamManagement.data.Migrations
                             Alpha2Code = "SL",
                             Alpha3Code = "SLE",
                             IsDisabled = false,
-                            SortOrder = 0,
+                            SortOrder = 694,
                             Text = "Sierra Leone",
-                            Value = ""
+                            Value = "694"
                         },
                         new
                         {
@@ -2960,9 +2960,9 @@ namespace SoccerTeamManagement.data.Migrations
                             Alpha2Code = "TO",
                             Alpha3Code = "TON",
                             IsDisabled = false,
-                            SortOrder = 0,
+                            SortOrder = 776,
                             Text = "Tonga",
-                            Value = ""
+                            Value = "776"
                         },
                         new
                         {
@@ -3791,91 +3791,91 @@ namespace SoccerTeamManagement.data.Migrations
                         {
                             PlayerId = 901,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 445, DateTimeKind.Unspecified).AddTicks(5831), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 460, DateTimeKind.Unspecified).AddTicks(9471), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 902,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8755), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1530), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 903,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8793), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1602), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 904,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8801), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1617), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 905,
                             TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8806), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1626), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 906,
                             TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8813), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1642), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 907,
                             TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8818), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1651), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 908,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8823), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1659), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 909,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8828), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1668), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 910,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8836), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1678), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 911,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8841), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1686), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 912,
                             TeamId = 904,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8845), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1784), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 901,
                             TeamId = 905,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 2, 28, 18, 42, 38, 448, DateTimeKind.Unspecified).AddTicks(8850), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1796), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         });
                 });
@@ -4017,14 +4017,14 @@ namespace SoccerTeamManagement.data.Migrations
                     b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ImageId")
                         .HasColumnType("int");
-
-                    b.Property<bool>("IsAdult")
-                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
@@ -4068,6 +4068,9 @@ namespace SoccerTeamManagement.data.Migrations
                     b.Property<int?>("AttributesId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
@@ -4083,9 +4086,6 @@ namespace SoccerTeamManagement.data.Migrations
 
                     b.Property<int?>("ImageId")
                         .HasColumnType("int");
-
-                    b.Property<bool>("IsAdult")
-                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
@@ -4131,11 +4131,11 @@ namespace SoccerTeamManagement.data.Migrations
                             Id = 901,
                             AddressId = 901,
                             AttributesId = 901,
+                            DateOfBirth = new DateTime(1980, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Clark",
                             FlareRating = 2,
                             Foot = "Right",
                             Height = 64,
-                            IsAdult = false,
                             LastName = "Kent",
                             NationId = 10,
                             NickName = "Superman",
@@ -4148,11 +4148,11 @@ namespace SoccerTeamManagement.data.Migrations
                             Id = 902,
                             AddressId = 902,
                             AttributesId = 902,
+                            DateOfBirth = new DateTime(2010, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Peter",
                             FlareRating = 3,
                             Foot = "Right",
                             Height = 65,
-                            IsAdult = false,
                             LastName = "Parker",
                             NationId = 32,
                             NickName = "Spiderman",
@@ -4165,11 +4165,11 @@ namespace SoccerTeamManagement.data.Migrations
                             Id = 903,
                             AddressId = 903,
                             AttributesId = 903,
+                            DateOfBirth = new DateTime(1981, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Bruce",
                             FlareRating = 3,
                             Foot = "Left",
                             Height = 66,
-                            IsAdult = false,
                             LastName = "Wayne",
                             NationId = 41,
                             NickName = "Batman",
@@ -4186,7 +4186,6 @@ namespace SoccerTeamManagement.data.Migrations
                             FlareRating = 1,
                             Foot = "Right",
                             Height = 67,
-                            IsAdult = false,
                             LastName = "Reacher",
                             NationId = 49,
                             NickName = "Reacher",
@@ -4199,11 +4198,11 @@ namespace SoccerTeamManagement.data.Migrations
                             Id = 905,
                             AddressId = 905,
                             AttributesId = 905,
+                            DateOfBirth = new DateTime(1982, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Diana",
                             FlareRating = 3,
                             Foot = "Right",
                             Height = 68,
-                            IsAdult = true,
                             LastName = "Prince",
                             NationId = 237,
                             NickName = "Wonder Woman",
@@ -4216,11 +4215,11 @@ namespace SoccerTeamManagement.data.Migrations
                             Id = 906,
                             AddressId = 906,
                             AttributesId = 906,
+                            DateOfBirth = new DateTime(2008, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Oliver",
                             FlareRating = 3,
                             Foot = "Left",
                             Height = 69,
-                            IsAdult = true,
                             LastName = "Queen",
                             NationId = 237,
                             NickName = "Green Arrow",
@@ -4233,11 +4232,11 @@ namespace SoccerTeamManagement.data.Migrations
                             Id = 907,
                             AddressId = 907,
                             AttributesId = 907,
+                            DateOfBirth = new DateTime(1983, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Natasha",
                             FlareRating = 4,
                             Foot = "Right",
                             Height = 70,
-                            IsAdult = false,
                             LastName = "Romanoff",
                             NationId = 237,
                             NickName = "Black Widow",
@@ -4250,11 +4249,11 @@ namespace SoccerTeamManagement.data.Migrations
                             Id = 908,
                             AddressId = 908,
                             AttributesId = 908,
+                            DateOfBirth = new DateTime(2007, 8, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Bruce",
                             FlareRating = 3,
                             Foot = "Right",
                             Height = 71,
-                            IsAdult = false,
                             LastName = "Banner",
                             NationId = 77,
                             NickName = "Hulk",
@@ -4267,11 +4266,11 @@ namespace SoccerTeamManagement.data.Migrations
                             Id = 909,
                             AddressId = 909,
                             AttributesId = 909,
+                            DateOfBirth = new DateTime(1984, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Tony",
                             FlareRating = 3,
                             Foot = "Left",
                             Height = 72,
-                            IsAdult = true,
                             LastName = "Stark",
                             NationId = 84,
                             NickName = "Iron Man",
@@ -4284,11 +4283,11 @@ namespace SoccerTeamManagement.data.Migrations
                             Id = 910,
                             AddressId = 910,
                             AttributesId = 910,
+                            DateOfBirth = new DateTime(2006, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Thor",
                             FlareRating = 5,
                             Foot = "Right",
                             Height = 73,
-                            IsAdult = false,
                             LastName = "Odinson",
                             NationId = 10,
                             NickName = "Thor",
@@ -4301,11 +4300,11 @@ namespace SoccerTeamManagement.data.Migrations
                             Id = 911,
                             AddressId = 911,
                             AttributesId = 911,
+                            DateOfBirth = new DateTime(1985, 11, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Steve",
                             FlareRating = 3,
                             Foot = "Right",
                             Height = 74,
-                            IsAdult = false,
                             LastName = "Rodgers",
                             NationId = 235,
                             NickName = "Captain America",
@@ -4318,11 +4317,11 @@ namespace SoccerTeamManagement.data.Migrations
                             Id = 912,
                             AddressId = 912,
                             AttributesId = 912,
+                            DateOfBirth = new DateTime(2005, 12, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Bob",
                             FlareRating = 2,
                             Foot = "Left",
                             Height = 59,
-                            IsAdult = false,
                             LastName = "Smith",
                             NationId = 210,
                             NickName = "BoSmith",
@@ -5677,8 +5676,8 @@ namespace SoccerTeamManagement.data.Migrations
                         {
                             Id = 901,
                             AddressId = 901,
+                            DateOfBirth = new DateTime(1984, 11, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "TestParentFirst1",
-                            IsAdult = true,
                             LastName = "TestParentLast1",
                             NickName = "TestParent 1",
                             PhoneId = 901
@@ -5687,8 +5686,8 @@ namespace SoccerTeamManagement.data.Migrations
                         {
                             Id = 902,
                             AddressId = 902,
+                            DateOfBirth = new DateTime(1985, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "TestParentFirst2",
-                            IsAdult = true,
                             LastName = "TestParentLast2",
                             NickName = "TestParent 2",
                             PhoneId = 902
@@ -5697,8 +5696,8 @@ namespace SoccerTeamManagement.data.Migrations
                         {
                             Id = 903,
                             AddressId = 903,
+                            DateOfBirth = new DateTime(1986, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "TestParentFirst3",
-                            IsAdult = true,
                             LastName = "TestParentLast3",
                             NickName = "TestParent 3",
                             PhoneId = 903
@@ -5707,8 +5706,8 @@ namespace SoccerTeamManagement.data.Migrations
                         {
                             Id = 904,
                             AddressId = 904,
+                            DateOfBirth = new DateTime(1987, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "TestParentFirst4",
-                            IsAdult = true,
                             LastName = "TestParentLast4",
                             NickName = "TestParent 4",
                             PhoneId = 904
@@ -5717,8 +5716,8 @@ namespace SoccerTeamManagement.data.Migrations
                         {
                             Id = 905,
                             AddressId = 905,
+                            DateOfBirth = new DateTime(1988, 6, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "TestParentFirst5",
-                            IsAdult = true,
                             LastName = "TestParentLast5",
                             NickName = "TestParent 5",
                             PhoneId = 905
@@ -5727,8 +5726,8 @@ namespace SoccerTeamManagement.data.Migrations
                         {
                             Id = 906,
                             AddressId = 906,
+                            DateOfBirth = new DateTime(1989, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "TestParentFirst6",
-                            IsAdult = true,
                             LastName = "TestParentLast6",
                             NickName = "TestParent 6",
                             PhoneId = 906
@@ -5737,8 +5736,8 @@ namespace SoccerTeamManagement.data.Migrations
                         {
                             Id = 907,
                             AddressId = 907,
+                            DateOfBirth = new DateTime(1990, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "TestParentFirst7",
-                            IsAdult = true,
                             LastName = "TestParentLast7",
                             NickName = "TestParent 7",
                             PhoneId = 907
@@ -5747,8 +5746,8 @@ namespace SoccerTeamManagement.data.Migrations
                         {
                             Id = 908,
                             AddressId = 908,
+                            DateOfBirth = new DateTime(1967, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "TestParentFirst8",
-                            IsAdult = true,
                             LastName = "TestParentLast8",
                             NickName = "TestParent 8",
                             PhoneId = 908
@@ -5757,8 +5756,8 @@ namespace SoccerTeamManagement.data.Migrations
                         {
                             Id = 909,
                             AddressId = 909,
+                            DateOfBirth = new DateTime(1968, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "TestParentFirst9",
-                            IsAdult = true,
                             LastName = "TestParentLast9",
                             NickName = "TestParent 9",
                             PhoneId = 909
@@ -5767,8 +5766,8 @@ namespace SoccerTeamManagement.data.Migrations
                         {
                             Id = 910,
                             AddressId = 910,
+                            DateOfBirth = new DateTime(1954, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "TestParentFirst10",
-                            IsAdult = true,
                             LastName = "TestParentLast10",
                             NickName = "TestParent 10",
                             PhoneId = 910
@@ -5777,8 +5776,8 @@ namespace SoccerTeamManagement.data.Migrations
                         {
                             Id = 911,
                             AddressId = 911,
+                            DateOfBirth = new DateTime(1978, 12, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "TestParentFirst11",
-                            IsAdult = true,
                             LastName = "TestParentLast11",
                             NickName = "TestParent 11",
                             PhoneId = 911
@@ -5787,8 +5786,8 @@ namespace SoccerTeamManagement.data.Migrations
                         {
                             Id = 912,
                             AddressId = 912,
+                            DateOfBirth = new DateTime(1999, 5, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "TestParentFirst12",
-                            IsAdult = true,
                             LastName = "TestParentLast12",
                             NickName = "TestParent 12",
                             PhoneId = 912

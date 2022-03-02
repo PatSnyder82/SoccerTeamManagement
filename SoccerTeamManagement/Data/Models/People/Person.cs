@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SoccerTeamManagement.Data.Models.People
 {
@@ -12,7 +13,7 @@ namespace SoccerTeamManagement.Data.Models.People
 
         public string NickName { get; set; }
 
-        public bool IsAdult { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         #endregion Properties
 

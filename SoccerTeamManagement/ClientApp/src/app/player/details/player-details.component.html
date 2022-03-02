@@ -21,15 +21,23 @@
     </section>
 
     <section class="form-group">
+      <mat-label>Date of Birth:</mat-label>
+      <input matInput formControlName="dateOfBirth" [matDatepicker]="picker" [errorStateMatcher]="errorStateMatcher" class="form-control" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="form.controls['dateOfBirth'].hasError('required')"><strong>Input required</strong></mat-error>
+    </section>
+
+    <section class="form-group">
       <mat-label>Nickname:</mat-label>
       <input matInput formControlName="nickName" [errorStateMatcher]="errorStateMatcher" class="form-control" />
       <mat-error *ngIf="form.controls['nickName'].hasError('required')"><strong>Input required</strong></mat-error>
     </section>
 
-    <section class="form-group">
+    <!--<section class="form-group">
       <mat-label>Is Player a Adult?</mat-label><br />
       <mat-checkbox formControlName="isAdult"></mat-checkbox>
-    </section>
+    </section>-->
 
     <section class="form-group">
       <mat-label>Height:</mat-label>

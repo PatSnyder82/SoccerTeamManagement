@@ -34,13 +34,13 @@ export class PlayerDetailsComponent implements OnInit {
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
       nickName: new FormControl('', Validators.required),
-      isAdult: new FormControl('', Validators.required),
       height: new FormControl('', [Validators.required, Validators.min(0), Validators.max(999), Validators.pattern(unsignedInt999Pattern)]),
       weight: new FormControl('', [Validators.required, Validators.min(0), Validators.max(9999), Validators.pattern(unsignedInt999Pattern)]),
       foot: new FormControl('', Validators.required),
       flareRating: new FormControl('', [Validators.required, Validators.min(1), Validators.max(5)]),
       nationId: new FormControl('', Validators.required),
-      readonly: new FormControl('true')
+      readonly: new FormControl('true'),
+      dateOfBirth: new FormControl(new Date(), Validators.required)
       /*//Phone
       countryCode: new FormControl('', Validators.required),
       areaCode: new FormControl('', Validators.required),
@@ -84,12 +84,12 @@ export class PlayerDetailsComponent implements OnInit {
     player.firstName = this.form.get("firstName").value;
     player.lastName = this.form.get("lastName").value;
     player.nickName = this.form.get("nickName").value;
-    player.isAdult = this.form.get("isAdult").value;
     player.height = +this.form.get("height").value;
     player.weight = +this.form.get("weight").value;
     player.foot = this.form.get("foot").value;
     player.flareRating = +this.form.get("flareRating").value;
     player.nationId = +this.form.get("nationId").value;
+    player.dateOfBirth = this.form.get("dateOfBirth").value;
 
     const url = this.baseUrl + "api/players/" + this.player.id;
 

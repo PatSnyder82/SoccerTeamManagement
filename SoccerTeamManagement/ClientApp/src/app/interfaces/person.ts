@@ -8,8 +8,8 @@ export interface Person {
   firstName: string;
   lastName: string;
   nickName: string;
-  isAdult: boolean;
 
+  dateOfBirth: Date;
   phone: Phone;
   address: Address;
   photo: Image;
