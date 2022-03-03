@@ -25,7 +25,7 @@ namespace SoccerTeamManagement.Controllers
         {
             try
             {
-                var entities = await ApiResult<Player>.CreateAsync(_context.Players.AsNoTracking().Include(x => x.Nation).Include(x => x.Phone).Include(x => x.Address), pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
+                var entities = await ApiResult<Player>.CreateAsync(_context.Players.AsNoTracking().Include(x => x.Country).Include(x => x.Phone).Include(x => x.Address), pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
 
                 return Ok(entities);
             }
@@ -41,7 +41,7 @@ namespace SoccerTeamManagement.Controllers
         {
             try
             {
-                var player = await _context.Players.AsNoTracking().Include(x => x.Nation).Include(x => x.Phone).Include(x => x.Address).FirstOrDefaultAsync(x => x.Id == id);
+                var player = await _context.Players.AsNoTracking().Include(x => x.Country).Include(x => x.Phone).Include(x => x.Address).FirstOrDefaultAsync(x => x.Id == id);
 
                 if (player == null)
                     return NotFound();

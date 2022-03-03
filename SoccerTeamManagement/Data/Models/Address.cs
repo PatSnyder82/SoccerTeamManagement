@@ -10,12 +10,20 @@
 
         public string City { get; set; }
 
-        public string Country { get; set; }
-
-        public string State { get; set; }
-
         public string ZipCode { get; set; }
 
         #endregion Properties
+
+        #region Relationships
+
+        public int? CountryId { get; set; }
+
+        public Country Country { get; set; }
+
+        public int? StateId { get; set; }
+
+        public string State { get; set; }
+
+        #endregion Relationships
     }
 }

@@ -31,9 +31,9 @@ namespace SoccerTeamManagement.Data.Models.People
 
         public Image Image { get; set; }
 
-        public int? NationId { get; set; }
+        public int? CountryId { get; set; }
 
-        public Country Nation { get; set; }
+        public Country Country { get; set; }
 
         #endregion Relationships
     }

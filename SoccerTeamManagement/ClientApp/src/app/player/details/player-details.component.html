@@ -5,7 +5,7 @@
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <section class="from-group">
-      <mat-slide-toggle formControlName="readonly" (change)="readonlySlideChange($event)">Readonly</mat-slide-toggle>
+      <mat-slide-toggle formControlName="readonly" (change)="onReadonlyChange($event)">Readonly</mat-slide-toggle>
     </section>
 
     <section class="form-group">
@@ -71,12 +71,12 @@
 
     <section class="form-group">
       <mat-label>Nationality:</mat-label>
-      <mat-select formControlName="nationId" [errorStateMatcher]="errorStateMatcher" class="form-control">
+      <mat-select formControlName="countryId" [errorStateMatcher]="errorStateMatcher" class="form-control">
         <mat-option *ngFor="let country of countries" [value]="country.id">
           {{country.text}}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="form.controls['nationId'].hasError('required')"><strong>Input required</strong></mat-error>
+      <mat-error *ngIf="form.controls['countryId'].hasError('required')"><strong>Input required</strong></mat-error>
     </section>
 
     <section formGroupName="phone">
@@ -141,18 +141,22 @@
 
       <section class="form-group">
         <mat-label>Country:</mat-label>
-        <mat-select formControlName="country" [errorStateMatcher]="errorStateMatcher" class="form-control">
-          <mat-option *ngFor="let country of countries" [value]="country.text">
+        <mat-select formControlName="countryId" (selectionChange)=onCountryChange($event.value) [errorStateMatcher]="errorStateMatcher" class="form-control">
+          <mat-option *ngFor="let country of countries" [value]="country.id">
             {{country.text}}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="form.controls.address.get('country').hasError('required')"><strong>Input required</strong></mat-error>
+        <mat-error *ngIf="form.controls.address.get('countryId').hasError('required')"><strong>Input required</strong></mat-error>
       </section>
-
-      <section class="form-group" *ngIf="form.controls.address.get('country').value === 'United States of America'">
+      <!--The only states loaded in the database are those belonging to the US (countryid 237)-->
+      <section class="form-group" *ngIf="form.controls.address.get('countryId').value === 237">
         <mat-label>State:</mat-label>
-        <input matInput formControlName="state" [errorStateMatcher]="errorStateMatcher" class="form-control" />
-        <mat-error *ngIf="form.controls.address.get('state').hasError('maxlength')"><strong>Input must be less than 100 characters  </strong></mat-error>
+        <mat-select formControlName="stateId" [errorStateMatcher]="errorStateMatcher" class="form-control">
+          <mat-option *ngFor="let state of states" [value]="state.id">
+            {{state.text}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls.address.get('stateId').hasError('required')"><strong>Input required</strong></mat-error>
       </section>
 
       <section class="form-group">

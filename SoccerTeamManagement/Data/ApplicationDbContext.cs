@@ -15,9 +15,11 @@ namespace SoccerTeamManagement.Data
 {
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {
-        public DbSet<Country> Country { get; set; }
+        public DbSet<Country> Countries { get; set; }
 
         public DbSet<Player> Players { get; set; }
+
+        public DbSet<State> States { get; set; }
 
         public ApplicationDbContext(
             DbContextOptions options,
@@ -29,15 +31,16 @@ namespace SoccerTeamManagement.Data
         {
             base.OnModelCreating(builder);
 
-            //add the EntityType Configuration Classes
-
             #region Lookups
 
+            new CountryConfiguration().Configure(builder.Entity<Country>());
+            new StateConfiguration().Configure(builder.Entity<State>());
             new PositionCategoryConfiguration().Configure(builder.Entity<PositionCategory>());
             new PositionConfiguration().Configure(builder.Entity<Position>());
-            new CountryConfiguration().Configure(builder.Entity<Country>());
 
             #endregion Lookups
+
+            #region Entities
 
             new AddressConfiguration().Configure(builder.Entity<Address>());
             new ImageConfiguration().Configure(builder.Entity<Image>());
@@ -48,6 +51,8 @@ namespace SoccerTeamManagement.Data
             new PlayerAttributesConfiguration().Configure(builder.Entity<PlayerAttributes>());
             new PlayerConfiguration().Configure(builder.Entity<Player>());
             new ParentConfiguration().Configure(builder.Entity<Parent>());
+
+            #endregion Entities
 
             #region Joins
 

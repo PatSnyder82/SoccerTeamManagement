@@ -273,16 +273,21 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Country")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("CountryId")
+                        .HasColumnType("int");
 
                     b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("StateId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ZipCode")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
 
                     b.ToTable("Address");
 
@@ -292,8 +297,8 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 901,
                             AddressLine1 = "1600 Pennsylvania Avenue NW",
                             City = "Washington",
-                            Country = "United States",
-                            State = "DC",
+                            CountryId = 237,
+                            StateId = 10,
                             ZipCode = "20500"
                         },
                         new
@@ -301,8 +306,8 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 902,
                             AddressLine1 = "11 Wall Street",
                             City = "New York",
-                            Country = "United States",
-                            State = "New York",
+                            CountryId = 237,
+                            StateId = 35,
                             ZipCode = "10118"
                         },
                         new
@@ -310,8 +315,8 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 903,
                             AddressLine1 = "350 Fifth Avenue",
                             City = "New York",
-                            Country = "United States",
-                            State = "New York",
+                            CountryId = 237,
+                            StateId = 35,
                             ZipCode = "10118"
                         },
                         new
@@ -319,8 +324,7 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 904,
                             AddressLine1 = "221 B Baker Street",
                             City = "London",
-                            Country = "England",
-                            State = "",
+                            CountryId = 237,
                             ZipCode = ""
                         },
                         new
@@ -328,8 +332,8 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 905,
                             AddressLine1 = "4059 Mt. Lee Drive",
                             City = "Hollywood",
-                            Country = "United States",
-                            State = "California",
+                            CountryId = 237,
+                            StateId = 6,
                             ZipCode = "90068"
                         },
                         new
@@ -337,8 +341,8 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 906,
                             AddressLine1 = "400 S. Monroe Street",
                             City = "Tallahassee",
-                            Country = "United States",
-                            State = "Florida",
+                            CountryId = 237,
+                            StateId = 11,
                             ZipCode = "32399"
                         },
                         new
@@ -346,8 +350,8 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 907,
                             AddressLine1 = "1100 Congress Avenue",
                             City = "Austin",
-                            Country = "United States",
-                            State = "Texas",
+                            CountryId = 237,
+                            StateId = 48,
                             ZipCode = "78701"
                         },
                         new
@@ -355,8 +359,8 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 908,
                             AddressLine1 = "2300 N Lincoln Blvd",
                             City = "Oklahoma City",
-                            Country = "United States",
-                            State = "Oklahoma",
+                            CountryId = 237,
+                            StateId = 40,
                             ZipCode = "73105"
                         },
                         new
@@ -364,8 +368,8 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 909,
                             AddressLine1 = "350 State Street",
                             City = "Salt Lake City",
-                            Country = "United States",
-                            State = "Utah",
+                            CountryId = 237,
+                            StateId = 50,
                             ZipCode = "84103"
                         },
                         new
@@ -373,8 +377,8 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 910,
                             AddressLine1 = "501 N. 3rd Street",
                             City = "Harrisburg",
-                            Country = "United States",
-                            State = "Pennsylvania",
+                            CountryId = 237,
+                            StateId = 42,
                             ZipCode = "17120"
                         },
                         new
@@ -382,8 +386,8 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 911,
                             AddressLine1 = "200 E. Colfax Ave",
                             City = "Denver",
-                            Country = "United States",
-                            State = "Colorado",
+                            CountryId = 237,
+                            StateId = 7,
                             ZipCode = "80203"
                         },
                         new
@@ -391,8 +395,8 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 912,
                             AddressLine1 = "416 Sid Snyder Avenue SW",
                             City = "Olympia",
-                            Country = "United States",
-                            State = "Washington",
+                            CountryId = 237,
+                            StateId = 54,
                             ZipCode = "98504"
                         });
                 });
@@ -3791,91 +3795,91 @@ namespace SoccerTeamManagement.Data.Migrations
                         {
                             PlayerId = 901,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 904, DateTimeKind.Unspecified).AddTicks(622), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 14, 57, 46, 936, DateTimeKind.Unspecified).AddTicks(3637), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 902,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8531), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 14, 57, 46, 939, DateTimeKind.Unspecified).AddTicks(2003), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 903,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8567), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 14, 57, 46, 939, DateTimeKind.Unspecified).AddTicks(2036), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 904,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8574), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 14, 57, 46, 939, DateTimeKind.Unspecified).AddTicks(2044), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 905,
                             TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8578), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 14, 57, 46, 939, DateTimeKind.Unspecified).AddTicks(2048), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 906,
                             TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8585), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 14, 57, 46, 939, DateTimeKind.Unspecified).AddTicks(2055), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 907,
                             TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8590), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 14, 57, 46, 939, DateTimeKind.Unspecified).AddTicks(2058), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 908,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8594), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 14, 57, 46, 939, DateTimeKind.Unspecified).AddTicks(2063), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 909,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8598), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 14, 57, 46, 939, DateTimeKind.Unspecified).AddTicks(2067), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 910,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8603), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 14, 57, 46, 939, DateTimeKind.Unspecified).AddTicks(2072), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 911,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8607), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 14, 57, 46, 939, DateTimeKind.Unspecified).AddTicks(2076), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 912,
                             TeamId = 904,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8611), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 14, 57, 46, 939, DateTimeKind.Unspecified).AddTicks(2080), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 901,
                             TeamId = 905,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8615), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 14, 57, 46, 939, DateTimeKind.Unspecified).AddTicks(2084), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         });
                 });
@@ -4017,6 +4021,9 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("CountryId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("DateOfBirth")
                         .HasColumnType("datetime2");
 
@@ -4028,9 +4035,6 @@ namespace SoccerTeamManagement.Data.Migrations
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("NationId")
-                        .HasColumnType("int");
 
                     b.Property<string>("NickName")
                         .HasColumnType("nvarchar(max)");
@@ -4044,9 +4048,9 @@ namespace SoccerTeamManagement.Data.Migrations
                         .IsUnique()
                         .HasFilter("[AddressId] IS NOT NULL");
 
-                    b.HasIndex("ImageId");
+                    b.HasIndex("CountryId");
 
-                    b.HasIndex("NationId");
+                    b.HasIndex("ImageId");
 
                     b.HasIndex("PhoneId")
                         .IsUnique()
@@ -4066,6 +4070,9 @@ namespace SoccerTeamManagement.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("AttributesId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CountryId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("DateOfBirth")
@@ -4090,9 +4097,6 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("NationId")
-                        .HasColumnType("int");
-
                     b.Property<string>("NickName")
                         .HasColumnType("nvarchar(max)");
 
@@ -4115,9 +4119,9 @@ namespace SoccerTeamManagement.Data.Migrations
                         .IsUnique()
                         .HasFilter("[AttributesId] IS NOT NULL");
 
-                    b.HasIndex("ImageId");
+                    b.HasIndex("CountryId");
 
-                    b.HasIndex("NationId");
+                    b.HasIndex("ImageId");
 
                     b.HasIndex("PhoneId")
                         .IsUnique()
@@ -4131,13 +4135,13 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 901,
                             AddressId = 901,
                             AttributesId = 901,
+                            CountryId = 10,
                             DateOfBirth = new DateTime(1980, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Clark",
                             FlareRating = 2,
                             Foot = "Right",
                             Height = 64,
                             LastName = "Kent",
-                            NationId = 10,
                             NickName = "Superman",
                             PhoneId = 901,
                             WeakFootRating = 1,
@@ -4148,13 +4152,13 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 902,
                             AddressId = 902,
                             AttributesId = 902,
+                            CountryId = 32,
                             DateOfBirth = new DateTime(2010, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Peter",
                             FlareRating = 3,
                             Foot = "Right",
                             Height = 65,
                             LastName = "Parker",
-                            NationId = 32,
                             NickName = "Spiderman",
                             PhoneId = 902,
                             WeakFootRating = 4,
@@ -4165,13 +4169,13 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 903,
                             AddressId = 903,
                             AttributesId = 903,
+                            CountryId = 41,
                             DateOfBirth = new DateTime(1981, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Bruce",
                             FlareRating = 3,
                             Foot = "Left",
                             Height = 66,
                             LastName = "Wayne",
-                            NationId = 41,
                             NickName = "Batman",
                             PhoneId = 903,
                             WeakFootRating = 1,
@@ -4182,12 +4186,12 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 904,
                             AddressId = 904,
                             AttributesId = 904,
+                            CountryId = 49,
                             FirstName = "Jack",
                             FlareRating = 1,
                             Foot = "Right",
                             Height = 67,
                             LastName = "Reacher",
-                            NationId = 49,
                             NickName = "Reacher",
                             PhoneId = 904,
                             WeakFootRating = 5,
@@ -4198,13 +4202,13 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 905,
                             AddressId = 905,
                             AttributesId = 905,
+                            CountryId = 237,
                             DateOfBirth = new DateTime(1982, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Diana",
                             FlareRating = 3,
                             Foot = "Right",
                             Height = 68,
                             LastName = "Prince",
-                            NationId = 237,
                             NickName = "Wonder Woman",
                             PhoneId = 905,
                             WeakFootRating = 1,
@@ -4215,13 +4219,13 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 906,
                             AddressId = 906,
                             AttributesId = 906,
+                            CountryId = 237,
                             DateOfBirth = new DateTime(2008, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Oliver",
                             FlareRating = 3,
                             Foot = "Left",
                             Height = 69,
                             LastName = "Queen",
-                            NationId = 237,
                             NickName = "Green Arrow",
                             PhoneId = 906,
                             WeakFootRating = 3,
@@ -4232,13 +4236,13 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 907,
                             AddressId = 907,
                             AttributesId = 907,
+                            CountryId = 237,
                             DateOfBirth = new DateTime(1983, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Natasha",
                             FlareRating = 4,
                             Foot = "Right",
                             Height = 70,
                             LastName = "Romanoff",
-                            NationId = 237,
                             NickName = "Black Widow",
                             PhoneId = 907,
                             WeakFootRating = 1,
@@ -4249,13 +4253,13 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 908,
                             AddressId = 908,
                             AttributesId = 908,
+                            CountryId = 77,
                             DateOfBirth = new DateTime(2007, 8, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Bruce",
                             FlareRating = 3,
                             Foot = "Right",
                             Height = 71,
                             LastName = "Banner",
-                            NationId = 77,
                             NickName = "Hulk",
                             PhoneId = 908,
                             WeakFootRating = 4,
@@ -4266,13 +4270,13 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 909,
                             AddressId = 909,
                             AttributesId = 909,
+                            CountryId = 84,
                             DateOfBirth = new DateTime(1984, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Tony",
                             FlareRating = 3,
                             Foot = "Left",
                             Height = 72,
                             LastName = "Stark",
-                            NationId = 84,
                             NickName = "Iron Man",
                             PhoneId = 909,
                             WeakFootRating = 1,
@@ -4283,13 +4287,13 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 910,
                             AddressId = 910,
                             AttributesId = 910,
+                            CountryId = 10,
                             DateOfBirth = new DateTime(2006, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Thor",
                             FlareRating = 5,
                             Foot = "Right",
                             Height = 73,
                             LastName = "Odinson",
-                            NationId = 10,
                             NickName = "Thor",
                             PhoneId = 910,
                             WeakFootRating = 2,
@@ -4300,13 +4304,13 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 911,
                             AddressId = 911,
                             AttributesId = 911,
+                            CountryId = 235,
                             DateOfBirth = new DateTime(1985, 11, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Steve",
                             FlareRating = 3,
                             Foot = "Right",
                             Height = 74,
                             LastName = "Rodgers",
-                            NationId = 235,
                             NickName = "Captain America",
                             PhoneId = 911,
                             WeakFootRating = 1,
@@ -4317,13 +4321,13 @@ namespace SoccerTeamManagement.Data.Migrations
                             Id = 912,
                             AddressId = 912,
                             AttributesId = 912,
+                            CountryId = 210,
                             DateOfBirth = new DateTime(2005, 12, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Bob",
                             FlareRating = 2,
                             Foot = "Left",
                             Height = 59,
                             LastName = "Smith",
-                            NationId = 210,
                             NickName = "BoSmith",
                             PhoneId = 912,
                             WeakFootRating = 2,
@@ -4736,6 +4740,615 @@ namespace SoccerTeamManagement.Data.Migrations
                             SortOrder = 3,
                             Text = "Defense",
                             Value = "3"
+                        });
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.State", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Alpha2Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CountryId1")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("IsDisabled")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("SortOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("CountryId1");
+
+                    b.ToTable("State");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Alpha2Code = "AL",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 1,
+                            Text = "Alabama",
+                            Value = "US-AL"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Alpha2Code = "AK",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 2,
+                            Text = "Alaska",
+                            Value = "US-AK"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Alpha2Code = "AS",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 3,
+                            Text = "American Samoa",
+                            Value = "US-AS"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Alpha2Code = "AZ",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 4,
+                            Text = "Arizona",
+                            Value = "US-AZ"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Alpha2Code = "AR",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 5,
+                            Text = "Arkansas",
+                            Value = "US-AR"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Alpha2Code = "CA",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 6,
+                            Text = "California",
+                            Value = "US-CA"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Alpha2Code = "CO",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 7,
+                            Text = "Colorado",
+                            Value = "US-CO"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Alpha2Code = "CT",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 8,
+                            Text = "Connecticut",
+                            Value = "US-CT"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Alpha2Code = "DE",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 9,
+                            Text = "Delaware",
+                            Value = "US-DE"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Alpha2Code = "DC",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 10,
+                            Text = "District of Columbia",
+                            Value = "US-DC"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Alpha2Code = "FL",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 11,
+                            Text = "Florida",
+                            Value = "US-FL"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Alpha2Code = "GA",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 12,
+                            Text = "Georgia",
+                            Value = "US-GA"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Alpha2Code = "GU",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 13,
+                            Text = "Guam",
+                            Value = "US-GU"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Alpha2Code = "HI",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 14,
+                            Text = "Hawaii",
+                            Value = "US-HI"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Alpha2Code = "ID",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 15,
+                            Text = "Idaho",
+                            Value = "US-ID"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Alpha2Code = "IL",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 16,
+                            Text = "Illinois",
+                            Value = "US-IL"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Alpha2Code = "IN",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 17,
+                            Text = "Indiana",
+                            Value = "US-IN"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Alpha2Code = "IA",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 18,
+                            Text = "Iowa",
+                            Value = "US-IA"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Alpha2Code = "KS",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 19,
+                            Text = "Kansas",
+                            Value = "US-KS"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Alpha2Code = "KY",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 20,
+                            Text = "Kentucky",
+                            Value = "US-KY"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Alpha2Code = "LA",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 21,
+                            Text = "Louisiana",
+                            Value = "US-LA"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Alpha2Code = "ME",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 22,
+                            Text = "Maine",
+                            Value = "US-ME"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Alpha2Code = "MD",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 23,
+                            Text = "Maryland",
+                            Value = "US-MD"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Alpha2Code = "MA",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 24,
+                            Text = "Massachusetts",
+                            Value = "US-MA"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Alpha2Code = "MI",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 25,
+                            Text = "Michigan",
+                            Value = "US-MI"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Alpha2Code = "MN",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 26,
+                            Text = "Minnesota",
+                            Value = "US-MN"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Alpha2Code = "MS",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 27,
+                            Text = "Mississippi",
+                            Value = "US-MS"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Alpha2Code = "MO",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 28,
+                            Text = "Missouri",
+                            Value = "US-MO"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Alpha2Code = "MT",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 29,
+                            Text = "Montana",
+                            Value = "US-MT"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Alpha2Code = "NE",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 30,
+                            Text = "Nebraska",
+                            Value = "US-NE"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Alpha2Code = "NV",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 31,
+                            Text = "Nevada",
+                            Value = "US-NV"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Alpha2Code = "NH",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 32,
+                            Text = "New Hampshire",
+                            Value = "US-NH"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            Alpha2Code = "NJ",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 33,
+                            Text = "New Jersey",
+                            Value = "US-NJ"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            Alpha2Code = "NM",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 34,
+                            Text = "New Mexico",
+                            Value = "US-NM"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Alpha2Code = "NY",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 35,
+                            Text = "New York",
+                            Value = "US-NY"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Alpha2Code = "NC",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 36,
+                            Text = "North Carolina",
+                            Value = "US-NC"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Alpha2Code = "ND",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 37,
+                            Text = "North Dakota",
+                            Value = "US-ND"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Alpha2Code = "MP",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 38,
+                            Text = "Northern Mariana Islands",
+                            Value = "US-MP"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Alpha2Code = "OH",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 39,
+                            Text = "Ohio",
+                            Value = "US-OH"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Alpha2Code = "OK",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 40,
+                            Text = "Oklahoma",
+                            Value = "US-OK"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            Alpha2Code = "OR",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 41,
+                            Text = "Oregon",
+                            Value = "US-OR"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            Alpha2Code = "PA",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 42,
+                            Text = "Pennsylvania",
+                            Value = "US-PA"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            Alpha2Code = "PR",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 43,
+                            Text = "Puerto Rico",
+                            Value = "US-PR"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            Alpha2Code = "RI",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 44,
+                            Text = "Rhode Island",
+                            Value = "US-RI"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            Alpha2Code = "SC",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 45,
+                            Text = "South Carolina",
+                            Value = "US-SC"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            Alpha2Code = "SD",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 46,
+                            Text = "South Dakota",
+                            Value = "US-SD"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            Alpha2Code = "TN",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 47,
+                            Text = "Tennessee",
+                            Value = "US-TN"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            Alpha2Code = "TX",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 48,
+                            Text = "Texas",
+                            Value = "US-TX"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            Alpha2Code = "UM",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 49,
+                            Text = "United States Minor Outlying Islands",
+                            Value = "US-UM"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            Alpha2Code = "UT",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 50,
+                            Text = "Utah",
+                            Value = "US-UT"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            Alpha2Code = "VT",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 51,
+                            Text = "Vermont",
+                            Value = "US-VT"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            Alpha2Code = "VI",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 52,
+                            Text = "Virgin Islands, U.S.",
+                            Value = "US-VI"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            Alpha2Code = "VA",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 53,
+                            Text = "Virginia",
+                            Value = "US-VA"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            Alpha2Code = "WA",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 54,
+                            Text = "Washington",
+                            Value = "US-WA"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            Alpha2Code = "WV",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 55,
+                            Text = "West Virginia",
+                            Value = "US-WV"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            Alpha2Code = "WI",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 56,
+                            Text = "Wisconsin",
+                            Value = "US-WI"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            Alpha2Code = "WY",
+                            CountryId = 237,
+                            IsDisabled = false,
+                            SortOrder = 57,
+                            Text = "Wyoming",
+                            Value = "US-WY"
                         });
                 });
 
@@ -5845,6 +6458,15 @@ namespace SoccerTeamManagement.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Address", b =>
+                {
+                    b.HasOne("SoccerTeamManagement.Data.Models.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId");
+
+                    b.Navigation("Country");
+                });
+
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Club", b =>
                 {
                     b.HasOne("SoccerTeamManagement.Data.Models.Image", "Logo")
@@ -5974,13 +6596,13 @@ namespace SoccerTeamManagement.Data.Migrations
                         .WithOne()
                         .HasForeignKey("SoccerTeamManagement.Data.Models.People.Person", "AddressId");
 
+                    b.HasOne("SoccerTeamManagement.Data.Models.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId");
+
                     b.HasOne("SoccerTeamManagement.Data.Models.Image", "Image")
                         .WithMany()
                         .HasForeignKey("ImageId");
-
-                    b.HasOne("SoccerTeamManagement.Data.Models.Country", "Nation")
-                        .WithMany()
-                        .HasForeignKey("NationId");
 
                     b.HasOne("SoccerTeamManagement.Data.Models.Phone", "Phone")
                         .WithOne()
@@ -5988,9 +6610,9 @@ namespace SoccerTeamManagement.Data.Migrations
 
                     b.Navigation("Address");
 
-                    b.Navigation("Image");
+                    b.Navigation("Country");
 
-                    b.Navigation("Nation");
+                    b.Navigation("Image");
 
                     b.Navigation("Phone");
                 });
@@ -6005,13 +6627,13 @@ namespace SoccerTeamManagement.Data.Migrations
                         .WithOne("Player")
                         .HasForeignKey("SoccerTeamManagement.Data.Models.People.Player", "AttributesId");
 
+                    b.HasOne("SoccerTeamManagement.Data.Models.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId");
+
                     b.HasOne("SoccerTeamManagement.Data.Models.Image", "Image")
                         .WithMany()
                         .HasForeignKey("ImageId");
-
-                    b.HasOne("SoccerTeamManagement.Data.Models.Country", "Nation")
-                        .WithMany()
-                        .HasForeignKey("NationId");
 
                     b.HasOne("SoccerTeamManagement.Data.Models.Phone", "Phone")
                         .WithOne()
@@ -6021,9 +6643,9 @@ namespace SoccerTeamManagement.Data.Migrations
 
                     b.Navigation("Attributes");
 
-                    b.Navigation("Image");
+                    b.Navigation("Country");
 
-                    b.Navigation("Nation");
+                    b.Navigation("Image");
 
                     b.Navigation("Phone");
                 });
@@ -6031,10 +6653,23 @@ namespace SoccerTeamManagement.Data.Migrations
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Position", b =>
                 {
                     b.HasOne("SoccerTeamManagement.Data.Models.PositionCategory", "PositionCategory")
-                        .WithMany()
+                        .WithMany("Positions")
                         .HasForeignKey("PositionCategoryId");
 
                     b.Navigation("PositionCategory");
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.State", b =>
+                {
+                    b.HasOne("SoccerTeamManagement.Data.Models.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId");
+
+                    b.HasOne("SoccerTeamManagement.Data.Models.Country", null)
+                        .WithMany("States")
+                        .HasForeignKey("CountryId1");
+
+                    b.Navigation("Country");
                 });
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Team", b =>
@@ -6066,6 +6701,11 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.Navigation("Teams");
                 });
 
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Country", b =>
+                {
+                    b.Navigation("States");
+                });
+
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.League", b =>
                 {
                     b.Navigation("LeagueTeams");
@@ -6083,6 +6723,11 @@ namespace SoccerTeamManagement.Data.Migrations
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Position", b =>
                 {
                     b.Navigation("PlayerPositions");
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.PositionCategory", b =>
+                {
+                    b.Navigation("Positions");
                 });
 
             modelBuilder.Entity("SoccerTeamManagement.Data.Models.Team", b =>

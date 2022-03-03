@@ -26,14 +26,14 @@ namespace SoccerTeamManagement.Controllers
         [HttpGet]
         public async Task<ActionResult<ApiResult<Country>>> GetCountry(int pageIndex = 0, int pageSize = 10, string sortColumn = null, string sortOrder = null, string filterColumn = null, string filterQuery = null)
         {
-            return await ApiResult<Country>.CreateAsync(_context.Country, pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
+            return await ApiResult<Country>.CreateAsync(_context.Countries, pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
         }
 
         // GET: api/Countries/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Country>> GetCountry(int id)
         {
-            var country = await _context.Country.FindAsync(id);
+            var country = await _context.Countries.FindAsync(id);
 
             if (country == null)
             {
@@ -79,7 +79,7 @@ namespace SoccerTeamManagement.Controllers
         [HttpPost]
         public async Task<ActionResult<Country>> PostCountry(Country country)
         {
-            _context.Country.Add(country);
+            _context.Countries.Add(country);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCountry", new { id = country.Id }, country);
@@ -89,13 +89,13 @@ namespace SoccerTeamManagement.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCountry(int id)
         {
-            var country = await _context.Country.FindAsync(id);
+            var country = await _context.Countries.FindAsync(id);
             if (country == null)
             {
                 return NotFound();
             }
 
-            _context.Country.Remove(country);
+            _context.Countries.Remove(country);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -103,7 +103,7 @@ namespace SoccerTeamManagement.Controllers
 
         private bool CountryExists(int id)
         {
-            return _context.Country.Any(e => e.Id == id);
+            return _context.Countries.Any(e => e.Id == id);
         }
     }
 }

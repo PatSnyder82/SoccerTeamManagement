@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -7,6 +7,8 @@ import { Player } from '../../interfaces/player';
 import { Country } from '../../interfaces/lookups/country';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { State } from '../../interfaces/lookups/state';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-player-details',
@@ -18,11 +20,11 @@ export class PlayerDetailsComponent implements OnInit {
   id: number;
   player: Player;
   countries: Country[];
+  states: State[];
 
   title: string;
   form: FormGroup;
   errorStateMatcher = new ErrorStateMatcher;
-
   //#endregion
 
   //#region Constructor
@@ -39,7 +41,7 @@ export class PlayerDetailsComponent implements OnInit {
       weight: new FormControl('', [Validators.min(0), Validators.max(9999), Validators.pattern(unsignedInt999Pattern)]),
       foot: new FormControl('', Validators.required),
       flareRating: new FormControl('', [Validators.required, Validators.min(1), Validators.max(5)]),
-      nationId: new FormControl('', Validators.required),
+      countryId: new FormControl('', Validators.required),
       readonly: new FormControl('true'),
       dateOfBirth: new FormControl(new Date(), Validators.required),
       phone: new FormGroup({
@@ -53,14 +55,12 @@ export class PlayerDetailsComponent implements OnInit {
         addressLine1: new FormControl('', [Validators.required, Validators.maxLength(100)]),
         addressLine2: new FormControl('', Validators.maxLength(100)),
         city: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-        country: new FormControl('', Validators.required),
-        state: new FormControl('', Validators.maxLength(100)),
+        countryId: new FormControl('', Validators.required),
+        stateId: new FormControl('', Validators.required),
         zipCode: new FormControl('', Validators.pattern(unsignedIntPattern))
       })
       /*//Photo
       image: new FormControl('', Validators.required),
-      //Nation
-      nation: new FormControl('', Validators.required),
       //Attributes
       //Teams
       teams: new FormControl('', Validators.required),
@@ -81,6 +81,22 @@ export class PlayerDetailsComponent implements OnInit {
     this.loadData();
   }
 
+  onCountryChange(countryId: number) {
+    if (countryId === 237 && this.states === null) {
+      this.loadStates(countryId);
+    }
+  }
+
+  onReadonlyChange($event: MatSlideToggleChange) {
+    if ($event.checked) {
+      this.form.disable();
+      this.form.controls['readonly'].enable();
+    }
+    else {
+      this.form.enable();
+    }
+  }
+
   onSubmit() {
     var player = (this.id) ? this.player : <Player>{};
 
@@ -91,7 +107,7 @@ export class PlayerDetailsComponent implements OnInit {
     player.weight = +this.form.get("weight").value;
     player.foot = this.form.get("foot").value;
     player.flareRating = +this.form.get("flareRating").value;
-    player.nationId = +this.form.get("nationId").value;
+    player.countryId = +this.form.get("countryId").value;
     player.dateOfBirth = this.form.get("dateOfBirth").value;
     player.phone.areaCode = this.form.controls.phone.get("areaCode").value;
     player.phone.countryCode = this.form.controls.phone.get("countryCode").value;
@@ -101,8 +117,8 @@ export class PlayerDetailsComponent implements OnInit {
     player.address.addressLine1 = this.form.controls.address.get("addressLine1").value;
     player.address.addressLine2 = this.form.controls.address.get("addressLine2").value;
     player.address.city = this.form.controls.address.get("city").value;
-    player.address.country = this.form.controls.address.get("country").value;
-    player.address.state = this.form.controls.address.get("state").value;
+    player.address.countryId = this.form.controls.address.get("countryId").value;
+    player.address.stateId = +this.form.controls.address.get("stateId").value;
     player.address.zipCode = this.form.controls.address.get("zipCode").value;
 
     const url = this.baseUrl + "api/players/" + this.player.id;
@@ -140,20 +156,24 @@ export class PlayerDetailsComponent implements OnInit {
 
     this.http.get<Player>(url).subscribe(result => {
       this.player = result;
+
+      if (this.player.address.countryId !== null) {
+        this.loadStates(this.player.address.countryId);
+      }
+
       this.title = "Edit - " + this.player.firstName + " " + this.player.lastName;
-      console.log(this.player);
+
       this.form.patchValue(this.player);
     }, error => console.error(error));
   }
 
-  readonlySlideChange($event: MatSlideToggleChange) {
-    if ($event.checked) {
-      this.form.disable();
-      this.form.controls['readonly'].enable();
-    }
-    else {
-      this.form.enable();
-    }
+  loadStates(countryId: number) {
+    // fetch all states for the specified country
+    var url = this.baseUrl + "api/State/getstatesbycountry/" + countryId;;
+
+    this.http.get<State[]>(url,).subscribe(result => {
+      this.states = result;
+    }, error => console.error(error));
   }
 
   //#endregion

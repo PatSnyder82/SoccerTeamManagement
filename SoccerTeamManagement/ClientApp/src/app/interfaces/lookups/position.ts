@@ -1,6 +1,9 @@
 import { Lookup } from "./lookup";
+import { PositionCategory } from "./position-category";
 
 export interface Position extends Lookup {
   abbreviation: string;
-  category: string;
+
+  positionCategoryId: number;
+  positionCategory: PositionCategory;
 }

@@ -16,7 +16,8 @@ namespace SoccerTeamManagement.Data.Configuration.Lookups
             #region Relationships
 
             builder.HasOne(x => x.PositionCategory)
-                   .WithMany();
+                   .WithMany(x => x.Positions)
+                   .HasForeignKey(x => x.PositionCategoryId);
 
             #endregion Relationships
 

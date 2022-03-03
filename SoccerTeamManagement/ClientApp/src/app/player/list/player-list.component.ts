@@ -16,7 +16,7 @@ import { Player } from '../../interfaces/player';
 export class PlayerListComponent implements OnInit {
   //#region Properties
 
-  public displayedColumns: string[] = ['id', 'firstName', 'lastName', 'nation'];
+  public displayedColumns: string[] = ['id', 'firstName', 'lastName', 'country'];
   public players: MatTableDataSource<Player>;
 
   defaultPageIndex: number;

@@ -13,6 +13,13 @@ namespace SoccerTeamManagement.Data.Configuration.Lookups
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).IsRequired();
 
+            #region Relationships
+
+            builder.HasMany(x => x.Positions)
+                   .WithOne(x => x.PositionCategory);
+
+            #endregion Relationships
+
             #region Seed
 
             Seed(builder);

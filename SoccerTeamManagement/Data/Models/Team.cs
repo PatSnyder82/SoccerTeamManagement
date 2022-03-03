@@ -9,9 +9,6 @@ namespace SoccerTeamManagement.Data.Models
 
         public string Name { get; set; }
 
-        ///TODO: Create Transfers
-        ///
-
         #endregion Properties
 
         #region Relationships

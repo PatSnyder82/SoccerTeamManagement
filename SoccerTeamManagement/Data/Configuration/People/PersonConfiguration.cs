@@ -25,9 +25,9 @@ namespace SoccerTeamManagement.Data.Configuration.People
                    .HasForeignKey<T>(x => x.AddressId);
 
             ///A Person has One Nation
-            builder.HasOne(x => x.Nation)
+            builder.HasOne(x => x.Country)
                    .WithMany()
-                   .HasForeignKey(x => x.NationId);
+                   .HasForeignKey(x => x.CountryId);
 
             #endregion Relationships
 
