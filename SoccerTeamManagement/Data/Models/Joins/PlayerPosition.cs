@@ -12,7 +12,7 @@ namespace SoccerTeamManagement.Data.Models.Joins
 
         public int PositionId { get; set; }
 
-        public PositionLookup Position { get; set; }
+        public Position Position { get; set; }
 
         public bool IsPrimary { get; set; }
 

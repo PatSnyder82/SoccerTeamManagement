@@ -12,12 +12,14 @@
       <mat-label>First Name:</mat-label>
       <input matInput formControlName="firstName" [errorStateMatcher]="errorStateMatcher" class="form-control" />
       <mat-error *ngIf="form.controls['firstName'].hasError('required')"><strong>Input required</strong></mat-error>
+      <mat-error *ngIf="form.controls['firstName'].hasError('maxlength')"><strong>Input must be less than 100 characters  </strong></mat-error>
     </section>
 
     <section class="form-group">
       <mat-label>Last Name:</mat-label>
       <input matInput formControlName="lastName" [errorStateMatcher]="errorStateMatcher" class="form-control" />
       <mat-error *ngIf="form.controls['lastName'].hasError('required')"><strong>Input required</strong></mat-error>
+      <mat-error *ngIf="form.controls['lastName'].hasError('maxlength')"><strong>Input must be less than 100 characters  </strong></mat-error>
     </section>
 
     <section class="form-group">
@@ -31,7 +33,7 @@
     <section class="form-group">
       <mat-label>Nickname:</mat-label>
       <input matInput formControlName="nickName" [errorStateMatcher]="errorStateMatcher" class="form-control" />
-      <mat-error *ngIf="form.controls['nickName'].hasError('required')"><strong>Input required</strong></mat-error>
+      <mat-error *ngIf="form.controls['nickName'].hasError('maxlength')"><strong>Input must be less than 100 characters  </strong></mat-error>
     </section>
 
     <!--<section class="form-group">
@@ -42,10 +44,9 @@
     <section class="form-group">
       <mat-label>Height:</mat-label>
       <input matInput formControlName="height" [errorStateMatcher]="errorStateMatcher" class="form-control" />
-      <mat-error *ngIf="form.controls['height'].hasError('required')"><strong>Input required  </strong></mat-error>
       <mat-error *ngIf="form.controls['height'].hasError('min')"><strong>Value must be between 0 - 999  </strong></mat-error>
       <mat-error *ngIf="form.controls['height'].hasError('max')"><strong>Value must be between 0 - 999  </strong></mat-error>
-      <mat-error *ngIf="form.controls['height'].hasError('pattern') && (form.controls['height'].dirty || form.controls['height'].touched)">
+      <mat-error *ngIf="form.controls['height'].hasError('pattern')">
         <strong>Input must be a positive whole number  </strong>
       </mat-error>
     </section>
@@ -53,10 +54,9 @@
     <section class="form-group">
       <mat-label>Weight:</mat-label>
       <input matInput formControlName="weight" [errorStateMatcher]="errorStateMatcher" class="form-control" />
-      <mat-error *ngIf="form.controls['weight'].hasError('required')"><strong>Input required  </strong></mat-error>
       <mat-error *ngIf="form.controls['weight'].hasError('min')"><strong>Value must be between 0 - 9999  </strong></mat-error>
       <mat-error *ngIf="form.controls['weight'].hasError('max')"><strong>Value must be between 0 - 9999  </strong></mat-error>
-      <mat-error *ngIf="form.controls['weight'].hasError('pattern') && (form.controls['weight'].dirty || form.controls['weight'].touched)">
+      <mat-error *ngIf="form.controls['weight'].hasError('pattern')">
         <strong>Input must be a positive whole number  </strong>
       </mat-error>
     </section>
@@ -77,6 +77,98 @@
         </mat-option>
       </mat-select>
       <mat-error *ngIf="form.controls['nationId'].hasError('required')"><strong>Input required</strong></mat-error>
+    </section>
+
+    <section formGroupName="phone">
+      <section class="form-group">
+        <mat-label>Area Code:</mat-label>
+        <input matInput formControlName="areaCode" [errorStateMatcher]="errorStateMatcher" class="form-control" />
+        <mat-error *ngIf="form.controls.phone.get('areaCode').hasError('required')"><strong>Input required  </strong></mat-error>
+        <mat-error *ngIf="form.controls.phone.get('areaCode').hasError('pattern') && (form.controls.phone.get('areaCode').dirty || form.controls.phone.get('areaCode').touched)">
+          <strong>Input must be a positive whole number less than 10 digits long  </strong>
+        </mat-error>
+      </section>
+
+      <section class="form-group">
+        <mat-label>Country Code:</mat-label>
+        <input matInput formControlName="countryCode" [errorStateMatcher]="errorStateMatcher" class="form-control" />
+        <mat-error *ngIf="form.controls.phone.get('countryCode').hasError('required')"><strong>Input required  </strong></mat-error>
+        <mat-error *ngIf="form.controls.phone.get('countryCode').hasError('pattern') && (form.controls.phone.get('countryCode').dirty || form.controls.phone.get('countryCode').touched)">
+          <strong>Input must be a positive whole number less than 10 digits long  </strong>
+        </mat-error>
+      </section>
+
+      <section class="form-group">
+        <mat-label>Extension:</mat-label>
+        <input matInput formControlName="extension" [errorStateMatcher]="errorStateMatcher" class="form-control" />
+        <mat-error *ngIf="form.controls.phone.get('extension').hasError('pattern') && (form.controls.phone.get('extension').dirty || form.controls.phone.get('extension').touched)">
+          <strong>Input must be a positive whole number less than 10 digits long  </strong>
+        </mat-error>
+      </section>
+
+      <section class="form-group">
+        <mat-label>Number:</mat-label>
+        <input matInput formControlName="number" [errorStateMatcher]="errorStateMatcher" class="form-control" />
+        <mat-error *ngIf="form.controls.phone.get('number').hasError('required')"><strong>Input required  </strong></mat-error>
+        <mat-error *ngIf="form.controls.phone.get('number').hasError('pattern') && (form.controls.phone.get('number').dirty || form.controls.phone.get('number').touched)">
+          <strong>Input must be a positive whole number less than 10 digits long  </strong>
+        </mat-error>
+      </section>
+
+      <section class="form-group">
+        <mat-label>Phone Type:</mat-label>
+        <mat-button-toggle-group formControlName="phoneType">
+          <mat-button-toggle [value]="1">Cell</mat-button-toggle>
+          <mat-button-toggle [value]="2">Home</mat-button-toggle>
+          <mat-button-toggle [value]="3">Work</mat-button-toggle>
+        </mat-button-toggle-group>
+      </section>
+    </section>
+
+    <section formGroupName="address">
+      <section class="form-group">
+        <mat-label>Address Line 1:</mat-label>
+        <input matInput formControlName="addressLine1" [errorStateMatcher]="errorStateMatcher" class="form-control" />
+        <mat-error *ngIf="form.controls.address.get('addressLine1').hasError('required')"><strong>Input required  </strong></mat-error>
+        <mat-error *ngIf="form.controls.address.get('addressLine1').hasError('maxlength')"><strong>Input must be less than 100 characters  </strong></mat-error>
+      </section>
+
+      <section class="form-group">
+        <mat-label>Address Line 2:</mat-label>
+        <input matInput formControlName="addressLine2" [errorStateMatcher]="errorStateMatcher" class="form-control" />
+        <mat-error *ngIf="form.controls.address.get('addressLine2').hasError('maxlength')"><strong>Input must be less than 100 characters  </strong></mat-error>
+      </section>
+
+      <section class="form-group">
+        <mat-label>Country:</mat-label>
+        <mat-select formControlName="country" [errorStateMatcher]="errorStateMatcher" class="form-control">
+          <mat-option *ngFor="let country of countries" [value]="country.text">
+            {{country.text}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls.address.get('country').hasError('required')"><strong>Input required</strong></mat-error>
+      </section>
+
+      <section class="form-group" *ngIf="form.controls.address.get('country').value === 'United States of America'">
+        <mat-label>State:</mat-label>
+        <input matInput formControlName="state" [errorStateMatcher]="errorStateMatcher" class="form-control" />
+        <mat-error *ngIf="form.controls.address.get('state').hasError('maxlength')"><strong>Input must be less than 100 characters  </strong></mat-error>
+      </section>
+
+      <section class="form-group">
+        <mat-label>City:</mat-label>
+        <input matInput formControlName="city" [errorStateMatcher]="errorStateMatcher" class="form-control" />
+        <mat-error *ngIf="form.controls.address.get('city').hasError('required')"><strong>Input required  </strong></mat-error>
+        <mat-error *ngIf="form.controls.address.get('city').hasError('maxlength')"><strong>Input must be less than 100 characters  </strong></mat-error>
+      </section>
+
+      <section class="form-group">
+        <mat-label>Zip Code:</mat-label>
+        <input matInput formControlName="zipCode" [errorStateMatcher]="errorStateMatcher" class="form-control" />
+        <mat-error *ngIf="form.controls.address.get('zipCode').hasError('pattern')">
+          <strong>Input must be a positive whole number less than 10 digits long  </strong>
+        </mat-error>
+      </section>
     </section>
 
     <section class="form-group commands">

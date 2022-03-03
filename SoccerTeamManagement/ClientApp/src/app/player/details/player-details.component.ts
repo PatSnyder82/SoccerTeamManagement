@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Player } from '../../interfaces/player';
-import { CountryLookup } from '../../interfaces/countryLookup';
+import { Country } from '../../interfaces/lookups/country';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
@@ -17,7 +17,7 @@ export class PlayerDetailsComponent implements OnInit {
   //#region Properties
   id: number;
   player: Player;
-  countries: CountryLookup[];
+  countries: Country[];
 
   title: string;
   form: FormGroup;
@@ -29,32 +29,35 @@ export class PlayerDetailsComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
     const unsignedInt999Pattern = new RegExp('^[1-9]\\d{0,2}$');
+    const unsignedIntPattern = new RegExp('^[1-9]\\d{0,8}$');
 
     this.form = new FormGroup({
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
-      nickName: new FormControl('', Validators.required),
-      height: new FormControl('', [Validators.required, Validators.min(0), Validators.max(999), Validators.pattern(unsignedInt999Pattern)]),
-      weight: new FormControl('', [Validators.required, Validators.min(0), Validators.max(9999), Validators.pattern(unsignedInt999Pattern)]),
+      firstName: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      lastName: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      nickName: new FormControl('', Validators.maxLength(100)),
+      height: new FormControl('', [Validators.min(0), Validators.max(999), Validators.pattern(unsignedInt999Pattern)]),
+      weight: new FormControl('', [Validators.min(0), Validators.max(9999), Validators.pattern(unsignedInt999Pattern)]),
       foot: new FormControl('', Validators.required),
       flareRating: new FormControl('', [Validators.required, Validators.min(1), Validators.max(5)]),
       nationId: new FormControl('', Validators.required),
       readonly: new FormControl('true'),
-      dateOfBirth: new FormControl(new Date(), Validators.required)
-      /*//Phone
-      countryCode: new FormControl('', Validators.required),
-      areaCode: new FormControl('', Validators.required),
-      extension: new FormControl('', Validators.required),
-      number: new FormControl('', Validators.required),
-      phoneType: new FormControl('', Validators.required),
-      //Address
-      addressLine1: new FormControl('', Validators.required),
-      addressLine2: new FormControl('', Validators.required),
-      city: new FormControl('', Validators.required),
-      country: new FormControl('', Validators.required),
-      state: new FormControl('', Validators.required),
-      zipCode: new FormControl('', Validators.required),
-      //Photo
+      dateOfBirth: new FormControl(new Date(), Validators.required),
+      phone: new FormGroup({
+        countryCode: new FormControl('', [Validators.required, Validators.pattern(unsignedIntPattern)]),
+        areaCode: new FormControl('', [Validators.required, Validators.pattern(unsignedIntPattern)]),
+        extension: new FormControl('', Validators.pattern(unsignedIntPattern)),
+        number: new FormControl('', [Validators.required, Validators.pattern(unsignedIntPattern)]),
+        phoneType: new FormControl('', Validators.required)
+      }),
+      address: new FormGroup({
+        addressLine1: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+        addressLine2: new FormControl('', Validators.maxLength(100)),
+        city: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+        country: new FormControl('', Validators.required),
+        state: new FormControl('', Validators.maxLength(100)),
+        zipCode: new FormControl('', Validators.pattern(unsignedIntPattern))
+      })
+      /*//Photo
       image: new FormControl('', Validators.required),
       //Nation
       nation: new FormControl('', Validators.required),
@@ -62,7 +65,7 @@ export class PlayerDetailsComponent implements OnInit {
       //Teams
       teams: new FormControl('', Validators.required),
       positions: new FormControl('', Validators.required),
-      parents: new FormControl('', Validators.required),*/
+      parents: new FormControl('', Validators.required)*/
     });
 
     this.form.disable();
@@ -90,6 +93,17 @@ export class PlayerDetailsComponent implements OnInit {
     player.flareRating = +this.form.get("flareRating").value;
     player.nationId = +this.form.get("nationId").value;
     player.dateOfBirth = this.form.get("dateOfBirth").value;
+    player.phone.areaCode = this.form.controls.phone.get("areaCode").value;
+    player.phone.countryCode = this.form.controls.phone.get("countryCode").value;
+    player.phone.extension = this.form.controls.phone.get("extension").value;
+    player.phone.number = this.form.controls.phone.get("number").value;
+    player.phone.phoneType = this.form.controls.phone.get("phoneType").value;
+    player.address.addressLine1 = this.form.controls.address.get("addressLine1").value;
+    player.address.addressLine2 = this.form.controls.address.get("addressLine2").value;
+    player.address.city = this.form.controls.address.get("city").value;
+    player.address.country = this.form.controls.address.get("country").value;
+    player.address.state = this.form.controls.address.get("state").value;
+    player.address.zipCode = this.form.controls.address.get("zipCode").value;
 
     const url = this.baseUrl + "api/players/" + this.player.id;
 
@@ -105,7 +119,7 @@ export class PlayerDetailsComponent implements OnInit {
 
   loadCountries() {
     // fetch all the countries from the server
-    var url = this.baseUrl + "api/CountryLookup/";
+    var url = this.baseUrl + "api/Country/";
 
     var params = new HttpParams()
       .set("pageIndex", "0")

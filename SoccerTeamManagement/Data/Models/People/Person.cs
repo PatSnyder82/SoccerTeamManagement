@@ -33,7 +33,7 @@ namespace SoccerTeamManagement.Data.Models.People
 
         public int? NationId { get; set; }
 
-        public CountryLookup Nation { get; set; }
+        public Country Nation { get; set; }
 
         #endregion Relationships
     }

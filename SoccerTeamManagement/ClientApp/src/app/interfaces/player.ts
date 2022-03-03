@@ -1,6 +1,6 @@
 import { Person } from "./person";
 import { PlayerAttributes } from "./playerAttributes";
-import { PositionLookup } from "./positionLookup";
+import { Position } from "./lookups/position";
 import { Team } from "./Team";
 import { Parent } from "./Parent";
 
@@ -13,6 +13,6 @@ export interface Player extends Person {
 
   attributes: PlayerAttributes;
   teams: Team[];
-  position: PositionLookup[];
+  position: Position[];
   parents: Parent[];
 }

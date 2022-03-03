@@ -15,6 +15,10 @@ namespace SoccerTeamManagement.Data
 {
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {
+        public DbSet<Country> Country { get; set; }
+
+        public DbSet<Player> Players { get; set; }
+
         public ApplicationDbContext(
             DbContextOptions options,
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
@@ -29,9 +33,9 @@ namespace SoccerTeamManagement.Data
 
             #region Lookups
 
-            new PositionCategoryLookupConfiguration().Configure(builder.Entity<PositionCategoryLookup>());
-            new PositionLookupConfiguration().Configure(builder.Entity<PositionLookup>());
-            new CountryLookupConfiguration().Configure(builder.Entity<CountryLookup>());
+            new PositionCategoryConfiguration().Configure(builder.Entity<PositionCategory>());
+            new PositionConfiguration().Configure(builder.Entity<Position>());
+            new CountryConfiguration().Configure(builder.Entity<Country>());
 
             #endregion Lookups
 
@@ -54,9 +58,5 @@ namespace SoccerTeamManagement.Data
 
             #endregion Joins
         }
-
-        public DbSet<SoccerTeamManagement.Data.Models.People.Player> Players { get; set; }
-
-        public DbSet<SoccerTeamManagement.Data.Models.CountryLookup> CountryLookup { get; set; }
     }
 }

@@ -13,7 +13,6 @@ namespace SoccerTeamManagement.Data.Configuration.People
             base.Configure(builder);
 
             builder.ToTable("Player");
-            //builder.HasBaseType<Person>();
 
             builder.Property(s => s.Foot).HasConversion<string>();
 

@@ -684,7 +684,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.CountryLookup", b =>
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Country", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -711,7 +711,7 @@ namespace SoccerTeamManagement.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CountryLookup");
+                    b.ToTable("Country");
 
                     b.HasData(
                         new
@@ -3791,91 +3791,91 @@ namespace SoccerTeamManagement.Data.Migrations
                         {
                             PlayerId = 901,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 460, DateTimeKind.Unspecified).AddTicks(9471), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 904, DateTimeKind.Unspecified).AddTicks(622), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 902,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1530), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8531), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 903,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1602), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8567), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 904,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1617), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8574), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 905,
                             TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1626), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8578), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 906,
                             TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1642), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8585), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 907,
                             TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1651), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8590), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 908,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1659), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8594), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 909,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1668), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8598), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 910,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1678), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8603), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 911,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1686), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8607), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 912,
                             TeamId = 904,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1784), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8611), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 901,
                             TeamId = 905,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 2, 15, 36, 56, 465, DateTimeKind.Unspecified).AddTicks(1796), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 3, 12, 40, 51, 906, DateTimeKind.Unspecified).AddTicks(8615), new TimeSpan(0, -5, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         });
                 });
@@ -4465,57 +4465,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.PositionCategoryLookup", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool?>("IsDisabled")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("SortOrder")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PositionCategoryLookup");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            IsDisabled = false,
-                            SortOrder = 1,
-                            Text = "Offense",
-                            Value = "1"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            IsDisabled = false,
-                            SortOrder = 2,
-                            Text = "Midfield",
-                            Value = "2"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            IsDisabled = false,
-                            SortOrder = 3,
-                            Text = "Defense",
-                            Value = "3"
-                        });
-                });
-
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.PositionLookup", b =>
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Position", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -4544,7 +4494,7 @@ namespace SoccerTeamManagement.Data.Migrations
 
                     b.HasIndex("PositionCategoryId");
 
-                    b.ToTable("PositionLookup");
+                    b.ToTable("Position");
 
                     b.HasData(
                         new
@@ -4736,6 +4686,56 @@ namespace SoccerTeamManagement.Data.Migrations
                             SortOrder = 8,
                             Text = "Center Forward",
                             Value = "CF"
+                        });
+                });
+
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.PositionCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool?>("IsDisabled")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("SortOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PositionCategory");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsDisabled = false,
+                            SortOrder = 1,
+                            Text = "Offense",
+                            Value = "1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsDisabled = false,
+                            SortOrder = 2,
+                            Text = "Midfield",
+                            Value = "2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsDisabled = false,
+                            SortOrder = 3,
+                            Text = "Defense",
+                            Value = "3"
                         });
                 });
 
@@ -5929,7 +5929,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SoccerTeamManagement.Data.Models.PositionLookup", "Position")
+                    b.HasOne("SoccerTeamManagement.Data.Models.Position", "Position")
                         .WithMany("PlayerPositions")
                         .HasForeignKey("PositionId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -5978,7 +5978,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ImageId");
 
-                    b.HasOne("SoccerTeamManagement.Data.Models.CountryLookup", "Nation")
+                    b.HasOne("SoccerTeamManagement.Data.Models.Country", "Nation")
                         .WithMany()
                         .HasForeignKey("NationId");
 
@@ -6009,7 +6009,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ImageId");
 
-                    b.HasOne("SoccerTeamManagement.Data.Models.CountryLookup", "Nation")
+                    b.HasOne("SoccerTeamManagement.Data.Models.Country", "Nation")
                         .WithMany()
                         .HasForeignKey("NationId");
 
@@ -6028,9 +6028,9 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.Navigation("Phone");
                 });
 
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.PositionLookup", b =>
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Position", b =>
                 {
-                    b.HasOne("SoccerTeamManagement.Data.Models.PositionCategoryLookup", "PositionCategory")
+                    b.HasOne("SoccerTeamManagement.Data.Models.PositionCategory", "PositionCategory")
                         .WithMany()
                         .HasForeignKey("PositionCategoryId");
 
@@ -6080,7 +6080,7 @@ namespace SoccerTeamManagement.Data.Migrations
                     b.Navigation("TeamPlayers");
                 });
 
-            modelBuilder.Entity("SoccerTeamManagement.Data.Models.PositionLookup", b =>
+            modelBuilder.Entity("SoccerTeamManagement.Data.Models.Position", b =>
                 {
                     b.Navigation("PlayerPositions");
                 });

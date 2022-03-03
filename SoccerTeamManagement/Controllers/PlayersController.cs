@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SoccerTeamManagement.Data;
 using SoccerTeamManagement.Data.Models.People;
+using System.Linq;
+using System.Threading.Tasks;
 using WorldCities.Data;
 
 namespace SoccerTeamManagement.Controllers
@@ -26,22 +23,35 @@ namespace SoccerTeamManagement.Controllers
         [HttpGet]
         public async Task<ActionResult<ApiResult<Player>>> GetPlayers(int pageIndex = 0, int pageSize = 10, string sortColumn = null, string sortOrder = null, string filterColumn = null, string filterQuery = null)
         {
-            var bob = await ApiResult<Player>.CreateAsync(_context.Players.Include(x => x.Nation), pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
-            return bob;
+            try
+            {
+                var entities = await ApiResult<Player>.CreateAsync(_context.Players.AsNoTracking().Include(x => x.Nation).Include(x => x.Phone).Include(x => x.Address), pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
+
+                return Ok(entities);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         // GET: api/Players/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Player>> GetPlayer(int id)
         {
-            var player = await _context.Players.Include(x => x.Nation).FirstOrDefaultAsync(x => x.Id == id);
-
-            if (player == null)
+            try
             {
-                return NotFound();
-            }
+                var player = await _context.Players.AsNoTracking().Include(x => x.Nation).Include(x => x.Phone).Include(x => x.Address).FirstOrDefaultAsync(x => x.Id == id);
 
-            return player;
+                if (player == null)
+                    return NotFound();
+
+                return Ok(player);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         // PUT: api/Players/5
@@ -49,30 +59,21 @@ namespace SoccerTeamManagement.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPlayer(int id, Player player)
         {
-            if (id != player.Id)
+            try
+            {
+                if (!_context.Players.AsNoTracking().Any(x => x.Id == player.Id))
+                    return NoContent();
+
+                var entity = _context.Players.Update(player);
+
+                await _context.SaveChangesAsync();
+
+                return Ok();
+            }
+            catch
             {
                 return BadRequest();
             }
-
-            _context.Entry(player).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PlayerExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
         }
 
         // POST: api/Players
@@ -80,31 +81,40 @@ namespace SoccerTeamManagement.Controllers
         [HttpPost]
         public async Task<ActionResult<Player>> PostPlayer(Player player)
         {
-            _context.Players.Add(player);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var entity = _context.Players.Add(player);
+                await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPlayer", new { id = player.Id }, player);
+                return CreatedAtAction("PostPlayer", entity);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         // DELETE: api/Players/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePlayer(int id)
         {
-            var player = await _context.Players.FindAsync(id);
-            if (player == null)
+            try
             {
-                return NotFound();
+                var player = await _context.Players.FindAsync(id);
+
+                if (player == null)
+                    return NotFound();
+
+                _context.Players.Remove(player);
+
+                await _context.SaveChangesAsync();
+
+                return Accepted(id);
             }
-
-            _context.Players.Remove(player);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool PlayerExists(int id)
-        {
-            return _context.Players.Any(e => e.Id == id);
+            catch
+            {
+                return BadRequest();
+            }
         }
     }
 }

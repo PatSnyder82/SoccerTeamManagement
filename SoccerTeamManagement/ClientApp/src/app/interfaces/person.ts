@@ -1,7 +1,7 @@
 import { Address } from "./address";
 import { Image } from "./image";
 import { Phone } from "./phone";
-import { CountryLookup } from "./countryLookup";
+import { Country } from "./lookups/country";
 
 export interface Person {
   id: number;
@@ -14,5 +14,5 @@ export interface Person {
   address: Address;
   photo: Image;
   nationId: number;
-  nation: CountryLookup;
+  nation: Country;
 }
