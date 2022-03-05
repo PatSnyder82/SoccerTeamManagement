@@ -1,5 +1,3 @@
-import { Link } from "./link";
-
 export interface Image {
   id: number;
   alternativeText: string;
@@ -8,5 +6,5 @@ export interface Image {
   style: string;
   title: string;
   caption: string;
-  source: Link;
+  url: string;
 }

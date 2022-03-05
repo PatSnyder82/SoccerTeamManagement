@@ -1,5 +1,5 @@
 import { Component, ElementRef, Inject, OnInit } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -9,6 +9,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { State } from '../../interfaces/lookups/state';
 import { ViewChild } from '@angular/core';
+import { Image } from '../../interfaces/image';
 
 @Component({
   selector: 'app-player-details',
@@ -21,6 +22,8 @@ export class PlayerDetailsComponent implements OnInit {
   player: Player;
   countries: Country[];
   states: State[];
+  image = {} as Image;
+  imageFile: File
 
   title: string;
   form: FormGroup;
@@ -77,6 +80,7 @@ export class PlayerDetailsComponent implements OnInit {
   //#region Events
 
   ngOnInit() {
+    this.imageFile = null;
     this.loadCountries();
     this.loadData();
   }
@@ -85,6 +89,11 @@ export class PlayerDetailsComponent implements OnInit {
     if (countryId === 237 && this.states === null) {
       this.loadStates(countryId);
     }
+  }
+
+  onFileSelected(event) {
+    this.image.caption = "IMAGE CAPTION....BAM!";
+    this.imageFile = event.target.files[0] as File;
   }
 
   onReadonlyChange($event: MatSlideToggleChange) {
@@ -98,34 +107,59 @@ export class PlayerDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    var player = (this.id) ? this.player : <Player>{};
+    if (this.imageFile !== null && this.imageFile.size > 0) {
+      console.log('Returned successfully from uploadImage() - In onSubmit()');
+      var player = (this.id) ? this.player : <Player>{};
 
-    player.firstName = this.form.get("firstName").value;
-    player.lastName = this.form.get("lastName").value;
-    player.nickName = this.form.get("nickName").value;
-    player.height = +this.form.get("height").value;
-    player.weight = +this.form.get("weight").value;
-    player.foot = this.form.get("foot").value;
-    player.flareRating = +this.form.get("flareRating").value;
-    player.countryId = +this.form.get("countryId").value;
-    player.dateOfBirth = this.form.get("dateOfBirth").value;
-    player.phone.areaCode = this.form.controls.phone.get("areaCode").value;
-    player.phone.countryCode = this.form.controls.phone.get("countryCode").value;
-    player.phone.extension = this.form.controls.phone.get("extension").value;
-    player.phone.number = this.form.controls.phone.get("number").value;
-    player.phone.phoneType = this.form.controls.phone.get("phoneType").value;
-    player.address.addressLine1 = this.form.controls.address.get("addressLine1").value;
-    player.address.addressLine2 = this.form.controls.address.get("addressLine2").value;
-    player.address.city = this.form.controls.address.get("city").value;
-    player.address.countryId = this.form.controls.address.get("countryId").value;
-    player.address.stateId = +this.form.controls.address.get("stateId").value;
-    player.address.zipCode = this.form.controls.address.get("zipCode").value;
+      player.firstName = this.form.get("firstName").value;
+      player.lastName = this.form.get("lastName").value;
+      player.nickName = this.form.get("nickName").value;
+      player.height = +this.form.get("height").value;
+      player.weight = +this.form.get("weight").value;
+      player.foot = this.form.get("foot").value;
+      player.flareRating = +this.form.get("flareRating").value;
+      player.countryId = +this.form.get("countryId").value;
+      player.dateOfBirth = this.form.get("dateOfBirth").value;
+      player.phone.areaCode = this.form.controls.phone.get("areaCode").value;
+      player.phone.countryCode = this.form.controls.phone.get("countryCode").value;
+      player.phone.extension = this.form.controls.phone.get("extension").value;
+      player.phone.number = this.form.controls.phone.get("number").value;
+      player.phone.phoneType = this.form.controls.phone.get("phoneType").value;
+      player.address.addressLine1 = this.form.controls.address.get("addressLine1").value;
+      player.address.addressLine2 = this.form.controls.address.get("addressLine2").value;
+      player.address.city = this.form.controls.address.get("city").value;
+      player.address.countryId = this.form.controls.address.get("countryId").value;
+      player.address.stateId = +this.form.controls.address.get("stateId").value;
+      player.address.zipCode = this.form.controls.address.get("zipCode").value;
 
-    const url = this.baseUrl + "api/players/" + this.player.id;
+      const url = this.baseUrl + "api/players/" + this.player.id;
 
-    this.http.put<Player>(url, player)
-      .subscribe(() => {
-        this.router.navigate(['/players']);
+      this.http.put<Player>(url, player)
+        .subscribe(() => {
+          this.router.navigate(['/players']);
+        }, error => console.error(error));
+    }
+  }
+
+  onUploadImage() {
+    const url = this.baseUrl + "api/images/";
+
+    let formData = new FormData();
+    formData.append('file', this.imageFile);
+    formData.append('image', JSON.stringify(this.image));
+
+    this.http.post<number>(url, formData)
+      .subscribe(result => {
+        this.player.imageId = result;
+      }, error => console.error(error));
+  }
+
+  deleteImage() {
+    const url = this.baseUrl + "api/images/";
+
+    return this.http.delete<Image>(url + this.image.id.toString())
+      .subscribe(result => {
+        console.log(result);
       }, error => console.error(error));
   }
 

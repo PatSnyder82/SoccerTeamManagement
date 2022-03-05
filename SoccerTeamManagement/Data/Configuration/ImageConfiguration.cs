@@ -13,11 +13,8 @@ namespace SoccerTeamManagement.Data.Configuration
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).IsRequired();
 
-            #region Relationships
-
-            builder.OwnsOne(x => x.Source);
-
-            #endregion Relationships
+            //Do not store image in database
+            builder.Ignore(x => x.File);
 
             #region Seed
 

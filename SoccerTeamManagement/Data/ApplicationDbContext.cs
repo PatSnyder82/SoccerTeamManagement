@@ -63,5 +63,7 @@ namespace SoccerTeamManagement.Data
 
             #endregion Joins
         }
+
+        public DbSet<SoccerTeamManagement.Data.Models.Image> Image { get; set; }
     }
 }

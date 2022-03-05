@@ -10,9 +10,12 @@ export interface Person {
   nickName: string;
 
   dateOfBirth: Date;
+  phoneId: number;
   phone: Phone;
+  addressId: number;
   address: Address;
-  photo: Image;
+  imageId: number;
+  image: Image;
   countryId: number;
   country: Country;
 }

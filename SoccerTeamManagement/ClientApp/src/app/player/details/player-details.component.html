@@ -9,6 +9,11 @@
     </section>
 
     <section class="form-group">
+      <input type="file" (change)="onFileSelected($event)" />
+      <button type="button" (click)="onUploadImage()">Upload</button>
+    </section>
+
+    <section class="form-group">
       <mat-label>First Name:</mat-label>
       <input matInput formControlName="firstName" [errorStateMatcher]="errorStateMatcher" class="form-control" />
       <mat-error *ngIf="form.controls['firstName'].hasError('required')"><strong>Input required</strong></mat-error>
