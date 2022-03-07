@@ -1,4 +1,4 @@
-export interface Lookup {
+export interface ILookup {
   id: number;
   isDisabled: boolean;
   sortOrder: number;

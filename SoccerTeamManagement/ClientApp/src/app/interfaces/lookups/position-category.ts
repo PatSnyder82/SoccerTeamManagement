@@ -1,6 +1,6 @@
-import { Lookup } from "./lookup";
-import { Position } from "./position";
+import { ILookup } from "./lookup";
+import { IPosition } from "./position";
 
-export interface PositionCategory extends Lookup {
-  positions: Position[];
+export interface IPositionCategory extends ILookup {
+  positions: IPosition[];
 }

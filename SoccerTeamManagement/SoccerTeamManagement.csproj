@@ -42,8 +42,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\player\create\" />
-    <Folder Include="ClientApp\src\assets\images\" />
+    <Folder Include="ClientApp\src\app\components\features\player\create\" />
+    <Folder Include="ClientApp\src\app\assets\images\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
 

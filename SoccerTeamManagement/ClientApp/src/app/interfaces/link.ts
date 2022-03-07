@@ -1,4 +1,4 @@
-export interface Link {
+export interface ILink {
   id: number;
   openNewWindow: boolean;
   text: string;

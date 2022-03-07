@@ -1,7 +1,7 @@
-import { Country } from './lookups/country';
-import { State } from './lookups/state';
+import { ICountry } from './lookups/country';
+import { IState } from './lookups/state';
 
-export interface Address {
+export interface IAddress {
   id: number;
   addressLine1: string;
   addressLine2: string;
@@ -9,7 +9,7 @@ export interface Address {
   zipCode: string;
 
   countryId: number;
-  country: Country;
+  country: ICountry;
   stateId: number;
-  state: State;
+  state: IState;
 }

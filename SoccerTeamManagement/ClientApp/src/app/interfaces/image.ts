@@ -1,4 +1,4 @@
-export interface Image {
+export interface IImage {
   id: number;
   alternativeText: string;
   width: number;

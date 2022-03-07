@@ -1,4 +1,4 @@
-export interface PlayerAttributes {
+export interface IPlayerAttributes {
   id: number;
   playerId: number;
 

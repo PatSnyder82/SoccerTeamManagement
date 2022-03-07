@@ -1,4 +1,4 @@
-export interface Phone {
+export interface IPhone {
   id: number;
   countryCode: string;
   areaCode: string;

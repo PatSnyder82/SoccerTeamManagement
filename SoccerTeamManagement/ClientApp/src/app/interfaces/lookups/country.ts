@@ -1,9 +1,9 @@
-import { Lookup } from "./lookup";
-import { State } from "./state";
+import { ILookup } from "./lookup";
+import { IState } from "./state";
 
-export interface Country extends Lookup {
+export interface ICountry extends ILookup {
   alpha2Code: string;
   alpha3Code: string;
 
-  states: State[];
+  states: IState[];
 }

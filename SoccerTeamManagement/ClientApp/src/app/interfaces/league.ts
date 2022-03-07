@@ -1,9 +1,9 @@
-import { Image } from "./image";
-import { Team } from "./Team";
+import { IImage } from "./image";
+import { ITeam } from "./team";
 
-export interface League {
+export interface ILeague {
   id: number;
   name: string;
-  logo: Image;
-  teams: Team[];
+  logo: IImage;
+  teams: ITeam[];
 }

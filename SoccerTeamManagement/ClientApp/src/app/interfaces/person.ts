@@ -1,9 +1,9 @@
-import { Address } from "./address";
-import { Image } from "./image";
-import { Phone } from "./phone";
-import { Country } from "./lookups/country";
+import { IAddress } from "./address";
+import { IImage } from "./image";
+import { IPhone } from "./phone";
+import { ICountry } from "./lookups/country";
 
-export interface Person {
+export interface IPerson {
   id: number;
   firstName: string;
   lastName: string;
@@ -11,11 +11,11 @@ export interface Person {
 
   dateOfBirth: Date;
   phoneId: number;
-  phone: Phone;
+  phone: IPhone;
   addressId: number;
-  address: Address;
+  address: IAddress;
   imageId: number;
-  image: Image;
+  image: IImage;
   countryId: number;
-  country: Country;
+  country: ICountry;
 }

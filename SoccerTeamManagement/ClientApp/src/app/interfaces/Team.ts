@@ -1,13 +1,13 @@
-import { Image } from "./image";
-import { Club } from "./club";
-import { League } from "./league";
-import { Player } from "./player";
+import { IImage } from "./image";
+import { IClub } from "./club";
+import { ILeague } from "./league";
+import { IPlayer } from "./player";
 
-export interface Team {
+export interface ITeam {
   id: number;
   name: string;
-  image: Image;
-  club: Club;
-  leagues: League[];
-  players: Player[];
+  image: IImage;
+  club: IClub;
+  leagues: ILeague[];
+  players: IPlayer[];
 }

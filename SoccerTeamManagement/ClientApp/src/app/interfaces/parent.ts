@@ -1,6 +1,6 @@
-import { Person } from "./person";
-import { Player } from "./player";
+import { IPerson } from "./person";
+import { IPlayer } from "./player";
 
-export interface Parent extends Person {
-  players: Player[];
+export interface IParent extends IPerson {
+  players: IPlayer[];
 }
