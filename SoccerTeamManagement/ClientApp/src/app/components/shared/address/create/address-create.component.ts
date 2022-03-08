@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormGroupDirective } from '@angular/forms';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICountry } from '../../../../interfaces/lookups/country';
 import { IState } from '../../../../interfaces/lookups/state';
@@ -12,9 +12,11 @@ import { IState } from '../../../../interfaces/lookups/state';
 })
 export class AddressCreateComponent implements OnInit {
   //#region Properties
+  @Input() formGroupName = 'address';
+  @Input() isReadonly = false;
 
-  parentForm: FormGroup;
-  address!: FormGroup;
+  form: FormGroup;
+  address: FormGroup;
 
   countries: ICountry[];
   states: IState[];
@@ -31,7 +33,12 @@ export class AddressCreateComponent implements OnInit {
   //#region Event
 
   ngOnInit(): void {
-    this.parentForm = this.rootFormGroup.control;
+    this.form = this.rootFormGroup.control;
+    this.form.addControl(this.formGroupName, this._createAddressFormGroup());
+    this.address = this.form.get(this.formGroupName) as FormGroup;
+
+    if (this.isReadonly)
+      this.address.disable();
 
     this._getCountries();
   }
@@ -67,6 +74,19 @@ export class AddressCreateComponent implements OnInit {
     this.http.get<IState[]>(url,).subscribe(result => {
       this.states = result;
     }, error => console.error(error));
+  }
+
+  private _createAddressFormGroup(): FormGroup {
+    const unsignedIntPattern = new RegExp('^[1-9]\\d{0,8}$');
+
+    return this.formBuilder.group({
+      addressLine1: ['', [Validators.required, Validators.maxLength(100)]],
+      addressLine2: ['', [Validators.maxLength(100)]],
+      city: ['', [Validators.required, Validators.maxLength(100)]],
+      countryId: ['', [Validators.required]],
+      stateId: ['', [Validators.required]],
+      zipCode: ['', [Validators.pattern(unsignedIntPattern)]]
+    });
   }
 
   //#endregion

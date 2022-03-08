@@ -25,6 +25,7 @@
     "@angular/router": "^13.2.4",
     "bootstrap": "^5.1.3",
     "core-js": "^3.21.1",
+    "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
     "jquery": "^3.5.1",
     "oidc-client": "^1.11.5",

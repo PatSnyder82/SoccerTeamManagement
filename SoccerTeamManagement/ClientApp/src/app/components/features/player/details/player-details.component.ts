@@ -22,6 +22,7 @@ export class PlayerDetailsComponent implements OnInit {
   states: IState[];
   image = {} as IImage;
   imageFile: File
+  addressFormName: string;
 
   title: string;
   form: FormGroup;
@@ -30,6 +31,7 @@ export class PlayerDetailsComponent implements OnInit {
   //#region Constructor
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private formBuilder: FormBuilder) {
+    this.addressFormName = 'address';
     const unsignedInt999Pattern = new RegExp('^[1-9]\\d{0,2}$');
     const unsignedIntPattern = new RegExp('^[1-9]\\d{0,8}$');
 
@@ -50,14 +52,6 @@ export class PlayerDetailsComponent implements OnInit {
         extension: ['', [Validators.pattern(unsignedIntPattern)]],
         number: ['', [Validators.required, Validators.pattern(unsignedIntPattern)]],
         phoneType: ['', [Validators.required]]
-      }),
-      address: this.formBuilder.group({
-        addressLine1: ['', [Validators.required, Validators.maxLength(100)]],
-        addressLine2: ['', [Validators.maxLength(100)]],
-        city: ['', [Validators.required, Validators.maxLength(100)]],
-        countryId: ['', [Validators.required]],
-        stateId: ['', [Validators.required]],
-        zipCode: ['', [Validators.pattern(unsignedIntPattern)]]
       })
       /*//Photo
       image: new FormControl('', Validators.required),
@@ -91,9 +85,11 @@ export class PlayerDetailsComponent implements OnInit {
     if ($event.checked) {
       this.form.disable();
       this.form.controls['readonly'].enable();
+      this.form.get(this.addressFormName).disable();
     }
     else {
       this.form.enable();
+      this.form.get(this.addressFormName).enable();
     }
   }
 

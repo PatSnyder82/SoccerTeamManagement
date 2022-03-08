@@ -91,7 +91,7 @@
 
       <section class="form-group">
         <mat-label>Country Code:</mat-label>
-        <input matInput formControlName="countryCode"  class="form-control" />
+        <input matInput formControlName="countryCode" class="form-control" />
         <!--<mat-error *ngIf="form.controls.phone.get('countryCode').hasError('required')"><strong>Input required  </strong></mat-error>
         <mat-error *ngIf="form.controls.phone.get('countryCode').hasError('pattern') && (form.controls.phone.get('countryCode').dirty || form.controls.phone.get('countryCode').touched)">
           <strong>Input must be a positive whole number less than 10 digits long  </strong>
@@ -100,7 +100,7 @@
 
       <section class="form-group">
         <mat-label>Extension:</mat-label>
-        <input matInput formControlName="extension"  class="form-control" />
+        <input matInput formControlName="extension" class="form-control" />
         <!--<mat-error *ngIf="form.controls.phone.get('extension').hasError('pattern') && (form.controls.phone.get('extension').dirty || form.controls.phone.get('extension').touched)">
           <strong>Input must be a positive whole number less than 10 digits long  </strong>
         </mat-error>-->
@@ -125,7 +125,7 @@
       </section>
     </section>
 
-    <sm-address-create></sm-address-create>
+    <sm-address-create [formGroupName]="addressFormName" [isReadonly]='true'></sm-address-create>
 
     <section class="form-group commands">
       <button mat-raised-button *ngIf="id" type="submit" [disabled]="form.invalid || form.controls['weight'].disabled" color="warn">Update</button>

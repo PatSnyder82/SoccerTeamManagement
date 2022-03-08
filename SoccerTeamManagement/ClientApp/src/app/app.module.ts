@@ -10,6 +10,7 @@ import { CounterComponent } from './components/features/counter/counter.componen
 import { FetchDataComponent } from './components/features/fetch-data/fetch-data.component';  //TODO: DELETE
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { BrowserModule } from '@angular/platform-browser';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HomeModule,
     PlayerModule,
+    PipesModule,
     SharedModule,
     RouterModule
   ],
