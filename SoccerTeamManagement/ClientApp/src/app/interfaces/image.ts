@@ -1,5 +1,6 @@
-export interface IImage {
-  id: number;
+import { IEntity } from "./entity";
+
+export interface IImage extends IEntity {
   alternativeText: string;
   width: number;
   height: number;

@@ -15,6 +15,9 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../../../shared/app-routing/app-routing.module';
 import { PlayerDetailsComponent } from './player-details.component';
 import { AddressModule } from '../../../shared/address/address.module';
+import { BaseModule } from '../../../base/base.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PipesModule } from '../../../../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -23,17 +26,20 @@ import { AddressModule } from '../../../shared/address/address.module';
   imports: [
     AddressModule,
     AppRoutingModule,
+    BaseModule,
     CommonModule,
     FormsModule,
     HttpClientModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatDatepickerModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
     MatSelectModule,
     MatSlideToggleModule,
+    PipesModule,
     ReactiveFormsModule
   ],
   exports: [

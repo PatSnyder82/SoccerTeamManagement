@@ -2,9 +2,9 @@ import { IAddress } from "./address";
 import { IImage } from "./image";
 import { IPhone } from "./phone";
 import { ICountry } from "./lookups/country";
+import { IEntity } from "./entity";
 
-export interface IPerson {
-  id: number;
+export interface IPerson extends IEntity {
   firstName: string;
   lastName: string;
   nickName: string;

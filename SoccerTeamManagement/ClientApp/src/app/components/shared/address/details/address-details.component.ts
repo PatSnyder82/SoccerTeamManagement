@@ -16,13 +16,13 @@ import { StateService } from '../../../../services/state.service';
 })
 export class AddressDetailsComponent implements OnInit, OnDestroy {
   //#region Properties
-  @Input() formGroupName = 'address';
-  @Input() isReadonly = false;
+  @Input() isReadOnly = false;
   @Input() countries: ICountry[];
 
   controls: {};
   errorMessage: string;
   form: FormGroup;
+  formName: string;;
   address: FormGroup;
   states: IState[];
   subscriptions: Subscription[];
@@ -36,6 +36,7 @@ export class AddressDetailsComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder, private rootFormGroup: FormGroupDirective,
     private countryService: CountryService, private stateService: StateService) {
     this.subscriptions = new Array<Subscription>();
+    this.formName = 'address';
   }
 
   //#endregion
@@ -44,16 +45,12 @@ export class AddressDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.form = this.rootFormGroup.form;
-    this.form.addControl(this.formGroupName, this._buildForm());
-    this.address = this.form.get(this.formGroupName) as FormGroup;
+    this.form.addControl(this.formName, this._buildForm());
+    this.address = this.form.get(this.formName) as FormGroup;
 
-    this.subscriptions.push(this.form.controls.address.get('countryId').valueChanges.subscribe(value => {
-      if (value === 237) { console.log("STATE VALIDATOR IS USA"); this.form.controls.address.get('stateId').setValidators([Validators.required]); }
-      else { console.log("STATE VALIDATOR NOT USA"); this.form.controls.address.get('stateId').clearValidators(); }
-      this.form.controls.address.get('stateId').updateValueAndValidity();
-    }));
+    this._conditionalValidationOfState();
 
-    if (this.isReadonly)
+    if (this.isReadOnly)
       this._disableForm();
     else
       this._enableForm();
@@ -85,10 +82,24 @@ export class AddressDetailsComponent implements OnInit, OnDestroy {
       addressLine1: ['', [Validators.required, Validators.maxLength(100)]],
       addressLine2: ['', [Validators.maxLength(100)]],
       city: ['', [Validators.required, Validators.maxLength(100)]],
-      countryId: ['', [Validators.required]],
-      stateId: ['',],
+      countryId: [null, [Validators.required]],
+      stateId: [''],
       zipCode: ['', [Validators.pattern(unsignedIntPattern)]]
     });
+  }
+
+  private _conditionalValidationOfState(): void {
+    this.subscriptions.push(this.form.controls.address.get('countryId').valueChanges
+      .subscribe(value => {
+        if (value === 237) {
+          this.form.controls.address.get('stateId').setValidators([Validators.required]);
+        }
+        else {
+          this.form.controls.address.get('stateId').clearValidators();
+        }
+
+        this.form.controls.address.get('stateId').updateValueAndValidity();
+      }));
   }
 
   private _createControlReferences(): void {
@@ -103,12 +114,12 @@ export class AddressDetailsComponent implements OnInit, OnDestroy {
   }
 
   private _disableForm(): void {
-    this.isReadonly = true;
+    this.isReadOnly = true;
     this.form.disable();
   }
 
   private _enableForm(): void {
-    this.isReadonly = false;
+    this.isReadOnly = false;
     this.address.enable();
   }
 

@@ -59,16 +59,16 @@ namespace SoccerTeamManagement.Controllers
         {
             try
             {
-                var player = await _context.Players.AsNoTracking().Include(x => x.Country).Include(x => x.Phone).Include(x => x.Address).FirstOrDefaultAsync(x => x.Id == id);
+                var player = await _context.Players.AsNoTracking().Include(x => x.Country).Include(x => x.Phone).Include(x => x.Address).ThenInclude(x => x.State).Include(x => x.Address).ThenInclude(x => x.Country).FirstOrDefaultAsync(x => x.Id == id);
 
                 if (player == null)
                     return NotFound();
 
                 return Ok(player);
             }
-            catch
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex);
             }
         }
 
@@ -101,14 +101,15 @@ namespace SoccerTeamManagement.Controllers
         {
             try
             {
-                var entity = _context.Players.Add(player);
+                var result = _context.Players.Add(player);
+
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction("PostPlayer", entity);
+                return Ok(result.Entity.Id);
             }
-            catch
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex);
             }
         }
 

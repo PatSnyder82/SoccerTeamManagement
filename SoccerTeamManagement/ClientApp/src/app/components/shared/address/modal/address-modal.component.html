@@ -1,0 +1,66 @@
+
+<h1 mat-dialog-title>{{title}}</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="address-modal">
+  <div mat-dialog-content>
+    <div class="row">
+      <section class="form-group">
+        <mat-label>Address Line 1:</mat-label>
+        <input matInput formControlName="addressLine1" class="form-control" />
+        <mat-error *ngIf="controls.addressLine1.hasError('required') && (controls.addressLine1.dirty || controls.addressLine1.touched)"><strong>Input required  </strong></mat-error>
+        <mat-error *ngIf="controls.addressLine1.hasError('maxlength') && (controls.addressLine1.dirty || controls.addressLine1.touched)"><strong>Input must be less than 100 characters  </strong></mat-error>
+      </section>
+    </div>
+    <div class="row">
+      <section class="form-group">
+        <mat-label>Address Line 2:</mat-label>
+        <input matInput formControlName="addressLine2" class="form-control" />
+        <mat-error *ngIf="controls.addressLine2.hasError('maxlength') && (controls.addressLine2.dirty || controls.addressLine2.touched)"><strong>Input must be less than 100 characters  </strong></mat-error>
+      </section>
+    </div>
+    <div class="row">
+      <section class="form-group col">
+        <mat-label>Country:</mat-label>
+        <mat-select formControlName="countryId" (selectionChange)="onCountryChange($event.value)" class="form-control">
+          <mat-option *ngFor="let country of countries" [value]="country.id">
+            {{country.text}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="controls.countryId.hasError('required') && (controls.countryId.dirty || controls.countryId.touched)"><strong>Input required</strong></mat-error>
+      </section>
+      <!--The only states loaded in the database are those belonging to the US (countryid 237)-->
+      <section class="form-group col" *ngIf="controls.countryId.value === 237">
+        <mat-label>State:</mat-label>
+        <mat-select formControlName="stateId" class="form-control">
+          <mat-option *ngFor="let state of states" [value]="state.id">
+            {{state.text}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="controls.stateId.hasError('required')"><strong>Input required</strong></mat-error>
+        <!--&& (form.controls.address.get('stateId').dirty || form.controls.address.get('stateId').touched)-->
+      </section>
+    </div>
+    <div class="row">
+      <section class="form-group col">
+        <mat-label>City:</mat-label>
+        <input matInput formControlName="city" class="form-control" />
+        <mat-error *ngIf="controls.city.hasError('required') && (controls.city.dirty || controls.city.touched)"><strong>Input required  </strong></mat-error>
+        <mat-error *ngIf="controls.city.hasError('maxlength') && (controls.city.dirty || controls.city.touched)"><strong>Input must be less than 100 characters  </strong></mat-error>
+      </section>
+
+      <section class="form-group col">
+        <mat-label>Zip Code:</mat-label>
+        <input matInput formControlName="zipCode" class="form-control" />
+        <mat-error *ngIf="controls.zipCode.hasError('pattern') && (controls.zipCode.dirty || controls.zipCode.touched)">
+          <strong>Input must be a positive whole number less than 10 digits long  </strong>
+        </mat-error>
+      </section>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <section class="form-group commands">
+      <button mat-raised-button type="submit" value="Submit" color="warn" [disabled]="form.invalid">{{isCreateMode ? 'Create' : 'Update'}}</button>
+      <button mat-raised-button type="button" (click)="onCloseModal()">Close</button>
+    </section>
+  </div>
+</form>

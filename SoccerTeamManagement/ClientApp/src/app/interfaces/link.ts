@@ -1,5 +1,6 @@
-export interface ILink {
-  id: number;
+import { IEntity } from "./entity";
+
+export interface ILink extends IEntity  {
   openNewWindow: boolean;
   text: string;
   url: string;

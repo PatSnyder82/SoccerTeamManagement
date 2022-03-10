@@ -10,10 +10,11 @@ export class AddressPipe implements PipeTransform {
 
     if (address) {
       value += address?.addressLine1;
-      value += address?.addressLine2 ? ', ' + address?.addressLine2 : '';
-      value += address?.city ? ', ' + address?.city : '';
+      value += address?.addressLine2 ? ',\n ' + address?.addressLine2 : '';
+      value += address?.city ? ',\n' + address?.city : '';
+      value += address?.state ? ', ' + address?.state?.alpha2Code : '';
       value += address?.zipCode ? '  ' + address?.zipCode : '';
-      value += address?.country?.text ? address?.country?.text : '';
+      value += address?.country?.text ? '\n' + address?.country?.text : '';
     }
 
     return value;

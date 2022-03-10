@@ -22,7 +22,7 @@
 
         public int? StateId { get; set; }
 
-        public string State { get; set; }
+        public State State { get; set; }
 
         #endregion Relationships
     }

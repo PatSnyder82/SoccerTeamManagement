@@ -15,82 +15,86 @@
 
     <div *ngIf='!isCreateMode && !isLoading' class="row">
       <section class="form-group">
-        <mat-slide-toggle checked="true" (change)="onReadonlyChange($event)">Readonly</mat-slide-toggle><!--formControlName="readOnly"-->
+        <mat-slide-toggle checked="true" (change)="onReadonlyChange($event)">Readonly</mat-slide-toggle>
       </section>
     </div>
 
-    <section class="form-group">
-      <input type="file" (change)="onFileSelected($event)" />
-      <button type="button" (click)="onImageUpload()">Upload</button>
-    </section>
+      <section class="form-group">
+        <input type="file" (change)="onFileSelected($event)" />
+        <button type="button" (click)="onImageUpload()">Upload</button>
+      </section>
+    <div class="row">
+      <section class="form-group col">
+        <mat-label>First Name:</mat-label>
+        <input matInput formControlName="firstName" class="form-control" />
+        <mat-error *ngIf="controls.firstName.hasError('required') && (controls.firstName.dirty || controls.firstName.touched)"><strong>Input required</strong></mat-error>
+        <mat-error *ngIf="controls.firstName.hasError('maxlength') && (controls.firstName.dirty || controls.firstName.touched)"><strong>Input must be less than 100 characters  </strong></mat-error>
+      </section>
 
-    <section class="form-group">
-      <mat-label>First Name:</mat-label>
-      <input matInput formControlName="firstName" class="form-control" />
-      <mat-error *ngIf="controls.firstName.hasError('required') && (controls.firstName.dirty || controls.firstName.touched)"><strong>Input required</strong></mat-error>
-      <mat-error *ngIf="controls.firstName.hasError('maxlength') && (controls.firstName.dirty || controls.firstName.touched)"><strong>Input must be less than 100 characters  </strong></mat-error>
-    </section>
+      <section class="form-group col">
+        <mat-label>Last Name:</mat-label>
+        <input matInput formControlName="lastName" class="form-control" />
+        <mat-error *ngIf="controls.lastName.hasError('required') && (controls.lastName.dirty || controls.lastName.touched)"><strong>Input required</strong></mat-error>
+        <mat-error *ngIf="controls.lastName.hasError('maxlength') && (controls.lastName.dirty || controls.lastName.touched)"><strong>Input must be less than 100 characters  </strong></mat-error>
+      </section>
+    </div>
+    <div class="row">
+      <section class="form-group col">
+        <mat-label>Date of Birth:</mat-label>
+        <input matInput formControlName="dateOfBirth" [matDatepicker]="picker" class="form-control" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="controls.dateOfBirth.hasError('required') && (controls.dateOfBirth.dirty || controls.dateOfBirth.touched)"><strong>Input required</strong></mat-error>
+      </section>
 
-    <section class="form-group">
-      <mat-label>Last Name:</mat-label>
-      <input matInput formControlName="lastName" class="form-control" />
-      <mat-error *ngIf="controls.lastName.hasError('required') && (controls.lastName.dirty || controls.lastName.touched)"><strong>Input required</strong></mat-error>
-      <mat-error *ngIf="controls.lastName.hasError('maxlength') && (controls.lastName.dirty || controls.lastName.touched)"><strong>Input must be less than 100 characters  </strong></mat-error>
-    </section>
+      <section class="form-group col">
+        <mat-label>Nickname:</mat-label>
+        <input matInput formControlName="nickName" class="form-control" />
+        <mat-error *ngIf="controls.nickName.hasError('maxlength') && (controls.nickName.dirty || controls.nickName.touched)"><strong>Input must be less than 100 characters  </strong></mat-error>
+      </section>
+    </div>
+    <div class="row">
+      <section class="form-group col">
+        <mat-label>Height:</mat-label>
+        <input matInput formControlName="height" class="form-control" />
+        <mat-error *ngIf="controls.height.hasError('min') && (controls.height.dirty || controls.height.touched)"><strong>Value must be between 0 - 999  </strong></mat-error>
+        <mat-error *ngIf="controls.height.hasError('max') && (controls.height.dirty || controls.height.touched)"><strong>Value must be between 0 - 999  </strong></mat-error>
+        <mat-error *ngIf="controls.height.hasError('pattern') && (controls.height.dirty || controls.height.touched)">
+          <strong>Input must be a positive whole number  </strong>
+        </mat-error>
+      </section>
 
-    <section class="form-group">
-      <mat-label>Date of Birth:</mat-label>
-      <input matInput formControlName="dateOfBirth" [matDatepicker]="picker" class="form-control" />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="controls.dateOfBirth.hasError('required') && (controls.dateOfBirth.dirty || controls.dateOfBirth.touched)"><strong>Input required</strong></mat-error>
-    </section>
-
-    <section class="form-group">
-      <mat-label>Nickname:</mat-label>
-      <input matInput formControlName="nickName" class="form-control" />
-      <mat-error *ngIf="controls.nickName.hasError('maxlength') && (controls.nickName.dirty || controls.nickName.touched)"><strong>Input must be less than 100 characters  </strong></mat-error>
-    </section>
-
-    <section class="form-group">
-      <mat-label>Height:</mat-label>
-      <input matInput formControlName="height" class="form-control" />
-      <mat-error *ngIf="controls.height.hasError('min') && (controls.nickName.dirty || controls.nickName.touched)"><strong>Value must be between 0 - 999  </strong></mat-error>
-      <mat-error *ngIf="controls.height.hasError('max') && (controls.nickName.dirty || controls.nickName.touched)"><strong>Value must be between 0 - 999  </strong></mat-error>
-      <mat-error *ngIf="controls.height.hasError('pattern') && (controls.height.dirty || controls.height.touched)">
-        <strong>Input must be a positive whole number  </strong>
-      </mat-error>
-    </section>
-
-    <section class="form-group">
-      <mat-label>Weight:</mat-label>
-      <input matInput formControlName="weight" class="form-control" />
-      <mat-error *ngIf="controls.weight.hasError('min') && (controls.weight.dirty || controls.weight.touched)"><strong>Value must be between 0 - 9999  </strong></mat-error>
-      <mat-error *ngIf="controls.weight.hasError('max') && (controls.weight.dirty || controls.weight.touched)"><strong>Value must be between 0 - 9999  </strong></mat-error>
-      <mat-error *ngIf="controls.weight.hasError('pattern') && (controls.weight.dirty || controls.weight.touched)">
-        <strong>Input must be a positive whole number  </strong>
-      </mat-error>
-    </section>
-
-    <section class="form-group">
-      <mat-label>Strong Foot:</mat-label>
-      <mat-button-toggle-group formControlName="foot" value="0">
-        <mat-button-toggle [value]="1">Left</mat-button-toggle>
-        <mat-button-toggle [value]="0">Right</mat-button-toggle>
-      </mat-button-toggle-group>
-    </section>
-
-    <section class="form-group">
-      <mat-label>Flare Rating:</mat-label>
-      <mat-button-toggle-group formControlName="flareRating" value="1">
-        <mat-button-toggle [value]="1">1</mat-button-toggle>
-        <mat-button-toggle [value]="2">2</mat-button-toggle>
-        <mat-button-toggle [value]="3">3</mat-button-toggle>
-        <mat-button-toggle [value]="4">4</mat-button-toggle>
-        <mat-button-toggle [value]="5">5</mat-button-toggle>
-      </mat-button-toggle-group>
-    </section>
-
+      <section class="form-group col">
+        <mat-label>Weight:</mat-label>
+        <input matInput formControlName="weight" class="form-control" />
+        <mat-error *ngIf="controls.weight.hasError('min') && (controls.weight.dirty || controls.weight.touched)"><strong>Value must be between 0 - 9999  </strong></mat-error>
+        <mat-error *ngIf="controls.weight.hasError('max') && (controls.weight.dirty || controls.weight.touched)"><strong>Value must be between 0 - 9999  </strong></mat-error>
+        <mat-error *ngIf="controls.weight.hasError('pattern') && (controls.weight.dirty || controls.weight.touched)">
+          <strong>Input must be a positive whole number  </strong>
+        </mat-error>
+      </section>
+    </div>
+    <div class="row">
+      <section class="form-group col">
+        <mat-label>Strong Foot:</mat-label>
+        <br/>
+        <mat-button-toggle-group formControlName="foot" value="0">
+          <mat-button-toggle [value]="1">Left</mat-button-toggle>
+          <mat-button-toggle [value]="0">Right</mat-button-toggle>
+        </mat-button-toggle-group>
+      </section>
+      <section class="form-group col">
+        <mat-label>Flare Rating:</mat-label>
+        <br/>
+        <mat-button-toggle-group formControlName="flareRating" value="1">
+          <mat-button-toggle [value]="1">1</mat-button-toggle>
+          <mat-button-toggle [value]="2">2</mat-button-toggle>
+          <mat-button-toggle [value]="3">3</mat-button-toggle>
+          <mat-button-toggle [value]="4">4</mat-button-toggle>
+          <mat-button-toggle [value]="5">5</mat-button-toggle>
+        </mat-button-toggle-group>
+      </section>
+    </div>
     <section class="form-group">
       <mat-label>Nationality:</mat-label>
       <mat-select formControlName="countryId" class="form-control">
@@ -139,6 +143,7 @@
 
       <section class="form-group">
         <mat-label>Phone Type:</mat-label>
+        <br/>
         <mat-button-toggle-group formControlName="phoneType">
           <mat-button-toggle [value]="1">Cell</mat-button-toggle>
           <mat-button-toggle [value]="2">Home</mat-button-toggle>
@@ -147,9 +152,17 @@
       </section>
     </section>
 
-    <sm-address-details [formGroupName]="addressFormName" [isReadonly]='isReadonly' [countries]='countries'></sm-address-details>
+    <section class="form-group">
+      <mat-label>Address:</mat-label>
+      <br/>
+      <p class="multiline">{{entity.address | address}}</p>
+      <button mat-button (click)="openModal()">Update Address</button>
+    </section>
+
+    <!--<sm-address-details [isReadOnly]='isReadOnly' [countries]='countries'></sm-address-details>-->
 
     <section class="form-group commands">
+
       <button mat-raised-button type="submit" value="Submit" color="warn" [disabled]="isCreateMode ? false : (form.invalid || controls.weight.disabled)">{{isCreateMode ? 'Create' : 'Update'}}</button>
       <button mat-raised-button type="button" [routerLink]="['/players']">Close</button>
     </section>

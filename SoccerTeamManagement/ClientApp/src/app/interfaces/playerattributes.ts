@@ -1,5 +1,6 @@
-export interface IPlayerAttributes {
-  id: number;
+import { IEntity } from "./entity";
+
+export interface IPlayerAttributes extends IEntity  {
   playerId: number;
 
   //#region Pace
