@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 
-import { AddressCreateModule } from './create/address-create.module';
+import { AddressDetailsModule } from './details/address-details.module';
 
 @NgModule({
   imports: [
-    AddressCreateModule
+    AddressDetailsModule
   ],
   exports: [
-    AddressCreateModule
+    AddressDetailsModule
   ]
 })
 export class AddressModule { }

@@ -22,11 +22,36 @@ namespace SoccerTeamManagement.Controllers
             _context = context;
         }
 
-        // GET: api/Countries
+        // GET: api/Country
         [HttpGet]
-        public async Task<ActionResult<ApiResult<Country>>> GetCountry(int pageIndex = 0, int pageSize = 10, string sortColumn = null, string sortOrder = null, string filterColumn = null, string filterQuery = null)
+        public async Task<ActionResult<Country>> GetCountries()
         {
-            return await ApiResult<Country>.CreateAsync(_context.Countries, pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
+            try
+            {
+                var entities = await _context.Countries.OrderBy(x => x.SortOrder).AsNoTracking().ToListAsync();
+
+                return Ok(entities);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+
+        // GET: api/Country/TableData
+        [HttpGet]
+        [Route("TableData")]
+        public async Task<ActionResult<TableData<Country>>> TableData(int pageIndex = 0, int pageSize = 10, string sortColumn = null, string sortOrder = null, string filterColumn = null, string filterQuery = null)
+        {
+            try
+            {
+                var entities = await TableData<Country>.CreateAsync(_context.Countries.AsNoTracking(), pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
+                return Ok(entities);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         // GET: api/Countries/5

@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'counter', component: CounterComponent },
   { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
   { path: 'players', component: PlayerListComponent },
-  //{ path: 'player', component: PlayerComponent },
+  { path: 'player', component: PlayerDetailsComponent },
   { path: 'player/:id', component: PlayerDetailsComponent },
   { path: ApplicationPaths.Register, component: ApiAuthLoginComponent },
   { path: ApplicationPaths.Profile, component: ApiAuthLoginComponent },

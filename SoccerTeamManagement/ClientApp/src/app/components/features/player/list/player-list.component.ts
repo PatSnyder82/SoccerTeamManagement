@@ -1,28 +1,30 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { IPlayer } from '../../../../interfaces/player';
+import { PlayerService } from '../../../../services/player.service';
 
 @Component({
   selector: 'sm-player-list',
   templateUrl: './player-list.component.html',
   styleUrls: ['./player-list.component.scss']
 })
-export class PlayerListComponent implements OnInit {
+export class PlayerListComponent implements OnInit, OnDestroy {
   //#region Properties
 
-  public displayedColumns: string[] = ['id', 'firstName', 'lastName', 'country'];
-  public players: MatTableDataSource<IPlayer>;
+  displayedColumns: string[];
+  players: MatTableDataSource<IPlayer>;
+  errorMessage: string;
 
   defaultPageIndex: number;
   defaultPageSize: number;
-  public defaultSortColumn: string;
-  public defaultSortOrder: string;
+  defaultSortColumn: string;
+  defaultSortOrder: string;
   defaultFilterColumn: string;
   filterQuery: string;
 
@@ -30,17 +32,25 @@ export class PlayerListComponent implements OnInit {
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   filterTextChanged: Subject<string>;
-
+  subscriptions: Subscription[];
   //#endregion
 
   //#region Constructor
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private playerService: PlayerService) {
+    this.displayedColumns = ['id', 'firstName', 'lastName', 'country'];
+    this.subscriptions = new Array<Subscription>();
   }
 
   //#endregion
 
   //#region Events
+
+  public ngOnDestroy() {
+    if (this.subscriptions) {
+      this.subscriptions.forEach(subscription => subscription.unsubscribe);
+    }
+  }
 
   ngOnInit() {
     this.initialize();
@@ -48,12 +58,13 @@ export class PlayerListComponent implements OnInit {
 
   onFilterTextChanged(filterText: string) {
     if (this.filterTextChanged.observers.length === 0) {
-      this.filterTextChanged
+      this.subscriptions.push(this.filterTextChanged
         .pipe(debounceTime(1000), distinctUntilChanged())
         .subscribe(query => {
           this.loadData(query);
-        });
+        }));
     }
+
     this.filterTextChanged.next(filterText);
   }
 
@@ -62,20 +73,22 @@ export class PlayerListComponent implements OnInit {
   //#region Methods
 
   getData(event: PageEvent) {
-    var url = this.baseUrl + 'api/Players';
-    var params = this.setParameters(event);
+    let pageIndex = +event.pageIndex;
+    let pageSize = +event.pageSize;
+    let sortColumn = this.sort ? this.sort.active : this.defaultSortColumn;
+    let sortOrder = this.sort ? this.sort.direction : this.defaultSortOrder;
+    let filterColumn = this.defaultFilterColumn;
+    let filterQuery = this.filterQuery;
 
-    if (this.filterQuery) {
-      params = params.set("filterColumn", this.defaultFilterColumn)
-        .set("filterQuery", this.filterQuery);
-    }
-
-    this.http.get<any>(url, { params }).subscribe(result => {
-      this.paginator.length = result.totalCount;
-      this.paginator.pageIndex = result.pageIndex;
-      this.paginator.pageSize = result.pageSize;
-      this.players = new MatTableDataSource<IPlayer>(result.data);
-    }, error => console.error(error));
+    this.subscriptions.push(this.playerService.getTableData(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery)
+      .subscribe(
+        tableData => {
+          this.paginator.length = tableData.totalCount;
+          this.paginator.pageIndex = tableData.pageIndex;
+          this.paginator.pageSize = tableData.pageSize;
+          this.players = new MatTableDataSource(tableData.data);
+        },
+        error => this.errorMessage = error as string));
   }
 
   private initialize() {
@@ -83,8 +96,8 @@ export class PlayerListComponent implements OnInit {
     this.defaultPageSize = 10;
     this.defaultSortColumn = "id";
     this.defaultSortOrder = "asc";
-    this.defaultFilterColumn = "name";
-    this.filterQuery = null;
+    this.defaultFilterColumn = "lastname";
+    this.filterQuery = '';
     this.filterTextChanged = new Subject<string>();
 
     this.loadData(null);
@@ -95,9 +108,9 @@ export class PlayerListComponent implements OnInit {
     pageEvent.pageIndex = this.defaultPageIndex;
     pageEvent.pageSize = this.defaultPageSize;
 
-    if (query) {
-      this.filterQuery = query;
-    }
+    query = !query ? '' : query;
+
+    this.filterQuery = query;
 
     this.getData(pageEvent);
   }

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SoccerTeamManagement.Data;
 using SoccerTeamManagement.Data.Models.People;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using WorldCities.Data;
@@ -21,17 +22,34 @@ namespace SoccerTeamManagement.Controllers
 
         // GET: api/Players
         [HttpGet]
-        public async Task<ActionResult<ApiResult<Player>>> GetPlayers(int pageIndex = 0, int pageSize = 10, string sortColumn = null, string sortOrder = null, string filterColumn = null, string filterQuery = null)
+        public async Task<ActionResult<Player>> GetPlayers()
         {
             try
             {
-                var entities = await ApiResult<Player>.CreateAsync(_context.Players.AsNoTracking().Include(x => x.Country).Include(x => x.Phone).Include(x => x.Address), pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
+                var entities = await _context.Players.AsNoTracking().ToListAsync();
 
                 return Ok(entities);
             }
             catch
             {
                 return BadRequest();
+            }
+        }
+
+        // GET: api/Players/TableData
+        [HttpGet]
+        [Route("TableData")]
+        public async Task<ActionResult<TableData<Player>>> TableData(int pageIndex = 0, int pageSize = 10, string sortColumn = null, string sortOrder = null, string filterColumn = null, string filterQuery = null)
+        {
+            try
+            {
+                var entities = await TableData<Player>.CreateAsync(_context.Players.AsNoTracking().Include(x => x.Country).Include(x => x.Phone).Include(x => x.Address), pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
+
+                return Ok(entities);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
             }
         }
 
@@ -56,8 +74,8 @@ namespace SoccerTeamManagement.Controllers
 
         // PUT: api/Players/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPlayer(int id, Player player)
+        [HttpPut()]
+        public async Task<IActionResult> PutPlayer(Player player)
         {
             try
             {

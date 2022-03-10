@@ -109,7 +109,7 @@ namespace SoccerTeamManagement.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex);
             }
         }
 

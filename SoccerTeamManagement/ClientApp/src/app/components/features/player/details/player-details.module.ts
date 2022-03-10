@@ -10,6 +10,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from '../../../shared/app-routing/app-routing.module';
 import { PlayerDetailsComponent } from './player-details.component';
@@ -23,6 +24,7 @@ import { AddressModule } from '../../../shared/address/address.module';
     AddressModule,
     AppRoutingModule,
     CommonModule,
+    FormsModule,
     HttpClientModule,
     MatButtonModule,
     MatButtonToggleModule,
