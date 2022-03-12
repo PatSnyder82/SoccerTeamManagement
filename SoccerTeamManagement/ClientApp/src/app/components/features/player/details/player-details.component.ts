@@ -24,7 +24,6 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
   //#region Properties
 
   countries: ICountry[];
-  entity: IPlayer;
   image: IImage; //TODO: Create proper Image component
   imageFile: File
 
@@ -37,14 +36,12 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
     public router: Router,
     public formBuilder: FormBuilder,
     public dialog: MatDialog,
-    private playerService: PlayerService,
+    private addressService: AddressService,
     private countryService: CountryService,
     private imageService: ImageService,
-    private addressService: AddressService
+    private playerService: PlayerService
   ) {
     super("Player", "/players", route, playerService, router);
-    this.entity = {} as IPlayer;
-    this.entity.address = {} as IAddress;
     this.image = {} as IImage;
     this.imageFile = null;
   }
@@ -73,6 +70,18 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
         error => this.errorMessage = error as string));
   }
 
+  public onSubmit(): void {
+    if (this.form.valid) {
+      const player = this.form.value;
+      player.address.state = null;
+      player.address.country = null;
+
+      (player?.id) < 1 ? this.onCreate(player) : this.onUpdate(player);
+    }
+    else {
+      this.form.markAllAsTouched();
+    }
+  }
   //#endregion
 
   //#region Methods
@@ -83,7 +92,6 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
       .subscribe(result => {
         if (result) {
           this.form.get('address').setValue(result?.data);
-          this.entity.address = result?.data;
         }
       }));
   }
@@ -97,6 +105,7 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
       weight: this.form.get('weight'),
       foot: this.form.get('foot'),
       flareRating: this.form.get('flareRating'),
+      weakFootRating: this.form.get('weakFootRating'),
       countryId: this.form.get('countryId'),
       readOnly: this.form.get('readOnly'),
       dateOfBirth: this.form.get('dateOfBirth'),
@@ -116,15 +125,15 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
     const unsignedIntPattern = new RegExp('^[1-9]\\d{0,8}$');
 
     return this.formBuilder.group({
-      id: [null],
+      id: [0],
       firstName: ['', [Validators.required, Validators.maxLength(100)]],
       lastName: ['', [Validators.required, Validators.maxLength(100)]],
       nickName: ['', [Validators.maxLength(100)]],
       height: [null, [Validators.min(0), Validators.max(999), Validators.pattern(unsignedInt999Pattern)]],
       weight: [null, [Validators.min(0), Validators.max(9999), Validators.pattern(unsignedInt999Pattern)]],
-      foot: ['', [Validators.required]],
-      weakFootRating: [null], //,[Validators.required]
-      flareRating: [null, [Validators.required]],
+      foot: [0, [Validators.required]],
+      weakFootRating: [1, [Validators.required]],
+      flareRating: [1, [Validators.required]],
       countryId: [null, [Validators.required]],
       dateOfBirth: [null, [Validators.required]],
       attributesId: [null],
@@ -132,7 +141,7 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
       addressId: [null],
       imageId: [null],
       phone: this.formBuilder.group({
-        id: [null],
+        id: [0],
         countryCode: ['', [Validators.required, Validators.pattern(unsignedIntPattern)]],
         areaCode: ['', [Validators.required, Validators.pattern(unsignedIntPattern)]],
         extension: ['', [Validators.pattern(unsignedIntPattern)]],

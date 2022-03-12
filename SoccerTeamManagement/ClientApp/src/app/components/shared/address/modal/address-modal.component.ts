@@ -24,6 +24,7 @@ export class AddressModalComponent implements OnInit, OnDestroy {
   states: IState[];
   subscriptions: Subscription[];
   title: string;
+  usaCountryCode: number;
 
   //#endregion
 
@@ -41,6 +42,7 @@ export class AddressModalComponent implements OnInit, OnDestroy {
     this.errorMessage = '';
     this.subscriptions = new Array<Subscription>();
     this.title = "Address";
+    this.usaCountryCode = 237;
   }
 
   //#endregion
@@ -56,17 +58,17 @@ export class AddressModalComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.form = this.data;
     this._getCountries();
-    this._getStates(237);
+    this._getStates(this.usaCountryCode);
     this.controls = this._initializeControlReferences();
     this._conditionalValidationOfState();
   }
 
-  public onCloseModal(): void {
+  public onClose(): void {
     this.dialogRef.close();
   }
 
   public onCountryChange(countryId: number): void {
-    if (countryId === 237 && !this.states) {
+    if (countryId === this.usaCountryCode && !this.states) {
       this._getStates(countryId);
     }
 
@@ -86,19 +88,12 @@ export class AddressModalComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit(): void {
-    if (this.form.valid) {
-      this._onUpdate();
+    if (this.form?.valid) {
+      this.dialogRef.close({ data: this.form.value as FormGroup })
     }
     else {
       this.form.markAllAsTouched();
     }
-  }
-
-  private _onUpdate(): void {
-    this.subscriptions.push(this.addressService.update(this.form.value)
-      .subscribe(
-        data => this.dialogRef.close({ data: this.form.value as FormGroup }),
-        error => this.errorMessage = error as string));
   }
 
   //#endregion
@@ -108,7 +103,7 @@ export class AddressModalComponent implements OnInit, OnDestroy {
   private _conditionalValidationOfState(): void {
     this.subscriptions.push(this.controls.countryId.valueChanges
       .subscribe(value => {
-        if (value === 237) {
+        if (value === this.usaCountryCode) {
           this.controls.stateId.setValidators([Validators.required]);
         }
         else {
@@ -121,6 +116,7 @@ export class AddressModalComponent implements OnInit, OnDestroy {
 
   private _initializeControlReferences() {
     return {
+      id: this.form.get('id'),
       addressLine1: this.form.get('addressLine1'),
       addressLine2: this.form.get('addressLine2'),
       city: this.form.get('city'),

@@ -70,9 +70,6 @@ export abstract class BaseService<T> {
   }
 
   update(item: T): Observable<T> {
-    let headers = new HttpHeaders();
-    headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-
     return this.http.put<T>(this.url, item)
       .pipe(catchError(this.handleError));
   }

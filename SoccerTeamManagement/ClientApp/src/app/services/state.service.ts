@@ -21,13 +21,13 @@ export class StateService extends BaseService<IState> {
 
   public getFormGroup(): FormGroup {
     return this.formBuilder.group({
-      id: [null],
+      id: [0],
       isDisabled: [null],
       sortOrder: [null],
       text: [null],
       value: [null],
       alpha2Code: [null],
-      countryId: [null]
+      countryId: [0]
     });
   }
 }

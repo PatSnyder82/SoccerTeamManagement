@@ -25,7 +25,7 @@
     </section>
     <div class="row">
       <section class="form-group col">
-        <mat-label>First Name:</mat-label>
+        <mat-label class="form-label">First Name:</mat-label><br/>
         <input matInput formControlName="firstName" class="form-control" />
         <mat-error *ngIf="controls.firstName.hasError('required') && (controls.firstName.dirty || controls.firstName.touched)"><strong>Input required</strong></mat-error>
         <mat-error *ngIf="controls.firstName.hasError('maxlength') && (controls.firstName.dirty || controls.firstName.touched)"><strong>Input must be less than 100 characters  </strong></mat-error>
@@ -56,7 +56,7 @@
     <div class="row">
       <section class="form-group col">
         <mat-label>Height:</mat-label>
-        <input matInput formControlName="height" class="form-control" />
+        <input matInput formControlName="height" type="number" class="form-control" />
         <mat-error *ngIf="controls.height.hasError('min') && (controls.height.dirty || controls.height.touched)"><strong>Value must be between 0 - 999  </strong></mat-error>
         <mat-error *ngIf="controls.height.hasError('max') && (controls.height.dirty || controls.height.touched)"><strong>Value must be between 0 - 999  </strong></mat-error>
         <mat-error *ngIf="controls.height.hasError('pattern') && (controls.height.dirty || controls.height.touched)">
@@ -66,7 +66,7 @@
 
       <section class="form-group col">
         <mat-label>Weight:</mat-label>
-        <input matInput formControlName="weight" class="form-control" />
+        <input matInput formControlName="weight" type="number" class="form-control" />
         <mat-error *ngIf="controls.weight.hasError('min') && (controls.weight.dirty || controls.weight.touched)"><strong>Value must be between 0 - 9999  </strong></mat-error>
         <mat-error *ngIf="controls.weight.hasError('max') && (controls.weight.dirty || controls.weight.touched)"><strong>Value must be between 0 - 9999  </strong></mat-error>
         <mat-error *ngIf="controls.weight.hasError('pattern') && (controls.weight.dirty || controls.weight.touched)">
@@ -81,6 +81,17 @@
         <mat-button-toggle-group formControlName="foot" value="0">
           <mat-button-toggle [value]="1">Left</mat-button-toggle>
           <mat-button-toggle [value]="0">Right</mat-button-toggle>
+        </mat-button-toggle-group>
+      </section>
+      <section class="form-group col">
+        <mat-label>Weak Foot Rating:</mat-label>
+        <br />
+        <mat-button-toggle-group formControlName="weakFootRating" value="1">
+          <mat-button-toggle [value]="1">1</mat-button-toggle>
+          <mat-button-toggle [value]="2">2</mat-button-toggle>
+          <mat-button-toggle [value]="3">3</mat-button-toggle>
+          <mat-button-toggle [value]="4">4</mat-button-toggle>
+          <mat-button-toggle [value]="5">5</mat-button-toggle>
         </mat-button-toggle-group>
       </section>
       <section class="form-group col">

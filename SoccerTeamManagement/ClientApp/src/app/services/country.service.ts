@@ -15,7 +15,7 @@ export class CountryService extends BaseService<ICountry> {
 
   public getFormGroup(): FormGroup {
     return this.formBuilder.group({
-      id: [null],
+      id: [0],
       isDisabled: [null],
       sortOrder: [null],
       text: [null],

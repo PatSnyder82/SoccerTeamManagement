@@ -19,13 +19,13 @@ export class AddressService extends BaseService<IAddress> {
     const unsignedIntPattern = new RegExp('^[1-9]\\d{0,8}$');
 
     return this.formBuilder.group({
-      id: [null],
+      id: [0],
       addressLine1: ['', [Validators.required, Validators.maxLength(100)]],
       addressLine2: ['', [Validators.maxLength(100)]],
       city: ['', [Validators.required, Validators.maxLength(100)]],
       countryId: [null, [Validators.required]],
       country: this.countryService.getFormGroup(),
-      stateId: [''],
+      stateId: [null],
       state: this.stateService.getFormGroup(),
       zipCode: ['', [Validators.pattern(unsignedIntPattern)]]
     });

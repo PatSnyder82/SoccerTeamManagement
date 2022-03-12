@@ -28,7 +28,7 @@
         <mat-error *ngIf="controls.countryId.hasError('required') && (controls.countryId.dirty || controls.countryId.touched)"><strong>Input required</strong></mat-error>
       </section>
       <!--The only states loaded in the database are those belonging to the US (countryid 237)-->
-      <section class="form-group col" *ngIf="controls.countryId.value === 237">
+      <section class="form-group col" *ngIf="controls.countryId.value === usaCountryCode">
         <mat-label>State:</mat-label>
         <mat-select formControlName="stateId" (selectionChange)="onStateChange($event.value)" class="form-control">
           <mat-option *ngFor="let state of states" [value]="state.id">
@@ -59,7 +59,7 @@
   <div mat-dialog-actions>
     <section class="form-group commands">
       <button mat-raised-button type="submit" value="Submit" color="warn" [disabled]="form.invalid">Update</button>
-      <button mat-raised-button type="button" (click)="onCloseModal()">Close</button>
+      <button mat-raised-button type="button" (click)="onClose()">Close</button>
     </section>
   </div>
 </form>

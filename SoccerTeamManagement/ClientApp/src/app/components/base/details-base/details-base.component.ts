@@ -15,7 +15,6 @@ export abstract class DetailsBaseComponent<T> implements OnInit, OnDestroy {
   //#region Properties
 
   public controls;
-  public abstract entity: IEntity;
   public errorMessage: string;
   public form: FormGroup;
   public id: number;
@@ -70,7 +69,6 @@ export abstract class DetailsBaseComponent<T> implements OnInit, OnDestroy {
   //#endregion
 
   protected debugInvalidControls(): string[] {
-    console.log("DEBUGGING INVALID FORM CONTROLS: >>>>>>>>>");
     const invalid = [];
     const controls = this.form.controls;
     for (const name in controls) {
@@ -88,7 +86,6 @@ export abstract class DetailsBaseComponent<T> implements OnInit, OnDestroy {
         data => {
           this.form.patchValue(data);
           this.isLoading = false;
-          this.entity = data;
         },
         error => this.errorMessage = error as string));
   }
@@ -107,15 +104,15 @@ export abstract class DetailsBaseComponent<T> implements OnInit, OnDestroy {
     }
   }
 
-  public onCreate(): void {
-    this.subscriptions.push(this.entityService.create(this._getFormData())
+  public onCreate(entity: IEntity): void {
+    this.subscriptions.push(this.entityService.create(entity)
       .subscribe(
         data => this.router.navigate([this.navEndpoint]),
         error => this.errorMessage = error as string));
   }
 
-  public onUpdate(): void {
-    this.subscriptions.push(this.entityService.update(this._getFormData())
+  public onUpdate(entity: IEntity): void {
+    this.subscriptions.push(this.entityService.update(entity)
       .subscribe(
         data => this.router.navigate([this.navEndpoint]),
         error => this.errorMessage = error as string));
@@ -123,11 +120,12 @@ export abstract class DetailsBaseComponent<T> implements OnInit, OnDestroy {
 
   public onSubmit(): void {
     if (this.form.valid) {
-      if (this.isCreateMode) {
-        this.onCreate();
+      const entity = this.form.value;
+      if (this.form.get('id').value < 1) {
+        this.onCreate(entity);
       }
       else {
-        this.onUpdate();
+        this.onUpdate(entity);
       }
     }
     else {
@@ -143,13 +141,6 @@ export abstract class DetailsBaseComponent<T> implements OnInit, OnDestroy {
   private _enableForm(): void {
     this.isReadOnly = false;
     this.form.enable();
-  }
-
-  private _getFormData(): IEntity {
-    let entity = {} as IEntity;
-    entity = this.form.value;
-
-    return entity;
   }
 
   private _initializeId(): number {
