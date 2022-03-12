@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { AuthorizeInterceptor } from './interceptors/authorize.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeModule } from './components/features/home/home.module';
-import { PlayerModule } from './components/features/player/player.module';
 import { SharedModule } from './components/shared/shared.module';
 
 import { AppComponent } from './components/features/app/app.component';
@@ -12,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { PipesModule } from './pipes/pipes.module';
 import { AddressModalModule } from './components/shared/address/modal/address-modal.module';
+import { PlayerModule } from './components/features/player/player.module';
 
 @NgModule({
   declarations: [
@@ -22,8 +22,8 @@ import { AddressModalModule } from './components/shared/address/modal/address-mo
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HomeModule,
-    PlayerModule,
     PipesModule,
+    PlayerModule,
     SharedModule,
     RouterModule,
     HttpClientModule,

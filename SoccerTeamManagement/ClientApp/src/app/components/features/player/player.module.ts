@@ -1,15 +1,64 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
-import { PlayerDetailsModule } from './details/player-details.module';
-import { PlayerListModule } from './list/player-list.module';
+import { AppRoutingModule } from '../../shared/app-routing/app-routing.module';
+import { PlayerDetailsComponent } from './details/player-details.component';
+import { BaseModule } from '../../base/base.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PipesModule } from '../../../pipes/pipes.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { BrowserModule } from '@angular/platform-browser';
+import { AddressModule } from '../../shared/address/address.module';
+import { PlayerListComponent } from './list/player-list.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
+  declarations: [
+    PlayerDetailsComponent,
+    PlayerListComponent
+  ],
   imports: [
-    PlayerDetailsModule,
-    PlayerListModule,
+    AddressModule,
+    AppRoutingModule,
+    BaseModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatSortModule,
+    MatTableModule,
+    PipesModule,
+    ReactiveFormsModule
   ],
   exports: [
-    PlayerDetailsModule,
-    PlayerListModule]
+    PlayerDetailsComponent,
+    PlayerListComponent
+  ]
 })
 export class PlayerModule { }
