@@ -50,7 +50,6 @@
     <Folder Include="ClientApp\src\app\assets\images\" />
     <Folder Include="ClientApp\src\app\components\shared\base\" />
     <Folder Include="ClientApp\src\app\components\shared\phone\" />
-    <Folder Include="ClientApp\src\app\pipes\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
 

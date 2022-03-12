@@ -9,10 +9,11 @@ import { OnDestroy } from '@angular/core';
 import { CountryService } from '../../../../services/country.service';
 import { ImageService } from '../../../../services/image.service';
 import { DetailsBaseComponent } from '../../../base/details-base/details-base.component';
-import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddressModalComponent } from '../../../shared/address/modal/address-modal.component';
 import { IAddress } from '../../../../interfaces/address';
 import { AddressPipe } from '../../../../pipes/address.pipe';
+import { AddressService } from '../../../../services/address.service';
 
 @Component({
   selector: 'sm-player-details',
@@ -31,8 +32,17 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
 
   //#region Constructor
 
-  constructor(public route: ActivatedRoute, public router: Router, public formBuilder: FormBuilder, private playerService: PlayerService, private countryService: CountryService, private imageService: ImageService, public dialog: MatDialog) {
-    super("Player", "Players/", "/players", route, playerService, router);
+  constructor(
+    public route: ActivatedRoute,
+    public router: Router,
+    public formBuilder: FormBuilder,
+    public dialog: MatDialog,
+    private playerService: PlayerService,
+    private countryService: CountryService,
+    private imageService: ImageService,
+    private addressService: AddressService
+  ) {
+    super("Player", "/players", route, playerService, router);
     this.entity = {} as IPlayer;
     this.entity.address = {} as IAddress;
     this.image = {} as IImage;
@@ -66,12 +76,16 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
   //#endregion
 
   //#region Methods
-  openModal(): void {
-    const dialog = this.dialog.open(AddressModalComponent, this._getModalConfig(this.entity.address));
+  public openModal(): void {
+    const dialog = this.dialog.open(AddressModalComponent, this._getAddressModalConfig(this.form.get('address') as FormGroup));
 
     this.subscriptions.push(dialog.afterClosed()
       .subscribe(result => {
-        if (result) { this.entity.address = result.data; }}));
+        if (result) {
+          this.form.get('address').setValue(result?.data);
+          this.entity.address = result?.data;
+        }
+      }));
   }
 
   protected initializeControlReferences() {
@@ -92,7 +106,8 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
         extension: this.form.controls.phone.get('extension'),
         number: this.form.controls.phone.get('number'),
         phoneType: this.form.controls.phone.get('phoneType')
-      }
+      },
+      address: this.form.get('address')
     }
   }
 
@@ -101,22 +116,30 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
     const unsignedIntPattern = new RegExp('^[1-9]\\d{0,8}$');
 
     return this.formBuilder.group({
+      id: [null],
       firstName: ['', [Validators.required, Validators.maxLength(100)]],
       lastName: ['', [Validators.required, Validators.maxLength(100)]],
       nickName: ['', [Validators.maxLength(100)]],
       height: [null, [Validators.min(0), Validators.max(999), Validators.pattern(unsignedInt999Pattern)]],
       weight: [null, [Validators.min(0), Validators.max(9999), Validators.pattern(unsignedInt999Pattern)]],
       foot: ['', [Validators.required]],
+      weakFootRating: [null], //,[Validators.required]
       flareRating: [null, [Validators.required]],
       countryId: [null, [Validators.required]],
       dateOfBirth: [null, [Validators.required]],
+      attributesId: [null],
+      phoneId: [null],
+      addressId: [null],
+      imageId: [null],
       phone: this.formBuilder.group({
+        id: [null],
         countryCode: ['', [Validators.required, Validators.pattern(unsignedIntPattern)]],
         areaCode: ['', [Validators.required, Validators.pattern(unsignedIntPattern)]],
         extension: ['', [Validators.pattern(unsignedIntPattern)]],
         number: ['', [Validators.required, Validators.pattern(unsignedIntPattern)]],
         phoneType: ['', [Validators.required]]
-      })
+      }),
+      address: this.addressService.getFormGroup()
       /*//Photo
       image: new FormControl('', Validators.required),
       //Attributes
@@ -143,11 +166,12 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
     }
   }
 
-  private _getModalConfig(data: IAddress): MatDialogConfig {
-    let dialogConfig = new MatDialogConfig();
+  private _getAddressModalConfig(data: FormGroup): MatDialogConfig {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
-    dialogConfig.height = "450px";
-    dialogConfig.width = "600px";
+    //dialogConfig.height = "450px";
+    dialogConfig.width = "60%";
     dialogConfig.data = data;
 
     return dialogConfig;

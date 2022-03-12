@@ -19,10 +19,10 @@
       </section>
     </div>
 
-      <section class="form-group">
-        <input type="file" (change)="onFileSelected($event)" />
-        <button type="button" (click)="onImageUpload()">Upload</button>
-      </section>
+    <section class="form-group">
+      <input type="file" (change)="onFileSelected($event)" />
+      <button type="button" (click)="onImageUpload()">Upload</button>
+    </section>
     <div class="row">
       <section class="form-group col">
         <mat-label>First Name:</mat-label>
@@ -77,7 +77,7 @@
     <div class="row">
       <section class="form-group col">
         <mat-label>Strong Foot:</mat-label>
-        <br/>
+        <br />
         <mat-button-toggle-group formControlName="foot" value="0">
           <mat-button-toggle [value]="1">Left</mat-button-toggle>
           <mat-button-toggle [value]="0">Right</mat-button-toggle>
@@ -85,7 +85,7 @@
       </section>
       <section class="form-group col">
         <mat-label>Flare Rating:</mat-label>
-        <br/>
+        <br />
         <mat-button-toggle-group formControlName="flareRating" value="1">
           <mat-button-toggle [value]="1">1</mat-button-toggle>
           <mat-button-toggle [value]="2">2</mat-button-toggle>
@@ -143,7 +143,7 @@
 
       <section class="form-group">
         <mat-label>Phone Type:</mat-label>
-        <br/>
+        <br />
         <mat-button-toggle-group formControlName="phoneType">
           <mat-button-toggle [value]="1">Cell</mat-button-toggle>
           <mat-button-toggle [value]="2">Home</mat-button-toggle>
@@ -154,9 +154,9 @@
 
     <section class="form-group">
       <mat-label>Address:</mat-label>
-      <br/>
-      <p class="multiline">{{entity.address | address}}</p>
-      <button mat-button (click)="openModal()">Update Address</button>
+      <br />
+      <p class="multiline">{{controls.address.value | address}}</p>
+      <button mat-button type="button" (click)="openModal()" [disabled]="isReadOnly">Update Address</button>
     </section>
 
     <!--<sm-address-details [isReadOnly]='isReadOnly' [countries]='countries'></sm-address-details>-->

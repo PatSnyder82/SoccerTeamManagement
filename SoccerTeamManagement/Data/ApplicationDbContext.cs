@@ -15,6 +15,8 @@ namespace SoccerTeamManagement.Data
 {
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {
+        public DbSet<Address> Addresses { get; set; }
+
         public DbSet<Country> Countries { get; set; }
 
         public DbSet<Player> Players { get; set; }

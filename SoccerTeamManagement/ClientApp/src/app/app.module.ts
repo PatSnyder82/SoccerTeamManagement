@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { AuthorizeInterceptor } from './interceptors/authorize.interceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeModule } from './components/features/home/home.module';
 import { PlayerModule } from './components/features/player/player.module';
 import { SharedModule } from './components/shared/shared.module';
@@ -11,6 +11,7 @@ import { FetchDataComponent } from './components/features/fetch-data/fetch-data.
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { PipesModule } from './pipes/pipes.module';
+import { AddressModalModule } from './components/shared/address/modal/address-modal.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { PipesModule } from './pipes/pipes.module';
     PlayerModule,
     PipesModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule,
+    AddressModalModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }

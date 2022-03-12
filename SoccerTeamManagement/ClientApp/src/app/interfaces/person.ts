@@ -8,8 +8,8 @@ export interface IPerson extends IEntity {
   firstName: string;
   lastName: string;
   nickName: string;
-
   dateOfBirth: Date;
+
   phoneId: number;
   phone: IPhone;
   addressId: number;

@@ -14,10 +14,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from '../../../shared/app-routing/app-routing.module';
 import { PlayerDetailsComponent } from './player-details.component';
-import { AddressModule } from '../../../shared/address/address.module';
 import { BaseModule } from '../../../base/base.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PipesModule } from '../../../../pipes/pipes.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { BrowserModule } from '@angular/platform-browser';
+import { AddressModule } from '../../../shared/address/address.module';
 
 @NgModule({
   declarations: [
@@ -27,11 +30,14 @@ import { PipesModule } from '../../../../pipes/pipes.module';
     AddressModule,
     AppRoutingModule,
     BaseModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     HttpClientModule,
     MatButtonModule,
     MatButtonToggleModule,
+    MatCardModule,
     MatDatepickerModule,
     MatDialogModule,
     MatFormFieldModule,

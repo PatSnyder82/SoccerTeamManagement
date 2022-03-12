@@ -11,6 +11,7 @@ export interface IPlayer extends IPerson {
   weakFootRating: number;
   flareRating: number;
 
+  attributesId: number;
   attributes: IPlayerAttributes;
   teams: ITeam[];
   position: IPosition[];

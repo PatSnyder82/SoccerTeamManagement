@@ -20,20 +20,20 @@ export abstract class DetailsBaseComponent<T> implements OnInit, OnDestroy {
   public form: FormGroup;
   public id: number;
   public isCreateMode: boolean;
-  public isReadOnly: boolean;
   public isLoading: boolean;
+  public isReadOnly: boolean;
   public subscriptions: Subscription[];
   public title: string;
 
   //#endregion
 
-  constructor(@Inject(String) public entityName: string, @Inject(String) public apiEndpoint: string, @Inject(String) public navEndpoint: string, public route: ActivatedRoute, public entityService: BaseService<IEntity>, public router: Router) {
-    this.isLoading = true;
-    this.subscriptions = new Array<Subscription>();
+  constructor(@Inject(String) public entityName: string, @Inject(String) public navEndpoint: string, public route: ActivatedRoute, public entityService: BaseService<IEntity>, public router: Router) {
+    this.errorMessage = '';
     this.id = this._initializeId();
     this.isCreateMode = this._intializeIsCreateMode(this.id);
+    this.isLoading = true;
     this.isReadOnly = this._intializeIsReadOnly(this.id);
-    this.apiEndpoint = this._intializeApiEndPoint(this.apiEndpoint);
+    this.subscriptions = new Array<Subscription>();
     this.title = this._setTitle(this.isCreateMode);
   }
 
@@ -67,11 +67,9 @@ export abstract class DetailsBaseComponent<T> implements OnInit, OnDestroy {
 
   protected abstract initializeForm(): FormGroup;
 
-  //protected abstract getEntity(): void;
-
   //#endregion
 
-  public debugInvalidControls(): string[] {
+  protected debugInvalidControls(): string[] {
     console.log("DEBUGGING INVALID FORM CONTROLS: >>>>>>>>>");
     const invalid = [];
     const controls = this.form.controls;
@@ -150,21 +148,8 @@ export abstract class DetailsBaseComponent<T> implements OnInit, OnDestroy {
   private _getFormData(): IEntity {
     let entity = {} as IEntity;
     entity = this.form.value;
-    entity.id = this.id;
 
     return entity;
-  }
-
-  private _intializeApiEndPoint(endPoint: string) {
-    endPoint = endPoint.trim();
-
-    if (endPoint) {
-      if (endPoint[endPoint.length - 1] !== '/') {
-        endPoint += '/';
-      }
-    }
-
-    return endPoint;
   }
 
   private _initializeId(): number {

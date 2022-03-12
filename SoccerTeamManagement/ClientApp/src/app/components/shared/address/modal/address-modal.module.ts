@@ -10,12 +10,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
     AddressModalComponent
   ],
   imports: [
+    BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
