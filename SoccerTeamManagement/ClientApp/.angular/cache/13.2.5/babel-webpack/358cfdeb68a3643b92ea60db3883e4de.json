@@ -1,0 +1,1 @@
+{"ast":null,"code":"export var Foot = /*#__PURE__*/(() => {\n  (function (Foot) {\n    Foot[Foot[\"Right\"] = 1] = \"Right\";\n    Foot[Foot[\"Left\"] = 2] = \"Left\";\n  })(Foot || (Foot = {}));\n\n  return Foot;\n})();","map":null,"metadata":{},"sourceType":"module"}

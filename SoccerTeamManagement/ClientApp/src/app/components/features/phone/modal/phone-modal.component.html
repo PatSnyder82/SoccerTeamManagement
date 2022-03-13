@@ -1,0 +1,75 @@
+<h1 mat-dialog-title>{{title}}</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="phone-modal">
+  <div mat-dialog-content>
+    <div class="row">
+      <section class="form-group">
+        <mat-label>Phone Type:</mat-label>
+        <br />
+        <mat-button-toggle-group formControlName="phoneType" value="1">
+          <mat-button-toggle type ="number" value="1">{{phoneType[1]}}</mat-button-toggle>
+          <mat-button-toggle type ="number" value="2">{{phoneType[2]}}</mat-button-toggle>
+          <mat-button-toggle type ="number" value="3">{{phoneType[3]}}</mat-button-toggle>
+        </mat-button-toggle-group>
+        <mat-error *ngIf="controls.phoneType.hasError('required') && (controls.phoneType.dirty || controls.phoneType.touched)"><strong>Input required  </strong></mat-error>
+      </section>
+    </div>
+    <div class="row">
+      <section class="form-group">
+        <mat-label>Country Code:</mat-label>
+        <input matInput formControlName="countryCode" class="form-control" />
+        <mat-error *ngIf="controls.countryCode.hasError('required') && (controls.countryCode.dirty || controls.countryCode.touched)"><strong>Input required  </strong></mat-error>
+        <mat-error *ngIf="controls.countryCode.hasError('pattern') && (controls.countryCode.dirty || controls.countryCode.touched)">
+          <strong>Input must be a positive whole number less than 10 digits long  </strong>
+        </mat-error>
+        <mat-error *ngIf="controls.countryCode.hasError('maxlength') && (controls.countryCode.dirty || controls.countryCode.touched)">
+          <strong>Input must be a positive whole number less than 10 digits long  </strong>
+        </mat-error>
+      </section>
+    </div>
+    <div class="row">
+      <section class="form-group">
+        <mat-label>Area Code:</mat-label>
+        <input matInput formControlName="areaCode" class="form-control" />
+        <mat-error *ngIf="controls.areaCode.hasError('required') && (controls.areaCode.dirty || controls.areaCode.touched)"><strong>Input required  </strong></mat-error>
+        <mat-error *ngIf="controls.areaCode.hasError('pattern') && (controls.areaCode.dirty || controls.areaCode.touched)">
+          <strong>Input must be a positive whole number less than 10 digits long  </strong>
+        </mat-error>
+        <mat-error *ngIf="controls.areaCode.hasError('maxlength') && (controls.areaCode.dirty || controls.areaCode.touched)">
+          <strong>Input must be a positive whole number less than 10 digits long  </strong>
+        </mat-error>
+      </section>
+    </div>
+    <div class="row">
+      <section class="form-group">
+        <mat-label>Number:</mat-label>
+        <input matInput formControlName="number" class="form-control" />
+        <mat-error *ngIf="controls.number.hasError('required') && (controls.number.dirty || controls.number.touched)"><strong>Input required  </strong></mat-error>
+        <mat-error *ngIf="controls.number.hasError('pattern') && (controls.number.dirty || controls.number.touched)">
+          <strong>Input must be a positive whole number less than 20 digits long  </strong>
+        </mat-error>
+        <mat-error *ngIf="controls.number.hasError('maxlength') && (controls.number.dirty || controls.number.touched)">
+          <strong>Input must be a positive whole number less than 20 digits long  </strong>
+        </mat-error>
+      </section>
+    </div>
+    <div class="row">
+      <section class="form-group">
+        <mat-label>Extension:</mat-label>
+        <input matInput formControlName="extension" class="form-control" />
+        <mat-error *ngIf="controls.extension.hasError('pattern') && (controls.extension.dirty || controls.extension.touched)">
+          <strong>Input must be a positive whole number less than 10 digits long  </strong>
+        </mat-error>
+        <mat-error *ngIf="controls.extension.hasError('maxlength') && (controls.extension.dirty || controls.extension.touched)">
+          <strong>Input must be a positive whole number less than 10 digits long  </strong>
+        </mat-error>
+      </section>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <section class="form-group commands">
+      <button mat-raised-button type="submit" value="Submit" color="warn" [disabled]="form.invalid">Update</button>
+      <button mat-raised-button type="button" (click)="onClose()">Close</button>
+    </section>
+  </div>
+</form>

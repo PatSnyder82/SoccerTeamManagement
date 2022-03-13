@@ -5,5 +5,5 @@ export interface IPhone extends IEntity {
   areaCode: string;
   extension: string;
   number: string;
-  phoneType: string;
+  phoneType: number;
 }

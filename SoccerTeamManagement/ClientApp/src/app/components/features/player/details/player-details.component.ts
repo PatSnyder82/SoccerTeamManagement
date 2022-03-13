@@ -14,6 +14,9 @@ import { AddressModalComponent } from '../../../shared/address/modal/address-mod
 import { IAddress } from '../../../../interfaces/address';
 import { AddressPipe } from '../../../../pipes/address.pipe';
 import { AddressService } from '../../../../services/address.service';
+import { PhoneService } from '../../../../services/phone.service';
+import { PhoneModalComponent } from '../../phone/modal/phone-modal.component';
+import { StarRatingComponent } from '../../../shared/star-rating/star-rating.component';
 
 @Component({
   selector: 'sm-player-details',
@@ -25,8 +28,8 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
 
   countries: ICountry[];
   image: IImage; //TODO: Create proper Image component
-  imageFile: File
-
+  imageFile: File;
+  primary: "primary";
   //#endregion
 
   //#region Constructor
@@ -39,6 +42,7 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
     private addressService: AddressService,
     private countryService: CountryService,
     private imageService: ImageService,
+    private phoneService: PhoneService,
     private playerService: PlayerService
   ) {
     super("Player", "/players", route, playerService, router);
@@ -82,16 +86,29 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
       this.form.markAllAsTouched();
     }
   }
+
   //#endregion
 
   //#region Methods
-  public openModal(): void {
-    const dialog = this.dialog.open(AddressModalComponent, this._getAddressModalConfig(this.form.get('address') as FormGroup));
+  public openAddressModal(): void {
+    const dialog = this.dialog.open(AddressModalComponent, this._getModalConfig(this.controls.address as FormGroup));
 
     this.subscriptions.push(dialog.afterClosed()
       .subscribe(result => {
         if (result) {
-          this.form.get('address').setValue(result?.data);
+          this.controls.address.setValue(result?.data);
+        }
+      }));
+  }
+
+  public openPhoneModal(): void {
+    console.log("Before Open Phone Modal - Player: " + JSON.stringify(this.form.value, null, 2));
+    const dialog = this.dialog.open(PhoneModalComponent, this._getModalConfig(this.controls.phone as FormGroup));
+
+    this.subscriptions.push(dialog.afterClosed()
+      .subscribe(result => {
+        if (result) {
+          this.controls.phone.setValue(result?.data);
         }
       }));
   }
@@ -109,13 +126,7 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
       countryId: this.form.get('countryId'),
       readOnly: this.form.get('readOnly'),
       dateOfBirth: this.form.get('dateOfBirth'),
-      phone: {
-        countryCode: this.form.controls.phone.get("countryCode"),
-        areaCode: this.form.controls.phone.get("areaCode"),
-        extension: this.form.controls.phone.get('extension'),
-        number: this.form.controls.phone.get('number'),
-        phoneType: this.form.controls.phone.get('phoneType')
-      },
+      phone: this.form.get('phone'),
       address: this.form.get('address')
     }
   }
@@ -131,23 +142,17 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
       nickName: ['', [Validators.maxLength(100)]],
       height: [null, [Validators.min(0), Validators.max(999), Validators.pattern(unsignedInt999Pattern)]],
       weight: [null, [Validators.min(0), Validators.max(9999), Validators.pattern(unsignedInt999Pattern)]],
-      foot: [0, [Validators.required]],
+      foot: [1, [Validators.required]],
       weakFootRating: [1, [Validators.required]],
       flareRating: [1, [Validators.required]],
       countryId: [null, [Validators.required]],
       dateOfBirth: [null, [Validators.required]],
       attributesId: [null],
-      phoneId: [null],
-      addressId: [null],
+
       imageId: [null],
-      phone: this.formBuilder.group({
-        id: [0],
-        countryCode: ['', [Validators.required, Validators.pattern(unsignedIntPattern)]],
-        areaCode: ['', [Validators.required, Validators.pattern(unsignedIntPattern)]],
-        extension: ['', [Validators.pattern(unsignedIntPattern)]],
-        number: ['', [Validators.required, Validators.pattern(unsignedIntPattern)]],
-        phoneType: ['', [Validators.required]]
-      }),
+      phoneId: [null],
+      phone: this.phoneService.getFormGroup(),
+      addressId: [null],
       address: this.addressService.getFormGroup()
       /*//Photo
       image: new FormControl('', Validators.required),
@@ -175,15 +180,18 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
     }
   }
 
-  private _getAddressModalConfig(data: FormGroup): MatDialogConfig {
+  private _getModalConfig(data: FormGroup): MatDialogConfig {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
-    //dialogConfig.height = "450px";
     dialogConfig.width = "60%";
     dialogConfig.data = data;
 
     return dialogConfig;
+  }
+  onRatingChanged(rating) {
+    console.log(rating);
+    //this.rating = rating;
   }
 
   //#endregion

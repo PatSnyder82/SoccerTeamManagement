@@ -42,14 +42,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\assets\images\Nadia Picture.jpg" />
+    <None Remove="ClientApp\src\app\assets\images\nadia.jpg" />
+    <None Remove="ClientApp\src\app\assets\images\NadiaPicture.jpg" />
     <None Remove="ClientApp\src\app\interfaces\entity.ts" />
     <None Remove="ClientApp\src\app\utilities\default.error-matcher.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\assets\images\" />
+    <Content Include="ClientApp\src\app\assets\images\nadia.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\components\features\phone\modal\" />
     <Folder Include="ClientApp\src\app\components\shared\base\" />
-    <Folder Include="ClientApp\src\app\components\shared\phone\" />
+    <Folder Include="ClientApp\src\app\NewFolder\" />
+    <Folder Include="ClientApp\src\NewFolder\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
 

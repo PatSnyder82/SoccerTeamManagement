@@ -25,6 +25,8 @@ import { PlayerListComponent } from './list/player-list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { PhoneModule } from '../phone/phone.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -53,8 +55,10 @@ import { MatTableModule } from '@angular/material/table';
     MatSlideToggleModule,
     MatSortModule,
     MatTableModule,
+    PhoneModule,
     PipesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   exports: [
     PlayerDetailsComponent,

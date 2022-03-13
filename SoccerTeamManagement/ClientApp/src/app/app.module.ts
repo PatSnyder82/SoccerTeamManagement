@@ -12,6 +12,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { PipesModule } from './pipes/pipes.module';
 import { AddressModalModule } from './components/shared/address/modal/address-modal.module';
 import { PlayerModule } from './components/features/player/player.module';
+import { PhoneModule } from './components/features/phone/phone.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { PlayerModule } from './components/features/player/player.module';
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HomeModule,
+    PhoneModule,
     PipesModule,
     PlayerModule,
     SharedModule,

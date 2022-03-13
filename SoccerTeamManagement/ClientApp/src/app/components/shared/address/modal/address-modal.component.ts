@@ -31,11 +31,9 @@ export class AddressModalComponent implements OnInit, OnDestroy {
   //#region Constructor
 
   constructor(
-    public router: Router,
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AddressModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: FormGroup,
-    private addressService: AddressService,
     private countryService: CountryService,
     private stateService: StateService
   ) {

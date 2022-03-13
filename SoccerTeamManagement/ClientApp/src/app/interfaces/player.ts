@@ -7,7 +7,7 @@ import { IParent } from "./Parent";
 export interface IPlayer extends IPerson {
   height: number;
   weight: number;
-  foot: string;
+  foot: number;
   weakFootRating: number;
   flareRating: number;
 
