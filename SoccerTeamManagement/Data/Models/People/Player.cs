@@ -1,10 +1,9 @@
 ﻿using SoccerTeamManagement.Data.Models.Joins;
-using SoccerTeamManagement.Data.People;
 using System.Collections.Generic;
 
 namespace SoccerTeamManagement.Data.Models.People
 {
-    public class Player : Person
+    public class Player : PersonBase
     {
         #region Properties
 

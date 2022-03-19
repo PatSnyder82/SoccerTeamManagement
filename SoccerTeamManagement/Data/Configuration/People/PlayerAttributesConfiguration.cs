@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SoccerTeamManagement.Data.Interfaces;
 using SoccerTeamManagement.Data.Models.People;
-using SoccerTeamManagement.Data.People;
 
 namespace SoccerTeamManagement.Data.Configuration.People
 {

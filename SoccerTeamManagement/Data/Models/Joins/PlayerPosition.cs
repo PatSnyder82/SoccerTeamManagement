@@ -4,6 +4,12 @@ namespace SoccerTeamManagement.Data.Models.Joins
 {
     public class PlayerPosition
     {
+        #region Properties
+
+        public bool IsPrimary { get; set; }
+
+        #endregion Properties
+
         #region Relationships
 
         public int PlayerId { get; set; }
@@ -13,8 +19,6 @@ namespace SoccerTeamManagement.Data.Models.Joins
         public int PositionId { get; set; }
 
         public Position Position { get; set; }
-
-        public bool IsPrimary { get; set; }
 
         #endregion Relationships
     }

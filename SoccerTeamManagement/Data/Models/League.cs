@@ -5,7 +5,11 @@ namespace SoccerTeamManagement.Data.Models
 {
     public class League : EntityBase
     {
+        #region Properties
+
         public string Name { get; set; }
+
+        #endregion Properties
 
         /// TODO: Relationship Managers/Coaches
 

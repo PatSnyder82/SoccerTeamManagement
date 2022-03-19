@@ -1,6 +1,6 @@
 ﻿namespace SoccerTeamManagement.Data.Models
 {
-    public class Link
+    public class Link : EntityBase
     {
         #region Properties
 

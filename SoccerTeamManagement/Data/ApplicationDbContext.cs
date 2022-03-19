@@ -9,7 +9,6 @@ using SoccerTeamManagement.Data.Configuration.People;
 using SoccerTeamManagement.Data.Models;
 using SoccerTeamManagement.Data.Models.Joins;
 using SoccerTeamManagement.Data.Models.People;
-using SoccerTeamManagement.Data.People;
 
 namespace SoccerTeamManagement.Data
 {
@@ -20,6 +19,8 @@ namespace SoccerTeamManagement.Data
         public DbSet<Country> Countries { get; set; }
 
         public DbSet<Player> Players { get; set; }
+
+        public DbSet<Position> Positions { get; set; }
 
         public DbSet<State> States { get; set; }
 

@@ -1,0 +1,7 @@
+<label class="container">
+  <p [ngClass]="{'three-letters': text.length === 3}" >{{text}}</p>  <!--(click)="onClick(checkbox.checked)"-->
+  <div class="round">
+    <input #checkbox id="checkbox{{text}}" type="checkbox" [ngModel]="isChecked" (ngModelChange)="onModelChange($event)" />
+    <label for="checkbox{{text}}"></label>
+  </div>
+</label>

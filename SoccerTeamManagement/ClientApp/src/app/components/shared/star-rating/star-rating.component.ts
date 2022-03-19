@@ -1,34 +1,32 @@
 import { Component, Input } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
-
 
 @Component({
   selector: 'sm-star-rating',
   templateUrl: './star-rating.component.html',
   styleUrls: ['./star-rating.component.scss'],
   providers: [
-  {
-    provide: NG_VALUE_ACCESSOR,
-    multi: true,
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
       useExisting: StarRatingComponent
-  },
-  {
-    provide: NG_VALIDATORS,
-    multi: true,
-    useExisting: StarRatingComponent
-  }
+    },
+    {
+      provide: NG_VALIDATORS,
+      multi: true,
+      useExisting: StarRatingComponent
+    }
   ]
 })
 export class StarRatingComponent implements ControlValueAccessor, Validator {
-
   //#region Properties
+
   @Input('color') private color: string;
-  private rating: number;
-  public starIcon: IconDefinition [];
+  //private rating: number;
+  public starIcon: IconDefinition[];
   private isDisabled: boolean;
   private isTouched: boolean;
 
@@ -36,7 +34,7 @@ export class StarRatingComponent implements ControlValueAccessor, Validator {
 
   //#region Constructor
 
-  constructor(private snackBar: MatSnackBar) {
+  constructor() {
     this.isDisabled = false;
     this.isTouched = false;
     this.starIcon = [farStar, farStar, farStar, farStar, farStar]
@@ -59,7 +57,6 @@ export class StarRatingComponent implements ControlValueAccessor, Validator {
   //#region ControlValueAccessor Implementation
 
   public writeValue(rating: number): void {
-    this.rating = rating;
     this._setStars(rating);
   }
 
@@ -79,14 +76,13 @@ export class StarRatingComponent implements ControlValueAccessor, Validator {
 
   //#region Events
 
-  private _onChange = (rating) => {};
+  private _onChange = (rating) => { };
 
   public onClick(rating: number): void {
     this._markAsTouched();
 
     if (!this.isDisabled) {
       this._setStars(rating);
-      this.rating = rating;
       this._onChange(rating);
     }
   }
@@ -108,18 +104,14 @@ export class StarRatingComponent implements ControlValueAccessor, Validator {
     let starType = fasStar;
 
     if (rating > 0 && rating <= 6) {
-
       for (let i = 0; i < 5; i++) {
         this.starIcon[i] = starType;
-        if (rating === i+1) {
+        if (rating === i + 1) {
           starType = farStar;
         }
       }
-
-      this.rating = rating;
     }
-
-    }
+  }
 
   //#endregion
 }

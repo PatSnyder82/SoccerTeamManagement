@@ -7,7 +7,7 @@ namespace SoccerTeamManagement.Data.Models
     {
         #region Relationships
 
-        public ICollection<Position> Positions { get; set; }
+        public IList<Position> Positions { get; set; }
 
         #endregion Relationships
     }

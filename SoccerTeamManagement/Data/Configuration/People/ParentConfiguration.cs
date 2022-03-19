@@ -13,7 +13,7 @@ namespace SoccerTeamManagement.Data.Configuration.People
             base.Configure(builder);
 
             builder.ToTable("Parent");
-            builder.HasBaseType<Person>();
+            builder.HasBaseType<PersonBase>();
 
             #region Seed
 

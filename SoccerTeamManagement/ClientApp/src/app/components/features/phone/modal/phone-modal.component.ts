@@ -45,7 +45,6 @@ export class PhoneModalComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    console.log("DATA in PhoneModal: " + JSON.stringify(this.data.value, null, 2));
     this.form = this.data;
 
     this.controls = this._initializeControlReferences();

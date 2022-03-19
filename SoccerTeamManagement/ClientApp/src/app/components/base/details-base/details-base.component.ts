@@ -45,7 +45,7 @@ export abstract class DetailsBaseComponent<T> implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this.form = this.initializeForm();
+    this.form = this.entityService.getFormGroup();
 
     if (this.isCreateMode) {
       this.isLoading = false;
@@ -56,16 +56,15 @@ export abstract class DetailsBaseComponent<T> implements OnInit, OnDestroy {
     }
 
     this.controls = this.initializeControlReferences();
+    //this.intializeComponent();
   }
 
   //#endregion
 
   //#region Abstract Methods
-
+  protected abstract onEntityLoaded();
   protected abstract initializeControlReferences();
-
-  protected abstract initializeForm(): FormGroup;
-
+  
   //#endregion
 
   protected debugInvalidControls(): string[] {
@@ -84,10 +83,12 @@ export abstract class DetailsBaseComponent<T> implements OnInit, OnDestroy {
     this.subscriptions.push(this.entityService.getById(this.id)
       .subscribe(
         data => {
+          console.log("Entity Retrieved from API: " + JSON.stringify(data, null, 2));
           this.form.patchValue(data);
           this.isLoading = false;
         },
-        error => this.errorMessage = error as string));
+        error => this.errorMessage = error as string,
+        () => this.onEntityLoaded()));
   }
 
   public onReadonlyChange($event: MatSlideToggleChange): void {

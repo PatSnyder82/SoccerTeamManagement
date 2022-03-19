@@ -46,7 +46,13 @@ namespace SoccerTeamManagement
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();
+
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllersWithViews();
+            //.AddNewtonsoftJson(options =>
+            //    options.SerializerSettings.ReferenceLoopHandling
+            //    = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             services.AddRazorPages();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

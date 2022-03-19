@@ -1,0 +1,87 @@
+/*Custom Round Checkbox by Matt Smith on CodePen
+    https://codepen.io/AllThingsSmitty/pen/WjZVjo
+*/
+p {
+  width: 23px;
+  text-align: center;
+  margin: 0;
+  margin-left: 1px;
+  font-family: Calibri;
+  font-weight: bold;
+  color: #fff;
+  font-size: 16px;
+}
+
+p.three-letters {
+    margin-left: -3px;
+}
+
+.container {
+    padding: 0;
+}
+
+.round {
+    position: relative;
+}
+
+.round label {
+    background-color: #515A5A; //#fff
+    opacity:60%;//new
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 25px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 25px;
+}
+
+.round label:after {
+    border: 2px solid #fff;
+    border-top: none;
+    border-right: none;
+    content: "";
+    height: 6px;
+    left: 7px;
+    opacity: 0;
+    position: absolute;
+    top: 8px;
+    transform: rotate(-45deg);
+    width: 12px;
+}
+
+.round input[type="checkbox"] {
+    visibility: hidden;
+}
+
+.round input[type="checkbox"]:checked + label {
+  background-color: #D35400; //#66aebb
+  opacity: 90%; //new
+  border-color: #D35400; //#66aebb
+}
+
+//Add a checkmark when in the checked state
+.round input[type="checkbox"]:checked + label:after {
+    opacity: 1;
+}
+
+/* general styling */
+/*html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #f1f2f3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}*/
+
+.container {
+    margin: 0 auto;
+}

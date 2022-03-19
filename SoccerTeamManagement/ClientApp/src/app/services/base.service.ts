@@ -1,16 +1,15 @@
 import { catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 import { Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { throwError } from 'rxjs';
-
-//import 'rxjs/add/operator/do';
-//import 'rxjs/add/operator/map';
+import { IEntity } from '../interfaces/entity';
 
 export abstract class BaseService<T> {
+  //#region Properties
+
   protected api: string;
   protected endpoint: string;
   public url: string;
@@ -22,6 +21,10 @@ export abstract class BaseService<T> {
   protected defaultSortOrder: string;
   protected defaultFilterColumn: string;
   protected defaultFilterQuery: string;
+
+  //#endregion
+
+  //#region Constructor
 
   constructor(protected http: HttpClient, endpoint: string, @Inject('BASE_URL') protected baseUrl: string) {
     this.api = 'api/';
@@ -38,14 +41,23 @@ export abstract class BaseService<T> {
     this.defaultFilterQuery = '';
   }
 
+  //#endregion
+
+  //#region Methods
+  public abstract getFormGroup();
+
   delete(id: number): Observable<boolean> {
     return this.http.delete<boolean>(this.url + id.toString())
       .pipe(catchError(this.handleError));
   }
 
   getById(id: number): Observable<T> {
-    return this.http.get<T>(this.url + id.toString())
-      .pipe(catchError(this.handleError));
+    if (id && id > 0) {
+      return this.http.get<T>(this.url + id.toString())
+        .pipe(catchError(this.handleError));
+    }
+
+    return null;
   }
 
   getTableData(pageIndex: number = this.defaultPageIndex, pageSize: number = this.defaultPageSize,
@@ -79,7 +91,13 @@ export abstract class BaseService<T> {
       .pipe(catchError(this.handleError));
   }
 
+  //#endregion
+
   // #region Protected Methods
+
+  protected isAnEntity(obj: any): obj is IEntity {
+    return 'id' in obj;
+  }
 
   protected handleError(err: HttpErrorResponse) {
     return throwError(err.message || "server error");

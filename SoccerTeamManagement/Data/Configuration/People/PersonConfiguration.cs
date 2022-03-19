@@ -4,7 +4,7 @@ using SoccerTeamManagement.Data.Models.People;
 
 namespace SoccerTeamManagement.Data.Configuration.People
 {
-    public class PersonConfiguration<T> : IEntityTypeConfiguration<T> where T : Person
+    public class PersonConfiguration<T> : IEntityTypeConfiguration<T> where T : PersonBase
     {
         public virtual void Configure(EntityTypeBuilder<T> builder)
         {

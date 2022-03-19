@@ -1,7 +1,4 @@
-﻿using SoccerTeamManagement.Data.Models;
-using SoccerTeamManagement.Data.Models.People;
-
-namespace SoccerTeamManagement.Data.People
+﻿namespace SoccerTeamManagement.Data.Models.People
 {
     public class PlayerAttributes : EntityBase
     {
@@ -46,8 +43,6 @@ namespace SoccerTeamManagement.Data.People
         public int? Penalties { get; set; }
 
         #endregion Shooting
-
-
 
         #region Defending
 

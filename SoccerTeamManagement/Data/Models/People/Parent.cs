@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SoccerTeamManagement.Data.Models.People
 {
-    public class Parent : Person
+    public class Parent : PersonBase
     {
         #region Relationships
 

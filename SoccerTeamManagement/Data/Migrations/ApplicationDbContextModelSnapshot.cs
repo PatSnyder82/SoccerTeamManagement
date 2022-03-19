@@ -3713,7 +3713,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         new
                         {
                             PlayerId = 905,
-                            PositionId = 19,
+                            PositionId = 7,
                             IsPrimary = false
                         },
                         new
@@ -3737,7 +3737,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         new
                         {
                             PlayerId = 909,
-                            PositionId = 19,
+                            PositionId = 7,
                             IsPrimary = false
                         },
                         new
@@ -3797,91 +3797,91 @@ namespace SoccerTeamManagement.Data.Migrations
                         {
                             PlayerId = 901,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 10, 17, 21, 33, 818, DateTimeKind.Unspecified).AddTicks(7586), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 16, 10, 13, 50, 433, DateTimeKind.Unspecified).AddTicks(6583), new TimeSpan(0, -4, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 902,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 10, 17, 21, 33, 824, DateTimeKind.Unspecified).AddTicks(1902), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 16, 10, 13, 50, 436, DateTimeKind.Unspecified).AddTicks(8819), new TimeSpan(0, -4, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 903,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 10, 17, 21, 33, 824, DateTimeKind.Unspecified).AddTicks(1985), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 16, 10, 13, 50, 436, DateTimeKind.Unspecified).AddTicks(8860), new TimeSpan(0, -4, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 904,
                             TeamId = 901,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 10, 17, 21, 33, 824, DateTimeKind.Unspecified).AddTicks(2004), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 16, 10, 13, 50, 436, DateTimeKind.Unspecified).AddTicks(8867), new TimeSpan(0, -4, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 905,
                             TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 10, 17, 21, 33, 824, DateTimeKind.Unspecified).AddTicks(2020), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 16, 10, 13, 50, 436, DateTimeKind.Unspecified).AddTicks(8871), new TimeSpan(0, -4, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 906,
                             TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 10, 17, 21, 33, 824, DateTimeKind.Unspecified).AddTicks(2046), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 16, 10, 13, 50, 436, DateTimeKind.Unspecified).AddTicks(8879), new TimeSpan(0, -4, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 907,
                             TeamId = 902,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 10, 17, 21, 33, 824, DateTimeKind.Unspecified).AddTicks(2063), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 16, 10, 13, 50, 436, DateTimeKind.Unspecified).AddTicks(8883), new TimeSpan(0, -4, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 908,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 10, 17, 21, 33, 824, DateTimeKind.Unspecified).AddTicks(2080), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 16, 10, 13, 50, 436, DateTimeKind.Unspecified).AddTicks(8887), new TimeSpan(0, -4, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 909,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 10, 17, 21, 33, 824, DateTimeKind.Unspecified).AddTicks(2100), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 16, 10, 13, 50, 436, DateTimeKind.Unspecified).AddTicks(8891), new TimeSpan(0, -4, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 910,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 10, 17, 21, 33, 824, DateTimeKind.Unspecified).AddTicks(2122), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 16, 10, 13, 50, 436, DateTimeKind.Unspecified).AddTicks(8897), new TimeSpan(0, -4, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 911,
                             TeamId = 903,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 10, 17, 21, 33, 824, DateTimeKind.Unspecified).AddTicks(2225), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 16, 10, 13, 50, 436, DateTimeKind.Unspecified).AddTicks(8902), new TimeSpan(0, -4, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 912,
                             TeamId = 904,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 10, 17, 21, 33, 824, DateTimeKind.Unspecified).AddTicks(2246), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 16, 10, 13, 50, 436, DateTimeKind.Unspecified).AddTicks(8906), new TimeSpan(0, -4, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         },
                         new
                         {
                             PlayerId = 901,
                             TeamId = 905,
-                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 10, 17, 21, 33, 824, DateTimeKind.Unspecified).AddTicks(2263), new TimeSpan(0, -5, 0, 0, 0)),
+                            DepartedTeam = new DateTimeOffset(new DateTime(2022, 3, 16, 10, 13, 50, 436, DateTimeKind.Unspecified).AddTicks(8910), new TimeSpan(0, -4, 0, 0, 0)),
                             JoinedTeam = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
                         });
                 });
@@ -4566,6 +4566,16 @@ namespace SoccerTeamManagement.Data.Migrations
                         new
                         {
                             Id = 7,
+                            Abbreviation = "SW",
+                            IsDisabled = false,
+                            PositionCategoryId = 1,
+                            SortOrder = 4,
+                            Text = "Sweeper",
+                            Value = "SW"
+                        },
+                        new
+                        {
+                            Id = 8,
                             Abbreviation = "CM",
                             IsDisabled = false,
                             PositionCategoryId = 2,
@@ -4575,7 +4585,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 9,
                             Abbreviation = "CDM",
                             IsDisabled = false,
                             PositionCategoryId = 2,
@@ -4585,7 +4595,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 10,
                             Abbreviation = "CAM",
                             IsDisabled = false,
                             PositionCategoryId = 2,
@@ -4595,7 +4605,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 11,
                             Abbreviation = "LM",
                             IsDisabled = false,
                             PositionCategoryId = 2,
@@ -4605,7 +4615,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         },
                         new
                         {
-                            Id = 11,
+                            Id = 12,
                             Abbreviation = "LW",
                             IsDisabled = false,
                             PositionCategoryId = 3,
@@ -4615,7 +4625,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         },
                         new
                         {
-                            Id = 12,
+                            Id = 13,
                             Abbreviation = "LF",
                             IsDisabled = false,
                             PositionCategoryId = 3,
@@ -4625,7 +4635,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         },
                         new
                         {
-                            Id = 13,
+                            Id = 14,
                             Abbreviation = "RM",
                             IsDisabled = false,
                             PositionCategoryId = 2,
@@ -4635,37 +4645,17 @@ namespace SoccerTeamManagement.Data.Migrations
                         },
                         new
                         {
-                            Id = 14,
+                            Id = 15,
                             Abbreviation = "RW",
                             IsDisabled = false,
                             PositionCategoryId = 3,
                             SortOrder = 7,
                             Text = "Right Wing",
                             Value = "RW"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Abbreviation = "RF",
-                            IsDisabled = false,
-                            PositionCategoryId = 3,
-                            SortOrder = 7,
-                            Text = "Right Forward",
-                            Value = "RF"
                         },
                         new
                         {
                             Id = 16,
-                            Abbreviation = "RW",
-                            IsDisabled = false,
-                            PositionCategoryId = 3,
-                            SortOrder = 7,
-                            Text = "Right Wing",
-                            Value = "RW"
-                        },
-                        new
-                        {
-                            Id = 17,
                             Abbreviation = "RF",
                             IsDisabled = false,
                             PositionCategoryId = 3,
@@ -4675,7 +4665,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         },
                         new
                         {
-                            Id = 18,
+                            Id = 17,
                             Abbreviation = "ST",
                             IsDisabled = false,
                             PositionCategoryId = 3,
@@ -4685,7 +4675,7 @@ namespace SoccerTeamManagement.Data.Migrations
                         },
                         new
                         {
-                            Id = 19,
+                            Id = 18,
                             Abbreviation = "CF",
                             IsDisabled = false,
                             PositionCategoryId = 3,

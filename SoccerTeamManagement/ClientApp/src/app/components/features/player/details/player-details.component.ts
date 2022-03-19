@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { ICountry } from '../../../../interfaces/lookups/country';
 import { IImage } from '../../../../interfaces/image';
 import { IPlayer } from '../../../../interfaces/player';
@@ -17,13 +17,19 @@ import { AddressService } from '../../../../services/address.service';
 import { PhoneService } from '../../../../services/phone.service';
 import { PhoneModalComponent } from '../../phone/modal/phone-modal.component';
 import { StarRatingComponent } from '../../../shared/star-rating/star-rating.component';
+import { PitchPositionsModalComponent } from '../../pitch/pitch-positions-modal/pitch-positions-modal.component';
+import { IPosition } from '../../../../interfaces/lookups/position';
+import { IPlayerPosition } from '../../../../interfaces/joins/player-position';
+import { PlayerPositionService } from '../../../../services/player-position.service';
+import { PositionService } from '../../../../services/position.service';
+import { AfterContentInit } from '@angular/core';
 
 @Component({
   selector: 'sm-player-details',
   templateUrl: './player-details.component.html',
   styleUrls: ['./player-details.component.scss']
 })
-export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implements OnInit, OnDestroy {
+export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implements OnInit, OnDestroy, DoCheck {
   //#region Properties
 
   countries: ICountry[];
@@ -43,16 +49,23 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
     private countryService: CountryService,
     private imageService: ImageService,
     private phoneService: PhoneService,
-    private playerService: PlayerService
+    private playerService: PlayerService,
+    private playerPositionService: PlayerPositionService,
+    private positionService: PositionService
   ) {
     super("Player", "/players", route, playerService, router);
     this.image = {} as IImage;
     this.imageFile = null;
   }
 
+  ngDoCheck(): void {
+
+  }
+
   //#endregion
 
   //#region Events
+
   public ngOnDestroy() {
     super.ngOnDestroy();
   }
@@ -61,6 +74,7 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
     super.ngOnInit();
 
     this._getCountries();
+ 
   }
 
   public onFileSelected(event) {
@@ -77,8 +91,8 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
   public onSubmit(): void {
     if (this.form.valid) {
       const player = this.form.value;
-      player.address.state = null;
-      player.address.country = null;
+      player.address.state = null; //TODO:  Are these two lines really needed?
+      player.address.country = null; //TODO:  Are these two lines really needed?
 
       (player?.id) < 1 ? this.onCreate(player) : this.onUpdate(player);
     }
@@ -102,15 +116,39 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
   }
 
   public openPhoneModal(): void {
-    console.log("Before Open Phone Modal - Player: " + JSON.stringify(this.form.value, null, 2));
     const dialog = this.dialog.open(PhoneModalComponent, this._getModalConfig(this.controls.phone as FormGroup));
 
     this.subscriptions.push(dialog.afterClosed()
       .subscribe(result => {
         if (result) {
-          this.controls.phone.setValue(result?.data);
+          this.controls.playerPositions.setValue(result?.data);
         }
       }));
+  }
+
+  public openPositionModal(): void {
+    console.log("openPositionModal => Positions passed in: " + JSON.stringify(this.form.get('positions').value, null, 2));
+    const dialog = this.dialog.open(PitchPositionsModalComponent, this._getPositionModalConfig(this.form.get('positions').value));
+
+    this.subscriptions.push(dialog.afterClosed()
+      .subscribe(result => {
+        if (result) {
+          const positions = result?.data as IPosition[];
+          const playerPositions = this.positionService.toPlayerPositions(positions, +this.form.get('id').value);
+          this.controls.positions.setValue(positions);
+          this.controls.playerPositions.setValue(playerPositions);
+        }
+      }));
+  }
+
+  protected onEntityLoaded() {
+    console.log("PlayerPositions in onEntityLoaded: " + JSON.stringify(this.form.get('playerPositions').value, null, 2));
+
+    let positions = [] as IPosition[];
+    positions = this.positionService.toPositions(this.form.get('playerPositions').value);
+    console.log("Positions in onEntityLoaded1: " + JSON.stringify(positions, null, 2));
+    this.form.get('positions').setValue(positions);
+    console.log("Positions in onEntityLoaded2: " + JSON.stringify(this.form.get('positions').value, null, 2));
   }
 
   protected initializeControlReferences() {
@@ -127,41 +165,10 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
       readOnly: this.form.get('readOnly'),
       dateOfBirth: this.form.get('dateOfBirth'),
       phone: this.form.get('phone'),
-      address: this.form.get('address')
+      address: this.form.get('address'),
+      positions: this.form.get('positions'),
+      playerPositions: this.form.get('playerPositions')
     }
-  }
-
-  protected initializeForm(): FormGroup {
-    const unsignedInt999Pattern = new RegExp('^[1-9]\\d{0,2}$');
-    const unsignedIntPattern = new RegExp('^[1-9]\\d{0,8}$');
-
-    return this.formBuilder.group({
-      id: [0],
-      firstName: ['', [Validators.required, Validators.maxLength(100)]],
-      lastName: ['', [Validators.required, Validators.maxLength(100)]],
-      nickName: ['', [Validators.maxLength(100)]],
-      height: [null, [Validators.min(0), Validators.max(999), Validators.pattern(unsignedInt999Pattern)]],
-      weight: [null, [Validators.min(0), Validators.max(9999), Validators.pattern(unsignedInt999Pattern)]],
-      foot: [1, [Validators.required]],
-      weakFootRating: [1, [Validators.required]],
-      flareRating: [1, [Validators.required]],
-      countryId: [null, [Validators.required]],
-      dateOfBirth: [null, [Validators.required]],
-      attributesId: [null],
-
-      imageId: [null],
-      phoneId: [null],
-      phone: this.phoneService.getFormGroup(),
-      addressId: [null],
-      address: this.addressService.getFormGroup()
-      /*//Photo
-      image: new FormControl('', Validators.required),
-      //Attributes
-      //Teams
-      teams: new FormControl('', Validators.required),
-      positions: new FormControl('', Validators.required),
-      parents: new FormControl('', Validators.required)*/
-    });
   }
 
   private _deleteImage() {
@@ -180,7 +187,7 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
     }
   }
 
-  private _getModalConfig(data: FormGroup): MatDialogConfig {
+  private _getModalConfig(data): MatDialogConfig {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
@@ -189,9 +196,16 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
 
     return dialogConfig;
   }
-  onRatingChanged(rating) {
-    console.log(rating);
-    //this.rating = rating;
+
+  private _getPositionModalConfig(data): MatDialogConfig {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    dialogConfig.width = "550px";
+    dialogConfig.height = "965px";
+    dialogConfig.data = data;
+
+    return dialogConfig;
   }
 
   //#endregion

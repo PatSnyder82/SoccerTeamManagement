@@ -1,11 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SoccerTeamManagement.Data;
+using SoccerTeamManagement.Data.DTOs.People;
 using SoccerTeamManagement.Data.Models.People;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using WorldCities.Data;
+using SoccerTeamManagement.Data.Models.Joins;
+using SoccerTeamManagement.Data.DTOs.Lookups;
+using System.Collections.Generic;
 
 namespace SoccerTeamManagement.Controllers
 {
@@ -15,9 +20,12 @@ namespace SoccerTeamManagement.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public PlayersController(ApplicationDbContext context)
+        private readonly IMapper _mapper;
+
+        public PlayersController(ApplicationDbContext context, IMapper mapper) //
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Players
@@ -55,16 +63,23 @@ namespace SoccerTeamManagement.Controllers
 
         // GET: api/Players/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Player>> GetPlayer(int id)
+        public async Task<ActionResult<PlayerFlatDTO>> GetPlayer(int id)
         {
             try
             {
-                var player = await _context.Players.AsNoTracking().Include(x => x.Country).Include(x => x.Phone).Include(x => x.Address).ThenInclude(x => x.State).Include(x => x.Address).ThenInclude(x => x.Country).FirstOrDefaultAsync(x => x.Id == id);
+                var player = await _context.Players.AsNoTracking()
+                    .Include(x => x.Country)
+                    .Include(x => x.Phone)
+                    .Include(x => x.PlayerPositions).ThenInclude(x => x.Position)
+                    .Include(x => x.Address).ThenInclude(x => x.State)
+                    .Include(x => x.Address).ThenInclude(x => x.Country).FirstOrDefaultAsync(x => x.Id == id);
 
                 if (player == null)
                     return NotFound();
 
-                return Ok(player);
+                var dto = _mapper.Map<PlayerFlatDTO>(player);
+
+                return Ok(dto);
             }
             catch (Exception ex)
             {
@@ -75,17 +90,68 @@ namespace SoccerTeamManagement.Controllers
         // PUT: api/Players/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut()]
-        public async Task<IActionResult> PutPlayer(Player player)
+        public async Task<IActionResult> PutPlayer(PlayerFlatDTO dto)
         {
             try
             {
-                if (!_context.Players.AsNoTracking().Any(x => x.Id == player.Id))
-                    return NoContent();
+                Player player = await _context.Set<Player>().AsNoTracking().Include(x => x.PlayerPositions).AsNoTracking().FirstOrDefaultAsync(x => x.Id == dto.Id);
 
-                var entity = _context.Players.Update(player);
+                //if (player != null)
+                //{
+                //    _context.Entry(player).State = EntityState.Detached;
+                //}
+
+                player = _mapper.Map<PlayerFlatDTO, Player>(dto);
+
+                player.PlayerPositions.Clear();
+                IList<PlayerPosition> playerPositions = await _context.Set<PlayerPosition>().Where(x => x.PlayerId == dto.Id).ToListAsync();
+
+                if (playerPositions?.Count > 0)
+                {
+                    foreach (var playerPosition in playerPositions)
+                    {
+                        _context.Remove(playerPosition);
+                    }
+                }
+
+                if (dto.PlayerPositions.Count > 0)
+                {
+                    foreach (var playerPosition in dto.PlayerPositions)
+                    {
+                        //player.PlayerPositions.Add(_mapper.Map<PlayerPositionFlatDTO, PlayerPosition>(playerPosition));
+                        _context.Set<PlayerPosition>().Add(_mapper.Map<PlayerPositionFlatDTO, PlayerPosition>(playerPosition));
+                    }
+                }
+
+                _context.Entry(player).State = EntityState.Modified;
+
+                _context.Players.Update(player);
 
                 await _context.SaveChangesAsync();
+                /*
+                Player player = await _context.Players.Include(x => x.PlayerPositions).FirstOrDefaultAsync(x => x.Id == dto.Id);
 
+                if (player != null)
+                {
+                    player = _mapper.Map<PlayerFlatDTO, Player>(dto);
+
+                    player.PlayerPositions.Clear();
+
+                    if (dto.PlayerPositions.Count > 0)
+                    {
+                        foreach (var playerPosition in dto.PlayerPositions)
+                        {
+                            player.PlayerPositions.Add(_mapper.Map<PlayerPositionFlatDTO, PlayerPosition>(playerPosition));
+                        }
+                    }
+
+                    _context.Players.Update(player);
+
+                    await _context.SaveChangesAsync();
+
+                    return Ok();
+                }
+                */
                 return Ok();
             }
             catch (Exception ex)

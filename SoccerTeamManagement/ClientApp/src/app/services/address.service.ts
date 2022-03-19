@@ -23,10 +23,14 @@ export class AddressService extends BaseService<IAddress> {
       addressLine1: ['', [Validators.required, Validators.maxLength(100)]],
       addressLine2: ['', [Validators.maxLength(100)]],
       city: ['', [Validators.required, Validators.maxLength(100)]],
-      countryId: [null, [Validators.required]],
       country: this.countryService.getFormGroup(),
-      stateId: [null],
+      countryId: [null, [Validators.required]],
+      countryText: [null],
+      countryAlpha2Code: [null],
       state: this.stateService.getFormGroup(),
+      stateId: [null],
+      stateText: [null],
+      stateAlpha2Code: [null],
       zipCode: ['', [Validators.pattern(unsignedIntPattern)]]
     });
   }

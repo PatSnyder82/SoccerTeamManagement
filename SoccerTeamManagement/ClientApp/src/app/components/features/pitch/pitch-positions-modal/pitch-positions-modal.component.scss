@@ -1,0 +1,108 @@
+.main {
+  background-image: url("../../../../../assets/images/soccer-pitch-vertical.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  max-height: 750px;
+  max-width: 500px;
+  width: auto;
+  height: 750px;
+  padding-top: 90px;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+[class^='col'] {
+  padding-left: 6px;
+}
+
+.double-column {
+  padding-left: 26px;
+}
+
+#spacer-row-1 {
+    margin-bottom: 15px;
+}
+
+#spacer-row-2 {
+    margin-bottom: 4px;
+}
+
+#spacer-row-3 {
+
+}
+
+#spacer-row-4 {
+
+}
+
+#spacer-row-5 {
+
+}
+
+#spacer-row-6 {
+    margin-bottom:0px;
+}
+
+#spacer-row-7 {
+
+}
+
+//Drag and Drop
+
+mat-label {
+  display: block;
+  margin-top: 60px;
+}
+
+.drag-drop-list {
+  width: 1000px;
+  max-width: 100%;
+  border: solid 1px #ccc;
+  max-height: 40px;
+  display: flex;
+  flex-direction: row;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.drag-drop-box {
+  padding: 20px 10px;
+  border-right: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.drag-drop-box:last-child {
+  border: none;
+}
+
+.drag-drop-list.cdk-drop-list-dragging .drag-drop-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

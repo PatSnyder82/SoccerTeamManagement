@@ -49,12 +49,12 @@ namespace SoccerTeamManagement.Data.Configuration.Joins
             builder.HasData(new PlayerPosition { IsPrimary = true, PlayerId = 903, PositionId = 5 });
             builder.HasData(new PlayerPosition { IsPrimary = true, PlayerId = 904, PositionId = 6 });
             builder.HasData(new PlayerPosition { IsPrimary = true, PlayerId = 905, PositionId = 18 });
-            builder.HasData(new PlayerPosition { IsPrimary = false, PlayerId = 905, PositionId = 19 });
+            builder.HasData(new PlayerPosition { IsPrimary = false, PlayerId = 905, PositionId = 7 });
             builder.HasData(new PlayerPosition { IsPrimary = true, PlayerId = 906, PositionId = 11 });
             builder.HasData(new PlayerPosition { IsPrimary = true, PlayerId = 907, PositionId = 12 });
 
             builder.HasData(new PlayerPosition { IsPrimary = true, PlayerId = 908, PositionId = 13 });
-            builder.HasData(new PlayerPosition { IsPrimary = false, PlayerId = 909, PositionId = 19 });
+            builder.HasData(new PlayerPosition { IsPrimary = false, PlayerId = 909, PositionId = 7 });
             builder.HasData(new PlayerPosition { IsPrimary = true, PlayerId = 909, PositionId = 11 });
             builder.HasData(new PlayerPosition { IsPrimary = true, PlayerId = 910, PositionId = 12 });
             builder.HasData(new PlayerPosition { IsPrimary = true, PlayerId = 911, PositionId = 13 });

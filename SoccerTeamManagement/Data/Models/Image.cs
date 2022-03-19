@@ -4,6 +4,8 @@ namespace SoccerTeamManagement.Data.Models
 {
     public class Image : EntityBase
     {
+        #region Properties
+
         public string AlternativeText { get; set; }
 
         public string Url { get; set; }
@@ -19,5 +21,7 @@ namespace SoccerTeamManagement.Data.Models
         public string Caption { get; set; }
 
         public FormFile File { get; set; }
+
+        #endregion Properties
     }
 }
