@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { AddressPipe } from './address.pipe';
 import { PhonePipe } from './phone.pipe';
+import { PositionsPipe } from './positions.pipe';
 
 @NgModule({
   declarations: [
     AddressPipe,
-    PhonePipe
+    PhonePipe,
+    PositionsPipe
   ],
   imports: [
 
   ],
   exports: [
     AddressPipe,
-    PhonePipe
+    PhonePipe,
+    PositionsPipe
   ]
 })
 export class PipesModule { }

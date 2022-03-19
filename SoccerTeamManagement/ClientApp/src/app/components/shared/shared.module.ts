@@ -11,6 +11,7 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { BrowserModule } from '@angular/platform-browser';
     MatButtonModule,
     MatIconModule,
     MatSnackBarModule,
+    MatTooltipModule,
     NavModule,
     ReactiveFormsModule
   ],

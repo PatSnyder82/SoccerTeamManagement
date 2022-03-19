@@ -13,6 +13,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddressModalComponent } from '../../../shared/address/modal/address-modal.component';
 import { IAddress } from '../../../../interfaces/address';
 import { AddressPipe } from '../../../../pipes/address.pipe';
+import { PositionsPipe } from '../../../../pipes/positions.pipe';
 import { AddressService } from '../../../../services/address.service';
 import { PhoneService } from '../../../../services/phone.service';
 import { PhoneModalComponent } from '../../phone/modal/phone-modal.component';
@@ -29,12 +30,13 @@ import { AfterContentInit } from '@angular/core';
   templateUrl: './player-details.component.html',
   styleUrls: ['./player-details.component.scss']
 })
-export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implements OnInit, OnDestroy, DoCheck {
+export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implements OnInit, OnDestroy {
   //#region Properties
 
   countries: ICountry[];
   image: IImage; //TODO: Create proper Image component
   imageFile: File;
+  positions: IPosition[];
   primary: "primary";
   //#endregion
 
@@ -58,10 +60,6 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
     this.imageFile = null;
   }
 
-  ngDoCheck(): void {
-
-  }
-
   //#endregion
 
   //#region Events
@@ -74,7 +72,6 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
     super.ngOnInit();
 
     this._getCountries();
- 
   }
 
   public onFileSelected(event) {
@@ -127,28 +124,22 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
   }
 
   public openPositionModal(): void {
-    console.log("openPositionModal => Positions passed in: " + JSON.stringify(this.form.get('positions').value, null, 2));
-    const dialog = this.dialog.open(PitchPositionsModalComponent, this._getPositionModalConfig(this.form.get('positions').value));
+    const dialog = this.dialog.open(PitchPositionsModalComponent, this._getPositionModalConfig(this.positions));
 
     this.subscriptions.push(dialog.afterClosed()
       .subscribe(result => {
         if (result) {
-          const positions = result?.data as IPosition[];
-          const playerPositions = this.positionService.toPlayerPositions(positions, +this.form.get('id').value);
-          this.controls.positions.setValue(positions);
+          this.positions = result?.data as IPosition[];
+          const playerPositions = this.positionService.toPlayerPositions(this.positions, +this.form.get('id').value);
+          this.controls.positions.setValue(this.positions);
           this.controls.playerPositions.setValue(playerPositions);
         }
       }));
   }
 
   protected onEntityLoaded() {
-    console.log("PlayerPositions in onEntityLoaded: " + JSON.stringify(this.form.get('playerPositions').value, null, 2));
-
-    let positions = [] as IPosition[];
-    positions = this.positionService.toPositions(this.form.get('playerPositions').value);
-    console.log("Positions in onEntityLoaded1: " + JSON.stringify(positions, null, 2));
-    this.form.get('positions').setValue(positions);
-    console.log("Positions in onEntityLoaded2: " + JSON.stringify(this.form.get('positions').value, null, 2));
+    this.positions = this.positionService.toPositions(this.form.get('playerPositions').value);
+    this.form.get('positions').setValue(this.positions);
   }
 
   protected initializeControlReferences() {

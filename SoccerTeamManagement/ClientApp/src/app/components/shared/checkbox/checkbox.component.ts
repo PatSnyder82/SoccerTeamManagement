@@ -17,7 +17,9 @@ export class CheckboxComponent implements ControlValueAccessor {
   @ViewChild('checkbox', { static: false }) checkBoxElementRef: ElementRef;
   //#region Properties
   @Input('text') public text: string;
+  @Input('tooltip') public tooltip: string;
   @Input('color') private color: string;
+
   public isChecked: boolean;
   private isDisabled: boolean;
   private isTouched: boolean;

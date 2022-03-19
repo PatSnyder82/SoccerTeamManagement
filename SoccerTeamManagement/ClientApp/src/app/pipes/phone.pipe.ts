@@ -7,9 +7,10 @@ import { IPhone } from '../interfaces/phone';
 })
 export class PhonePipe implements PipeTransform {
   transform(phone: IPhone): string {
-    let value = '';
+    let value = 'None';
 
     if (phone) {
+      value = '';
       value += phone?.phoneType ? PhoneType[+phone?.phoneType] : '';
       value += phone?.countryCode ? ': +' + phone?.countryCode?.trim() : '';
       value += phone?.areaCode ? ' (' + phone?.areaCode?.trim() + ')' : '';

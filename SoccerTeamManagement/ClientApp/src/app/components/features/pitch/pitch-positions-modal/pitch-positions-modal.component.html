@@ -1,71 +1,71 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="address-modal main">
   <div class="row">
-    <div class="col-1 offset-3"><sm-checkbox formControlName="lf" text="LF" (change)="onChange('lf')"></sm-checkbox></div>
-    <div class="col-1 offset-1"><sm-checkbox formControlName="cf" text="CF" (change)="onChange('cf')"></sm-checkbox></div>
-    <div class="col-1"><sm-checkbox formControlName="st" text="ST" (change)="onChange('st')"></sm-checkbox></div>
-    <div class="col-1 offset-1"><sm-checkbox formControlName="rf" text="RF" (change)="onChange('rf')"></sm-checkbox></div>
+    <div class="col-1 offset-3"><sm-checkbox formControlName="lf" text="LF" tooltip="Left Forward" (change)="onChange('lf')"></sm-checkbox></div>
+    <div class="col-1 offset-1"><sm-checkbox formControlName="cf" text="CF" tooltip="Center Forward" (change)="onChange('cf')"></sm-checkbox></div>
+    <div class="col-1"><sm-checkbox formControlName="st" text="ST" tooltip="Striker" (change)="onChange('st')"></sm-checkbox></div>
+    <div class="col-1 offset-1"><sm-checkbox formControlName="rf" text="RF" tooltip="Right Forward" (change)="onChange('rf')"></sm-checkbox></div>
   </div>
   <div id="spacer-row-1" class="row"></div>
   <div class="row">
     <div class="col-1 offset-1 double-column">
-      <sm-checkbox formControlName="lw" text="LW" class="three-letters" (change)="onChange('lw')"></sm-checkbox>
+      <sm-checkbox formControlName="lw" text="LW" tooltip="Left Wing" class="three-letters" (change)="onChange('lw')"></sm-checkbox>
     </div>
     <div class="col-1 offset-8">
-      <sm-checkbox formControlName="rw" text="RW" (change)="onChange('rw')"></sm-checkbox>
+      <sm-checkbox formControlName="rw" text="RW" tooltip="Right Wing" (change)="onChange('rw')"></sm-checkbox>
     </div>
   </div>
   <div id="spacer-row-2" class="row"></div>
   <div class="row">
     <div class="col-2 offset-5 double-column">
-      <sm-checkbox formControlName="cam" text="CAM" class="three-letters" (change)="onChange('cam')"></sm-checkbox>
+      <sm-checkbox formControlName="cam" text="CAM" tooltip="Center Attacking Midfielder" class="three-letters" (change)="onChange('cam')"></sm-checkbox>
     </div>
   </div>
   <div id="spacer-row-3" class="row"></div>
   <div class="row">
     <div class="col-1 offset-3">
-      <sm-checkbox formControlName="lm" text="LM" (change)="onChange('lm')"></sm-checkbox>
+      <sm-checkbox formControlName="lm" text="LM" tooltip="Left Midfielder" (change)="onChange('lm')"></sm-checkbox>
     </div>
     <div class="col-2 offset-1 double-column">
-      <sm-checkbox formControlName="cm" text="CM" (change)="onChange('cm')"></sm-checkbox>
+      <sm-checkbox formControlName="cm" text="CM" tooltip="Center Midfielder" (change)="onChange('cm')"></sm-checkbox>
     </div>
     <div class="col-1 offset-1">
-      <sm-checkbox formControlName="rm" text="RM" (change)="onChange('rm')"></sm-checkbox>
+      <sm-checkbox formControlName="rm" text="RM" tooltip="Right Midfielder" (change)="onChange('rm')"></sm-checkbox>
     </div>
   </div>
   <div id="spacer-row-4" class="row"></div>
   <div class="row">
     <div class="col-1 offset-1">
-      <sm-checkbox formControlName="lwb" text="LWB" class="three-letters" (change)="onChange('lwb')"></sm-checkbox>
+      <sm-checkbox formControlName="lwb" text="LWB" tooltip="Left Wing Back" class="three-letters" (change)="onChange('lwb')"></sm-checkbox>
     </div>
     <div class="col-2 offset-3 double-column" >
-      <sm-checkbox formControlName="cdm" text="CDM" class="three-letters" (change)="onChange('cdm')"></sm-checkbox>
+      <sm-checkbox formControlName="cdm" text="CDM" tooltip="Center Defensive Midfielder" class="three-letters" (change)="onChange('cdm')"></sm-checkbox>
     </div>
     <div class="col-1 offset-3">
-      <sm-checkbox formControlName="rwb" text="RWB" class="three-letters" (change)="onChange('rwb')"></sm-checkbox>
+      <sm-checkbox formControlName="rwb" text="RWB" tooltip="Right Wing Back" class="three-letters" (change)="onChange('rwb')"></sm-checkbox>
     </div>
   </div>
   <div id="spacer-row-5" class="row"></div>
   <div class="row">
     <div class="col-1 offset-2">
-      <sm-checkbox formControlName="lb" text="LB" (change)="onChange('lb')"></sm-checkbox>
+      <sm-checkbox formControlName="lb" text="LB" tooltip="Left Back" (change)="onChange('lb')"></sm-checkbox>
     </div>
     <div class="col-2 offset-2 double-column">
-      <sm-checkbox formControlName="cb" text="CB" (change)="onChange('cb')"></sm-checkbox>
+      <sm-checkbox formControlName="cb" text="CB"  tooltip="Center Back" (change)="onChange('cb')"></sm-checkbox>
     </div>
     <div class="col-1 offset-2">
-      <sm-checkbox formControlName="rb" text="RB" (change)="onChange('rb')"></sm-checkbox>
+      <sm-checkbox formControlName="rb" text="RB" tooltip="Right Back" (change)="onChange('rb')"></sm-checkbox>
     </div>
   </div>
   <div id="spacer-row-6" class="row"></div>
   <div class="row">
     <div class="col-2 offset-5 double-column">
-      <sm-checkbox formControlName="sw" text="SW" (change)="onChange('sw')"></sm-checkbox>
+      <sm-checkbox formControlName="sw" text="SW" tooltip="Sweeper"(change)="onChange('sw')"></sm-checkbox>
     </div>
   </div>
   <div id="spacer-row-7" class="row"></div>
   <div class="row">
     <div class="col-2 offset-5 double-column">
-      <sm-checkbox formControlName="g" text="G" (change)="onChange('g')"></sm-checkbox>
+      <sm-checkbox formControlName="g" text="G" tooltip="Goalie" (change)="onChange('g')"></sm-checkbox>
     </div>
   </div>
   <br/>

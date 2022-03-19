@@ -6,9 +6,10 @@ import { IAddress } from '../interfaces/address';
 })
 export class AddressPipe implements PipeTransform {
   transform(address: IAddress, isSingleLine: boolean = false): string {
-    let value = '';
+    let value = 'None';
 
     if (address) {
+      value = '';
       if (isSingleLine) {
         value += address?.addressLine1;
         value += address?.addressLine2 ? ', ' + address?.addressLine2 : '';
