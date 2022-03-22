@@ -1,4 +1,6 @@
-﻿using SoccerTeamManagement.Data.DTOs.Lookups;
+﻿using Core.Enumerations;
+using SoccerTeamManagement.Data.DTOs.Joins;
+using SoccerTeamManagement.Data.DTOs.Lookups;
 using System.Collections.Generic;
 
 namespace SoccerTeamManagement.Data.DTOs.People
@@ -25,7 +27,7 @@ namespace SoccerTeamManagement.Data.DTOs.People
 
         public PlayerAttributesDTO Attributes { get; set; }
 
-        public IList<PlayerPositionFlatDTO> PlayerPositions { get; set; }
+        public IList<PlayerPositionDTO> PlayerPositions { get; set; }
 
         public IList<TeamDTO> Teams { get; set; }
 

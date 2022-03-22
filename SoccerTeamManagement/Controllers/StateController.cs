@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Core.Models.Lookups;
+using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SoccerTeamManagement.Data;
-using SoccerTeamManagement.Data.Models;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using WorldCities.Data;
 
 namespace SoccerTeamManagement.Controllers

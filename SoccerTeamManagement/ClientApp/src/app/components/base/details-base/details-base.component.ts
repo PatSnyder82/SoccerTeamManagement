@@ -7,7 +7,7 @@ import { IEntity } from '../../../interfaces/entity';
 import { BaseService } from '../../../services/base.service';
 
 @Component({
-  selector: 'app-details-base',
+  selector: 'sm-details-base',
   templateUrl: './details-base.component.html',
   styleUrls: ['./details-base.component.scss']
 })
@@ -64,7 +64,7 @@ export abstract class DetailsBaseComponent<T> implements OnInit, OnDestroy {
   //#region Abstract Methods
   protected abstract onEntityLoaded();
   protected abstract initializeControlReferences();
-  
+
   //#endregion
 
   protected debugInvalidControls(): string[] {
@@ -83,7 +83,6 @@ export abstract class DetailsBaseComponent<T> implements OnInit, OnDestroy {
     this.subscriptions.push(this.entityService.getById(this.id)
       .subscribe(
         data => {
-          console.log("Entity Retrieved from API: " + JSON.stringify(data, null, 2));
           this.form.patchValue(data);
           this.isLoading = false;
         },

@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IPlayerPosition } from '../interfaces/joins/player-position';
 import { IPosition } from '../interfaces/lookups/position';
 
 @Pipe({
@@ -27,5 +26,4 @@ export class PositionsPipe implements PipeTransform {
 
     return value;
   }
-
 }

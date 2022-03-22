@@ -1,0 +1,11 @@
+C:\Users\PATSN\Documents\Repos\SoccerTeamManagement\1. Core\bin\Debug\net5.0\1. Core.deps.json
+C:\Users\PATSN\Documents\Repos\SoccerTeamManagement\1. Core\bin\Debug\net5.0\1. Core.dll
+C:\Users\PATSN\Documents\Repos\SoccerTeamManagement\1. Core\bin\Debug\net5.0\ref\1. Core.dll
+C:\Users\PATSN\Documents\Repos\SoccerTeamManagement\1. Core\bin\Debug\net5.0\1. Core.pdb
+C:\Users\PATSN\Documents\Repos\SoccerTeamManagement\1. Core\obj\Debug\net5.0\1. Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PATSN\Documents\Repos\SoccerTeamManagement\1. Core\obj\Debug\net5.0\1. Core.AssemblyInfoInputs.cache
+C:\Users\PATSN\Documents\Repos\SoccerTeamManagement\1. Core\obj\Debug\net5.0\1. Core.AssemblyInfo.cs
+C:\Users\PATSN\Documents\Repos\SoccerTeamManagement\1. Core\obj\Debug\net5.0\1. Core.csproj.CoreCompileInputs.cache
+C:\Users\PATSN\Documents\Repos\SoccerTeamManagement\1. Core\obj\Debug\net5.0\1. Core.dll
+C:\Users\PATSN\Documents\Repos\SoccerTeamManagement\1. Core\obj\Debug\net5.0\ref\1. Core.dll
+C:\Users\PATSN\Documents\Repos\SoccerTeamManagement\1. Core\obj\Debug\net5.0\1. Core.pdb

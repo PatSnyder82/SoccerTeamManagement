@@ -19,7 +19,7 @@ namespace SoccerTeamManagement.Data.DTOs
 
         public int? ClubId { get; set; }
 
-        public IList<LeagueFlatDTO> Leagues { get; set; }
+        public IList<LeagueDetailsDTO> Leagues { get; set; }
 
         public IList<PlayerDTO> Players { get; set; }
 

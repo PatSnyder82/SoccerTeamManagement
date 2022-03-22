@@ -30,7 +30,6 @@ export class PlayerService extends BaseService<IPlayer> {
 
   public getFormGroup(): FormGroup {
     const unsignedInt999Pattern = new RegExp('^[1-9]\\d{0,2}$');
-    const unsignedIntPattern = new RegExp('^[1-9]\\d{0,8}$');
 
     return this.formBuilder.group({
       id: [0],
@@ -53,9 +52,9 @@ export class PlayerService extends BaseService<IPlayer> {
       positions: [null],
       playerPositions: [null],
       image: [null],      //TODO: this.imageService.getFormGroup()
-      attributes: [null], //TODO: this.playerAttributesService.getFormGroup()
-      teams: [null],      //TODO: this.teamService.getFormGroup()
-      parents: [null]     //TODO: this.parentService.getFormGroup()
+      attributes: [null],
+      teamPlayers: [null],
+      parents: [null]
     });
   }
 }

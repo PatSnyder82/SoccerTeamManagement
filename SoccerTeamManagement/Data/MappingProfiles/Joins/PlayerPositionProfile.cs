@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using SoccerTeamManagement.Data.DTOs.Lookups;
-using SoccerTeamManagement.Data.Models.Joins;
+using Core.Models;
+using SoccerTeamManagement.Data.DTOs.Joins;
 
 namespace SoccerTeamManagement.Data.MappingProfiles.Joins
 {
@@ -8,7 +8,12 @@ namespace SoccerTeamManagement.Data.MappingProfiles.Joins
     {
         public PlayerPositionProfile()
         {
-            CreateMap<PlayerPositionFlatDTO, PlayerPosition>().ReverseMap();
+            CreateMap<PlayerPosition, PlayerPositionDTO>()
+                .ForMember(dto => dto.Abbreviation, dto => dto.MapFrom(model => model.Position.Abbreviation))
+                .ForMember(dto => dto.Category, dto => dto.MapFrom(model => model.Position.PositionCategory.Text))
+                .ForMember(dto => dto.PositionCategoryId, dto => dto.MapFrom(model => model.Position.PositionCategoryId));
+
+            CreateMap<PlayerPositionDTO, PlayerPosition>();
         }
     }
 }

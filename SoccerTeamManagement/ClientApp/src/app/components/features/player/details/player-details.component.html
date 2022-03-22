@@ -33,10 +33,10 @@
               <mat-label>Date of Birth:</mat-label><br />
               <section class="row">
                 <div class="col-10">
-                  <input matInput formControlName="dateOfBirth" class="form-control col-5" />
+                  <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" class="form-control col-5" />
                 </div>
                 <div class="col-2">
-                  <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle> <!--matSuffix-->
+                  <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
                 </div>
                 <mat-error *ngIf="controls.dateOfBirth.hasError('required') && (controls.dateOfBirth.dirty || controls.dateOfBirth.touched)"><strong>Input required</strong></mat-error>
@@ -140,6 +140,16 @@
           </mat-card-content>
           <mat-card-actions>
             <button mat-button type="button" (click)="openPositionModal()" [disabled]="isReadOnly">Update Positions</button>
+          </mat-card-actions>
+        </section>
+        <section class="col">
+          <mat-card-content>
+            <mat-label><strong>Teams</strong></mat-label>
+            <br />
+            <p class="multiline">{{controls.teamPlayers.value | teams}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button type="button" (click)="openTeamModal()" [disabled]="isReadOnly">Update Teams</button>
           </mat-card-actions>
         </section>
       </div>

@@ -2,7 +2,7 @@
 
 namespace SoccerTeamManagement.Data.DTOs
 {
-    public class ClubFlatDTO : EntityBaseDTO
+    public class ClubDetailsDTO : EntityBaseDTO
     {
         #region Properties
 
@@ -18,7 +18,7 @@ namespace SoccerTeamManagement.Data.DTOs
 
         public ImageDTO Logo { get; set; }
 
-        public IList<TeamFlatDTO> Teams { get; set; }
+        public IList<TeamDetailsDTO> Teams { get; set; }
 
         #endregion Relationships
     }

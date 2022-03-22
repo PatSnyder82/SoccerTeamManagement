@@ -1,0 +1,56 @@
+<h1 mat-dialog-title>{{title}}</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="team-select-modal">
+  <div mat-dialog-content>
+    <div class="row">
+      <section class="form-group">
+        <mat-label>League:</mat-label>
+        <mat-select formControlName="leagueId" (selectionChange)="onLeagueChange($event.value)" [ngClass]="{'hidden': controls.leagueId.disabled}" class="form-control">
+          <mat-option *ngFor="let league of leagues" [value]="league.id">
+            {{league.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="controls.leagueId.hasError('required') && (controls.leagueId.dirty || controls.leagueId.touched)"><strong>Input required</strong></mat-error>
+      </section>
+    </div>
+    <div class="row">
+      <section class="form-group" *ngIf="controls.leagueId.value != null">
+        <mat-label>Club:</mat-label>
+        <mat-select formControlName="clubId" (selectionChange)="onClubChange($event.value)" class="form-control">
+          <mat-option *ngFor="let club of clubs" [value]="club.id">
+            {{club.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="controls.clubId.hasError('required')"><strong>Input required</strong></mat-error>
+      </section>
+    </div>
+    <div class="row">
+      <section class="form-group" *ngIf="controls.clubId.value != null">
+        <mat-label>Team:</mat-label>
+        <mat-select formControlName="teamId" (selectionChange)="onTeamChange($event.value)" class="form-control">
+          <mat-option *ngFor="let team of teams" [value]="team.id">
+            {{team.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="controls.teamId.hasError('required')"><strong>Input required</strong></mat-error>
+      </section>
+    </div>
+    <div class="row">
+      <mat-label>Joined Team:</mat-label><br />
+      <div class="col-10">
+        <input matInput [matDatepicker]="picker" formControlName="joinedTeam" class="form-control col-5" />
+      </div>
+      <div class="col-2">
+        <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+      <mat-error *ngIf="controls.joinedTeam.hasError('required') && (controls.joinedTeam.dirty || controls.joinedTeam.touched)"><strong>Input required</strong></mat-error>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <section class="form-group commands">
+      <button mat-raised-button type="submit" value="Submit" color="warn" [disabled]="form.invalid">Update</button>
+      <button mat-raised-button type="button" (click)="onClose()">Close</button>
+    </section>
+  </div>
+</form>

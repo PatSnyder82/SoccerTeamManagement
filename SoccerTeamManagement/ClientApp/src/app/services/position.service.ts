@@ -35,12 +35,12 @@ export class PositionService extends BaseService<IPosition> {
   }
 
   public toPlayerPositions(positions: IPosition[], playerId: number): IPlayerPosition[] {
-    let playerPositions = [] as IPlayerPosition[];
+    const playerPositions = [] as IPlayerPosition[];
     //const playerId = this.form.get('id').value;
 
     if (positions && positions.length > 0) {
       positions.forEach(position => {
-        let playerPosition = {} as IPlayerPosition;
+        const playerPosition = {} as IPlayerPosition;
 
         playerPosition.abbreviation = position.abbreviation;
         playerPosition.isPrimary = position.isPrimary;
@@ -54,17 +54,14 @@ export class PositionService extends BaseService<IPosition> {
   }
 
   public toPositions(playerPositions: IPlayerPosition[]): IPosition[] {
-    let positions = [] as IPosition[];
-    console.log("toPositions in Position Service => PlayerPositions passed in 1: " + JSON.stringify(playerPositions, null, 2));
+    const positions = [] as IPosition[];
     if (playerPositions) {
-      console.log("Hit here");
       playerPositions.forEach(playerPosition => {
         let position = {} as IPosition;
         position = playerPosition.position;
         positions.push(position);
       });
     }
-    console.log("toPositions in Position Service => Positions passed in 2: " + JSON.stringify(positions, null, 2));
     return positions;
   }
 }

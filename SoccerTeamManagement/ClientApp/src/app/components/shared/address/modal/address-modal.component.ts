@@ -1,17 +1,14 @@
 import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { IAddress } from '../../../../interfaces/address';
 import { ICountry } from '../../../../interfaces/lookups/country';
 import { IState } from '../../../../interfaces/lookups/state';
-import { AddressService } from '../../../../services/address.service';
 import { CountryService } from '../../../../services/country.service';
 import { StateService } from '../../../../services/state.service';
 
 @Component({
-  selector: 'app-address-modal',
+  selector: 'sm-address-modal',
   templateUrl: './address-modal.component.html',
   styleUrls: ['./address-modal.component.scss'],
 })

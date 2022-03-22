@@ -24,8 +24,8 @@ export class CheckboxComponent implements ControlValueAccessor {
   private isDisabled: boolean;
   private isTouched: boolean;
 
-  public onChange: any = () => {};
-  public onTouched: any = () => {};
+  public onChange: any = () => { };
+  public onTouched: any = () => { };
 
   //#endregion
 
@@ -52,40 +52,10 @@ export class CheckboxComponent implements ControlValueAccessor {
     this.onTouched = onTouched;
   }
 
-  //setDisabledState(isDisabled: boolean): void {
-  //  this.isDisabled = isDisabled;
-  //}
-
-  //#endregion
-
-  //#region Events
-
-  //public onClick(isChecked: boolean): void {
-  //  console.log("Checkbox OnClick Hit with value: " + isChecked);
-
-  //  this._markAsTouched();
-
-  //  if (!this.isDisabled) {
-  //    this.isChecked = isChecked;
-  //    this.onChange(isChecked);
-  //  }
-  //}
-
   public onModelChange(isChecked: boolean) {
     this.isChecked = isChecked;
 
     this.onChange(isChecked);
   }
-  //#endregion
-
-  //#region Methods
-
-  //private _markAsTouched(): void {
-  //  if (!this.isTouched) {
-  //    this._onTouched();
-  //    this.isTouched = true;
-  //  }
-  //}
-
   //#endregion
 }

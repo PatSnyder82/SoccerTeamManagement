@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
+using Core.Models;
+using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SoccerTeamManagement.Data;
+using SoccerTeamManagement.Data.DTOs.Joins;
 using SoccerTeamManagement.Data.DTOs.People;
-using SoccerTeamManagement.Data.Models.People;
+using SoccerTeamManagement.Data.Models.Joins;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WorldCities.Data;
-using SoccerTeamManagement.Data.Models.Joins;
-using SoccerTeamManagement.Data.DTOs.Lookups;
-using System.Collections.Generic;
 
 namespace SoccerTeamManagement.Controllers
 {
@@ -63,21 +63,22 @@ namespace SoccerTeamManagement.Controllers
 
         // GET: api/Players/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<PlayerFlatDTO>> GetPlayer(int id)
+        public async Task<ActionResult<PlayerDetailsDTO>> GetPlayer(int id)
         {
             try
             {
                 var player = await _context.Players.AsNoTracking()
                     .Include(x => x.Country)
                     .Include(x => x.Phone)
-                    .Include(x => x.PlayerPositions).ThenInclude(x => x.Position)
+                    .Include(x => x.PlayerPositions).ThenInclude(x => x.Position).ThenInclude(x => x.PositionCategory)
+                    .Include(x => x.TeamPlayers).ThenInclude(x => x.Team)
                     .Include(x => x.Address).ThenInclude(x => x.State)
                     .Include(x => x.Address).ThenInclude(x => x.Country).FirstOrDefaultAsync(x => x.Id == id);
 
                 if (player == null)
                     return NotFound();
 
-                var dto = _mapper.Map<PlayerFlatDTO>(player);
+                var dto = _mapper.Map<Player, PlayerDetailsDTO>(player);
 
                 return Ok(dto);
             }
@@ -90,68 +91,70 @@ namespace SoccerTeamManagement.Controllers
         // PUT: api/Players/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut()]
-        public async Task<IActionResult> PutPlayer(PlayerFlatDTO dto)
+        public async Task<IActionResult> PutPlayer(PlayerDetailsDTO dto)
         {
             try
             {
-                Player player = await _context.Set<Player>().AsNoTracking().Include(x => x.PlayerPositions).AsNoTracking().FirstOrDefaultAsync(x => x.Id == dto.Id);
+                Player player = await _context.Set<Player>().AsNoTracking()
+                                        .Include(x => x.PlayerPositions).AsNoTracking()
+                                        .Include(x => x.TeamPlayers).AsNoTracking()
+                                        .FirstOrDefaultAsync(x => x.Id == dto.Id);
 
-                //if (player != null)
+                player = _mapper.Map<PlayerDetailsDTO, Player>(dto);
+
+                //UpdatePlayerPositions(ref player, dto);
+                //UpdateTeamPlayers(ref player, dto);
+                //UpdatePlayerPositions(ref player, dto);
+                //UpdateTeamPlayers(ref player, dto);
+
+                //player.PlayerPositions.Clear();
+
+                //IList<PlayerPosition> playerPositions = await _context.PlayerPositions
+                //                                                .Where(x => x.PlayerId == dto.Id).ToListAsync();
+
+                //if (playerPositions?.Count > 0)
                 //{
-                //    _context.Entry(player).State = EntityState.Detached;
+                //    foreach (var playerPosition in playerPositions)
+                //    {
+                //        _context.Remove(playerPosition);
+                //    }
                 //}
 
-                player = _mapper.Map<PlayerFlatDTO, Player>(dto);
+                //if (dto.PlayerPositions.Count > 0)
+                //{
+                //    foreach (var playerPosition in dto.PlayerPositions)
+                //    {
+                //        _context.Set<PlayerPosition>().Add(_mapper.Map<PlayerPositionDTO, PlayerPosition>(playerPosition));
+                //    }
+                //}
 
-                player.PlayerPositions.Clear();
-                IList<PlayerPosition> playerPositions = await _context.Set<PlayerPosition>().Where(x => x.PlayerId == dto.Id).ToListAsync();
+                //player.TeamPlayers.Clear();
 
-                if (playerPositions?.Count > 0)
-                {
-                    foreach (var playerPosition in playerPositions)
-                    {
-                        _context.Remove(playerPosition);
-                    }
-                }
+                //IList<TeamPlayer> teamPlayers = _context.TeamPlayers
+                //                                    .Where(x => x.PlayerId == dto.Id).ToList();
 
-                if (dto.PlayerPositions.Count > 0)
-                {
-                    foreach (var playerPosition in dto.PlayerPositions)
-                    {
-                        //player.PlayerPositions.Add(_mapper.Map<PlayerPositionFlatDTO, PlayerPosition>(playerPosition));
-                        _context.Set<PlayerPosition>().Add(_mapper.Map<PlayerPositionFlatDTO, PlayerPosition>(playerPosition));
-                    }
-                }
+                //if (teamPlayers?.Count > 0)
+                //{
+                //    foreach (var teamPlayer in teamPlayers)
+                //    {
+                //        _context.Remove(teamPlayer);
+                //    }
+                //}
+
+                //if (dto.TeamPlayers.Count > 0)
+                //{
+                //    foreach (var teamPlayer in dto.TeamPlayers)
+                //    {
+                //        _context.Set<TeamPlayer>().Add(_mapper.Map<TeamPlayerDTO, TeamPlayer>(teamPlayer));
+                //    }
+                //}
 
                 _context.Entry(player).State = EntityState.Modified;
 
                 _context.Players.Update(player);
 
                 await _context.SaveChangesAsync();
-                /*
-                Player player = await _context.Players.Include(x => x.PlayerPositions).FirstOrDefaultAsync(x => x.Id == dto.Id);
 
-                if (player != null)
-                {
-                    player = _mapper.Map<PlayerFlatDTO, Player>(dto);
-
-                    player.PlayerPositions.Clear();
-
-                    if (dto.PlayerPositions.Count > 0)
-                    {
-                        foreach (var playerPosition in dto.PlayerPositions)
-                        {
-                            player.PlayerPositions.Add(_mapper.Map<PlayerPositionFlatDTO, PlayerPosition>(playerPosition));
-                        }
-                    }
-
-                    _context.Players.Update(player);
-
-                    await _context.SaveChangesAsync();
-
-                    return Ok();
-                }
-                */
                 return Ok();
             }
             catch (Exception ex)
@@ -200,6 +203,55 @@ namespace SoccerTeamManagement.Controllers
             {
                 return BadRequest();
             }
+        }
+
+        private void UpdatePlayerPositions(ref Player player, PlayerDetailsDTO dto)
+        {
+            player.PlayerPositions.Clear();
+            IList<PlayerPosition> playerPositions = _context.Set<PlayerPosition>().AsNoTracking().Where(x => x.PlayerId == dto.Id).ToList();
+
+            if (playerPositions?.Count > 0)
+            {
+                foreach (var playerPosition in playerPositions)
+                {
+                    _context.Remove(playerPosition);
+                }
+            }
+
+            if (dto.PlayerPositions.Count > 0)
+            {
+                foreach (var playerPosition in dto.PlayerPositions)
+                {
+                    _context.Set<PlayerPosition>().Add(_mapper.Map<PlayerPositionDTO, PlayerPosition>(playerPosition));
+                }
+            }
+
+            _context.SaveChanges();
+        }
+
+        private void UpdateTeamPlayers(ref Player player, PlayerDetailsDTO dto)
+        {
+            player.TeamPlayers.Clear();
+            IList<TeamPlayer> teamPlayers = _context.Set<TeamPlayer>().AsNoTracking()
+                                                .Where(x => x.PlayerId == dto.Id).ToList();
+
+            if (teamPlayers?.Count > 0)
+            {
+                foreach (var teamPlayer in teamPlayers)
+                {
+                    _context.Remove(teamPlayer);
+                }
+            }
+
+            if (dto.TeamPlayers.Count > 0)
+            {
+                foreach (var teamPlayer in dto.TeamPlayers)
+                {
+                    _context.Set<TeamPlayer>().Add(_mapper.Map<TeamPlayerDTO, TeamPlayer>(teamPlayer));
+                }
+            }
+
+            _context.SaveChanges();
         }
     }
 }

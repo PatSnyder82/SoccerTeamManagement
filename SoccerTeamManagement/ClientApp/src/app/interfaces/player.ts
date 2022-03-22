@@ -1,8 +1,8 @@
 import { IPerson } from "./person";
 import { IPlayerAttributes } from "./player-attributes";
-import { ITeam } from "./team";
 import { IParent } from "./Parent";
 import { IPlayerPosition } from "./joins/player-position";
+import { ITeamPlayer } from "./joins/team-player";
 
 export interface IPlayer extends IPerson {
   height: number;
@@ -13,7 +13,7 @@ export interface IPlayer extends IPerson {
 
   attributesId: number;
   attributes: IPlayerAttributes;
-  teams: ITeam[];
+  teamPlayers: ITeamPlayer[];
   playerPositions: IPlayerPosition[];
   parents: IParent[];
 }

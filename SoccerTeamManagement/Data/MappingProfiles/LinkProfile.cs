@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
+using Core.Abstractions;
+using Core.Models;
 using SoccerTeamManagement.Data.DTOs;
-using SoccerTeamManagement.Data.Models;
 
 namespace SoccerTeamManagement.Data.MappingProfiles
 {

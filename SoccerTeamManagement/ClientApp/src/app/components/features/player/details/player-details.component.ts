@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ICountry } from '../../../../interfaces/lookups/country';
@@ -14,6 +14,7 @@ import { AddressModalComponent } from '../../../shared/address/modal/address-mod
 import { IAddress } from '../../../../interfaces/address';
 import { AddressPipe } from '../../../../pipes/address.pipe';
 import { PositionsPipe } from '../../../../pipes/positions.pipe';
+import { TeamPipe } from '../../../../pipes/team.pipe';
 import { AddressService } from '../../../../services/address.service';
 import { PhoneService } from '../../../../services/phone.service';
 import { PhoneModalComponent } from '../../phone/modal/phone-modal.component';
@@ -23,7 +24,10 @@ import { IPosition } from '../../../../interfaces/lookups/position';
 import { IPlayerPosition } from '../../../../interfaces/joins/player-position';
 import { PlayerPositionService } from '../../../../services/player-position.service';
 import { PositionService } from '../../../../services/position.service';
-import { AfterContentInit } from '@angular/core';
+import { TeamSelectModalComponent } from '../../team/team-modal/team-select-modal.component';
+import { ITeam } from '../../../../interfaces/team';
+import { ITeamPlayer } from '../../../../interfaces/joins/team-player';
+import { TeamPlayerService } from '../../../../services/team-player.service';
 
 @Component({
   selector: 'sm-player-details',
@@ -53,7 +57,8 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
     private phoneService: PhoneService,
     private playerService: PlayerService,
     private playerPositionService: PlayerPositionService,
-    private positionService: PositionService
+    private positionService: PositionService,
+    private teamPlayerService: TeamPlayerService
   ) {
     super("Player", "/players", route, playerService, router);
     this.image = {} as IImage;
@@ -137,6 +142,21 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
       }));
   }
 
+  public openTeamModal(): void {
+    const dialog = this.dialog.open(TeamSelectModalComponent, this._getModalConfig(this.controls.id.value));
+
+    this.subscriptions.push(dialog.afterClosed()
+      .subscribe(result => {
+        if (result) {
+          const teamPlayer = result?.data as ITeamPlayer;
+          const teamPlayers = this.controls.teamPlayers.value as ITeamPlayer[];
+          teamPlayers.push(teamPlayer);
+          this.controls.teamPlayers.setValue(teamPlayers);
+          this._createTeamPlayers(teamPlayer);
+        }
+      }));
+  }
+
   protected onEntityLoaded() {
     this.positions = this.positionService.toPositions(this.form.get('playerPositions').value);
     this.form.get('positions').setValue(this.positions);
@@ -144,6 +164,7 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
 
   protected initializeControlReferences() {
     return {
+      id: this.form.get('id'),
       firstName: this.form.get('firstName'),
       lastName: this.form.get('lastName'),
       nickName: this.form.get('nickName'),
@@ -158,7 +179,8 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
       phone: this.form.get('phone'),
       address: this.form.get('address'),
       positions: this.form.get('positions'),
-      playerPositions: this.form.get('playerPositions')
+      playerPositions: this.form.get('playerPositions'),
+      teamPlayers: this.form.get('teamPlayers')
     }
   }
 
@@ -199,5 +221,11 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
     return dialogConfig;
   }
 
-  //#endregion
+  private _createTeamPlayers(teamPlayer: ITeamPlayer): void {
+    this.subscriptions.push(this.teamPlayerService.create(teamPlayer)
+      .subscribe(
+        data => data,
+        error => this.errorMessage = error as string));
+  }
 }
+  //#endregion

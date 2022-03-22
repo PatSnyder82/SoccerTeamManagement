@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
+using Core.Abstractions;
+using Core.Models;
 using SoccerTeamManagement.Data.DTOs;
-using SoccerTeamManagement.Data.Models;
 
 namespace SoccerTeamManagement.Data.MappingProfiles
 {
@@ -10,7 +11,7 @@ namespace SoccerTeamManagement.Data.MappingProfiles
         {
             CreateMap<Club, ClubDTO>()
                 .IncludeBase<EntityBase, EntityBaseDTO>().ReverseMap();
-            CreateMap<Club, ClubFlatDTO>()
+            CreateMap<Club, ClubDetailsDTO>()
                 .IncludeBase<EntityBase, EntityBaseDTO>().ReverseMap();
         }
     }

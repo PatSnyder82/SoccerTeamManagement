@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SoccerTeamManagement.Data;
-using SoccerTeamManagement.Data.Models;
-using SoccerTeamManagement.Data.Models.People;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using WorldCities.Data;
+using Core.Models;
+using Infrastructure;
 
 namespace SoccerTeamManagement.Controllers
 {

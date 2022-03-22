@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using Core.Models;
 using SoccerTeamManagement.Data.DTOs.People;
-using SoccerTeamManagement.Data.Models.People;
 using System.Linq;
 
 namespace SoccerTeamManagement.Data.MappingProfiles.People

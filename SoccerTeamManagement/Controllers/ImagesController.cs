@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Core.Models;
+using Infrastructure;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SoccerTeamManagement.Data;
-using SoccerTeamManagement.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,14 +33,14 @@ namespace SoccerTeamManagement.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Image>>> GetImage()
         {
-            return await _context.Image.ToListAsync();
+            return await _context.Images.ToListAsync();
         }
 
         // GET: api/Images/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Image>> GetImage(int id)
         {
-            var image = await _context.Image.FindAsync(id);
+            var image = await _context.Images.FindAsync(id);
 
             if (image == null)
             {
@@ -101,7 +102,7 @@ namespace SoccerTeamManagement.Controllers
 
                 image.Url = url;
 
-                var entity = _context.Image.Add(image);
+                var entity = _context.Images.Add(image);
                 await _context.SaveChangesAsync();
                 var id = entity.CurrentValues["Id"];
                 return Ok(id);
@@ -117,13 +118,13 @@ namespace SoccerTeamManagement.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteImage(int id)
         {
-            var image = await _context.Image.FindAsync(id);
+            var image = await _context.Images.FindAsync(id);
             if (image == null)
             {
                 return NotFound();
             }
 
-            _context.Image.Remove(image);
+            _context.Images.Remove(image);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -131,7 +132,7 @@ namespace SoccerTeamManagement.Controllers
 
         private bool ImageExists(int id)
         {
-            return _context.Image.Any(e => e.Id == id);
+            return _context.Images.Any(e => e.Id == id);
         }
 
         private string GetUrl(string fullFileName)

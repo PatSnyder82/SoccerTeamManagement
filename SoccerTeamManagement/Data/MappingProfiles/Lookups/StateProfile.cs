@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using Core.Abstractions;
+using Core.Models.Lookups;
 using SoccerTeamManagement.Data.DTOs.Lookups;
-using SoccerTeamManagement.Data.Models;
-using SoccerTeamManagement.Data.Models.Lookups;
 
 namespace SoccerTeamManagement.Data.MappingProfiles
 {

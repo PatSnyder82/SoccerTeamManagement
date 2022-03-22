@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using Core.Models;
 using SoccerTeamManagement.Data.DTOs.People;
-using SoccerTeamManagement.Data.Models.People;
 using System.Linq;
 
 namespace SoccerTeamManagement.Data.MappingProfiles.People
@@ -13,10 +13,10 @@ namespace SoccerTeamManagement.Data.MappingProfiles.People
                 .IncludeBase<PersonBase, PersonBaseDTO>()
                 .ForMember(dto => dto.Teams, dto => dto.MapFrom(model => model.TeamPlayers.Select(x => x.Team).ToList()))
                 .ForMember(dto => dto.Parents, dto => dto.MapFrom(model => model.PlayerParents.Select(x => x.Parent).ToList())).ReverseMap();
-            CreateMap<Player, PlayerFlatDTO>()
+            CreateMap<Player, PlayerDetailsDTO>()
                 .IncludeBase<PersonBase, PersonFlatBaseDTO>()
-                .ForMember(dto => dto.Teams, dto => dto.MapFrom(model => model.TeamPlayers.Select(x => x.Team).ToList()))
                 .ForMember(dto => dto.Parents, dto => dto.MapFrom(model => model.PlayerParents.Select(x => x.Parent).ToList())).ReverseMap();
+            //.ForMember(dto => dto.TeamPlayers, dto => dto.MapFrom(model => model.TeamPlayers.Select(x => x.Team).ToList()))
         }
     }
 }

@@ -13,6 +13,9 @@ import { PipesModule } from './pipes/pipes.module';
 import { AddressModalModule } from './components/shared/address/modal/address-modal.module';
 import { PlayerModule } from './components/features/player/player.module';
 import { PhoneModule } from './components/features/phone/phone.module';
+import { FeaturesModule } from './components/features/features.module';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { PhoneModule } from './components/features/phone/phone.module';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    FeaturesModule,
     HomeModule,
     PhoneModule,
     PipesModule,
@@ -29,7 +33,9 @@ import { PhoneModule } from './components/features/phone/phone.module';
     SharedModule,
     RouterModule,
     HttpClientModule,
-    AddressModalModule
+    AddressModalModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }

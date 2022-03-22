@@ -29,7 +29,8 @@ export class PitchPositionsModalComponent implements OnInit, OnDestroy {
 
   //#region Constructor
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<PitchPositionsModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IPosition[],
     private snackBar: MatSnackBar,
@@ -38,7 +39,7 @@ export class PitchPositionsModalComponent implements OnInit, OnDestroy {
     this.errorMessage = '';
     this.userInstructions = "Drag and drop selected positions to order.";
     this.playerPositions = data ? data as IPosition[] : [] as IPosition[];
-    this.subscriptions = new Array<Subscription>();
+    this.subscriptions = [] as Subscription[];
     this.title = "Positions";
   }
 
@@ -160,7 +161,6 @@ export class PitchPositionsModalComponent implements OnInit, OnDestroy {
   }
 
   private _initializeFormGroup() {
-    console.log("INSIDE _INITIALIZEFORMGROUP -> PlayerPositions = " + JSON.stringify(this.playerPositions, null, 2));
     return this.formBuilder.group({
       lw: [false],
       lf: [false],
@@ -184,11 +184,9 @@ export class PitchPositionsModalComponent implements OnInit, OnDestroy {
   }
 
   private _intializeFormGroupValues() {
-    console.log("Player Positions in Pitch _intializeFormGroupValues: " + JSON.stringify(this.playerPositions, null, 2));
     if (this.playerPositions && this.playerPositions.length > 0) {
       this.playerPositions.forEach(position => {
         this.form.get(position.abbreviation.toLowerCase()).setValue(true);
-        console.log("checkbox " + position.abbreviation + ":" + this.form.get(position.abbreviation.toLowerCase()).value)
       });
     }
   }

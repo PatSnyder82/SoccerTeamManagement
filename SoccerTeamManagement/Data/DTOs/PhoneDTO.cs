@@ -1,4 +1,6 @@
-﻿namespace SoccerTeamManagement.Data.DTOs
+﻿using Core.Enumerations;
+
+namespace SoccerTeamManagement.Data.DTOs
 {
     public class PhoneDTO : EntityBaseDTO
     {

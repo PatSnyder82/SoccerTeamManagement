@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SoccerTeamManagement.Data.DTOs.Joins;
+using System.Collections.Generic;
 
 namespace SoccerTeamManagement.Data.DTOs.Lookups
 {

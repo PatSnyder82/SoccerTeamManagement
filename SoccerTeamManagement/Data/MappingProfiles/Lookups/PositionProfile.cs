@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
+using Core.Abstractions;
+using Core.Models.Lookups;
 using SoccerTeamManagement.Data.DTOs.Lookups;
-using SoccerTeamManagement.Data.Models;
-using SoccerTeamManagement.Data.Models.Joins;
-using SoccerTeamManagement.Data.Models.Lookups;
 using System.Linq;
 
 namespace SoccerTeamManagement.Data.MappingProfiles
@@ -11,7 +10,7 @@ namespace SoccerTeamManagement.Data.MappingProfiles
     {
         public PositionProfile()
         {
-            CreateMap<Position, PlayerPositionDTO>()
+            CreateMap<Position, PositionDTO>()
                 .IncludeBase<LookupBase, LookupBaseDTO>().ReverseMap();
             CreateMap<Position, PositionFlatDTO>()
                 .IncludeBase<LookupBase, LookupBaseDTO>()

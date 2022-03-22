@@ -1,6 +1,6 @@
 ﻿namespace SoccerTeamManagement.Data.DTOs.Lookups
 {
-    public class PlayerPositionDTO : LookupBaseDTO
+    public class PositionDTO : LookupBaseDTO
     {
         #region Properties
 

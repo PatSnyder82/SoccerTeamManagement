@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Core.Models.Lookups;
+using Infrastructure;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SoccerTeamManagement.Data;
-using SoccerTeamManagement.Data.Models;
-using SoccerTeamManagement.Data.Models.People;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
