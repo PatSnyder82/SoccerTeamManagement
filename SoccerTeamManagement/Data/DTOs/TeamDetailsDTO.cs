@@ -1,9 +1,8 @@
-﻿using SoccerTeamManagement.Data.DTOs.People;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace SoccerTeamManagement.Data.DTOs
 {
-    public class TeamDetailsDTO : EntityBaseDTO
+    public class TeamDetailsDTO : DetailsBaseDTO
     {
         #region Properties
 

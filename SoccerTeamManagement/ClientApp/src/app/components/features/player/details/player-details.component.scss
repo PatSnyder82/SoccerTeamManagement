@@ -1,9 +1,18 @@
+@import '../../../../styles/theme';
+
+.sm-nav {
+  //background-color: blue;
+  position: fixed;
+  left: 0;
+  height: 100%;
+}
+
 input.ng-valid {
   border-left: 5px solid green;
 }
 
 input.ng-invalid.ng-dirty,
-input.ng-invalid.ng-touched { 
+input.ng-invalid.ng-touched {
   border-left: 5px solid red;
 }
 
@@ -25,5 +34,5 @@ mat-form-field {
 }
 
 div.row {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }

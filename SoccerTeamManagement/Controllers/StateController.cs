@@ -1,152 +1,40 @@
-﻿using Core.Models.Lookups;
-using Infrastructure;
+﻿using AutoMapper;
+using Core.Models.Lookups;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
+using Services.Abstractions;
+using SoccerTeamManagement.Data.DTOs.Lookups;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using WorldCities.Data;
 
 namespace SoccerTeamManagement.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StateController : ControllerBase
+    public class StateController : EntityControllerBase<State, StateListDTO, StateDetailsDTO>
     {
-        private readonly ApplicationDbContext _context;
+        #region Constructor
 
-        public StateController(ApplicationDbContext context)
+        public StateController(IMapper mapper, ISoccerManagementService service)
+            : base(mapper, service, service.States)
         {
-            _context = context;
         }
 
-        // GET: api/State
-        [HttpGet]
-        public async Task<ActionResult<State>> GetStates()
-        {
-            try
-            {
-                var entities = await _context.States.OrderBy(x => x.SortOrder).AsNoTracking().ToListAsync();
+        #endregion Constructor
 
-                return Ok(entities);
-            }
-            catch
-            {
-                return BadRequest();
-            }
-        }
+        #region Endpoints
 
-        // GET: api/State/TableData
-        [HttpGet]
-        [Route("TableData")]
-        public async Task<ActionResult<TableData<State>>> GetState(int pageIndex = 0, int pageSize = 10, string sortColumn = null, string sortOrder = null, string filterColumn = null, string filterQuery = null)
-        {
-            try
-            {
-                var entities = await TableData<State>.CreateAsync(_context.States.AsNoTracking(), pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
-                return Ok(entities);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
-        }
-
-        // GET: api/GetStatesByCountry/5
         [HttpGet]
         [Route("getstatesbycountry/{countryId:int}")]
-        public async Task<ActionResult<State>> GetStatesByCountry(int countryId)
+        public async Task<ActionResult<IEnumerable<StateDTO>>> GetStatesByCountry(int countryId)
         {
-            try
-            {
-                var entities = await _context.States.AsNoTracking().Where(x => x.CountryId == countryId).ToListAsync();
+            var entities = await _service.States.GetByCountryId(countryId);
 
-                if (entities == null)
-                    return NoContent();
-
-                return Ok(entities);
-            }
-            catch
-            {
-                return BadRequest();
-            }
-        }
-
-        // GET: api/Countries/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<State>> GetState(int id)
-        {
-            var state = await _context.States.FindAsync(id);
-
-            if (state == null)
-            {
-                return NotFound();
-            }
-
-            return state;
-        }
-
-        // PUT: api/Countries/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutState(int id, State state)
-        {
-            if (id != state.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(state).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!StateExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            if (entities != null)
+                return Ok(_mapper.Map<IEnumerable<State>, IEnumerable<StateDTO>>(entities));
 
             return NoContent();
         }
 
-        // POST: api/Countries
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<State>> PostState(State state)
-        {
-            _context.States.Add(state);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetState", new { id = state.Id }, state);
-        }
-
-        // DELETE: api/Countries/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteState(int id)
-        {
-            var state = await _context.States.FindAsync(id);
-            if (state == null)
-            {
-                return NotFound();
-            }
-
-            _context.States.Remove(state);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool StateExists(int id)
-        {
-            return _context.States.Any(e => e.Id == id);
-        }
+        #endregion Endpoints
     }
 }

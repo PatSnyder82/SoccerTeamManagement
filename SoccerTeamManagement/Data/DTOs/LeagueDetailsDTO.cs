@@ -2,7 +2,7 @@
 
 namespace SoccerTeamManagement.Data.DTOs
 {
-    public class LeagueDetailsDTO : EntityBaseDTO
+    public class LeagueDetailsDTO : DetailsBaseDTO
     {
         #region Properties
 

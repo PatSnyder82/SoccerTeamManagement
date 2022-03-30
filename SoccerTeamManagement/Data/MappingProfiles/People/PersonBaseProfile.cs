@@ -11,9 +11,17 @@ namespace SoccerTeamManagement.Data.MappingProfiles.People
         public PersonBaseProfile()
         {
             CreateMap<PersonBase, PersonBaseDTO>()
-                .IncludeBase<EntityBase, EntityBaseDTO>().ReverseMap();
+                //.IncludeBase<EntityBase, EntityBaseDTO>()
+                .ReverseMap();
             CreateMap<PersonBase, PersonFlatBaseDTO>()
-                .IncludeBase<EntityBase, EntityBaseDTO>().ReverseMap();
+                //.IncludeBase<EntityBase, EntityBaseDTO>()
+                .ReverseMap();
+            CreateMap<PersonBase, PersonDetailsBaseDTO>()
+                //.IncludeBase<EntityBase, EntityBaseDTO>()
+                .ReverseMap();
+            CreateMap<PersonBase, PersonListBaseDTO>()
+                //.IncludeBase<EntityBase, EntityBaseDTO>()
+                .ReverseMap();
         }
     }
 }

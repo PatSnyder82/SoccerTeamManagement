@@ -1,4 +1,4 @@
-interface ITableData<T> {
+interface ITable<T> {
   data: T[];
   pageIndex: number;
   pageSize: number;

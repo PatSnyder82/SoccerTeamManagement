@@ -62,7 +62,7 @@ export abstract class BaseService<T> {
 
   getTableData(pageIndex: number = this.defaultPageIndex, pageSize: number = this.defaultPageSize,
     sortColumn: string = this.defaultSortColumn, sortOrder: string = this.defaultSortOrder,
-    filterColumn: string = this.defaultFilterColumn, filterQuery: string = this.defaultFilterQuery): Observable<ITableData<T>> {
+    filterColumn: string = this.defaultFilterColumn, filterQuery: string = this.defaultFilterQuery): Observable<ITable<T>> {
     const url = this.url + 'tabledata/';
     const params = new HttpParams()
       .set("pageIndex", pageIndex)
@@ -72,7 +72,7 @@ export abstract class BaseService<T> {
       .set("filterColumn", filterColumn)
       .set("filterQuery", filterQuery);
 
-    return this.http.get<ITableData<T>>(url, { params })
+    return this.http.get<ITable<T>>(url, { params })
       .pipe(catchError(this.handleError));
   }
 
@@ -81,8 +81,8 @@ export abstract class BaseService<T> {
       .pipe(catchError(this.handleError));
   }
 
-  update(item: T): Observable<T> {
-    return this.http.put<T>(this.url, item)
+  update(item: T): Observable<boolean> {
+    return this.http.put<boolean>(this.url, item)
       .pipe(catchError(this.handleError));
   }
 

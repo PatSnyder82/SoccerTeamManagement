@@ -1,12 +1,11 @@
 ﻿using Core.Enumerations;
 using SoccerTeamManagement.Data.DTOs.Joins;
-using SoccerTeamManagement.Data.DTOs.Lookups;
 using SoccerTeamManagement.Data.Models.Joins;
 using System.Collections.Generic;
 
 namespace SoccerTeamManagement.Data.DTOs.People
 {
-    public class PlayerDetailsDTO : PersonFlatBaseDTO
+    public class PlayerDetailsDTO : PersonDetailsBaseDTO
     {
         #region Properties
 
@@ -26,13 +25,13 @@ namespace SoccerTeamManagement.Data.DTOs.People
 
         public int? AttributesId { get; set; }
 
-        public PlayerAttributesDTO Attributes { get; set; }
+        public PlayerAttributesDetailsDTO Attributes { get; set; }
 
-        public IList<PlayerPositionDTO> PlayerPositions { get; set; }
+        public IList<PlayerPositionDetailsDTO> PlayerPositions { get; set; }
 
-        public IList<TeamPlayerDTO> TeamPlayers { get; set; }
+        public IList<TeamPlayerDetailsDTO> TeamPlayers { get; set; }
 
-        public IList<ParentFlatDTO> Parents { get; set; }
+        public IList<ParentDetailsDTO> Parents { get; set; }
 
         #endregion Relationships
     }

@@ -9,6 +9,7 @@ namespace SoccerTeamManagement.Data.MappingProfiles.Joins
         public TeamPlayerProfile()
         {
             CreateMap<TeamPlayerDTO, TeamPlayer>().ReverseMap();
+            CreateMap<TeamPlayerDetailsDTO, TeamPlayer>().ReverseMap();
         }
     }
 }

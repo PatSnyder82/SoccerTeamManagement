@@ -10,10 +10,11 @@ namespace SoccerTeamManagement.Data.MappingProfiles.People
         public ParentProfile()
         {
             CreateMap<Parent, ParentDTO>()
-                .IncludeBase<PersonBase, PersonBaseDTO>()
+                //.IncludeBase<PersonBase, PersonBaseDTO>()
                 .ForMember(dto => dto.Players, dto => dto.MapFrom(model => model.PlayerParents.Select(x => x.Player).ToList())).ReverseMap();
-            CreateMap<Parent, ParentFlatDTO>()
-                .IncludeBase<PersonBase, PersonFlatBaseDTO>().ReverseMap();
+            CreateMap<Parent, ParentDetailsDTO>()
+                /*./*IncludeBase<PersonBase, PersonDetailsBaseDTO>()*/
+                .ReverseMap();
         }
     }
 }

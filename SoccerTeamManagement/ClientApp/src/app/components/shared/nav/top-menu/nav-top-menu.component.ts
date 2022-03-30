@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sm-nav-top-menu',
@@ -6,13 +7,50 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-top-menu.component.scss']
 })
 export class NavTopMenuComponent {
-  isExpanded = false;
+  // #region Properties
 
-  collapse() {
+
+  public isExpanded: boolean;
+  public isHidden: boolean;
+
+  //#endregion
+
+  //#region Constructor
+
+  constructor(router: Router) {
+    this._initialize();
+    this._registerRoutesToHideOn(router);
+  }
+
+  //#endregion
+
+  //#region Events
+
+  public collapse(): void {
     this.isExpanded = false;
   }
 
-  toggle() {
+  public toggle(): void {
     this.isExpanded = !this.isExpanded;
   }
+
+  //#endregion
+
+  //#region Methods
+
+  private _initialize(): void {
+    this.isExpanded = false;
+    this.isHidden = false;
+  }
+
+  private _registerRoutesToHideOn(router: Router): void {
+    router.events.subscribe(() => {
+      if (router.url === '/')
+        this.isHidden = true;
+      else
+        this.isHidden = false;
+    });
+  }
+
+  //#endregion
 }

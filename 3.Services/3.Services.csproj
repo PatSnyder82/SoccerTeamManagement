@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Services</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.18" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\1.Core\1.Core.csproj" />
+    <ProjectReference Include="..\2.Infrastructure\2.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

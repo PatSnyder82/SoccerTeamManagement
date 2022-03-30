@@ -22,7 +22,7 @@ namespace SoccerTeamManagement.Data.DTOs.Joins
 
         public int PositionId { get; set; }
 
-        public PositionFlatDTO Position { get; set; }
+        public PositionDetailsDTO Position { get; set; }
 
         #endregion Relationships
     }

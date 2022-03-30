@@ -11,6 +11,8 @@ namespace SoccerTeamManagement.Data.MappingProfiles
         {
             CreateMap<Phone, PhoneDTO>()
                 .IncludeBase<EntityBase, EntityBaseDTO>().ReverseMap();
+            CreateMap<Phone, PhoneDetailsDTO>()
+                .IncludeBase<EntityBase, EntityBaseDTO>().ReverseMap();
         }
     }
 }

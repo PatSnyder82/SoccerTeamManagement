@@ -38,8 +38,9 @@ export class PlayerListComponent implements OnInit, OnDestroy {
   //#region Constructor
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private playerService: PlayerService) {
-    this.displayedColumns = ['id', 'firstName', 'lastName', 'country'];
+    this.displayedColumns = ['id', 'firstName', 'lastName', 'nickName'];
     this.subscriptions = new Array<Subscription>();
+    this.players = new MatTableDataSource();
   }
 
   //#endregion
@@ -73,12 +74,12 @@ export class PlayerListComponent implements OnInit, OnDestroy {
   //#region Methods
 
   getData(event: PageEvent) {
-    let pageIndex = +event.pageIndex;
-    let pageSize = +event.pageSize;
-    let sortColumn = this.sort ? this.sort.active : this.defaultSortColumn;
-    let sortOrder = this.sort ? this.sort.direction : this.defaultSortOrder;
-    let filterColumn = this.defaultFilterColumn;
-    let filterQuery = this.filterQuery;
+    const pageIndex = +event.pageIndex;
+    const pageSize = +event.pageSize;
+    const sortColumn = this.sort ? this.sort.active : this.defaultSortColumn;
+    const sortOrder = this.sort ? this.sort.direction : this.defaultSortOrder;
+    const filterColumn = this.defaultFilterColumn;
+    const filterQuery = this.filterQuery;
 
     this.subscriptions.push(this.playerService.getTableData(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery)
       .subscribe(
@@ -86,7 +87,7 @@ export class PlayerListComponent implements OnInit, OnDestroy {
           this.paginator.length = tableData.totalCount;
           this.paginator.pageIndex = tableData.pageIndex;
           this.paginator.pageSize = tableData.pageSize;
-          this.players = new MatTableDataSource(tableData.data);
+          this.players = new MatTableDataSource<IPlayer>(tableData.data);
         },
         error => this.errorMessage = error as string));
   }

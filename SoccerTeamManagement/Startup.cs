@@ -8,9 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using SoccerTeamManagement.Data;
-using SoccerTeamManagement.Data.Models;
+using Services.Abstractions;
+using Services.Services;
 
 namespace SoccerTeamManagement
 {
@@ -34,7 +33,8 @@ namespace SoccerTeamManagement
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                    assembly => assembly.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName));
                 //options.EnableSensitiveDataLogging(true);
             });
 
@@ -61,6 +61,9 @@ namespace SoccerTeamManagement
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddScoped<ISoccerManagementService, SoccerManagementService>();
+            services.AddScoped(typeof(IEntityServiceBase<>), typeof(EntityServiceBase<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

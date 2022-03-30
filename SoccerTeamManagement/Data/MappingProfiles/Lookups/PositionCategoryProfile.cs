@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Core.Abstractions;
 using Core.Models.Lookups;
 using SoccerTeamManagement.Data.DTOs.Lookups;
 
@@ -9,10 +8,9 @@ namespace SoccerTeamManagement.Data.MappingProfiles.Lookups
     {
         public PositionCategoryProfile()
         {
-            CreateMap<PositionCategory, PositionCategoryDTO>()
-                .IncludeBase<LookupBase, LookupBaseDTO>().ReverseMap();
-            CreateMap<PositionCategory, PositionCategoryFlatDTO>()
-                .IncludeBase<LookupBase, LookupBaseDTO>().ReverseMap();
+            CreateMap<PositionCategory, PositionCategoryDTO>().ReverseMap();
+            CreateMap<PositionCategory, PositionCategoryDetailsDTO>().ReverseMap();
+            CreateMap<PositionCategory, PositionCategoryListDTO>().ReverseMap();
         }
     }
 }

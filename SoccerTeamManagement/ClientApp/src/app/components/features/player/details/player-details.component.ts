@@ -40,6 +40,7 @@ export class PlayerDetailsComponent extends DetailsBaseComponent<IPlayer> implem
   countries: ICountry[];
   image: IImage; //TODO: Create proper Image component
   imageFile: File;
+  isNavigationExpanded = true;
   positions: IPosition[];
   primary: "primary";
   //#endregion

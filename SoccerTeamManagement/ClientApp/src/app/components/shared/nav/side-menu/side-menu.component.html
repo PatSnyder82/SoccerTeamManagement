@@ -1,0 +1,74 @@
+<section class="sm-navigation" [ngClass]="{ 'expanded': isExpanded, 'hidden' : isHidden }">
+  <div class="row">
+    <mat-nav-list class="col-md-12">
+      <div class="icon">
+        <fa-icon [icon]="futbolIcon" size="2x" primaryColor="red"></fa-icon>
+      </div>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <a matTooltip="Players" [matTooltipPosition]='tooltipPosition' [routerLink]="['/players']" [routerLinkActive]="['link-active']">
+          <mat-icon mat-list-icon>person</mat-icon>
+          <div class="icontext">
+            <span *ngIf="isExpanded">Players</span>
+          </div>
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+        <a matTooltip="Teams" [matTooltipPosition]='tooltipPosition'>
+          <mat-icon mat-list-icon>group</mat-icon>
+          <div class="icontext">
+            <span *ngIf="isExpanded">Teams</span>
+          </div>
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+        <a matTooltip="Clubs" [matTooltipPosition]='tooltipPosition'>
+          <mat-icon mat-list-icon>security</mat-icon>
+          <div class="icontext">
+            <span *ngIf="isExpanded">Clubs</span>
+          </div>
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+        <a matTooltip="Leagues" [matTooltipPosition]='tooltipPosition'>
+          <mat-icon mat-list-icon>class</mat-icon>
+          <div class="icontext">
+            <span *ngIf="isExpanded">Leagues</span>
+          </div>
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+        <a matTooltip="Rollover Contributions" [matTooltipPosition]='tooltipPosition'>
+          <mat-icon mat-list-icon>all_inclusive</mat-icon>
+          <div class="icontext">
+            <span *ngIf="isExpanded">Rollover Contributions</span>
+          </div>
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+        <a matTooltip="Quarterly Loan Review" [matTooltipPosition]='tooltipPosition'>
+          <mat-icon mat-list-icon>schedule</mat-icon>
+          <div class="icontext">
+            <span *ngIf="isExpanded">Qrtly Loan Review</span>
+          </div>
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+        <a matTooltip="Reports" [matTooltipPosition]='tooltipPosition'>
+          <mat-icon mat-list-icon>description</mat-icon>
+          <div class="icontext">
+            <span *ngIf="isExpanded">Reports</span>
+          </div>
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+        <a matTooltip="Tasks" [matTooltipPosition]='tooltipPosition'>
+          <mat-icon mat-list-icon>playlist_add_check</mat-icon>
+          <div class="icontext">
+            <span *ngIf="isExpanded">Tasks</span>
+          </div>
+        </a>
+      </mat-list-item>
+    </mat-nav-list>
+  </div>
+</section>

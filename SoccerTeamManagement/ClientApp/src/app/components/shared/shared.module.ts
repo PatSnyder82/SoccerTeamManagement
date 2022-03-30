@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ButtonsModule } from './buttons/buttons.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSnackBarModule,
     MatTooltipModule,
     NavModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ButtonsModule
   ],
   exports: [
     AddressModule,

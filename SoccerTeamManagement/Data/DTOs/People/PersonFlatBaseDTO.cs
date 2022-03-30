@@ -25,7 +25,7 @@ namespace SoccerTeamManagement.Data.DTOs.People
 
         public int? AddressId { get; set; }
 
-        public AddressFlatDTO Address { get; set; }
+        public AddressDetailsDTO Address { get; set; }
 
         public int? ImageId { get; set; }
 
@@ -33,7 +33,7 @@ namespace SoccerTeamManagement.Data.DTOs.People
 
         public int? CountryId { get; set; }
 
-        public CountryFlatDTO Country { get; set; }
+        public CountryDetailsDTO Country { get; set; }
 
         #endregion Relationships
     }

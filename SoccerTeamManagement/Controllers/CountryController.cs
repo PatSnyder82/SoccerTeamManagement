@@ -1,132 +1,22 @@
-﻿using Core.Models.Lookups;
-using Infrastructure;
+﻿using AutoMapper;
+using Core.Models.Lookups;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using WorldCities.Data;
+using Services.Abstractions;
+using SoccerTeamManagement.Data.DTOs.Lookups;
 
 namespace SoccerTeamManagement.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CountryController : ControllerBase
+    public class CountryController : EntityControllerBase<Country, CountryListDTO, CountryDetailsDTO>
     {
-        private readonly ApplicationDbContext _context;
+        #region Constructor
 
-        public CountryController(ApplicationDbContext context)
+        public CountryController(IMapper mapper, ISoccerManagementService service)
+            : base(mapper, service, service.Countries)
         {
-            _context = context;
         }
 
-        // GET: api/Country
-        [HttpGet]
-        public async Task<ActionResult<Country>> GetCountries()
-        {
-            try
-            {
-                var entities = await _context.Countries.OrderBy(x => x.SortOrder).AsNoTracking().ToListAsync();
-
-                return Ok(entities);
-            }
-            catch
-            {
-                return BadRequest();
-            }
-        }
-
-        // GET: api/Country/TableData
-        [HttpGet]
-        [Route("TableData")]
-        public async Task<ActionResult<TableData<Country>>> TableData(int pageIndex = 0, int pageSize = 10, string sortColumn = null, string sortOrder = null, string filterColumn = null, string filterQuery = null)
-        {
-            try
-            {
-                var entities = await TableData<Country>.CreateAsync(_context.Countries.AsNoTracking(), pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
-                return Ok(entities);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
-        }
-
-        // GET: api/Countries/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Country>> GetCountry(int id)
-        {
-            var country = await _context.Countries.FindAsync(id);
-
-            if (country == null)
-            {
-                return NotFound();
-            }
-
-            return country;
-        }
-
-        // PUT: api/Countries/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCountry(int id, Country country)
-        {
-            if (id != country.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(country).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CountryExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Countries
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Country>> PostCountry(Country country)
-        {
-            _context.Countries.Add(country);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetCountry", new { id = country.Id }, country);
-        }
-
-        // DELETE: api/Countries/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCountry(int id)
-        {
-            var country = await _context.Countries.FindAsync(id);
-            if (country == null)
-            {
-                return NotFound();
-            }
-
-            _context.Countries.Remove(country);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool CountryExists(int id)
-        {
-            return _context.Countries.Any(e => e.Id == id);
-        }
+        #endregion Constructor
     }
 }

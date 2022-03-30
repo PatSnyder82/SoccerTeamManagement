@@ -9,6 +9,7 @@ namespace SoccerTeamManagement.Data.MappingProfiles.Lookups
         public LookupBaseProfile()
         {
             CreateMap<LookupBase, LookupBaseDTO>().ReverseMap();
+            CreateMap<LookupBase, DetailsLookupBaseDTO>().ReverseMap();
         }
     }
 }

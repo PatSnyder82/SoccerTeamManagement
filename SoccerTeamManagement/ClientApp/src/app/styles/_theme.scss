@@ -2,6 +2,15 @@
 
 @include mat.core();
 
+//From FULTON
+/*$custom-primary: mat.define-palette(mat.$orange-palette, 500);
+$custom-secondary: mat.define-palette(mat.$orange-palette, 500);
+$custom-accent: mat.define-palette(mat.$orange-palette, 500);
+
+$custom-font-primary: mat.define-palette(mat.$orange-palette, 500);
+$custom-highlight-primary: mat.define-palette(mat.$orange-palette, 500);*/
+//From FULTON
+
 $my-primary: mat.define-palette(mat.$orange-palette, 500);
 $my-accent: mat.define-palette(mat.$lime-palette, A200, A100, A400);
 

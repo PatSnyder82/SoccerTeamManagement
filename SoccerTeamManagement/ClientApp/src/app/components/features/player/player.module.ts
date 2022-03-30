@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+import { AppRoutingModule } from '../../shared/app-routing/app-routing.module';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -10,9 +12,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
-
-import { AppRoutingModule } from '../../shared/app-routing/app-routing.module';
 import { PlayerDetailsComponent } from './details/player-details.component';
 import { BaseModule } from '../../base/base.module';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -27,6 +26,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { PhoneModule } from '../phone/phone.module';
 import { SharedModule } from '../../shared/shared.module';
+import { NavModule } from '../../shared/nav/nav.module';
+import { ButtonsModule } from '../../shared/buttons/buttons.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { SharedModule } from '../../shared/shared.module';
     BaseModule,
     BrowserModule,
     BrowserAnimationsModule,
+    ButtonsModule,
     CommonModule,
     FormsModule,
     HttpClientModule,
@@ -55,6 +57,7 @@ import { SharedModule } from '../../shared/shared.module';
     MatSlideToggleModule,
     MatSortModule,
     MatTableModule,
+    NavModule,
     PhoneModule,
     PipesModule,
     ReactiveFormsModule,

@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
 using Core.Models;
-using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Services.Abstractions;
 using SoccerTeamManagement.Data.Models.Joins;
-using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using WorldCities.Data;
 
 namespace SoccerTeamManagement.Controllers
 {
@@ -15,88 +12,74 @@ namespace SoccerTeamManagement.Controllers
     [ApiController]
     public class TeamPlayerController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        #region Constructor
 
         private readonly IMapper _mapper;
 
-        public TeamPlayerController(ApplicationDbContext context, IMapper mapper)
+        private readonly ISoccerManagementService _service;
+
+        public TeamPlayerController(IMapper mapper, ISoccerManagementService service)
         {
-            _context = context;
             _mapper = mapper;
+            _service = service;
         }
 
-        // GET: api/TeamPlayer
+        #endregion Constructor
+
+        #region Endpoints
+
         [HttpGet]
-        public async Task<ActionResult<TeamPlayer>> GetTeamPlayer()
+        public async Task<ActionResult<IEnumerable<TeamPlayer>>> Get()
         {
-            try
-            {
-                var entities = await _context.TeamPlayers.AsNoTracking().ToListAsync();
+            var entities = await _service.TeamPlayers.GetAll();
 
-                return Ok(entities);
-            }
-            catch
-            {
-                return BadRequest();
-            }
+            if (entities != null && await _service.SaveChangesAsync())
+                return Ok(_mapper.Map<IEnumerable<TeamPlayer>, IEnumerable<TeamPlayerDTO>>(entities));
+
+            return NoContent();
         }
 
-        // GET: api/TeamPlayer/TableData
         [HttpGet]
-        [Route("TableData")]
-        public async Task<ActionResult<TableData<TeamPlayer>>> TableData(int pageIndex = 0, int pageSize = 10, string sortColumn = null, string sortOrder = null, string filterColumn = null, string filterQuery = null)
+        public async Task<ActionResult<TeamPlayer>> Get(int teamId, int playerId)
         {
-            try
-            {
-                var entities = await TableData<TeamPlayer>.CreateAsync(_context.TeamPlayers.AsNoTracking(), pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
+            var entities = await _service.TeamPlayers.GetById(teamId, playerId);
 
-                return Ok(entities);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
+            if (entities != null && await _service.SaveChangesAsync())
+                return Ok(_mapper.Map<TeamPlayer, TeamPlayerDTO>(entities));
+
+            return BadRequest();
         }
 
-        [HttpPut()]
-        public async Task<IActionResult> PutTeamPlayer(TeamPlayerDTO teamPlayer)
-        {
-            try
-            {
-                if (!_context.TeamPlayers.AsNoTracking().Any(x => x.PlayerId == teamPlayer.PlayerId && x.TeamId == teamPlayer.TeamId))
-                    return NoContent();
-
-                var entity = _context.TeamPlayers.Update(_mapper.Map<TeamPlayerDTO, TeamPlayer>(teamPlayer));
-
-                await _context.SaveChangesAsync();
-
-                teamPlayer = _mapper.Map<TeamPlayer, TeamPlayerDTO>(await _context.TeamPlayers.AsNoTracking().FirstOrDefaultAsync(x => x.PlayerId == teamPlayer.PlayerId && x.TeamId == teamPlayer.TeamId));
-
-                return Ok(teamPlayer);
-            }
-            catch
-            {
-                return BadRequest();
-            }
-        }
-
-        // POST: api/TeamPlayer
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<TeamPlayer>> PostTeamPlayer(TeamPlayer teamPlayer)
+        public async Task<ActionResult<TeamPlayerDTO>> Post(TeamPlayerDTO dto)
         {
-            try
-            {
-                var result = _context.TeamPlayers.Add(teamPlayer);
+            var entity = _mapper.Map<TeamPlayerDTO, TeamPlayer>(dto);
+            var result = await _service.TeamPlayers.Create(entity);
 
-                await _context.SaveChangesAsync();
+            if (result)
+                result = await _service.SaveChangesAsync();
 
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
+            if (result)
+                return CreatedAtAction("Get", new { teamId = entity.TeamId, playerId = entity.PlayerId }, entity);
+
+            return BadRequest(null);
         }
+
+        [HttpPut]
+        public async Task<ActionResult<bool>> Put(TeamPlayerDTO dto)
+        {
+            if (dto.PlayerId < 1 || dto.TeamId < 1)
+                return BadRequest(false);
+
+            var entity = _mapper.Map<TeamPlayerDTO, TeamPlayer>(dto);
+
+            if (await _service.TeamPlayers.Upsert(entity))
+                if (await _service.SaveChangesAsync())
+                    return Ok(true);
+
+            return BadRequest(false);
+        }
+
+        #endregion Endpoints
     }
 }

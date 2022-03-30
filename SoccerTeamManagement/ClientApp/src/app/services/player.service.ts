@@ -25,7 +25,7 @@ export class PlayerService extends BaseService<IPlayer> {
     private playerService: PlayerService,
     private playerPositionService: PlayerPositionService
   ) {
-    super(http, 'players/', baseUrl);
+    super(http, 'player/', baseUrl);
   }
 
   public getFormGroup(): FormGroup {

@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Tahoma;
+  color: antiquewhite;
+}
+
+.container {
+  z-index:-1;
+  max-width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  animation: animate 16s ease-in-out infinite;
+  background-size: cover;
+}
+
+.outer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+}
+
+.details {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.details h1 {
+  font-size: 4em;
+  font-family: Tahoma;
+  color: antiquewhite;
+}
+
+.details h2 {
+  text-transform: capitalize;
+  color: #fff;
+}
+
+.details h2 span:nth-child(1) {
+  color: red;
+}
+
+.details h2 span:nth-child(2) {
+  color: yellow;
+}
+
+@keyframes animate {
+  0%,100% {
+    background-image: url("../../../../assets/images/home/Soccer-Pitch-Mountains.jpg");
+  }
+
+  25% {
+    background-image: url("../../../../assets/images/home/Soccer-Pitch-Aerial.jpg");
+  }
+
+  50% {
+    background-image: url("../../../../assets/images/home/Soccer-Pitch-Fog.jpg");
+  }
+
+  75% {
+    background-image: url("../../../../assets/images/home/Soccer-Pitch-Silloette.jpg");
+  }
+}

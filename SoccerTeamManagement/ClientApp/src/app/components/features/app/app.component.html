@@ -1,6 +1,15 @@
-<body class="mat-app-background">
-  <sm-nav-top-menu></sm-nav-top-menu>
-  <div class="container my-custom-darker-style ">
-    <router-outlet></router-outlet>
+<body class='mat-app-background app-body row' [ngClass]="{ 'navigationexpanded' : isNavigationExpanded }">
+  <div class='app-side-nav col-md-auto'>
+    <sm-nav-side-menu [isExpanded]="isNavigationExpanded"></sm-nav-side-menu>
+  </div>
+  <div class='app-main col'>
+    <header class='app-main-header row'>
+      <!--<sm-nav-top-menu></sm-nav-top-menu>-->
+    </header>
+    <div class='app-main-content row'>
+      <router-outlet></router-outlet>
+    </div>
+    <footer class='app-main-footer row'>
+    </footer>
   </div>
 </body>

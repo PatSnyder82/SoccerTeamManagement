@@ -12,7 +12,11 @@ namespace SoccerTeamManagement.Data.MappingProfiles.Joins
                 .ForMember(dto => dto.Abbreviation, dto => dto.MapFrom(model => model.Position.Abbreviation))
                 .ForMember(dto => dto.Category, dto => dto.MapFrom(model => model.Position.PositionCategory.Text))
                 .ForMember(dto => dto.PositionCategoryId, dto => dto.MapFrom(model => model.Position.PositionCategoryId));
-
+            CreateMap<PlayerPosition, PlayerPositionDetailsDTO>()
+                .ForMember(dto => dto.Abbreviation, dto => dto.MapFrom(model => model.Position.Abbreviation))
+                .ForMember(dto => dto.Category, dto => dto.MapFrom(model => model.Position.PositionCategory.Text))
+                .ForMember(dto => dto.PositionCategoryId, dto => dto.MapFrom(model => model.Position.PositionCategoryId));
+            CreateMap<PlayerPositionDetailsDTO, PlayerPosition>();
             CreateMap<PlayerPositionDTO, PlayerPosition>();
         }
     }
