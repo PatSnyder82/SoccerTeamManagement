@@ -40,14 +40,14 @@ namespace SoccerTeamManagement
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            /*services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>();*/
 
-            services.AddIdentityServer()
-                .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+            /*services.AddIdentityServer()
+                .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();*/
 
-            services.AddAuthentication()
-                .AddIdentityServerJwt();
+            /*services.AddAuthentication()
+                .AddIdentityServerJwt();*/
 
             services.AddAutoMapper(typeof(Startup));
             services.AddControllersWithViews();

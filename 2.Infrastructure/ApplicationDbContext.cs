@@ -10,7 +10,7 @@ using Infrastructure.Identity;
 
 namespace Infrastructure
 {
-    public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
+    public class ApplicationDbContext : DbContext
     {
         public DbSet<Address> Addresses { get; set; }
 
@@ -18,7 +18,7 @@ namespace Infrastructure
 
         public DbSet<ClubLeague> ClubLeagues { get; set; }
 
-        public DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
 
         public DbSet<Image> Images { get; set; }
 
@@ -38,9 +38,10 @@ namespace Infrastructure
 
         public DbSet<TeamPlayer> TeamPlayers { get; set; }
 
+        public ApplicationDbContext() {}
+
         public ApplicationDbContext(
-            DbContextOptions options,
-            IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
+            DbContextOptions options) : base (options)
         {
         }
 
