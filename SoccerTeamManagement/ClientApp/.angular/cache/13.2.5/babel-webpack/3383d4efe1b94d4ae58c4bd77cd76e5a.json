@@ -1,1 +1,0 @@
-{"ast":null,"code":"export var PhoneType = /*#__PURE__*/(() => {\n  (function (PhoneType) {\n    PhoneType[PhoneType[\"cell\"] = 1] = \"cell\";\n    PhoneType[PhoneType[\"home\"] = 2] = \"home\";\n    PhoneType[PhoneType[\"work\"] = 3] = \"work\";\n  })(PhoneType || (PhoneType = {}));\n\n  return PhoneType;\n})();","map":null,"metadata":{},"sourceType":"module"}

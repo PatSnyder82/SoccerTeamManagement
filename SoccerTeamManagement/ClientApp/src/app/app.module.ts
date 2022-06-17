@@ -37,9 +37,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
-  ],
+  //providers: [
+  //  { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+  //],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
