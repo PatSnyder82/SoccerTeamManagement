@@ -64,10 +64,13 @@ namespace Services.Abstractions
         {
             try
             {
+
                 var existingEntity = await _set.Where(x => x.Id == entity.Id).FirstOrDefaultAsync();
 
                 if (existingEntity == null)
                     return await Create(entity);
+
+                _context.Entry(entity).State = EntityState.Deleted;
 
                 existingEntity = entity;
 

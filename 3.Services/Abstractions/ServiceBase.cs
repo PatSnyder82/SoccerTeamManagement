@@ -111,7 +111,7 @@ namespace Services.Abstractions
 
         #region Methods
 
-        protected bool IsValidProperty(string propertyName, bool throwExceptionIfNotFound = true)
+        protected bool IsValidProperty(string propertyName, bool throwExceptionIfNotFound = false)
         {
             var property = typeof(T).GetProperty(propertyName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance);
 
