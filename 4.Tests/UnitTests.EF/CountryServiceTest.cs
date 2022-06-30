@@ -1,5 +1,6 @@
 using AutoFixture;
 using Core.Models.Lookups;
+using Infrastructure;
 using Microsoft.Extensions.Logging;
 using Services.Abstractions;
 using Services.Services;
@@ -17,10 +18,9 @@ namespace UnitTests.EF
 
         public CountryTest(TestDatabaseFixture testDatabaseFixture)
         {
-            var context = testDatabaseFixture.CreateContext();
             // Create the unit of work object using the test context.  This could be moved into the TestDatabaseSetup but since were not using a unit of work type approach
             // I decided to leave it here.  Our System under test (_sut) here would be the implementation of ICountryService.
-            _sut = new SoccerManagementService(context, new LoggerFactory());
+            _sut = new SoccerManagementService(testDatabaseFixture.CreateContext(), new LoggerFactory());
 
             _autoFixture = new Fixture();
 
@@ -39,6 +39,7 @@ namespace UnitTests.EF
             ///********************************
             ///ARRANGE
             ///********************************
+                
                 // Cache the initial number of countries in the database so we can later use this to verify if any have been created/added
                 var initialCount = _sut.Countries.GetAll().Result.Count();
                 // Create an instance of country using anonymous data provided by autofixture
@@ -47,6 +48,7 @@ namespace UnitTests.EF
             ///********************************
             ///ACT
             ///********************************
+
                 // Initiate the creation of the country object.  Save the boolean return value to determine if the action was successful or not
                 var result1 = _sut.Countries.Create(country).Result;
                 // Commit changes to the database for persistence

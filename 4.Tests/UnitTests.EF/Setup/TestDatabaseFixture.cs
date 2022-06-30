@@ -1,6 +1,7 @@
 using Core.Models.Lookups;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace UnitTests.EF.Setup
 {
@@ -24,8 +25,9 @@ namespace UnitTests.EF.Setup
                         context.Database.EnsureDeleted();
                         context.Database.EnsureCreated();
 
-                        context.AddRange(new Country { Value = "bob", Alpha2Code = "bob", Alpha3Code = "bob", IsDisabled = false, Text = "bob" },
-                                         new Country { Value = "fred", Alpha2Code = "fred", Alpha3Code = "fred", IsDisabled = false, Text = "fred" });
+                        context.AddRange(
+                            new Country { Value = "bob", Alpha2Code = "bob", Alpha3Code = "bob", IsDisabled = false, Text = "bob" },
+                            new Country { Value = "bob", Alpha2Code = "bob", Alpha3Code = "bob", IsDisabled = false, Text = "bob" });
 
                         context.SaveChanges();
                     }
