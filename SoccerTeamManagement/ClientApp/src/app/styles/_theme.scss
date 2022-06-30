@@ -20,4 +20,4 @@ $my-warn: mat.define-palette(mat.$deep-orange-palette);
 $my-theme: mat.define-light-theme(( color: ( primary: $my-primary, accent: $my-accent, warn: $my-warn, ) ));
 $my-theme-dark: mat.define-dark-theme(( color: ( primary: $my-primary, accent: $my-accent, warn: $my-warn, ) ));
 
-@include mat.all-component-themes($my-theme-dark);
+@include mat.all-component-themes($my-theme);

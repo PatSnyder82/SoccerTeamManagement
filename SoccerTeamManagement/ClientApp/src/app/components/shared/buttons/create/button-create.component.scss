@@ -1,5 +1,10 @@
+$sm-button-background-color: #eff3f4;
+$sm-button-create-accent-color: #a2cf6e;
+
 button {
-  width: 50px;
-  height: 30px;
+  width: 50%;
+  height: 50%;
   padding: 0;
+  color: $sm-button-create-accent-color;
+  background-color: $sm-button-background-color;
 }

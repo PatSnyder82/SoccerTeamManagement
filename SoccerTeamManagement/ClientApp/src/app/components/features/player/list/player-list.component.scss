@@ -1,14 +1,78 @@
-table {
-  width: 100%;
+$sm-list-background-color: #eff3f4;
+$sm-list-table-head-color: #f6f8f7;
+$sm-list-row-color: #f6f8f7;
+$sm-button-background-color: #eff3f4;
+
+$sm-button-create-accent-color: #a2cf6e;
+$sm-button-edit-accent-color: #ffc36b;
+$sm-button-delete-accent-color: #f6685e;
+
+:host {
+  background-color: $sm-list-background-color;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
 }
 
-.mat-form-field {
-  font-size: 14px;
-  width: 25%;
+::ng-deep div.mat-paginator-container {
+  display: block;
+
+  .mat-paginator-page-size {
+    float: left;
+  }
+
+  .mat-paginator-range-actions {
+    float: right;
+    height: 100%;
+  }
 }
 
-sm-button-create {
-    float:right;
-    margin-top: 15px;
-    margin-right:30px;
+.sm-player-list {
+  padding: 20px;
+  padding-right: 30px;
+
+  table {
+    width: 100%;
+
+    th.create {
+      text-align: center;
+    }
+
+    .action-buttons {
+      text-align: center;
+    }
+
+    .action-button {
+      height: 50%;
+      width: 40%;
+
+      &.delete {
+        color: $sm-button-delete-accent-color;
+        background-color: $sm-button-background-color;
+        margin-left: 10px;
+      }
+
+      &.edit {
+        background-color: $sm-button-background-color;
+        color: $sm-button-edit-accent-color;
+      }
+    }
+
+    th.w-10 {
+      width: 10%;
+    }
+
+    .mat-row:nth-child(even) {
+      background-color: $sm-list-row-color;
+    }
+
+    .mat-header-row {
+      background-color: $sm-list-table-head-color;
+    }
+  }
+
+  .mat-form-field {
+    font-size: 14px;
+    width: 25%;
+  }
 }

@@ -8,7 +8,8 @@ import { Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { IPlayer } from '../../../../interfaces/player';
 import { PlayerService } from '../../../../services/player.service';
-
+import { faTrash as fasTrash, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faPen as fasPen } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'sm-player-list',
   templateUrl: './player-list.component.html',
@@ -26,7 +27,9 @@ export class PlayerListComponent implements OnInit, OnDestroy {
   defaultSortColumn: string;
   defaultSortOrder: string;
   defaultFilterColumn: string;
+  editIcon: IconDefinition;
   filterQuery: string;
+  trashIcon: IconDefinition;
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
@@ -38,9 +41,11 @@ export class PlayerListComponent implements OnInit, OnDestroy {
   //#region Constructor
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private playerService: PlayerService) {
-    this.displayedColumns = ['id', 'firstName', 'lastName', 'nickName'];
+    this.displayedColumns = ['id', 'firstName', 'lastName', 'nickName', 'action'];
+    this.editIcon = fasPen;
     this.subscriptions = new Array<Subscription>();
     this.players = new MatTableDataSource();
+    this.trashIcon = fasTrash;
   }
 
   //#endregion

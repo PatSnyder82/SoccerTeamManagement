@@ -1,10 +1,8 @@
 @import "../../../../styles/theme";
+@import "../../../../styles/font";
+@import "../../../../styles/colors";
 
 $local-expanded-width: 200px;
-$sm-sidemenu-background-color: #3a3f52;
-$sm-sidemenu-background-color-alternate: #2d3343;
-$sm-sidemenu-background-color-hover: #32374a;
-$sm-sidemenu-icon-color: #ff3419;
 
 .sm-navigation {
   width: 50px;
@@ -35,15 +33,13 @@ $sm-sidemenu-icon-color: #ff3419;
   mat-list-item {
     padding-left: 5px;
     background-color: $sm-sidemenu-background-color;
-    /*    max-height: 40px !important;
-*/
+
     &:hover {
       background-color: $sm-sidemenu-background-color-hover;
       color: #fff;
     }
 
     .link-active {
-      //background-color: $sm-sidemenu-background-color-hover;
       color: $sm-sidemenu-icon-color;
     }
   }
@@ -53,8 +49,8 @@ $sm-sidemenu-icon-color: #ff3419;
     vertical-align: middle;
     max-height: 40px;
     width: 100%;
-    font-family: sans-serif, Helvetica, Arial;
-    font-size: 14px;
+    font-family: $sm-primary-font-family;
+    font-size: $sm-primary-font-size;
     color: #b4b6bd;
 
     &:hover {

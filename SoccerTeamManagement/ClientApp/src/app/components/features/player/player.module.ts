@@ -28,6 +28,7 @@ import { PhoneModule } from '../phone/phone.module';
 import { SharedModule } from '../../shared/shared.module';
 import { NavModule } from '../../shared/nav/nav.module';
 import { ButtonsModule } from '../../shared/buttons/buttons.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ButtonsModule } from '../../shared/buttons/buttons.module';
     BrowserAnimationsModule,
     ButtonsModule,
     CommonModule,
+    FontAwesomeModule,
     FormsModule,
     HttpClientModule,
     MatButtonModule,
