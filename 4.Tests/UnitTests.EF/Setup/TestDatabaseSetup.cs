@@ -1,8 +1,9 @@
-using Microsoft.EntityFrameworkCore;
 using Core.Models.Lookups;
 using Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
-namespace UnitTests.EF {
+namespace UnitTests.EF.Setup
+{
 
     public class TestDatabaseFixture
     {
@@ -13,6 +14,7 @@ namespace UnitTests.EF {
 
         public TestDatabaseFixture()
         {
+            
             lock (_lock)
             {
                 if (!_databaseInitialized)
@@ -22,9 +24,8 @@ namespace UnitTests.EF {
                         context.Database.EnsureDeleted();
                         context.Database.EnsureCreated();
 
-                        context.AddRange(
-                            new Country { Alpha2Code = "22" },
-                            new Country { Alpha2Code = "33"});
+                        context.AddRange(new Country { Value = "bob", Alpha2Code = "bob", Alpha3Code = "bob", IsDisabled = false, Text = "bob" },
+                                         new Country { Value = "fred", Alpha2Code = "fred", Alpha3Code = "fred", IsDisabled = false, Text = "fred" });
 
                         context.SaveChanges();
                     }
@@ -34,11 +35,15 @@ namespace UnitTests.EF {
             }
         }
 
-        public ApplicationDbContext CreateContext() {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseSqlServer(ConnectionString, assembly => assembly.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)).Options;
-            var context = new ApplicationDbContext(options);
+        #region Public Methods
 
-            return context;
+        public ApplicationDbContext CreateContext()
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseSqlServer(ConnectionString, assembly => assembly.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)).Options;
+            return new ApplicationDbContext(options);
         }
+
+        #endregion
+
     }
 }

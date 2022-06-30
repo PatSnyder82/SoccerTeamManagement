@@ -1,19 +1,17 @@
-using System.Threading;
-using System.Net.Mime;
-using System;
-using System.Reflection;
-using Xunit;
-using System.Linq;
 using Core.Models.Lookups;
-using Services.Services;
-using Services.Abstractions;
-using Moq;
-using Microsoft.EntityFrameworkCore;
 using Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Moq;
+using Services.Abstractions;
+using Services.Services;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using Xunit;
 
-namespace UnitTests.Moq {
+namespace UnitTests.Moq
+{
     public class EntityServiceBaseTest {
         
         private readonly ICountryService _sut;

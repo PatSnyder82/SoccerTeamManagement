@@ -1,33 +1,32 @@
-using Xunit;
-using System.Linq;
-using Core.Models.Lookups;
-using Services.Services;
-using Services.Abstractions;
-using Microsoft.Extensions.Logging;
 using AutoFixture;
-using AutoFixture.Xunit2;
+using Core.Models.Lookups;
+using Microsoft.Extensions.Logging;
+using Services.Abstractions;
+using Services.Services;
+using System.Linq;
+using UnitTests.EF.Setup;
+using Xunit;
 
 namespace UnitTests.EF
 {
     public class CountryTest : IClassFixture<TestDatabaseFixture>
     {
+        //_sut = system under test
         private readonly ISoccerManagementService _sut;
-        private Fixture _fixture;
+        private readonly Fixture _autoFixture;
 
         public CountryTest(TestDatabaseFixture testDatabaseFixture)
         {
-            // Setup the testdatabase with it's seed data
             var context = testDatabaseFixture.CreateContext();
-
-            // Create the unit of work object using the test context
+            // Create the unit of work object using the test context.  This could be moved into the TestDatabaseSetup but since were not using a unit of work type approach
+            // I decided to leave it here.  Our System under test (_sut) here would be the implementation of ICountryService.
             _sut = new SoccerManagementService(context, new LoggerFactory());
 
-            // Intstantiate the autofixture object for creation of anonymous test data
-            _fixture = new Fixture();
+            _autoFixture = new Fixture();
 
             // Needed to prevent circular references...
-            _fixture.Behaviors.Remove(new ThrowingRecursionBehavior());
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+            _autoFixture.Behaviors.Remove(new ThrowingRecursionBehavior());
+            _autoFixture.Behaviors.Add(new OmitOnRecursionBehavior());
         }
 
 
@@ -43,7 +42,7 @@ namespace UnitTests.EF
                 // Cache the initial number of countries in the database so we can later use this to verify if any have been created/added
                 var initialCount = _sut.Countries.GetAll().Result.Count();
                 // Create an instance of country using anonymous data provided by autofixture
-                var country = _fixture.Build<Country>().Without(x => x.Id).Without(x => x.States).Create();
+                var country = _autoFixture.Build<Country>().Without(x => x.Id).Without(x => x.States).Create();
 
             ///********************************
             ///ACT
@@ -88,7 +87,7 @@ namespace UnitTests.EF
                 // Cache the number of countries meeting our query criteria so we can later use this to verify if any new ones exist
                 var initialFilterCount = _sut.Countries.GetAll(null, null, filterColumn, filterQuery).Result.Count();
                 // Create an instance of country using the input query data
-                var country = _fixture.Build<Country>().With(x => x.Text, filterQuery).Without(x => x.Id).Without(x => x.States).Create();
+                var country = _autoFixture.Build<Country>().With(x => x.Text, filterQuery).Without(x => x.Id).Without(x => x.States).Create();
 
             ///********************************
             ///ACT
@@ -120,7 +119,7 @@ namespace UnitTests.EF
         {
             //ARRANGE
             var initialFilterCount = _sut.Countries.GetAll(null, null, filterColumn, filterQuery).Result.Count();
-            var country = _fixture.Build<Country>().With(x => x.Value, filterQuery).Without(x => x.Id).Without(x => x.States).Create();
+            var country = _autoFixture.Build<Country>().With(x => x.Value, filterQuery).Without(x => x.Id).Without(x => x.States).Create();
 
             //ACT
             var result1 = _sut.Countries.Create(country).Result;
@@ -186,8 +185,6 @@ namespace UnitTests.EF
 
             if (result2?.TotalCount > result2?.PageSize)
                 Assert.True(result2?.HasNextPage);
-
-
         }
 
         [Fact]
@@ -196,6 +193,7 @@ namespace UnitTests.EF
             //Arrange
             //Act
             var result1 = _sut.Countries.GetAll().Result;
+            var id = result1.FirstOrDefault().Id;
             var result2 = _sut.Countries.Delete(result1.FirstOrDefault().Id).Result;
             _sut.SaveChangesAsync().Wait();
 
@@ -294,7 +292,7 @@ namespace UnitTests.EF
         {
             //Arrange
             var result1 = _sut.Countries.GetAll().Result;
-            var country = _fixture.Build<Country>().Without(x => x.Id).Without(x => x.States).Create();
+            var country = _autoFixture.Build<Country>().Without(x => x.Id).Without(x => x.States).Create();
             
             //Act
             var result2 = _sut.Countries.Upsert(country).Result;

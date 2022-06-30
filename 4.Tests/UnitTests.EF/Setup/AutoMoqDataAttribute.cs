@@ -3,7 +3,7 @@ using AutoFixture.AutoMoq;
 using AutoFixture.Xunit2;
 using System;
 
-namespace UnitTests.EF
+namespace UnitTests.EF.Setup
 {
     [AttributeUsage(AttributeTargets.Method)]
     public sealed class AutoMoqDataAttribute : AutoDataAttribute
